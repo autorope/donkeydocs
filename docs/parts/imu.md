@@ -17,15 +17,15 @@ MPU9250 offers additional integrated magnetometer.
 
 ### Software Setup
 
-Install smbus:
+Install smbus
 
-from package:
+* either from package:
 
 ``` bash
  sudo apt install python3-smbus
 ```
 
-or from source:
+* or from source:
 
 ```bash
 sudo apt-get install i2c-tools libi2c-dev python-dev python3-dev
