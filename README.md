@@ -3,7 +3,7 @@
 # Donkey Docs&reg;
 <!-- markdownlint-restore -->
 
-The source of the documentation gets built in the folder `../site` and is
+The source of the documentation gets built in the folder `./site` and is
 published to [official site](http://docs.donkeycar.com/).
 Our docs use extended markdown as implemented by MkDocs.
 
@@ -11,8 +11,8 @@ Our docs use extended markdown as implemented by MkDocs.
 
 * install MkDocs `pip install mkdocs`
 * `mkdocs serve` starts a local webserver at localhost:8000
-* `mkdocs build` Builds a static site in `../site` directory
-* config docs with (../mkdocs.yml)
+* `mkdocs build` Builds a static site in `./site` directory
+* config docs with (./mkdocs.yml)
 
 ## Linting
 
