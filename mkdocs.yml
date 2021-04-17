@@ -2,7 +2,7 @@
 site_name: Donkey Car
 theme: readthedocs
 
-repo_url: https://github.com/autorope/donkeydocsmk/
+repo_url: https://github.com/autorope/donkeydocs/
 edit_uri: edit/master/docs
 google_analytics: ['UA-99215530-2', 'github.io/donkey']
 extra_css:
