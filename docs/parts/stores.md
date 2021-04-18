@@ -26,6 +26,6 @@ from donkeycar.parts.tub_v2 import Tub
 # Here we define records that have a single `input` of type `int`.
 inputs = ['input']
 types = ['int']
-tub = Tub(self._path, inputs, types)
+tub = Tub(path, inputs, types)
 
 ```
