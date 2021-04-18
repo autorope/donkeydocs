@@ -70,7 +70,7 @@ Optionally, you can install RPi.GPIO clone for Jetson Nano from [here](https://g
 
 ```bash
 pip3 install virtualenv
-python3 -m virtualenv -p python3 env --system-site-packages
+sudo python3 -m virtualenv -p python3 env --system-site-packages
 echo "source env/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 ```
