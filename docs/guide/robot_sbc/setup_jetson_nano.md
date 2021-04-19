@@ -77,10 +77,10 @@ source ~/.bashrc
 
 ##  Step 4: Install Donkeycar Python Code
 
-* Change to a dir you would like to use as the head of your projects.
+* Change to a dir you would like to use as the head of your projects. Assuming you've already made the `projects` directory above, you can use that:
 
 ```bash
-mkdir -p ~/projects; cd ~/projects
+cd ~/projects
 ```
 
 * Get the latest donkeycar from Github.
