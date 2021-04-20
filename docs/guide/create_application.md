@@ -123,7 +123,7 @@ The Robo HAT MM1 uses a RC Controller and CircuitPython script to drive the car 
 
 ![folder](folder.png) 
 
-8.  Unplug USB Cable from the Robo HAT MM1 and place on top of the Raspberry Pi, as you would any HAT.
+7.  Unplug USB Cable from the Robo HAT MM1 and place on top of the Raspberry Pi, as you would any HAT.
 
 
 You may need to enable the hardware serial port on your Raspberry Pi.  On your Raspberry Pi...
