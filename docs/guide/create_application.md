@@ -91,7 +91,7 @@ Set ```HAVE_ROBOHAT = True``` in your __myconfig.py__ if you have a Robo HAT MM1
 
 ```python3
 #ROBOHAT MM1
-HAVE_ROBOHAT = False            # set to true when using the Robo HAT MM1 from Robotics Masters.  This will change to RC Control.
+HAVE_ROBOHAT = True            # set to true when using the Robo HAT MM1 from Robotics Masters.  This will change to RC Control.
 MM1_STEERING_MID = 1500         # Adjust this value if your car cannot run in a straight line
 MM1_MAX_FORWARD = 2000          # Max throttle to go fowrward. The bigger the faster
 MM1_STOPPED_PWM = 1500
@@ -118,7 +118,10 @@ The Robo HAT MM1 uses a RC Controller and CircuitPython script to drive the car 
 2.  Connect the MicroUSB connector on the Robo HAT MM1 to your computer's USB port.
 3.  A __CIRCUITPY__ device should appear on the computer as a USB Storage Device
 4.  Copy the file downloaded in Step 1 to the __CIRCUITPY__ USB Storage Device.  Rename the file __code.py__.
-5.  Unplug USB Cable from the Robo HAT MM1 and place on top of the Raspberry Pi, as you would any HAT.
+5.  Download the Adafruit logging library in a zip file from the "Code" button [here](https://github.com/adafruit/Adafruit_CircuitPython_Logging)
+6.  Unzip that file and copy the contents of the Adafruit_CircuitPython_Logging folder in the the CIRCUITPY "lib" folder like this:
+[folder](folder.png) 
+8.  Unplug USB Cable from the Robo HAT MM1 and place on top of the Raspberry Pi, as you would any HAT.
 
 
 You may need to enable the hardware serial port on your Raspberry Pi.  On your Raspberry Pi...
