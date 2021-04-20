@@ -120,7 +120,7 @@ The Robo HAT MM1 uses a RC Controller and CircuitPython script to drive the car 
 4.  Copy the file downloaded in Step 1 to the __CIRCUITPY__ USB Storage Device.  Rename the file __code.py__.
 5.  Download the Adafruit logging library in a zip file from the "Code" button [here](https://github.com/adafruit/Adafruit_CircuitPython_Logging)
 6.  Unzip that file and copy the contents of the Adafruit_CircuitPython_Logging folder in the the CIRCUITPY "lib" folder like this:
-[folder](folder.png) 
+![folder](folder.png) 
 8.  Unplug USB Cable from the Robo HAT MM1 and place on top of the Raspberry Pi, as you would any HAT.
 
 
