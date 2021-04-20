@@ -119,7 +119,7 @@ The Robo HAT MM1 uses a RC Controller and CircuitPython script to drive the car 
 3.  A __CIRCUITPY__ device should appear on the computer as a USB Storage Device
 4.  Copy the file downloaded in Step 1 to the __CIRCUITPY__ USB Storage Device.  The file should be named __code.py__. It should be at the top level of the drive, not in any folder.
 5.  Download the Adafruit logging library in a zip file from the "Code" button [here](https://github.com/adafruit/Adafruit_CircuitPython_Logging)
-6.  Unzip that file and copy the *contents* of the Adafruit_CircuitPython_Logging folder (not the folder itself) into the CIRCUITPY "lib" folder like this:
+6.  Unzip that file and copy the *adafruit_logging.py* file from the Adafruit_CircuitPython_Logging folder (not the folder itself) into the CIRCUITPY "lib" folder like this:
 
 ![folder](folder.png) 
 
