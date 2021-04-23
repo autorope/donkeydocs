@@ -69,7 +69,7 @@ donkey tubclean <folder containing tubs>
 **Note:** _This section only applies to version >= 4.1_
 This command trains the model.
 ```bash
-donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--model_type=(linear|categorical|inferred)] 
+donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--type=(linear|categorical|inferred)] 
 ```
 The `createcar` command still creates a `train.py` file for backward 
 compatibility, but it's not required for training.
