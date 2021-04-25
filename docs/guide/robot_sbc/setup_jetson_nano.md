@@ -19,15 +19,8 @@ sudo usermod -aG dialout <your username>
 sudo systemctl disable nvgetty
 sudo reboot now
 ```
-##  Step 3: Setup Virtual Env
 
-```bash
-pip3 install virtualenv
-python3 -m virtualenv -p python3 env --system-site-packages
-echo "source env/bin/activate" >> ~/.bashrc
-source ~/.bashrc
-```
-## Step 4: Install Dependencies
+## Step 3: Install System-Wide Dependencies
 
 ssh into your vehicle. Use the the terminal for Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) for windows.
 
@@ -43,6 +36,16 @@ sudo apt-get install -y libxslt1-dev libxml2-dev libffi-dev libcurl4-openssl-dev
 sudo apt-get install -y git
 sudo apt-get install -y openmpi-doc openmpi-bin libopenmpi-dev libopenblas-dev
 ```
+##  Step 4: Setup Virtual Env
+
+```bash
+pip3 install virtualenv
+python3 -m virtualenv -p python3 env --system-site-packages
+echo "source env/bin/activate" >> ~/.bashrc
+source ~/.bashrc
+```
+
+##  Step 5: Setup Python Dependencies
 
 Next, you will need to install packages with `pip`:
 ```bash
