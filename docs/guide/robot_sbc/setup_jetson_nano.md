@@ -14,6 +14,8 @@ Visit the official [Nvidia Jetson Nano Getting Started Guide](https://developer.
 
 ## Step 2: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
 
+ssh into your vehicle. Use the the terminal for Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) for windows.
+
 ```
 sudo usermod -aG dialout <your username>
 sudo systemctl disable nvgetty
@@ -22,9 +24,6 @@ sudo reboot now
 
 ## Step 3: Install System-Wide Dependencies
 
-ssh into your vehicle. Use the the terminal for Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) for windows.
-
-Note: you can either proceed with this tutorial, or if you have Jetpack 4.4 installed, you can use a script to automate the setup. The script is located in `donkeycar/install/nano/install-jp44.sh`. You will need to edit line #3 of the script and replace the default password with your password. This script will install all Git repositories into a ~/projects directory. If you wish to use a different directory, you will need to change this as well (replace all instances of ~/projects with your desired folder path). 
 
 First install some packages with `apt-get`.
 ```bash
