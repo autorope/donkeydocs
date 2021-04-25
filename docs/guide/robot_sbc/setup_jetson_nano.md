@@ -74,9 +74,7 @@ cp p57jwntv436lfrd78inwl7iml6p13fzh.whl torch-1.8.0-cp36-cp36m-linux_aarch64.whl
 pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
 ```
 
-Note: If you get errors in the above step, there may be a version mismatch with the version of Nvidia's Jetpack that you're running. If so, please install PyTorch directly from Nvidia's site [here](https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-8-0-now-available/72048).
-
-Optionally, you can install RPi.GPIO clone for Jetson Nano from [here](https://github.com/NVIDIA/jetson-gpio). This is not required for default setup, but can be useful if using LED or other GPIO driven devices.
+Optionally, you can install the RPi.GPIO clone for Jetson Nano from [here](https://github.com/NVIDIA/jetson-gpio). This is not required for default setup, but can be useful if using LED or other GPIO driven devices.
 
 
 
