@@ -19,7 +19,6 @@ Once you're done with the setup, ssh into your vehicle. Use the the terminal for
 ```
 sudo usermod -aG dialout <your username>
 sudo systemctl disable nvgetty
-sudo reboot now
 ```
 
 ## Step 3: Install System-Wide Dependencies
