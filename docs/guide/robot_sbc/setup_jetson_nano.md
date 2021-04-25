@@ -35,7 +35,7 @@ sudo apt-get install -y libxslt1-dev libxml2-dev libffi-dev libcurl4-openssl-dev
 sudo apt-get install -y git nano
 sudo apt-get install -y openmpi-doc openmpi-bin libopenmpi-dev libopenblas-dev
 ```
-##  Step 4: Setup Virtual Env
+##  Step 4: Setup Virtual Environment
 
 ```bash
 pip3 install virtualenv
