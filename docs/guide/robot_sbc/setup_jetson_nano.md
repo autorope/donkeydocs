@@ -32,7 +32,7 @@ sudo apt-get upgrade -y
 sudo apt-get install -y libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
 sudo apt-get install -y python3-dev python3-pip
 sudo apt-get install -y libxslt1-dev libxml2-dev libffi-dev libcurl4-openssl-dev libssl-dev libpng-dev libopenblas-dev
-sudo apt-get install -y git
+sudo apt-get install -y git nano
 sudo apt-get install -y openmpi-doc openmpi-bin libopenmpi-dev libopenblas-dev
 ```
 ##  Step 4: Setup Virtual Env
