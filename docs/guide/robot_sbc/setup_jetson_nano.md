@@ -69,10 +69,9 @@ sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavf
 
 # You can replace the following line with wherever you want to store your Git repositories
 mkdir -p ~/projects; cd ~/projects
-git clone --branch v0.8.1 https://github.com/pytorch/vision torchvision
-cd torchvision
-export BUILD_VERSION=0.8.1
-python3 setup.py install
+wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl
+cp p57jwntv436lfrd78inwl7iml6p13fzh.whl torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
 ```
 
 Note: If you get errors in the above step, there may be a version mismatch with the version of Nvidia's Jetpack that you're running. If so, please install PyTorch directly from Nvidia's site [here](https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-8-0-now-available/72048).
