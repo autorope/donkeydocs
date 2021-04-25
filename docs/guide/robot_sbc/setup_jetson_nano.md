@@ -55,7 +55,7 @@ pip3 install -U absl-py==0.9.0 py-cpuinfo==7.0.0 psutil==5.7.2 portpicker==1.3.1
 pip3 install -U gdown
 
 # This will install tensorflow as a system package
-pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v45 tensorflow
+pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v45 tensorflow==2.3.1
 ```
 
 Finally, you can install PyTorch:
