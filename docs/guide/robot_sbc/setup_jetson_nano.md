@@ -12,9 +12,9 @@
 
 Visit the official [Nvidia Jetson Nano Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#prepare). Work through the __Prepare for Setup__, __Writing Image to the microSD Card__, and __Setup and First Boot__ instructions, then return here.
 
-## Step 2: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
+Once you're done with the setup, ssh into your vehicle. Use the the terminal for Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) for windows.
 
-ssh into your vehicle. Use the the terminal for Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) for windows.
+## Step 2: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
 
 ```
 sudo usermod -aG dialout <your username>
