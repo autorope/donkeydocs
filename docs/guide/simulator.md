@@ -355,6 +355,9 @@ Fields:
 * *gyro_y* :  y gyro acceleration.
 * *gyro_z* :  z gyro acceleration.
 * *gyro_w* :  w gyro acceleration.
+* *pitch* :  pitch of the car in degrees.
+* *roll* :  roll of the car degrees.
+* *yaw* :  yaw of the car degrees.
 * *activeNode* : Progress on track (not working properly with multiple car for the moment)
 * *totalNodes* : number of nodes on track
 * *pos_x* :  (training only) x world coordinate of vehicle.
@@ -384,6 +387,9 @@ Example:
     "gyro_y" : "0.0", 
     "gyro_z" : "0.0", 
     "gyro_w" : "0.0",
+    "pitch" : "0.0", 
+    "roll" : "0.0", 
+    "yaw" : "0.0",
     "activeNode" : "5"
     "totalNodes" : "26"
     "cte" : "0.5"
@@ -416,6 +422,10 @@ Fields:
 * *pos_x* :  x world coordinate.
 * *pos_y* :  y world coordinate.
 * *pos_z* :  z world coordinate. 
+* *qx* :  (optionnal) quaternion x
+* *qy* :  (optionnal) quaternion y
+* *qz* :  (optionnal) quaternion z
+* *qw* :  (optionnal) quaternion w
 
 Example:
 ```bash
@@ -426,7 +436,67 @@ Example:
     "pos_z" : "0.0"
     }
 ```
+or:
 
+```bash
+    {
+    "msg_type" : "set_position" 
+    "pos_x" : "0.0", 
+    "pos_y" : "0.0", 
+    "pos_z" : "0.0",
+    "qx" : "0.0",
+    "qy" : "0.2",
+    "qz" : "0.0",
+    "qw" : "1.0"
+    }
+```
+
+---
+
+### Get node position and rotation
+Client=>Sim. Ask for a node_position packet
+
+Fields: 
+
+* *index* :  node index
+
+Example:
+```bash
+    {
+    "msg_type": "node_position",
+    "index": "0"
+    }
+```
+
+---
+
+### Node position and rotation
+Sim=>Client. node_position packet (received after sending a node_position packet)
+
+Fields: 
+
+Fields: 
+* *pos_x* :  x world coordinate.
+* *pos_y* :  y world coordinate.
+* *pos_z* :  z world coordinate. 
+* *qx* :  (optionnal) quaternion x
+* *qy* :  (optionnal) quaternion y
+* *qz* :  (optionnal) quaternion z
+* *qw* :  (optionnal) quaternion w
+
+Example:
+```bash
+    {
+    "msg_type": "node_position",
+    "Qx": "0",
+    "Qy": "0",
+    "Qz": "0",
+    "Qw": "1",
+    "pos_x": "0",
+    "pos_y": "0",
+    "pos_z": "0"
+    }
+```
 
 ---
 
