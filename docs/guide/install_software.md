@@ -38,10 +38,14 @@ This guide will help you to setup the software to run Donkeycar on your Raspberr
 * Setup [RaspberryPi](robot_sbc/setup_raspberry_pi.md)
 ![donkey](/assets/logos/rpi_logo.png)
 
-* Setup [Jetson Nano/Xavier NX](robot_sbc/setup_jetson_nano.md)
+* Setup [Jetson Nano](robot_sbc/setup_jetson_nano.md)
 ![donkey](/assets/logos/nvidia_logo.png)
 
-## [Optional] Use TensorRT on the Jetson Nano/Xavier NX
+## [Optional] Use the Intel Realsense T265 localization sensor instead of a RPi camera
+
+Read [this](/guide/robot_sbc/intelt265) for more information.
+
+## [Optional] Use TensorRT on the Jetson Nano
 
 Read [this](/guide/robot_sbc/tensorrt_jetson_nano) for more information.
 
