@@ -34,6 +34,7 @@ sudo apt-get install -y libxslt1-dev libxml2-dev libffi-dev libcurl4-openssl-dev
 sudo apt-get install -y git nano
 sudo apt-get install -y openmpi-doc openmpi-bin libopenmpi-dev libopenblas-dev
 ```
+
 ##  Step 4: Setup Virtual Environment
 
 ```bash
@@ -95,7 +96,18 @@ git checkout master
 pip3 install -e .[nano]
 ```
 
-##  Step 6: Install PyGame (Optional)
+## Step 6: (Optional) Fix for pink tint on CSIC cameras
+
+If you're using a CSIC camera you may have a pink tint on the images. As descibed [here] (https://jonathantse.medium.com/fix-pink-tint-on-jetson-nano-wide-angle-camera-a8ce5fbd797f), this fix will remove it.
+
+```
+wget https://www.dropbox.com/s/u80hr1o8n9hqeaj/camera_overrides.isp
+sudo cp camera_overrides.isp /var/nvidia/nvcam/settings/
+sudo chmod 664 /var/nvidia/nvcam/settings/camera_overrides.isp
+sudo chown root:root /var/nvidia/nvcam/settings/camera_overrides.isp
+```
+
+##  Step 7: (Optional) Install PyGame for USB camera
 
 If you plan to use a USB camera, you will also want to setup pygame:
 
