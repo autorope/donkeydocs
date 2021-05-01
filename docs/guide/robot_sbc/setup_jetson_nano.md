@@ -98,7 +98,7 @@ pip3 install -e .[nano]
 
 ## Step 6: (Optional) Fix for pink tint on CSIC cameras
 
-If you're using a CSIC camera you may have a pink tint on the images. As descibed [here] (https://jonathantse.medium.com/fix-pink-tint-on-jetson-nano-wide-angle-camera-a8ce5fbd797f), this fix will remove it.
+If you're using a CSIC camera you may have a pink tint on the images. As described [here](https://jonathantse.medium.com/fix-pink-tint-on-jetson-nano-wide-angle-camera-a8ce5fbd797f), this fix will remove it.
 
 ```
 wget https://www.dropbox.com/s/u80hr1o8n9hqeaj/camera_overrides.isp
