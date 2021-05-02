@@ -60,19 +60,17 @@ pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compu
 ```
 
 Finally, you can install PyTorch:
+
 ```bash
-# Install PyTorch v1.7 - torchvision v0.8.1
-wget https://nvidia.box.com/shared/static/wa34qwrwtk9njtyarwt5nvo6imenfy26.whl -O torch-1.7.0-cp36-cp36m-linux_aarch64.whl
-pip3 install ./torch-1.7.0-cp36-cp36m-linux_aarch64.whl
-
-# Install PyTorch Vision
-sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
-
-# You can replace the following line with wherever you want to store your Git repositories
-mkdir -p ~/projects; cd ~/projects
 wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl
 cp p57jwntv436lfrd78inwl7iml6p13fzh.whl torch-1.8.0-cp36-cp36m-linux_aarch64.whl
 pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
+sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
+mkdir -p ~/projects; cd ~/projects
+git clone -b v0.9.0 https://github.com/pytorch/vision torchvision
+cd torchvision 
+python setup.py install
+cd ../
 ```
 
 Optionally, you can install the RPi.GPIO clone for Jetson Nano from [here](https://github.com/NVIDIA/jetson-gpio). This is not required for default setup, but can be useful if using LED or other GPIO driven devices.
