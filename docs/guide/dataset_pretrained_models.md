@@ -7,7 +7,7 @@ The purpose of providing a sample dataset and pre-trained models here is to help
 
 ### Dataset in real world
 
-1. Sample dataset #1 by Tawn - 2.0GB , [Link](https://drive.google.com/file/d/13dXSoHx6YpTvesdyUMe6o_ZfyYTYlfaK/view?usp=sharing)
+1. Sample dataset #1 by Tawn - 2.0GB , [Link](https://github.com/autorope/donkey_datasets)
 
 ### Dataset in simulator
 
@@ -16,7 +16,7 @@ The purpose of providing a sample dataset and pre-trained models here is to help
 
 ### Contributing dataset
 
-If you have a dataset you want to contribute, please contact us on Discord #dataset channel. Thank you.
+If you have a dataset you want to contribute, please contact us on Discord #dataset channel, or raise a PR on [donkey_datasets](https://github.com/autorope/donkey_datasets). Thank you.
 
 
 ## Pre-trained models
