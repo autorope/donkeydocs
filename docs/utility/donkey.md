@@ -70,11 +70,11 @@ donkey tubclean <folder containing tubs>
 This command trains the model.
 
 ```bash
-donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--type=(linear|categorical|inferred)] [--transfer=<transfer model path>]
+donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model name>] [--type=(linear|categorical|inferred)] [--transfer=<transfer model path>]
 ```
 * Uses the data from the `--tub` datastore
 * Uses the config file from the `--config` path (optionally)
-* Saves the model into `--model`
+* Saves the model into folder `/model` under the name provided by `--model`. Auto-generates a model name if omitted.
 * Uses the model type `--type`
 * Allows to continue training a model given by `--transfer`
 * Supports filtering of records using a function defined in the variable 
