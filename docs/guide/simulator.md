@@ -90,7 +90,7 @@ python manage.py train --model models/mypilot.h5
 You can use the model as usual:
 
 ```bash
-python manage.py drive --model models/mypilot.h5
+python train.py --model models/mypilot.h5 --tubs=data
 ```
 
 Then navigate to web control page. Set `Mode and Pilot` to `Local Pilot(d)`. The car should start driving.
