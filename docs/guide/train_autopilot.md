@@ -36,7 +36,9 @@ donkey train --tub <tub folder names comma separated> --model ./models/mypilot.h
 
 * You can create different model types with the `--type` argument during training. You may also choose to change the default model type in myconfig.py `DEFAULT_MODEL_TYPE`. When specifying a new model type, be sure to provide that type when running the model, or using the model in other tools like plotting or profiling. For more information on the different model types, look here for [Keras Parts](/parts/keras). The model will be placed into the folder `models/`. You can as well omit the `--model` flag and the model name will be auto created using the pattern `pilot_YY-MM-DD_N.h5`. 
 
-* _**Note:**_: There was a regression in version 4.2 where you only had to provide the model name in the model argument, like `--model mypilot.h5`. This got resolved in version 4.2.1. Please update to that version.
+* If you run with version >= 4.3.0, the model will be automatically created in tflite format for fast inferencing. The training generates a `./models/mypilot.tflite` file, too. Tflite creation can be suppressed, by setting `CREATE_TF_LITE = False` in your `myconfig.py` file. In addition, a tensorrt model is produced if you set `CREATE_TENSOR_RT = True`, which is `False` by default. That setting produces a `./models/mypilot.trt` file that should work on all platforms. On RPi, the tflite model will be the fastest. 
+
+* _**Note:**_ There was a regression in version 4.2 where you only had to provide the model name in the model argument, like `--model mypilot.h5`. This got resolved in version 4.2.1. Please update to that version.
 
 ## Copy model back to car
 
@@ -55,6 +57,13 @@ rsync -rv --progress --partial ~/mycar/models/ pi@<your_ip_address>:~/mycar/mode
 ```bash
 python manage.py drive --model ~/mycar/models/mypilot.h5
 ```
+
+* However, you will see better performance if you start with the tflite mode.
+
+```bash
+python manage.py drive --model ~/mycar/models/mypilot.tflite --type tflite_linear
+```
+
 * The car should start to drive on it's own, congratulations!
 
 ## [Optional] Use TensorRT on the Jetson Nano
