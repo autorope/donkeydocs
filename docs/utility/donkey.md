@@ -86,11 +86,18 @@ donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--t
   
   TRAIN_FILTER = filter_record
   ```
+  
   only uses records with positive throttle in training.
  
+* In version 4.3.0 and later all 3.x models are supported again:
 
-The `createcar` command still creates a `train.py` file for backward 
-compatibility, but it's not required for training.
+```bash
+donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--type=(linear|categorical|inferred|rnn|imu|behavior|localizer|3d)] [--transfer=<transfer model path>]
+```
+
+In addition, a Tflite model is automatically generated in training. This can be suppressed by setting `CREATE_TF_LITE = False` in your config. Also Tensorrt models can now be generated. To do so, you set `CREATE_TENSOR_RT = True`.
+
+* Note: The `createcar` command still creates a `train.py` file for backward  compatibility, but it's not required for training.
 
 
 ## Make Movie from Tub
@@ -100,7 +107,7 @@ This command allows you to create a movie file from the images in a Tub.
 Usage:
 
 ```bash
-donkey makemovie --tub=<tub_path> [--out=<tub_movie.mp4>] [--config=<config.py>] [--model=<model path>] [--model_type=(linear|categorical|rnn|imu|behavior|3d)] [--start=0] [--end=-1] [--scale=2] [--salient]
+donkey makemovie --tub=<tub_path> [--out=<tub_movie.mp4>] [--config=<config.py>] [--model=<model path>] [--model_type=(linear|categorical|inferred|rnn|imu|behavior|localizer|3d)] [--start=0] [--end=-1] [--scale=2] [--salient]
 ```
 
 * Run on the host computer or the robot
@@ -114,27 +121,9 @@ donkey makemovie --tub=<tub_path> [--out=<tub_movie.mp4>] [--config=<config.py>]
 * scale will cause ouput image to be scaled by this amount
 
 
-## Histogram
-
-This command will show a pop-up window showing the histogram of record values in a given tub.
-
-> Note: This should be moved from manage.py to donkey command
-
-Usage:
-
-```bash
-donkey tubhist <tub_path> --rec=<"user/angle">
-```
-
-* Run on the host computer
-
-* When the `--tub` is omitted, it will check all tubs in the default data dir
-
 ## Plot Predictions
 
 This command allows you plot steering and throttle against predictions coming from a trained model.
-
-> Note: This should be moved from manage.py to donkey command
 
 Usage:
 
