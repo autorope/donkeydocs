@@ -184,4 +184,4 @@ Your ~/mycar/manage.py, ~/mycar/config.py and other files will change with this 
 
 -------
 
-### Next [calibrate your car](/guide/calibrate/).
+### Next [calibrate your car](/guide/calibrate).
