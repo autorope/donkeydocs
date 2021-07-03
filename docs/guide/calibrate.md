@@ -89,4 +89,4 @@ this.
 
 ![calibration graph](../assets/calibration_graph.png)
 
-### Next let's [get driving!](/guide/get_driving/)
+### Next let's [get driving!](/guide/get_driving)
