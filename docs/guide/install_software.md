@@ -49,4 +49,4 @@ Read [this](/guide/robot_sbc/intelt265) for more information.
 
 Read [this](/guide/robot_sbc/tensorrt_jetson_nano) for more information.
 
-### Next: [Create Your Donkeycar Application](/guide/create_application/).
+### Next: [Create Your Donkeycar Application](/guide/create_application).
