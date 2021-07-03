@@ -90,4 +90,4 @@ nano myconfig.py
 
 -----
 
-### Next let's [train an autopilot](/guide/train_autopilot/).
+### Next let's [train an autopilot](/guide/train_autopilot).
