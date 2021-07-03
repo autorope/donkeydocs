@@ -257,4 +257,4 @@ And if no errors, you have OpenCV installed!
 
 ----
 
-### Next, [create your Donkeycar application](/guide/create_application/).
+### Next, [create your Donkeycar application](/guide/create_application.html).
