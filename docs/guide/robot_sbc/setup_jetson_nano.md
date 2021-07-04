@@ -120,4 +120,4 @@ Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
 
 ----
 
-### Next, [create your Donkeycar application](/guide/create_application/).
+### Next, [create your Donkeycar application](/guide/create_application).
