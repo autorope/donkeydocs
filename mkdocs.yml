@@ -28,6 +28,7 @@ pages:
       - 'Keras': parts/keras.md
       - 'Stores': parts/stores.md
       - 'IMU': parts/imu.md
+      - 'Lidar': parts/lidar.md
       - 'OLED': parts/oled.md
       - 'Voice Control': parts/voice_control.md
       - 'Stop Sign Detection': parts/stop_sign_detection.md
