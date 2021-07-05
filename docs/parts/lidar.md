@@ -1,3 +1,5 @@
+NOTE: Lidar is currently only supported in the Dev branch. To use it, after you git clone donkeycar, do a `git checkout dev`
+
 # Lidar
 
 A Lidar sensor can be used with Donkeycar to provide obstacle avoidance or to help navigate on tracks with walls. It records data along with the camera during training and this can be used for training
