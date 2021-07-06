@@ -16,6 +16,10 @@ The easiest way to connect RC is via the custom "hat" that we've designed (see a
 
 Also note the the RC receiver should be connected to the 3.3v pins, while the output servo and motor controller are connected to the 5v pins. 
 
+![Donkey RC connections](../assets/rc.png)
+
+Here's what the RC receiver connection should look like
+
 ![Donkey RC connections](../assets/rc.jpg)
 
 ## Software Setup
