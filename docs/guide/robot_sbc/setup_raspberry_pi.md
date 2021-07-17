@@ -36,7 +36,10 @@ This is formatted with the common FAT type and is where we will edit some files 
 
 > Note: If __boot__ is not visible right away, try unplugging and re-inserting the memory card reader.
 
-* Start a text editor: `gedit` on Linux. Notepad++ on Windows. TextEdit on a Mac.
+* Start a text editor
+    * `gedit` on Linux. 
+    * Notepad++ on Windows. 
+    * VI on Mac (type `vi /Volumes/boot/wpa_supplicant.conf` where `boot` is the name of the SD Card). 
 * Possible `country` codes to use can be found [here](https://www.thinkpenguin.com/gnu-linux/country-code-list)
 * Paste and edit this contents to match your wifi, adjust as needed:
 
@@ -83,7 +86,7 @@ sudo vi /media/userID/UUID/etc/hosts
 
 ## Step 4: Enable SSH on Boot
 
-Put a file named __ssh__ in the root of your __boot__ partition.
+Put a file named __ssh__ in the root of your __boot__ partition.  On Mac or Linux this can be done using the `touch` command.  For example, on the Mac, `touch /Volumes/boot/ssh` where `boot` is the name of the SD card.
 
 Now your SD card is ready. Eject it from your computer - wait until system shows the writing is done
 and it is safe to remove card. Ensure Pi is turned off, put the card in the Pi and power on the Pi.
