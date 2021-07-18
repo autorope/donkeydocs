@@ -44,8 +44,8 @@ Also set `use joystick` to True
 
 For both of these, there are additional settings you can change, such as reversing the direction of output or the pins connected: 
 
-* Input options:
-* 
+Input options:
+ 
 ```#PIGPIO RC control
 STEERING_RC_GPIO = 26
 THROTTLE_RC_GPIO = 20
@@ -59,7 +59,7 @@ PIGPIO_INVERT = False
 PIGPIO_JITTER = 0.025   # threshold below which no signal is reported
 ```
 
-* Output options:
+Output options:
 
 ```#STEERING FOR PIGPIO_PWM OUTPUT
 STEERING_PWM_PIN = 13           #Pin numbering according to Broadcom numbers
