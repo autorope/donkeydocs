@@ -89,7 +89,7 @@ If you want to buy the parts yourself, want to customize your donkey or live out
 | MicroSD Card (many will work, I like this one because it boots quickly)             | [64GB](https://amzn.to/2XP7UAa)                                         | $18.99           |
 | Wide Angle Raspberry Pi Camera                                                      | [Amazon](https://amzn.to/2TYCo1s) or [Donkey Store](https://store.donkeycar.com/collections/accessories/products/wide-angle-raspberry-pi-camera-for-donkey)                                       | $25              |
 | Female to Female Jumper Wire                                                        | [Amazon](https://amzn.to/36RiMlo) or [Donkey Car Store](https://store.donkeycar.com/collections/accessories/products/servo-driver-pca-9685-with-jumper-cables)                                         | $7 &ast;             |
-| Servo Driver PCA 9685                                                               | [Amazon](https://amzn.to/2BbVYkj) or [Donkey Car Store](https://store.donkeycar.com/collections/accessories/products/servo-driver-pca-9685-with-jumper-cables)                                          | $12 &ast;&ast;           |
+| (Optional if you don't want to use RPi GPIO pins to control the car's servo and throttle directly) Servo Driver PCA 9685                                                               | [Amazon](https://amzn.to/2BbVYkj) or [Donkey Car Store](https://store.donkeycar.com/collections/accessories/products/servo-driver-pca-9685-with-jumper-cables)                                          | $12 &ast;&ast;           |
 | 3D Printed roll cage and top plate.                                                 | Purchase: [Donkey Store](https://store.donkeycar.com/collections/plastics-and-screws/products/standard-donkey-chassis-includes-screws) Files: [thingiverse.com/thing:2260575](https://www.thingiverse.com/thing:2566276) | $50                 |
 
 &ast; If it is hard to find these components, there is some wiggle room. Instead of an M2 you can use an M2.2, m2.3 or #4 SAE screw.  Instead of an M3 a #6 SAE screw can be used.  Machine screws can be used in a pinch.  
@@ -165,7 +165,7 @@ When attaching the roll cage to the top plate, ensure that the nubs on the top p
 
 ### Step 4: Connect Servo Shield to Raspberry Pi
 
-***note: this is not necessary if you have a Sombrero, the Sombrero just plugs into the Pi***
+***note: this is not necessary if you are using direct control with [RaspberyPi GPIO pins](https://docs.donkeycar.com/parts/rc/) or are using a Robohat MM1 board***
 
 You could do this after attaching the Raspberry Pi to the bottom plate, I just think it is easier to see the parts when they are laying on the workbench.  Connect the parts as you see below:
 
