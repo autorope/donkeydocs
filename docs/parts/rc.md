@@ -24,11 +24,17 @@ Here's what the RC receiver connection should look like
 
 ## Software Setup
 
+First, on the command line enter this to set the PIGPIO daemon to always run on startup:
+
+`sudo systemctl enable pigpiod & sudo systemctl start pigpiod`
+
+Next, in your `mycar` directory, edit the myconfig.py files as follows:
+
 * For RC input, select `pigpio_rc` as your controller type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
 
-`CONTROLLER_TYPE = 'pigpio_rc'            #(ps3|ps4|xbox|pigpio_rc|nimbus|wiiu|F710|rc3|MM1|custom) custom will run the my_joystick.py controller written by the `donkey createjs` command`
+`CONTROLLER_TYPE = 'pigpio_rc'` 
 
-You will probably also want to set `use joystick` to True
+Also set `use joystick` to True
 
 `USE_JOYSTICK_AS_DEFAULT = True`
 
