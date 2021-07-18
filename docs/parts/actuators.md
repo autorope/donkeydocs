@@ -1,6 +1,18 @@
 # Acutators
 
-> Oh noes, nothing in here except Arduino actuator ! This section needs expansion!
+You have several options to control your car's servo and motors, ranging from directly with the RaspberryPi pins to using dedicated third-party servo driver boards.
+
+## Control with an I2C servo driver board. 
+
+This is descibed in the overall setup instructions [here](https://docs.donkeycar.com/guide/build_hardware/)
+
+## Direct control with the RaspberryPi GPIO pins. 
+
+Please follow the instructions [here](https://github.com/autorope/donkeydocs/blob/master/docs/parts/rc.md)
+
+## Control with the Robo HAT MM1 board. 
+
+Please follow the instructions [here](https://robohatmm1-docs.readthedocs.io/en/latest/)
 
 ## Arduino
 Arduino can be used in the following fashion to generate PWM signals to control the steering and throttle.
