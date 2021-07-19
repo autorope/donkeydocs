@@ -46,7 +46,8 @@ For both of these, there are additional settings you can change, such as reversi
 
 Input options:
  
-```#PIGPIO RC control
+```
+#PIGPIO RC control
 STEERING_RC_GPIO = 26
 THROTTLE_RC_GPIO = 20
 DATA_WIPER_RC_GPIO = 19
@@ -61,12 +62,14 @@ PIGPIO_JITTER = 0.025   # threshold below which no signal is reported
 
 Output options:
 
-```#STEERING FOR PIGPIO_PWM OUTPUT
+```
+#STEERING FOR PIGPIO_PWM OUTPUT
 STEERING_PWM_PIN = 13           #Pin numbering according to Broadcom numbers
 STEERING_PWM_FREQ = 50          #Frequency for PWM
 STEERING_PWM_INVERTED = False   #If PWM needs to be inverted
 ```
-```#THROTTLE FOR PIGPIO_PWM OUTPUT
+```
+#THROTTLE FOR PIGPIO_PWM OUTPUT
 THROTTLE_PWM_PIN = 18           #Pin numbering according to Broadcom numbers
 THROTTLE_PWM_FREQ = 50          #Frequency for PWM
 THROTTLE_PWM_INVERTED = False   #If PWM needs to be inverted
