@@ -8,7 +8,7 @@ This is described in the overall setup instructions [here](https://docs.donkeyca
 
 ## Direct control with the RaspberryPi GPIO pins. 
 
-Please follow the instructions [here](https://github.com/autorope/donkeydocs/blob/master/docs/parts/rc.md)
+Please follow the instructions [here](https://docs.donkeycar.com/parts/rc/)
 
 ## Control with the Robo HAT MM1 board. 
 
