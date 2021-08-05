@@ -128,13 +128,15 @@ This command allows you plot steering and throttle against predictions coming fr
 Usage:
 
 ```bash
-donkey tubplot <tub_path> [--model=<model_path>]
+donkey tubplot --tub=<tub_path> --model=<model_path> [--limit=<end_index>] [--type=<model_type>] 
 ```
 
 * This command may be run from `~/mycar` dir
 * Run on the host computer
 * Will show a pop-up window showing the plot of steering values in a given tub compared to NN predictions from the trained model
-* When the `--tub` is omitted, it will check all tubs in the default data dir
+* Optional `--limit=<end_index>` will use all records up to that index, defaults to 1000.
+* Optional `--type=<model_type>` will use a different model type than the `DEFAULT_MODEL_TYPE`
+
 
 ## Continuous Rsync
 
