@@ -40,7 +40,9 @@ Also set `use joystick` to True
 
 * For RC output, select `PIGPIO_PWM` as your drive train type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
 
-`DRIVE_TRAIN_TYPE = "PIGPIO_PWM" # I2C_SERVO|DC_STEER_THROTTLE|DC_TWO_WHEEL|DC_TWO_WHEEL_L298N|SERVO_HBRIDGE_PWM|PIGPIO_PWM|MM1|MOCK`
+```
+DRIVE_TRAIN_TYPE = "PIGPIO_PWM" # I2C_SERVO|DC_STEER_THROTTLE|DC_TWO_WHEEL|DC_TWO_WHEEL_L298N|SERVO_HBRIDGE_PWM|PIGPIO_PWM|MM1|MOCK
+```
 
 For both of these, there are additional settings you can change, such as reversing the direction of output or the pins connected: 
 
