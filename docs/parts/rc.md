@@ -26,21 +26,27 @@ Here's what the RC receiver connection should look like
 
 First, on the command line enter this to set the PIGPIO daemon to always run on startup:
 
-`sudo systemctl enable pigpiod & sudo systemctl start pigpiod`
+```bash
+sudo systemctl enable pigpiod & sudo systemctl start pigpiod
+```
 
 Next, in your `mycar` directory, edit the myconfig.py files as follows:
 
 * For RC input, select `pigpio_rc` as your controller type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
 
-`CONTROLLER_TYPE = 'pigpio_rc'` 
+```python
+CONTROLLER_TYPE = 'pigpio_rc'
+```
 
 Also set `use joystick` to True
 
-`USE_JOYSTICK_AS_DEFAULT = True`
+```python
+USE_JOYSTICK_AS_DEFAULT = True
+```
 
 * For RC output, select `PIGPIO_PWM` as your drive train type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
 
-```
+```python
 DRIVE_TRAIN_TYPE = "PIGPIO_PWM" # I2C_SERVO|DC_STEER_THROTTLE|DC_TWO_WHEEL|DC_TWO_WHEEL_L298N|SERVO_HBRIDGE_PWM|PIGPIO_PWM|MM1|MOCK
 ```
 
@@ -48,7 +54,7 @@ For both of these, there are additional settings you can change, such as reversi
 
 Input options:
  
-```
+```python
 #PIGPIO RC control
 STEERING_RC_GPIO = 26
 THROTTLE_RC_GPIO = 20
@@ -64,13 +70,12 @@ PIGPIO_JITTER = 0.025   # threshold below which no signal is reported
 
 Output options:
 
-```
+```python
 #STEERING FOR PIGPIO_PWM OUTPUT
 STEERING_PWM_PIN = 13           #Pin numbering according to Broadcom numbers
 STEERING_PWM_FREQ = 50          #Frequency for PWM
 STEERING_PWM_INVERTED = False   #If PWM needs to be inverted
-```
-```
+
 #THROTTLE FOR PIGPIO_PWM OUTPUT
 THROTTLE_PWM_PIN = 18           #Pin numbering according to Broadcom numbers
 THROTTLE_PWM_FREQ = 50          #Frequency for PWM
