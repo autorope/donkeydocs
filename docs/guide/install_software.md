@@ -1,4 +1,4 @@
-#Install Software
+# Install Software
 
 * [Overview](#Overview)
 * Software:
@@ -31,7 +31,7 @@ When controlling your Donkey via behavioral cloning, you will need to setup a ho
 * Setup [Mac Host PC](host_pc/setup_mac.md)
 ![donkey](/assets/logos/apple_logo.jpg)
 
-# Step 2: Install Software On Donkeycar
+## Step 2: Install Software On Donkeycar
 
 This guide will help you to setup the software to run Donkeycar on your Raspberry Pi or Jetson Nano. Choose a setup that matches your SBC type. (SBC = single board computer)
 
@@ -49,4 +49,5 @@ Read [this](/guide/robot_sbc/intelt265) for more information.
 
 Read [this](/guide/robot_sbc/tensorrt_jetson_nano) for more information.
 
-### Next: [Create Your Donkeycar Application](/guide/create_application).
+## Next: 
+[Create Your Donkeycar Application](/guide/create_application).
