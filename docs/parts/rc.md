@@ -14,7 +14,9 @@ You can use the GPIO pins for RC input, output or both. In the case of RC input,
 
 The easiest way to connect RC is via the custom "hat" that we've designed (see above). But if you're doing it yourself, follow this wiring guide. It's a bit of a forest of jumper cables if you're doing both input and output, but remember that you only have to connect one ground and V+ cable to the RC reciever (on any channel), rather than one for every channel. 
 
-Also note the the RC receiver should be connected to the 3.3v pins, while the output servo and motor controller are connected to the 5v pins. 
+Also note the the RC receiver should be connected to the 3.3v pins, while the output servo and motor controller are connected to the 5v pins.
+
+**_Warning:_** The RC receiver PWM signal is generated from the receiver input voltage, so connecting the RC receiver to 5V or even 6V from the ESC will fry the RPi!
 
 ![Donkey RC connections](../assets/rc.png)
 
