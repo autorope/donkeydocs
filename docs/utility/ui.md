@@ -1,15 +1,16 @@
 # Donkey UI
 
-The Donkey UI currently contains three screens supporting the following workflows:
+The Donkey UI currently contains four screens supporting the following workflows:
 
-1. The tub manager - this is a replacement for the web-based application launched through `donkey tubclean`
+1. The tub manager - a replacement for the web-based application launched through `donkey tubclean`
    
-1. The trainer - this is a UI based alternative to train the pilot. Note, for longer trainings containing larger tubs or batches it is recommended to perform these in the shell using the `donkey train` command. The UI based training is geared towards an experimental and rapid analysis cycle consisting of:
+1. The trainer - a UI based alternative to train the pilot. Note, for longer trainings containing larger tubs or batches it is recommended to perform these in the shell using the `donkey train` command. The UI based training is geared towards an experimental and rapid analysis cycle consisting of:
      * data manipulation / selection
      * training
      * pilot benchmarking
 
-1. The pilot arena - here you can test two pilots' performance  against each other.
+1. The pilot arena - here you can test two pilots' performance against each other.
+1. The car connector - can pull tub data from the car and push back trained pilots or even start/stop the car. The screen does not work under windows.
 
 **_Note_:** Under linux the app depends on `xclip`, if this is not installed, then please run:
 ```bash
