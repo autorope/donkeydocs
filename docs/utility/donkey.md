@@ -80,7 +80,7 @@ donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--t
 * Supports filtering of records using a function defined in the variable 
   `TRAIN_FILTER` in the `my_config.py` file. For example: 
   
-  ```
+  ```python
   def filter_record(record):
       return record['user/throttle'] > 0
   
