@@ -419,6 +419,7 @@ Example:
 Client=>Sim. Move the car to the given position (training only)
 
 Fields: 
+
 * *pos_x* :  x world coordinate.
 * *pos_y* :  y world coordinate.
 * *pos_z* :  z world coordinate. 
@@ -473,9 +474,8 @@ Example:
 ### Node position and rotation
 Sim=>Client. node_position packet (received after sending a node_position packet)
 
-Fields: 
+Fields:
 
-Fields: 
 * *pos_x* :  x world coordinate.
 * *pos_y* :  y world coordinate.
 * *pos_z* :  z world coordinate. 
