@@ -79,13 +79,13 @@ donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--t
 * Allows to continue training a model given by `--transfer`
 * Supports filtering of records using a function defined in the variable 
   `TRAIN_FILTER` in the `my_config.py` file. For example: 
-  
-  ```
-  def filter_record(record):
-      return record['user/throttle'] > 0
-  
-  TRAIN_FILTER = filter_record
-  ```
+
+```bash
+def filter_record(record):
+    return record.underlying['user/throttle'] > 0
+
+TRAIN_FILTER = filter_record
+```
   
   only uses records with positive throttle in training.
  
