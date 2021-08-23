@@ -109,7 +109,7 @@ With the car connector you can transfer the tub data from the car to your PC and
 
 
 
-### Future plans
+## Future plans
 1. Moving the car connector screen to a web interface, supported on all OS.
 1. Handling of multiple tubs.
 1. The ability to also use the filter in training without the need to edit the `myconfig.py` file.
