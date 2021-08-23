@@ -35,6 +35,7 @@ pages:
       - 'Stop Sign Detection': parts/stop_sign_detection.md
   - Utilities:
       - 'donkey': utility/donkey.md
+      - 'UI': utility/ui.md
   - Developer Guide:
       - 'Create your own model': dev_guide/model.md
 
