@@ -14,6 +14,7 @@
 * [Step 10: Setup Virtual Env](#step-10-setup-virtual-env)
 * [Step 11: Install Donkeycar Python Code](#step-11-install-donkeycar-python-code)
 * [Step 12: Install Optional OpenCV](#step-12-install-optional-opencv)
+* [Step 13: Install Optional Donkey Car Console](#step-13-install-donkeycar-console)
 * Then [Create your Donkeycar Application](/guide/create_application/)
 
 ## Step 1: Flash Operating System
@@ -257,6 +258,53 @@ python -c "import cv2"
 ```
 
 And if no errors, you have OpenCV installed!
+
+## Step 13: Optional - Install Donkey Car Console
+
+[Donkey Car console](https://github.com/robocarstore/donkeycar-console) is a management software of the donkey car that provides rest-based API to support Donkey Car mobile app. This software currently supports RPI 4B only.
+
+### Download the project
+
+```bash
+git clone https://github.com/robocarstore/donkeycar-console
+sudo mv donkeycar-console /opt
+cd /opt/donkeycar-console
+```
+
+### Install dependencies
+
+```bash
+pip install -r requirements/production.txt
+```
+
+### Run the init script to set up the database
+
+```bash
+python manage.py migrate
+```
+
+### Test the server if it is running properly
+
+```bash
+python manage.py runserver 0.0.0.0:8000
+```
+
+Go to http://your_pi_ip:8000/vehicle/status. If it returns something without error, it works.
+
+### Install the server as a service
+
+```bash
+sudo ln -s gunicorn.service /etc/systemd/system/gunicorn.service
+```
+
+### Download the mobile app
+
+- [iOS](https://apps.apple.com/app/robocar-controller/id1508125501)
+- [Android](https://play.google.com/store/apps/details?id=com.robocarLtd.RobocarController)
+
+Make sure your car is connected to the same network as your Pi. Fire up the mobile app and you can search your car using the mobile app.
+
+For further information of using the app, check the [instruction here](../mobile_app.md).
 
 ----
 
