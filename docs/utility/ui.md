@@ -115,3 +115,6 @@ With the car connector you can transfer the tub data from the car to your PC and
 1. The ability to also use the filter in training without the need to edit the `myconfig.py` file.
 1. Migration of the `~/.donkeyrc` file to the kivy internal settings.
 1. Support using only a single pilot (or more than two) in the pilot arena.
+
+## Video tutorial
+You can find a video tutorial for the UI [here](https://youtu.be/J5-zHNeNebQ).
