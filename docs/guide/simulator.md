@@ -82,7 +82,7 @@ As you drive, this will create a tub of records in your data dir as usual.
 You will not need to rsync your data, as it was recorded and resides locally. You can train as usual:
 
 ```bash
-python manage.py train --model models/mypilot.h5
+python train.py --tub=data --model models/mypilot.h5
 ```
 
 ## Test
