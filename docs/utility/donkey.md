@@ -123,7 +123,7 @@ donkey makemovie --tub=<tub_path> [--out=<tub_movie.mp4>] [--config=<config.py>]
 
 ## Plot Predictions
 
-This command allows you plot steering and throttle against predictions coming from a trained model.
+This command allows you to plot steering and throttle against predictions coming from a trained model.
 
 Usage:
 
@@ -137,6 +137,24 @@ donkey tubplot --tub=<tub_path> --model=<model_path> [--limit=<end_index>] [--ty
 * Optional `--limit=<end_index>` will use all records up to that index, defaults to 1000.
 * Optional `--type=<model_type>` will use a different model type than the `DEFAULT_MODEL_TYPE`
 
+
+## Tub Histogram
+
+**_Note_**: Requires version >= 4.3
+
+This command allows you to plot tub data (usually steering and throttle) as a histogram.
+
+Usage:
+
+```bash
+donkey tubhist --tub=<tub_path> --record=<record_name> --out=<output_filename>
+```
+
+* This command may be run from `~/mycar` dir
+* Run on the host computer
+* Will show a pop-up window showing the histogram plot of tub values in a given tub
+* Optional `--record=<record_name>` will only show the histogram of a certain data series, for example "user/throttle"
+* Optional `--out=<output_filename>` saves histogram under that name, otherwise the name is auto-generated from the tub path
 
 ## Continuous Rsync
 
