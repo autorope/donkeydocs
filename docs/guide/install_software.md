@@ -4,7 +4,7 @@
 * Software:
     * [Step 1: Install Software on Host PC](install_software.md#step-1-install-software-on-host-pc)
     * [Step 2: Install Software on Donkeycar](install_software.md#step-2-install-software-on-donkeycar)
-* [Create Donkeycar Application](/guide/create_application/)
+* [Create Donkeycar Application](create_application.md)
 
 ## Overview
 

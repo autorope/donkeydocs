@@ -45,7 +45,7 @@ races if you have a pilot that will steer but doesn't control throttle.
 
 -----
 
-If you don't have a joystick then you can skip to next section - [train an autopilot](/guide/train_autopilot/).
+If you don't have a joystick then you can skip to next section - [train an autopilot](train_autopilot.md).
 
 -----
 

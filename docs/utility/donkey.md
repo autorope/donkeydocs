@@ -38,7 +38,7 @@ sudo apt install nmap
 ## Calibrate Car
 
 This command allows you to manually enter values to interactively set the PWM values and experiment with how your robot responds.
-See also [more information.](/guide/calibrate/)
+See also [more information.](../guide/calibrate.md)
 
 Usage:
 

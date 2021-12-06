@@ -2,13 +2,17 @@
 site_name: Donkey Car
 theme: readthedocs
 
+# To enable strict check you need to comment google_analytics, otherwise it will generate a warning
+# @see https://github.com/autorope/donkeydocs/issues/21
+# strict: true # Check all absolute link, prevent broken links
+
 repo_url: https://github.com/autorope/donkeydocs/
 edit_uri: edit/master/docs
 google_analytics: ['UA-99215530-2', 'github.io/donkey']
 extra_css:
   - extra.css
 
-pages:
+nav:
   - Home: index.md
   - User Guide:
       - 'Build a car.': guide/build_hardware.md

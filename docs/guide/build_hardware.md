@@ -165,7 +165,7 @@ When attaching the roll cage to the top plate, ensure that the nubs on the top p
 
 ### Step 4: Connect Servo Shield to Raspberry Pi
 
-***note: this is not necessary if you are using direct control with [RaspberyPi GPIO pins](https://docs.donkeycar.com/parts/rc/) or are using a Robohat MM1 board***
+***note: this is not necessary if you are using direct control with [RaspberyPi GPIO pins](../parts/rc.md) or are using a Robohat MM1 board***
 
 You could do this after attaching the Raspberry Pi to the bottom plate, I just think it is easier to see the parts when they are laying on the workbench.  Connect the parts as you see below:
 

@@ -15,7 +15,7 @@
 * [Step 11: Install Donkeycar Python Code](#step-11-install-donkeycar-python-code)
 * [Step 12: Install Optional OpenCV](#step-12-install-optional-opencv)
 * [Step 13: Install Optional Donkey Car Console](#step-13-install-donkeycar-console)
-* Then [Create your Donkeycar Application](/guide/create_application/)
+* Then [Create your Donkeycar Application](../create_application.md)
 
 ## Step 1: Flash Operating System
 
@@ -308,4 +308,4 @@ For further information of using the app, check the [instruction here](../mobile
 
 ----
 
-### Next, [create your Donkeycar application](/guide/create_application.html).
+### Next, [create your Donkeycar application](../create_application.md).

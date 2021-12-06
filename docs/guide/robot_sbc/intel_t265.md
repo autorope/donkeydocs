@@ -14,7 +14,7 @@ Using the latest version of Raspian (tested with Raspian Buster) on the RPi, fol
 
 ## Step 1: Setup Donkeycar
 
-Follow the standard instructions [here](https://docs.donkeycar.com/guide/install_software/)
+Follow the standard instructions [here](../install_software.md)
 
 ## Step 3: Run the Donkeycar path follower app
 
