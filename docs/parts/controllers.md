@@ -240,6 +240,7 @@ sudo reboot
   - To un-pair a device type (replace aa:bb:cc:dd:ee:ff with the MAC address of the device to un-pair):
     ```
     remove aa:bb:cc:dd:ee:ff
+    exit
     ```
 - Pair your device using either Bluetooth Manager GUI or bluetoothctl (see RaspberryPi OS instruction starting with `sudo bluetoothctl`)
 
