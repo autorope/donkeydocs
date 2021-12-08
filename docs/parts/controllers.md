@@ -230,17 +230,17 @@ sudo reboot
 - Unpair (forget) the controller first if you already tried to pair it, then pair it again.  You can do this with the Bluetooth Manager GUI appliation that ships with Jetpack or if you are using command line, then use bluetoothctl:
 
   - Open terminal and type:
-```
-bluetoothctl
-```
+    ```
+    bluetoothctl
+    ```
   - then you should see the list of devices you have paired with and their corresponding MAC address. If you do not, type:
-```
-paired-devices
-```
+    ```
+    paired-devices
+    ```
   - To un-pair a device type (replace aa:bb:cc:dd:ee:ff with the MAC address of the device to un-pair):
-```
-remove aa:bb:cc:dd:ee:ff
-```
+    ```
+    remove aa:bb:cc:dd:ee:ff
+    ```
 - Pair your device using either Bluetooth Manager GUI or bluetoothctl (see RaspberryPi OS instruction starting with `sudo bluetoothctl`)
 
 Once paired you should have a solid light on the xbox button and a stable bluetooth connection.
