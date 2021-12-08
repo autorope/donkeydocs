@@ -196,6 +196,11 @@ This code presumes the built-in linux driver for 'Xbox Wireless Controller'; thi
 
 The XBox One controller requires that the bluetooth disable_ertm parameter be set to true; to do this:
 
+**Jetson Nano**
+Follow these instructions: https://www.roboticsbuildlog.com/hardware/xbox-one-controller-with-nvidia-jetson-nano
+
+**RaspberryPi OS**
+
 * edit the file `/etc/modprobe.d/xbox_bt.conf`  (that may create the file; it is commonly not there by default)
 * add the line: `options bluetooth disable_ertm=1`
 * reboot so that this takes affect.
