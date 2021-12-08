@@ -196,6 +196,50 @@ This code presumes the built-in linux driver for 'Xbox Wireless Controller'; thi
 
 The XBox One controller requires that the bluetooth disable_ertm parameter be set to true; to do this:
 
+#### **Jetson Nano**
+Adapted from: https://www.roboticsbuildlog.com/hardware/xbox-one-controller-with-nvidia-jetson-nano
+
+1. Install these python libraries before we disable ertm.
+```
+sudo apt-get install nano
+sudo apt-get install evtest
+```
+
+- To call evtest:
+```
+evtest /dev/input/event<event no.>
+```
+
+2. Add Non-root access to your input folder:
+```
+sudo usermod -a -G dialout $USER
+sudo reboot
+```
+
+3. Install sysfsutils
+```
+sudo apt-get install sysfsutils
+```
+4.  Edit the config to disable bluetooth ertm
+```
+sudo nano /etc/sysfs.conf
+```
+- Append this to the end of the config
+```
+/module/bluetooth/parameters/disable_ertm=1
+```
+5. Reboot your computer
+```
+sudo reboot
+```
+6. Re-pair the Xbox One Bluetooth Controller
+- Unpair the controller first, then pair it again.
+
+You should now have a solid light on the xbox button and a stable bluetooth connection.
+
+
+#### **RaspberryPi OS**
+
 * edit the file `/etc/modprobe.d/xbox_bt.conf`  (that may create the file; it is commonly not there by default)
 * add the line: `options bluetooth disable_ertm=1`
 * reboot so that this takes affect.
