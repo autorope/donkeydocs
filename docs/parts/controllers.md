@@ -202,12 +202,6 @@ Adapted from: https://www.roboticsbuildlog.com/hardware/xbox-one-controller-with
 1. Install these python libraries before we disable ertm.
 ```
 sudo apt-get install nano
-sudo apt-get install evtest
-```
-
-- To call evtest:
-```
-evtest /dev/input/event<event no.>
 ```
 
 2. Add Non-root access to your input folder:
@@ -233,9 +227,23 @@ sudo nano /etc/sysfs.conf
 sudo reboot
 ```
 6. Re-pair the Xbox One Bluetooth Controller
-- Unpair the controller first, then pair it again.
+- Unpair (forget) the controller first if you already tried to pair it, then pair it again.  You can do this with the Bluetooth Manager GUI appliation that ships with Jetpack or if you are using command line, then use bluetoothctl:
 
-You should now have a solid light on the xbox button and a stable bluetooth connection.
+  - Open terminal and type:
+```
+bluetoothctl
+```
+  - then you should see the list of devices you have paired with and their corresponding MAC address. If you do not, type:
+```
+paired-devices
+```
+  - To un-pair a device type (replace aa:bb:cc:dd:ee:ff with the MAC address of the device to un-pair):
+```
+remove aa:bb:cc:dd:ee:ff
+```
+- Pair your device using either Bluetooth Manager GUI or bluetoothctl (see RaspberryPi OS instruction starting with `sudo bluetoothctl`)
+
+Once paired you should have a solid light on the xbox button and a stable bluetooth connection.
 
 
 #### **RaspberryPi OS**
