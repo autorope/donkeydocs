@@ -168,7 +168,7 @@ WEBCAM is a camera type that uses the pygame library, also typically for USB cam
 
 If you are having troubles with your camera, check out our [Discord hardware channel](https://discord.gg/zcyzK69S) for more help.
 
-## Keeping Things Up To Date
+## Upgrade Donkey Car Software
 
 Make all config changes to __myconfig.py__ and they will be preserved through an update. When changes occur that you would like to get, you can pull the latest code, then issue a:
 
