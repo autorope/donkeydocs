@@ -238,7 +238,28 @@ Example:
 donkey cnnactivations --model models/model.h5 --image data/tub/1_cam-image_array_.jpg
 ```
 
-## Tub manager UI
+## Show Models database
+
+**_Note:_** This is only available in donkeycar >= 4.3.1.
+
+Shows the models that have been trained.
+
+Usage:
+
+```bash
+donkey models [--group] 
+```
+
+This lists the models that are stored in `models/database.json`. Displays information
+like model type, model name, tubs used in training, transfer model and a comment if
+`--comment` was used in training or the model was trained in the UI.
+
+* If the optional `--group` flag is given, then the tub path info is combined into groups, 
+if different models used different tubs. Useful, if you use multiple tubs, and the models 
+have used different tub combinations because it compresses the output information. 
+
+
+## Donkey UI
 
 **Note:** _This section only applies to version >= 4.2.0_
 
