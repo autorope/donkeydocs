@@ -242,7 +242,10 @@ donkey cnnactivations --model models/model.h5 --image data/tub/1_cam-image_array
 
 **_Note:_** This is only available in donkeycar >= 4.3.1.
 
-Shows the models that have been trained.
+This lists the models that are stored in `models/database.json`. Displays information
+like model type, model name, tubs used in training, transfer model and a comment if
+`--comment` was used in training or the model was trained in the UI.
+
 
 Usage:
 
@@ -250,13 +253,11 @@ Usage:
 donkey models [--group] 
 ```
 
-This lists the models that are stored in `models/database.json`. Displays information
-like model type, model name, tubs used in training, transfer model and a comment if
-`--comment` was used in training or the model was trained in the UI.
-
+* Run from your `~/mycar` directory
 * If the optional `--group` flag is given, then the tub path info is combined into groups, 
 if different models used different tubs. Useful, if you use multiple tubs, and the models 
 have used different tub combinations because it compresses the output information. 
+* You need to install `pandas` first if you want to run it on the car 
 
 
 ## Donkey UI
