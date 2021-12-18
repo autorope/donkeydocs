@@ -151,7 +151,7 @@ If you plan to use a joystick, take a side track over to [here](/parts/controlle
 
 **Raspberry Pi**:
 
-If you are on a raspberry pi and using the recommended pi camera, then no changes are needed to your __myconfg.py__. 
+If you are on a raspberry pi and using the recommended pi camera ("PICAM"), then no changes are needed to your __myconfg.py__. 
 
 **Jetson Nano**:
 
