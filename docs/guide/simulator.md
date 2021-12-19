@@ -1,6 +1,6 @@
 # Donkey Simulator
 
-The [Donkey Gym](https://github.com/tawnkramer/gym-donkeycar) project is a OpenAI gym wrapper around the [Self Driving Sandbox](https://github.com/tawnkramer/sdsandbox/tree/donkey) donkey simulator (`sdsandbox`). When building the sim from source, checkout the `donkey` branch of the `sdsandbox` project. 
+The [Donkey Gym](https://github.com/tawnkramer/gym-donkeycar) project is a OpenAI gym wrapper around the [Self Driving Sandbox](https://github.com/tawnkramer/sdsandbox) donkey simulator (`sdsandbox`). 
 
 The simulator is built on the the [Unity](https://unity.com/) game platform, uses their internal physics and graphics, and connects to a donkey Python process to use our trained model to control the simulated Donkey.
 
