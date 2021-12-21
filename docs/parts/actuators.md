@@ -12,7 +12,7 @@ The hardware configuration of the PCA9685 I2C servro driver board is described i
 - These pulses are typically send at 50 hertz (one duty cycle every 20 milliseconds). One duty cycle includes a perion where the signal is brought high followed by a perior where the signal is brough low.  This means that, using the standard 50hz frequency, a 1 ms pulse (1 ms high followed by 19 ms low) represents a 5% duty cycle and a 2 ms pulse represents a 10% duty cycle.
 - The important part is the length of the pulse; it must be in the range of 1 ms to 2ms.  
 
-![A diagram showing typical PWM timing for a servomotor (Wikipedia)](/assets/parts/Servomotor_Timing_Diagram.svg)
+![A diagram showing typical PWM timing for a servomotor (Wikipedia)](../assets/parts/Servomotor_Timing_Diagram.svg)
 
 - So this means that if a different frequency is used, then the duty cycle must be adjusted in order to get the 1ms to 2ms pulse.
 - For instance, if a 60hz frequency is used, then a 1 ms pulse requires a duty cycle of 0.05 * 60 / 50 = 0.06 (6%) duty cycle
