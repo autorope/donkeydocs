@@ -4,11 +4,24 @@ You have several options to control your car's servo and motors, ranging from di
 
 ## Control with an I2C servo driver board. 
 
-This is described in the overall setup instructions [here](https://docs.donkeycar.com/guide/build_hardware/)
+A standard RC car is equiped with a steering servo for turning the front wheels and an ESC (Electronic Speed Controller) to control the speed of the DC motor driving the wheels.  Both the steering servo and the ESC take a PWM (Pulse Width Modulation) control signal.  A PWM signal is simply a square wave pulse of a certain duration and frequency.  In the case of the steering servo the PWM signal determines the position of the servo's arm, which is generally between 0 degrees (full right) and 180 degrees (full left).  In the case of the ESC the PWM signal determine the direction and speed of the drive motor, from full reverse, through stopped, to full forward.
+
+The hardware configuration of the PCA9685 I2C servro driver board is described in the overall setup instructions [here](/guide/build_hardware/)
+
+- Standard RC servo pulses range from 1 millisecond (full reverse for ESC, fully left for servo) to 2 milliseconds (full forward for ESC, full right for servo) with 1.5 milliseconds being neutral (stopped for ESC, straight for servo).
+- These pulses are typically send at 50 hertz (one duty cycle every 20 milliseconds). One duty cycle includes a perion where the signal is brought high followed by a perior where the signal is brough low.  This means that, using the standard 50hz frequency, a 1 ms pulse (1 ms high followed by 19 ms low) represents a 5% duty cycle and a 2 ms pulse represents a 10% duty cycle.
+- The important part is the length of the pulse; it must be in the range of 1 ms to 2ms.  
+
+![A diagram showing typical PWM timing for a servomotor (Wikipedia)](https://en.wikipedia.org/wiki/Servo_control#/media/File:Servomotor_Timing_Diagram.svg)
+
+- So this means that if a different frequency is used, then the duty cycle must be adjusted in order to get the 1ms to 2ms pulse.
+- For instance, if a 60hz frequency is used, then a 1 ms pulse requires a duty cycle of 0.05 * 60 / 50 = 0.06 (6%) duty cycle
+- We default the frequency of our PCA9685 to 60 hz, so pulses in config are generally based on 60hz frequency and 12 bit values. We use 12 bit values because the PCA9685 has 12 bit resolution. So a 1 ms pulse is 0.06 * 4096 ~= 246, a neutral pulse of 0.09 duty cycle is 0.09 * 4096 ~= 367 and full forward pulse of 0.12 duty cycles is 0.12 * 4096 ~= 492
+- These are generalizations that are useful for understanding the underlying api call arguments.  The final choice of duty-cycle/pulse length depends on your hardware and perhaps your strategy (you may not want to go too fast,  and so you may choose is low max throttle pwm)
 
 ## Direct control with the RaspberryPi GPIO pins. 
 
-Please follow the instructions [here](https://docs.donkeycar.com/parts/rc/)
+Please follow the instructions [here](/parts/rc/)
 
 ## Control with the Robo HAT MM1 board. 
 
