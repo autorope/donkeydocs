@@ -29,7 +29,7 @@ A standard RC car is equipped with a steering servo for angling the front wheels
 - These are generalizations that are useful for understanding the underlying api call arguments and the values that are generating when calibrating.  The final choice of duty-cycle/pulse length depends on your hardware and perhaps your strategy (you may not want to go too fast,  and so you may choose is low max throttle pwm)
 
 ### Generating PWM pulses with a PCA9685 Servo controller
-- The hardware connection of the PCA9685 I2C servo driver board is described fully in the overall setup instructions [here](/guide/build_hardware/)
+- The hardware connection of the PCA9685 I2C servo driver board is described fully in the overall setup instructions [here](../guide/build_hardware.md)
 - The PCA9685 Servo controller is connected the RaspberryPi or Jetson Nano via the I2C pins on the 40 Pin bus, then the 3 pin cables from the ESC and Steering Servo are connected to the PCA9685, generally to channel 0 and channel 1 respectively. See [Step 4: Connect Servo Shield](../guide/build_hardware.md#step-4-connect-servo-shield-to-raspberry-pi)  Connection of a PCA9685 to a Jetson Nano is the same.
 
 **Configuration**
@@ -65,7 +65,7 @@ Please follow the instructions [here](https://robohatmm1-docs.readthedocs.io/en/
 Arduino can be used in the following fashion to generate PWM signals to control the steering and throttle.
 
 For now the Arduino mode is only tested on the [Latte Panda Delta (LP-D)](https://www.lattepanda.com/products/lattepanda-delta-432.html) board.
-However it should be straigtforward to use it with Raspberry Pi / Jetson Nano (instead of PCA 9685).
+However it should be straightforward to use it with Raspberry Pi / Jetson Nano (instead of PCA 9685).
 
 Refer to the below block diagram to understand where things fits in.
 
