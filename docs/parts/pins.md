@@ -20,9 +20,9 @@ The PCA9685 Servo controller supports 16 PWM and TTL output pins.  The PCA9685 c
 - the address in hex of the PCA9685 on the I2C bus
 - the channel number 0.15
 
-For example, "PCA9685.1:40.13" specifies channel 13 on the PCA9685 on I2C bus 1 at address 0x40.
+For example, `"PCA9685.1:40.13"` specifies channel 13 on the PCA9685 on I2C bus 1 at address 0x40.
 
-For example, "PCA9685.0:60.1" specified channel 1 on the PCA9685 on I2C bus 0 at address 0x60
+For example, `"PCA9685.0:60.1"` specified channel 1 on the PCA9685 on I2C bus 0 at address 0x60
 
 #### RPI_GPIO
 Donkeycar installs the RPi.GPIO library on the RaspberryPi in the default installation.  The Jetson.GPIO library is compatible library installed by default on the Jetson Nano.  Both of these libaries work is a similar fashion to support PWM, input and output pins on the 40 pin GPIO bus of the RaspberryPi or Jetson Nano respectively.  The pin specifier includes:
@@ -34,11 +34,11 @@ Donkeycar installs the RPi.GPIO library on the RaspberryPi in the default instal
 
 See details of the RaspberryPi 40 pin header here:  https://www.raspberrypi.com/documentation/computers/os.html#gpio-and-the-40-pin-header
 
-Jetson Nano 40 pin header uses the same board numbering scheme, although the header is physically flipped on the board, so pay attention to the numbers printed on the board.  The Jetson Nano only supports 2 PWM pins and these must be enabled.  See [Generating PWM from the Jetson Nano](#generating_pwm_from_the_jetson_nano)
+Jetson Nano 40 pin header uses the same board numbering scheme, although the header is physically flipped on the board, so pay attention to the numbers printed on the board.  The Jetson Nano only supports 2 PWM pins and these must be enabled.  See [Generating PWM from the Jetson Nano](#generating-pwm-from-the-jetson-nano)
 
-For example, "RPI_GPIO.BOARD.33" specifies board pin 33 using the Rpi.GPIO library.
+For example, `"RPI_GPIO.BOARD.33"` specifies board pin 33 using the Rpi.GPIO library.
 
-For example, "RPI_GPIO.BCM.13" specifies Broadcom GPIO-13 using the Rpi.GPIO library.  If you look at the header diagram linked above you will notice that this is the same physical pin as "RPI_GPIO.BOARD.33"; it is a synonymn for physical pin 33.  
+For example, `"RPI_GPIO.BCM.13"` specifies Broadcom GPIO-13 using the Rpi.GPIO library.  If you look at the header diagram linked above you will notice that this is the same physical pin as "RPI_GPIO.BOARD.33"; it is a synonymn for physical pin 33.  
 
 When using the RPI_GPIO pin provider, you can choose to use the BOARD or BCM pin schemes, but all pins must use the same pin scheme.  You cannot mix pin schemes.
 
@@ -51,7 +51,7 @@ RaspberryPi users can optionally install the PiGPIO library and daemon to manage
 sudo apt-get update
 sudo apt-get install pigpio
 ```
-- Install python support (with donkey environent activated)
+- Install python support (with donkey environment activated)
 ```bash
 pip install pigpio
 ```
@@ -68,7 +68,7 @@ The PIGPIO pin specifier includes:
 - "BCM"  PiGPIO used Broadcom (BCM) pin numbering scheme exclusively, so that is baked into the pin specifier.
 - The BCM pin number
 
-For example, "PIGPIO.BCM.13" specifies Broadcom GPIO-13.  As discussed above and shown in the linked header diagram, this is exposed on board pin 33.
+For example, `"PIGPIO.BCM.13"` specifies Broadcom GPIO-13.  As discussed above and shown in the linked header diagram, this is exposed on board pin 33.
 
 
 ## Generating PWM from the Jetson Nano

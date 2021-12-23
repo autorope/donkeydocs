@@ -3,12 +3,12 @@
 A car needs a way to to move forward and backward and to turn left and right.  We commonly call devices that produce a physical movement in the robot 'actuators'.  Common actuators are DC motors, Servo motors, continuous servo motors and stepper motors.  There are many, many different ways that these actuators can be combined to propel and turn a robot.  Donkeycar supports two common configurations that can be implemented with various actuators: 
 
 - **Car-like vehicles** steer by angling the front wheels left or right and move by turning the drive wheels forward or reverse. Common RC cars fall in this category.
-- **Differential drive vehicles**  have the two independently controlled drive wheels to provide both movement and steering.  For instance a differential drive car can be driven straight forward by turning the two drive wheels forward at the same speed. In order to turn, one motor can be driven faster than the other and the car will turn an arc in the direction of the slower motor.
+- **Differential drive vehicles**  have two independently controlled drive wheels to provide both movement and steering.  For instance a differential drive car can be driven straight forward by turning the two drive wheels forward at the same speed. In order to turn, one motor can be driven faster than the other and the car will turn an arc in the direction of the slower motor.
 
 Actuators take control signals from the Donkeycar to control their actions.  There are several options for generating these control signals.
 - PCA9685 Servo controller board
 - RPi/Jetson 40 pin GPIO header
-  - see [Generating PWM from the Jetson Nano](./pins.md#generating_pwm_from_the_jetson_nano) for how to enable PWM output from the Jetson Nano 40 pin GPIO header.
+  - see [Generating PWM from the Jetson Nano](./pins.md#generating-pwm-from-the-jetson-nano) for how to enable PWM output from the Jetson Nano 40 pin GPIO header.
 - Arduino
 
 Below we will describe the supported actuator setups and software configuration of their control signals.
