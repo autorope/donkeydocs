@@ -298,10 +298,6 @@ quit
 
 Now that your controller is trusted, it should automatically connect with your Raspberry Pi when they are both turned on.  If your controller fails to connect, run the bluetoothctl steps again to reconnect.
 
-## RC Controller/Receiver with the RaspberryPi GPIO pins. 
-
-Please follow the instructions [here](/parts/rc/)
-
 ## Creating a New or Custom Game Controller
 
 To discover or modify the button and axis mappings for your controller, you can use the [Joystick Wizard](/utility/donkey.html#joystick-wizard). The Joystick Wizard will write a custom controller named 'my_joystick.py' to your mycar folder.  To use the custom controller, set `CONTROLLER_TYPE="custom"` in your myconfig.py.
