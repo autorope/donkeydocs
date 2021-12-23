@@ -167,6 +167,52 @@ When attaching the roll cage to the top plate, ensure that the nubs on the top p
 
 ***note: this is not necessary if you are using direct control with [RaspberyPi GPIO pins](https://docs.donkeycar.com/parts/rc/) or are using a Robohat MM1 board***
 
+The PCA9685 Servo controller can control up to 16 PWM devices like servos, motor controllers, LEDs or almost anything that uses a PWM signal.  It is connected to the RaspberryPi (or Jetson Nano) 40 pin GPIO bus via the I2C pins.
+
+*   GPIO I2C bus 1
+    *   SDA is board pin 03
+    *   SCL is board pin 05
+*   Wiring
+    *   SDA and SCL may be through a shared bus rather than a direct connection between nano and PCA9685 if other devices are using the I2C bus (like an OLED display)
+    *   3.3v VCC power may be provided by a 3.3v pin on the GPIO bus (typically board pin 01).
+    *   5v VIN should NOT be provided by the GPIO bus because motors/servos may draw too much power.  Most Electronic Speed Controllers actually provide the necessary power via the 3 pin cables that get plugged into the PCA9685, so it is generally not necessary to provide power directly to VIN.
+    *   All GND must be common ground.  On the GPIO it is usually easiest to use GPIO board pin 06 for ground.  Once again the 3 pin cables from the ESC carry ground and the PCA9685 connects this to the GPIO via the GND pin.
+
+```
+---
+    GPIO   ... PCA9685  ... 5v ... ESC ... Servo
+    pin-03 <---> SDA
+    pin-05 <---> SCL
+    GND-06 <---> GND 
+    3v3-01 <---> VCC
+                 VIN  <---> 5v   optional, see above
+                 GND  <---> GND
+                 CH-0 <---------> ESC
+                 CH-1 <------------------> Servo
+---
+```
+
+
+*   checking connections
+    *   The PCA9685 should appear on I2C bus 1 at address 0x40
+    *   ssh into the Donkeycar and use i2cdetect to read bus 1.  A device should exist at address 0x40
+
+
+```
+---
+    $ i2cdetect -y -r 1
+         0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+    00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    40: 40 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    50: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    60: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+    70: UU -- -- -- -- -- -- --                         
+---
+```
+
 You could do this after attaching the Raspberry Pi to the bottom plate, I just think it is easier to see the parts when they are laying on the workbench.  Connect the parts as you see below:
 
 ![donkey](/assets/build_hardware/4a.png)
