@@ -34,3 +34,5 @@ If you are unable to start the car, ensure that the `Adafruit_SSD1306` package i
 ```bash
 pip install Adafruit_SSD1306
 ```
+## Known Issues
+- The `Adafruit_SSD1306` library is incompatible with Differential Drive motor configurations when the Duty Cycle/PWM is supplied directly from GPIO header.  This is because internally the Adafruit library sets a GPIO pin mode that is incompatible with our GPIO library.  In this case you should use a PCA9685 to generate the necessary duty cycle/PWM.  
