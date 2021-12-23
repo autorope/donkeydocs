@@ -308,4 +308,4 @@ For further information of using the app, check the [instruction here](../mobile
 
 ----
 
-### Next, [create your Donkeycar application](/guide/create_application.html).
+### Next, [create your Donkeycar application](/guide/create_application/).
