@@ -15,10 +15,10 @@ Below we will describe the supported actuator setups and software configuration 
 
 ## Standard RC with ESC and Steering Servo. 
 
-A standard RC car is equipped with a steering servo for angling the front wheels and an ESC (Electronic Speed Controller) to control the speed of the DC motor driving the wheels.  Both the steering servo and the ESC take a PWM (Pulse Width Modulation) control signal.  A PWM signal is simply a square wave pulse of a certain duration and frequency.  In the case of the steering servo the PWM signal determines the position of the servo's arm, which is generally between 0 degrees (full right) and 180 degrees (full left).  In the case of the ESC the PWM signal determines the direction and speed of the drive motor, from full reverse, through stopped, to full forward.
+A standard RC car is equipped with a steering servo for steering the front wheels and an ESC (Electronic Speed Controller) to control the speed of the DC motor driving the wheels.  Both the steering servo and the ESC take a PWM (Pulse Width Modulation) control signal.  A PWM signal is simply a square wave pulse of a certain duration and frequency.  In the case of the steering servo the PWM signal determines the position of the servo's arm, which is generally between 0 degrees (full right) and 180 degrees (full left).  In the case of the ESC the PWM signal determines the direction and speed of the drive motor, from full reverse, through stopped, to full forward.
 
 - Standard RC servo pulses range from 1 millisecond (full reverse for ESC, fully left for servo) to 2 milliseconds (full forward for ESC, full right for servo) with 1.5 milliseconds being neutral (stopped for ESC, straight for servo).
-- These pulses are typically send at 50 hertz (one duty cycle every 20 milliseconds). One duty cycle includes a period where the signal is brought high followed by a period where the signal is brought low.  This means that, using the standard 50hz frequency, a 1 millisecond pulse (1 ms high followed by 19 ms low) represents a 5% duty cycle and a 2 millisecond pulse represents a 10% duty cycle.
+- These pulses are typically sent at 50 hertz (one duty cycle every 20 milliseconds). One duty cycle includes a period where the signal is brought high followed by a period where the signal is brought low.  This means that, using the standard 50hz frequency, a 1 millisecond pulse (1 ms high followed by 19 ms low) represents a 5% duty cycle and a 2 millisecond pulse represents a 10% duty cycle.
 - The most important part is the length of the pulse; it must be in the range of 1 to 2 milliseconds.  
 
 ![A diagram showing typical PWM timing for a servomotor (Wikipedia)](../assets/parts/Servomotor_Timing_Diagram.svg "A diagram showing typical PWM timing for a servomotor (Wikipedia)")
@@ -30,7 +30,7 @@ A standard RC car is equipped with a steering servo for angling the front wheels
 
 ### Generating PWM pulses with a PCA9685 Servo controller
 - The hardware connection of the PCA9685 I2C servo driver board is described fully in the overall setup instructions [here](../guide/build_hardware.md)
-- The PCA9685 Servo controller is connected the RaspberryPi or Jetson Nano via the I2C pins on the 40 Pin bus, then the 3 pin cables from the ESC and Steering Servo are connected to the PCA9685, generally to channel 0 and channel 1 respectively. See [Step 4: Connect Servo Shield](../guide/build_hardware.md#step-4-connect-servo-shield-to-raspberry-pi)  Connection of a PCA9685 to a Jetson Nano is the same.
+- The PCA9685 Servo controller is connected the RaspberryPi or Jetson Nano via the I2C pins on the 40 Pin bus, then the 3 pin cables from the ESC and Steering Servo are connected to the PCA9685, generally to channel 0 and channel 1 respectively. See [Step 4: Connect Servo Shield](../guide/build_hardware.md#step-4-connect-servo-shield-to-raspberry-pi).   Connection of a PCA9685 to a Jetson Nano is the same.
 
 **Configuration**
 - Use `DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"` in myconfig.py
@@ -136,12 +136,12 @@ Refer to templates/arduino_drive.py for more details.
 
 
 ## Using an L298N HBridge and a Steering Servo
-In this configuration the DC motor that drives the wheels is controlled by an L298N HBride motor controller or compatible.  Angling the front wheels is accomplished with a Steering Servo that takes an PWM pulse.  The motor driver is wired in one of two ways; 3 pin wiring or 2 pin wiring.
+In this configuration the DC motor that drives the wheels is controlled by an L298N HBridge motor controller or compatible.  Steering the front wheels is accomplished with a Steering Servo that takes an PWM pulse.  The motor driver is wired in one of two ways; 3 pin wiring or 2 pin wiring.
 
 ### 3-pin HBridge and Steering Servo
 A single DC gear motor is controlled with an L298N using two TTL output pins to select direction and a PWM pin to control the power to the motor.
 
-See https://www.etechnophiles.com/l298n-motor-driver-pin-diagram/ for a discussion of how the L298N hbridge module is wired. This also applies to the some other driver chips that emulate the L298N, such as the TB6612FNG motor driver.
+See https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/ for a discussion of how the L298N HBridge module is wired in 3-pin mode to the RaspberryPi GPIO. This also applies to the some other driver chips that emulate the L298N, such as the TB6612FNG motor driver.
 
 **Configuration**
 - use `DRIVETRAIN_TYPE = "SERVO_HBRIDGE_3PIN"` in myconfig.py
@@ -154,10 +154,15 @@ PWM_STEERING_PIN = "RPI_GPIO.BOARD.33"   # provides servo pulse to steering serv
 STEERING_LEFT_PWM = 460         # pwm value for full left steering (use `donkey calibrate` to measure value for your car)
 STEERING_RIGHT_PWM = 290        # pwm value for full right steering (use `donkey calibrate` to measure value for your car)
 ```
+
 A PCA9685 could also be used to generate all control signals.  See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### 2-pin HBridge and Steering Servo
 A single DC gear motor is controlled with an 'mini' L298N HBridge (or an L9110S HBridge) using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.
+
+See https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/ for how an L298N mini-hbridge module is wired in 2-pin mode.  
+See https://electropeak.com/learn/interfacing-l9110s-dual-channel-h-bridge-motor-driver-module-with-arduino/ for how an L9110S/HG7881 motor driver module is wired.
+
 
 **Configuration**
 - use `DRIVETRAIN_TYPE = "SERVO_HBRIDGE_2PIN"` in myconfig.py
@@ -191,7 +196,7 @@ An inexpensive Donkeycar compatible robot can be constructed using a cheap smart
 ### 3-pin HBridge differential drive
 2 DC gear motors are controlled with an L298N, each motor using two TTL output pins to select direction and a PWM pin to control the power to the motor.  Since each motor uses 3 pins, so a total of 6 pins are used in a differential drive configuration. The advantage of this wiring scheme is that it only requires 2 PWM pins, which happens to be the maximum number of PWM pins on the Jetson Nano.
 
-See https://www.etechnophiles.com/l298n-motor-driver-pin-diagram/ for a discussion of how the L298N hbridge module is wired. This also applies to the some other driver chips that emulate the L298N, such as the TB6612FNG motor driver.
+See https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/ for a discussion of how the L298N HBridge module is wired in 3-pin mode to the RaspberryPi GPIO. This also applies to the some other driver chips that emulate the L298N, such as the TB6612FNG motor driver.
 
 **Configuration**
 - use `DRIVETRAIN_TYPE = "DC_TWO_WHEEL_L298N"` in myconfig.py
@@ -214,15 +219,16 @@ See https://www.etechnophiles.com/l298n-motor-driver-pin-diagram/ for a discussi
   HBRIDGE_L298N_PIN_RIGHT_BWD = "PCA9685.1:40.11"
   HBRIDGE_L298N_PIN_RIGHT_EN = "PCA9685.1:40.13"
   ```
-  - In the configuration, the HBRIDGE_L298N_PIN_xxxx_EN pins determine how fast the motors spin.  These pins must support PWM output.  Remember that the Jetson Nano only supports 2 PWM output pins and only if they are enabled using /opt/nvidia/jetson-io/jetson-io.py
+  - In the configuration, the HBRIDGE_L298N_PIN_xxxx_EN pins determine how fast the motors spin.  These pins must support PWM output.  Remember that the Jetson Nano only supports 2 PWM output pins and only if they are enabled using `/opt/nvidia/jetson-io/jetson-io.py`. See [Generating PWM from the Jetson Nano](pins.md#generating-pwm-from-the-jetson-nano).
   - The HBRIDGE_L298N_PIN_xxxx_FWD and HBRIDGE_L298N_PIN_xxxx_BWD pins are TTL output pins that determine the direction the motors spin.
 
 See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### 2 Pin HBridge Differential Drive
-2 DC Motors controlled with an 'mini' L298N hbridge, each motor using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.  This advantage of this wiring method is that it only requires a total of 4 pins.
+2 DC Motors controlled with an 'mini' L298N HBridge, each motor using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.  This advantage of this wiring method is that it only requires a total of 4 pins.
 
-See https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/ for how an L298N mini-hbridge modules is wired. This driver can also be used with an L9110S/HG7881 motor driver.  See https://electropeak.com/learn/interfacing-l9110s-dual-channel-h-bridge-motor-driver-module-with-arduino/ for how an L9110S motor driver module is wired.
+See https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/ for how an L298N mini-HBridge modules is wired in 2-pin mode. This driver can also be used with an L9110S/HG7881 motor driver.  See https://electropeak.com/learn/interfacing-l9110s-dual-channel-h-bridge-motor-driver-module-with-arduino/ for how an L9110S motor driver module is wired.
+
 
 **Configuration**
 - use `DRIVETRAIN_TYPE = "DC_TWO_WHEEL"` in myconfig.py
