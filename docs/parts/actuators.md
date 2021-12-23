@@ -30,7 +30,7 @@ A standard RC car is equipped with a steering servo for angling the front wheels
 
 ### Generating PWM pulses with a PCA9685 Servo controller
 - The hardware connection of the PCA9685 I2C servo driver board is described fully in the overall setup instructions [here](/guide/build_hardware/)
-- The PCA9685 Servo controller is connected the RaspberryPi or Jetson Nano via the I2C pins on the 40 Pin bus, then the 3 pin cables from the ESC and Steering Servo are connected to the PCA9685, generally to channel 0 and channel 1 respectively. See [Step 4: Connect Servo Shield](../guide/build_hardware/#step-4-connect-servo-shield-to-raspberry-pi)  Connection of a PCA9685 to a Jetson Nano is the same.
+- The PCA9685 Servo controller is connected the RaspberryPi or Jetson Nano via the I2C pins on the 40 Pin bus, then the 3 pin cables from the ESC and Steering Servo are connected to the PCA9685, generally to channel 0 and channel 1 respectively. See [Step 4: Connect Servo Shield](../guide/build_hardware.md#step-4-connect-servo-shield-to-raspberry-pi)  Connection of a PCA9685 to a Jetson Nano is the same.
 
 **Configuration**
 - Use `DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"` in myconfig.py
@@ -55,7 +55,7 @@ A standard RC car is equipped with a steering servo for angling the front wheels
 
 ### Direct control with the RaspberryPi GPIO pins. 
 
-Please follow the instructions [here](/parts/rc/)
+Please follow the instructions [here](../parts/rc.md)
 
 ### Control with the Robo HAT MM1 board. 
 
