@@ -1,6 +1,6 @@
 # Pin Specifiers
 
-Control signals are send and received by pins on the Raspberry Pi, Jetson Nano and connected peripherals, like the PCA9685 Servo controller.  Starting wit version 5.x, Donkeycar uses 'pin specs' to specify pins including various configuration that is specific to the underlying hardware or library implementation.  This allows use to make the underlying logic, like how a motor controller takes throttle values and outputs them to the motor, more independant of the particular hardware or library used to generate the signals.
+Control signals are send and received by pins on the Raspberry Pi, Jetson Nano and connected peripherals, like the PCA9685 Servo controller.  Starting wit version 5.x, Donkeycar uses 'pin specs' to specify pins including various configuration that is specific to the underlying hardware or library implementation.  This allows use to make the underlying logic, like how a motor controller takes throttle values and outputs them to the motor, more independent of the particular hardware or library used to generate the signals.
 
 ## Types of Pins
 
@@ -34,7 +34,7 @@ Donkeycar installs the RPi.GPIO library on the RaspberryPi in the default instal
 
 See details of the RaspberryPi 40 pin header here:  https://www.raspberrypi.com/documentation/computers/os.html#gpio-and-the-40-pin-header
 
-Jetson Nano 40 pin header uses the same board numbering scheme, although the header is physically flipped on the board, so pay attention to the numbers printed on the board.
+Jetson Nano 40 pin header uses the same board numbering scheme, although the header is physically flipped on the board, so pay attention to the numbers printed on the board.  The Jetson Nano only supports 2 PWM pins and these must be enabled.  See [Generating PWM from the Jetson Nano](#generating_pwm_from_the_jetson_nano)
 
 For example, "RPI_GPIO.BOARD.33" specifies board pin 33 using the Rpi.GPIO library.
 
@@ -71,6 +71,84 @@ The PIGPIO pin specifier includes:
 For example, "PIGPIO.BCM.13" specifies Broadcom GPIO-13.  As discussed above and shown in the linked header diagram, this is exposed on board pin 33.
 
 
+## Generating PWM from the Jetson Nano
+
+Both the Jetson Nano and RaspberryPi4 support two hardware PWM pins.  On the Jetson Nano, these must be configured.
+
+
+#### Configure Jetson Expansion Header for PWM
+
+- ssh into the donkeycar and run this command `sudo /opt/nvidia/jetson-io/jetson-io.py`.  It should show the Jetson Expansion Header Tool that allows you to change GPIO pin functions (see below).
+
+- If your Jetson expansion header configuration does not show any PWM pins, then you will need to enable them.
+
+
+```
+---
+     =================== Jetson Expansion Header Tool ===================
+     |                                                                    |
+     |                                                                    |
+     |                        3.3V ( 1)  ( 2) 5V                          |
+     |                        i2c2 ( 3)  ( 4) 5V                          |
+     |                        i2c2 ( 5)  ( 6) GND                         |
+     |                      unused ( 7)  ( 8) uartb                       |
+     |                         GND ( 9)  (10) uartb                       |
+     |                      unused (11)  (12) unused                      |
+     |                      unused (13)  (14) GND                         |
+     |                      unused (15)  (16) unused                      |
+     |                        3.3V (17)  (18) unused                      |
+     |                      unused (19)  (20) GND                         |
+     |                      unused (21)  (22) unused                      |
+     |                      unused (23)  (24) unused                      |
+     |                         GND (25)  (26) unused                      |
+     |                        i2c1 (27)  (28) i2c1                        |
+     |                      unused (29)  (30) GND                         |
+     |                      unused (31)  (32) unused                      |
+     |                      unused (33)  (34) GND                         |
+     |                      unused (35)  (36) unused                      |
+     |                      unused (37)  (38) unused                      |
+     |                         GND (39)  (40) unused                      |
+     |                                                                    |
+      ====================================================================
+---
+```
+
+
+Choose `Configure the 40 pin expansion header` to activate pwm0 and pwm2:
+
+
+```
+---
+     =================== Jetson Expansion Header Tool ===================
+     |                                                                    |
+     |                                                                    |
+     |                        3.3V ( 1)  ( 2) 5V                          |
+     |                        i2c2 ( 3)  ( 4) 5V                          |
+     |                        i2c2 ( 5)  ( 6) GND                         |
+     |                      unused ( 7)  ( 8) uartb                       |
+     |                         GND ( 9)  (10) uartb                       |
+     |                      unused (11)  (12) unused                      |
+     |                      unused (13)  (14) GND                         |
+     |                      unused (15)  (16) unused                      |
+     |                        3.3V (17)  (18) unused                      |
+     |                      unused (19)  (20) GND                         |
+     |                      unused (21)  (22) unused                      |
+     |                      unused (23)  (24) unused                      |
+     |                         GND (25)  (26) unused                      |
+     |                        i2c1 (27)  (28) i2c1                        |
+     |                      unused (29)  (30) GND                         |
+     |                      unused (31)  (32) pwm0                        |
+     |                        pwm2 (33)  (34) GND                         |
+     |                      unused (35)  (36) unused                      |
+     |                      unused (37)  (38) unused                      |
+     |                         GND (39)  (40) unused                      |
+     |                                                                    |
+      ====================================================================
+---
+```
+
+
+After enabling, pwm0 is board pin-32 and pwm2 is board pin-33.
 
 
 
