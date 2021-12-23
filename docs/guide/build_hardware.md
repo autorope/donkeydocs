@@ -43,17 +43,17 @@ Here is a [video](https://youtu.be/K-REL9aqPE0) that goes over the different mod
 
 For more detail and other options, follow the link to: [supported cars](/supported_cars)
 
-![donkey](/assets/build_hardware/donkey.png)
+![donkey](../assets/build_hardware/donkey.png)
 
 ## Roll Your Own Car
 
-Alternatively If you know RC or need something the standard Donkey does not support, you can roll your own.  Here is a quick reference to help you along the way.  [Roll Your Own](/roll_your_own)
+Alternatively If you know RC or need something the standard Donkey does not support, you can roll your own.  Here is a quick reference to help you along the way.  [Roll Your Own](../roll_your_own)
 
 ## Video Overview of Hardware Assembly
 
 This [video](https://www.youtube.com/watch?v=OaVqWiR2rS0&t=48s) covers how to assemble a standard Donkey Car, it also covers the Sombrero, the Raspberry Pi and the nVidia Jetson Nano.  
 
-[![IMAGE ALT TEXT HERE](/assets/HW_Video.png)](https://www.youtube.com/watch?v=OaVqWiR2rS0&t=48s)
+[![IMAGE ALT TEXT HERE](../assets/HW_Video.png)](https://www.youtube.com/watch?v=OaVqWiR2rS0&t=48s)
 
 ## Parts Needed
 
@@ -100,15 +100,15 @@ If you want to buy the parts yourself, want to customize your donkey or live out
 
 * **NVIDIA JetsonNano Hardware Options**  The NVIDIA Jetson Nano is fully supported by the donkey Car.  To assemble the Donkey Car you will need a few parts including the Wifi card, Antennas and camera.  In addition you will need this [Adapter](https://store.donkeycar.com/products/jetson-donkey-adapter). If you want to print it yourself, it is on the Thingiverse page for the project. Due to the higher power usage and consumption you should consider the 10Ahr 3A USB battery pack listed below and a good cable rated for 3A.
 
-![adapter](/assets/Jetson_Adapter.jpg)
+![adapter](../assets/Jetson_Adapter.jpg)
 
 Plug in the Servo driver the same as the Raspberry Pi, just keep in mind that the Jetson pinout is reversed and that the Sombrero is not supported.
 
-![Jetson Servo](/assets/Servo_Wiring.png)
+![Jetson Servo](../assets/Servo_Wiring.png)
 
 Finally this is the Donkey Assembled.  
 
-![Jetson Assembled](/assets/Jetbot_Assembled.png)
+![Jetson Assembled](../assets/Jetbot_Assembled.png)
 
 | Part Description                                      | Link                                                              | Approximate Cost |
 |-------------------------------------------------------|-------------------------------------------------------------------|------------------|
@@ -123,11 +123,11 @@ For other options for part, feel free to look at the jetbot documentation [here]
 
 * **Sombrero Hat** NOTE: the Sombrero is out of stock at any stores - we are looking at other options or will place another order.  The sombrero hat replaces the Servo driver and the USB battery and can be purchased at the Donkeycar store [here](https://store.donkeycar.com/collections/accessories/products/sombrero) and video instructions can be found [here](https://www.youtube.com/watch?v=vuAXdrtNjpk). Implementing the Sombrero hat requires a LiPo battery (see below).  Documentation is in [Github](https://github.com/autorope/Sombrero-hat).
 
-![sombrero](/assets/Sombrero_assembled.jpg)
+![sombrero](../assets/Sombrero_assembled.jpg)
 
 * **LiPo Battery and Accessories:** LiPo batteries have significantly better energy density and have a better dropoff curve.  See below (courtesy of Traxxas).
 
-![donkey](/assets/build_hardware/traxxas.png)
+![donkey](../assets/build_hardware/traxxas.png)
 
 | Part Description                                      | Link                                                              | Approximate Cost |
 |-------------------------------------------------------|-------------------------------------------------------------------|------------------|
@@ -149,11 +149,11 @@ I printed parts in black PLA, with .3mm layer height with a .5mm nozzle and no s
 
 Almost all 3D Printed parts will need clean up.  Re-drill holes, and clean up excess plastic.
 
-![donkey](/assets/build_hardware/2a.png)
+![donkey](../assets/build_hardware/2a.png)
 
 In particular, clean up the slots in the side of the roll bar, as shown in the picture below:
 
-![donkey](/assets/build_hardware/2b.png)
+![donkey](../assets/build_hardware/2b.png)
 
 ### Step 3: Assemble Top plate and Roll Cage
 
@@ -215,11 +215,11 @@ The PCA9685 Servo controller can control up to 16 PWM devices like servos, motor
 
 You could do this after attaching the Raspberry Pi to the bottom plate, I just think it is easier to see the parts when they are laying on the workbench.  Connect the parts as you see below:
 
-![donkey](/assets/build_hardware/4a.png)
+![donkey](../assets/build_hardware/4a.png)
 
 For reference, below is the Raspberry Pi Pinout for reference.  You will notice we connect to 3.3v, the two I2C pins (SDA and SCL) and ground:
 
-![donkey](/assets/build_hardware/4b.png)
+![donkey](../assets/build_hardware/4b.png)
 
 ### Step 5: Attach Raspberry Pi to 3D Printed bottom plate
 
@@ -227,34 +227,34 @@ Before you start, now is a good time to insert the already flashed SD card and b
 
 Attach the USB battery to the underside of the printed bottom plate using cable ties or velcro.
 
-![donkey](/assets/build_hardware/5ab.png)
+![donkey](../assets/build_hardware/5ab.png)
 
 ### Step 6: Attach Camera
 
 Slip the camera into the slot, cable end first.  However, be careful not to push on the camera lens and instead press the board.
-![donkey](/assets/build_hardware/assemble_camera.jpg)
+![donkey](../assets/build_hardware/assemble_camera.jpg)
 
 If you need to remove the camera the temptation is to push on the lens, instead push on the connector as is shown in these pictures.  
-![donkey](/assets/build_hardware/Remove--good.jpg) ![donkey](/assets/build_hardware/Remove--bad.jpg)
+![donkey](../assets/build_hardware/Remove--good.jpg) ![donkey](../assets/build_hardware/Remove--bad.jpg)
 
 Before using the car, remove the plastic film or lens cover from the camera lens.
 
-![donkey](/assets/build_hardware/6a.png)
+![donkey](../assets/build_hardware/6a.png)
 
 It is easy to put the camera cable in the wrong way so look at these photos and make sure the cable is put in properly.  There are loads of tutorials on youtube if you are not used to this.
 
-![donkey](/assets/build_hardware/6b.png)
+![donkey](../assets/build_hardware/6b.png)
 
 ### Step 7: Put it all together
 
 *** Note if you have a Desert Monster Chassis see 7B section below ***
 The final steps are straightforward.  First attach the roll bar assembly to the car.  This is done using the same pins that came with the vehicle.  
 
-![donkey](/assets/build_hardware/7a.png)
+![donkey](../assets/build_hardware/7a.png)
 
 Second run the servo cables up to the car.  The throttle cable runs to channel 0 on the servo controller and steering is channel 1.
 
-![donkey](/assets/build_hardware/7b.png)
+![donkey](../assets/build_hardware/7b.png)
 
 Now you are done with the hardware!!
 
@@ -262,7 +262,7 @@ Now you are done with the hardware!!
 
 The Desert monster does not have the same set up for holding the body on the car and needs two adapters mentioned above.  To attach the adapters you must first remove the existing adapter from the chassis and screw on the custom adapter with the same screws as is shown in this photo:
 
-![adapter](/assets/build_hardware/Desert_Monster_adapter.png)
+![adapter](../assets/build_hardware/Desert_Monster_adapter.png)
 
 Once this is done, go back to step 7
 
@@ -270,6 +270,6 @@ Once this is done, go back to step 7
 
 Congrats!  Now to get your get your car moving, see the [software instructions](install_software.md) section.
 
-![donkey](/assets/build_hardware/donkey2.png)
+![donkey](../assets/build_hardware/donkey2.png)
 
 > We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites.
