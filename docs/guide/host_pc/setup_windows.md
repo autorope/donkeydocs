@@ -176,6 +176,8 @@ git checkout master
 pip3 install -e .[pc]
 ```
 
+Once you're done with this, close the Ubuntu terminal and then reopen it so the path changes take effect.
+
 * Experimental Support - GPU Users: Install Tensorflow GPU - only for NVIDIA Graphics cards
 
 If you have an NVIDIA card, you should update to the lastest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
