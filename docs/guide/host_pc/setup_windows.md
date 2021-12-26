@@ -145,15 +145,13 @@ donkey createcar --path \Users\<username>\projects\mycar --template complete
 The Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environment -- including most command-line tools, utilities, and applications -- directly on Windows, unmodified, without the overhead of a traditional virtual machine or dualboot setup.
 
 * Install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
-  1.  Turn on Windows 10 "Windows Subsystem for Linux" Feature (Settings > Apps > Programs and Features > Turn Windows features on or off)
+  1.  If using Windows 10 (this is not necessary for Windows 11), turn on Windows 10 "Windows Subsystem for Linux" Feature (Settings > Apps > Programs and Features > Turn Windows features on or off)
   2.  Download a Linux Distribution from the Microsoft Store (recommend [Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab) Latest)
   3.  Open the Ubuntu App and configure.
 
 * Open the Ubuntu App to get a prompt window via Start Menu | Ubuntu
 
-* Install `git` using `sudo apt install git`
-
-* Install `python3` using `sudo apt install python3`
+* Install `pip` using `sudo apt install python3-pip`
 
 * Change to a directory that you would like to use as the head of all your projects.
 
