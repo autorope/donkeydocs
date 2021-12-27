@@ -153,6 +153,8 @@ The Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environmen
 
 * Install `pip` using `sudo apt install python3-pip`
 
+* Install the following two libraries for the UI to work: `sudo apt-get install libmtdev1 xclip`
+
 * Change to a directory that you would like to use as the head of all your projects.
 
 ```bash
