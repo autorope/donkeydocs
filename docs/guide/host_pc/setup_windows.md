@@ -55,7 +55,7 @@ Note: if you are using ZSH (you'll know if you are), you won't be able to run `p
 If you have an NVidia card, you should update to the lastest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
 
 ```bash
-conda install tensorflow-gpu==2.2.0
+pip install tensorflow-gpu==2.2.0
 ```
 
 * Optionally configure PyTorch to use GPU - only for NVidia Graphics cards
