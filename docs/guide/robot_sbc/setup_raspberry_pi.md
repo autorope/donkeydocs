@@ -161,7 +161,7 @@ or via Putty.
 ## Step 6: Update and Upgrade
 
 ```bash
-sudo apt-get update
+sudo apt-get update --allow-releaseinfo-change
 sudo apt-get upgrade
 ```
 
