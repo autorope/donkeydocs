@@ -39,9 +39,7 @@ Visual instructions to follow.
 
 ## LaTrax Prerunner
 
-The LaTrax prerunner is a supported car and follows the same build instructions as the Desert Monster.  However the adapters get screwed in as is shown in the photo below.  
-
-![donkey](./assets/Latrax.jpg)
+The LaTrax prerunner is a supported car and follows the same build instructions as the Desert Monster.  However the adapters get screwed in as is shown in the photo below.
 
 ## Donkey Pro
 
@@ -105,4 +103,4 @@ available options that will work, so you should not expect to choose other optio
 save money. Rolling your own is more about learning, experimentation, and going to new
 and uncharged places.
 
-To find out more about what you need, see [Roll Your Own](/roll_your_own/).
+To find out more about what you need, see [Roll Your Own](roll_your_own.md).

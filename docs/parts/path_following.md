@@ -18,7 +18,7 @@ Using the latest version of Raspian (tested with Raspian Buster) on the RPi, fol
 
 ## Step 2: Setup Donkeycar
 
-Follow the standard instructions [here](https://docs.donkeycar.com/guide/install_software/). With the Path Follower, there is no need to install Tensorflow for this particular Donkeycar configuration however do install numpy/upgrade before running "pip install -e .[pi]"
+Follow the standard instructions [here](../guide/install_software.md). With the Path Follower, there is no need to install Tensorflow for this particular Donkeycar configuration however do install numpy/upgrade before running "pip install -e .[pi]"
 
 ## Step 3: Create the Donkeycar path follower app
 

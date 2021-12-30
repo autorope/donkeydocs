@@ -4,11 +4,11 @@ You have several options to control your car's servo and motors, ranging from di
 
 ## Control with an I2C servo driver board. 
 
-This is described in the overall setup instructions [here](https://docs.donkeycar.com/guide/build_hardware/)
+This is described in the overall setup instructions [here](../guide/build_hardware.md)
 
 ## Direct control with the RaspberryPi GPIO pins. 
 
-Please follow the instructions [here](https://docs.donkeycar.com/parts/rc/)
+Please follow the instructions [here](rc.md)
 
 ## Control with the Robo HAT MM1 board. 
 

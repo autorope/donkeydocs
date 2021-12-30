@@ -34,7 +34,7 @@ becomes:
 STEERING_LEFT_PWM = 500
 ```
 
-when edited. You will adjust these later in the [calibrate](/guide/calibrate/) section.
+when edited. You will adjust these later in the [calibrate](../guide/calibrate.md) section.
 
 ### Configure I2C PCA9685
 
@@ -182,4 +182,4 @@ Your ~/mycar/manage.py, ~/mycar/config.py and other files will change with this 
 
 -------
 
-### Next [calibrate your car](/guide/calibrate/).
+### Next [calibrate your car](../guide/calibrate.md).
