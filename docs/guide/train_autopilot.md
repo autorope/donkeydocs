@@ -40,6 +40,9 @@ donkey train --tub <tub folder names comma separated> --model ./models/mypilot.h
 
 * _**Note:**_ There was a regression in version 4.2 where you only had to provide the model name in the model argument, like `--model mypilot.h5`. This got resolved in version 4.2.1. Please update to that version.
 
+* Alternatively you can perform the training in the Donkey UI application as explained [here](/utility/ui/#the-trainer).
+  ![Trainer UI](../assets/ui-trainer.png)
+
 ## Copy model back to car
 
 * In previous step we managed to get a model trained on the data. Now is time to move the model back to Rasberry Pi, so we can use it for testing it if it will drive itself.

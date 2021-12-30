@@ -26,6 +26,9 @@ Enable the display in `myconfig.py`.
 USE_SSD1306_128_32 = True     # Enable the SSD_1306 OLED Display
 SSD1306_128_32_I2C_BUSNUM = 1 # I2C bus number
 ```
+## Showing your IP address on startup. 
+
+One of the cool things about having an OLED screen is that you can show your car's IP address on startup, so you can connect to it. Instructions to set that up are [here](https://diyrobocars.com/2021/12/29/show-your-raspberrypi-ip-address-on-startup-with-an-oled/)
 
 ## Troubleshooting
 
