@@ -261,7 +261,7 @@ And if no errors, you have OpenCV installed!
 
 ## Step 13: Optional - Install Donkey Car Console
 
-[Donkey Car console](https://github.com/robocarstore/donkeycar-console) is a management software of the donkey car that provides rest-based API to support Donkey Car mobile app. This software currently supports RPI 4B only.
+[Donkey Car console](https://github.com/robocarstore/donkeycar-console) is a management software of the donkey car that provides a rest-based API to support Donkey Car mobile app. This software currently supports RPI 4B only.
 
 ### Download the project
 
@@ -302,7 +302,7 @@ sudo ln -s gunicorn.service /etc/systemd/system/gunicorn.service
 - [iOS](https://apps.apple.com/app/robocar-controller/id1508125501)
 - [Android](https://play.google.com/store/apps/details?id=com.robocarLtd.RobocarController)
 
-Make sure your car is connected to the same network as your Pi. Fire up the mobile app and you can search your car using the mobile app.
+Make sure your phone is connected to the same network as your Pi (if it won't connect, try turning off your cell data). Fire up the mobile app and you can search your car using the mobile app.
 
 For further information of using the app, check the [instruction here](../mobile_app.md).
 
