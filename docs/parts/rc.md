@@ -46,10 +46,10 @@ Also set `use joystick` to True
 USE_JOYSTICK_AS_DEFAULT = True
 ```
 
-* For RC output, select `PIGPIO_PWM` as your drive train type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
+* For RC output, select `PWM_STEERING_THROTTLE` as your drive train type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
 
 ```python
-DRIVE_TRAIN_TYPE = "PIGPIO_PWM" # I2C_SERVO|DC_STEER_THROTTLE|DC_TWO_WHEEL|DC_TWO_WHEEL_L298N|SERVO_HBRIDGE_PWM|PIGPIO_PWM|MM1|MOCK
+DRIVE_TRAIN_TYPE =  "PWM_STEERING_THROTTLE"
 ```
 
 For both of these, there are additional settings you can change, such as reversing the direction of output or the pins connected: 
@@ -70,19 +70,24 @@ PIGPIO_INVERT = False
 PIGPIO_JITTER = 0.025   # threshold below which no signal is reported
 ```
 
+If you are using the RC hat then the PWM output pins shown below (and defaulted in myconfig.py) must be used.
+If you are not using the RC hat then you are free to choose different PWM output pins.
+NOTE: you must install pigpio to use this configuration.  See [PIGPIO](pins.md#PIGPIO)
+
 Output options:
 
 ```python
-#STEERING FOR PIGPIO_PWM OUTPUT
-STEERING_PWM_PIN = 13           #Pin numbering according to Broadcom numbers
-STEERING_PWM_FREQ = 50          #Frequency for PWM
-STEERING_PWM_INVERTED = False   #If PWM needs to be inverted
+PWM_STEERING_PIN = "PIGPIO.BCM.13"           # PWM output pin for steering servo
+PWM_THROTTLE_PIN = "PIGPIO.BCM.18"           # PWM output pin for ESC
 
-#THROTTLE FOR PIGPIO_PWM OUTPUT
-THROTTLE_PWM_PIN = 18           #Pin numbering according to Broadcom numbers
-THROTTLE_PWM_FREQ = 50          #Frequency for PWM
-THROTTLE_PWM_INVERTED = False   #If PWM needs to be inverted
+STEERING_LEFT_PWM = int(4096 * 1 / 20)       # pwm value for full left steering (1ms pulse)
+STEERING_RIGHT_PWM = int(4096 * 2 / 20)      # pwm value for full right steering (2ms pulse)
+
+THROTTLE_FORWARD_PWM = int(4096 * 2 / 20)    # pwm value for max forward (2ms pulse)
+THROTTLE_STOPPED_PWM = int(4096 * 1.5 / 20)  # pwm value for no movement (1.5ms pulse)
+THROTTLE_REVERSE_PWM = int(4096 * 1 / 20)    # pwm value for max reverse throttle (1ms pulse)
 ```
+
 ## Troubleshooting
 
 If one channel is reversed (steering left goes right, etc), either reverse that channel on your RC transmitter (that's usually a switch or setting) or change it in the output options shown above by channging the PWM_INVERTED value for that channel to `True`.
