@@ -37,3 +37,7 @@ If you are unable to start the car, ensure that the `Adafruit_SSD1306` package i
 ```bash
 pip install Adafruit_SSD1306
 ```
+## Known Issues
+- The `Adafruit_SSD1306` library is incompatible with steering/motor configurations when the Duty Cycle/PWM is supplied directly from GPIO header using the `RPI_GPIO` pin provider.  This is because internally the Adafruit library sets a GPIO pin mode that is incompatible with our GPIO library.  In this case you have a couple of options:
+  - Use a PCA9685 to generate the necessary duty cycle/PWM for throttle and steering.
+  - Use the `PIGPIO` pin provider to generate the necessary duty cycle/PWM for throttle and steering from the GPIO.  See [PIGPIO](pins.md#PIGPIO) for how to set up the pigpio library.
