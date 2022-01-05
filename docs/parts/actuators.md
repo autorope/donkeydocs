@@ -33,24 +33,26 @@ A standard RC car is equipped with a steering servo for steering the front wheel
 - The PCA9685 Servo controller is connected the RaspberryPi or Jetson Nano via the I2C pins on the 40 Pin bus, then the 3 pin cables from the ESC and Steering Servo are connected to the PCA9685, generally to channel 0 and channel 1 respectively. See [Step 4: Connect Servo Shield](../guide/build_hardware.md#step-4-connect-servo-shield-to-raspberry-pi).   Connection of a PCA9685 to a Jetson Nano is the same.
 
 **Configuration**
+
 - Use `DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"` in myconfig.py
   - Set the pin specifiers for PCA9685 in the `# PWM_STEERING_THROTTLE` section of myconfig.py. For example:
-  ```
+```python
   PWM_STEERING_PIN = "PCA9685.1:40.0"  # PCA9685, I2C bus 1, address 0x40, channel 0
   PWM_THROTTLE_PIN = "PCA9685.1:40.1"  # PCA9685, I2C bus 1, address 0x40, channel 1
-  ```
+```
   See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
-  
+
 ### Generating PWM pulses from the 40 pin GPIO header
 - Here the PWM signal is generated from the 40 pin GPIO header.  The data pin on the 3-pin ESC and Servo connectors are connected to a PWM pin on the GPIO.  The ground pins on the 3-pin connectors are connected to a common ground.  The 5V pins on the 3-pin connectors are connected to the 5V pins on the GPIO: the 3-pin connector from the ESC will generally provide 5V that can then be used to power the Servo. 
 
 **Configuration**
+
 - Use `DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"` in myconfig.py
   - Set the pin specifiers for GPIO in the `# PWM_STEERING_THROTTLE` section. Note that each pin has both a BOARD mode and a BCM (Broadcom) mode identifier.  You can use either mode, but all pins must use the same mode.  For example:
-  ```
+```python
   PWM_STEERING_PIN = "RPI_GPIO.BOARD.33"  # GPIO board mode pin-33 == BCM mode pin-13
   PWM_THROTTLE_PIN = "RPI_GPIO.BOARD.12"  # GPIO board mode pin-12 == BCM mode pin-18
-  ```
+```
   See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### Direct control with the RaspberryPi GPIO pins. 
@@ -135,7 +137,7 @@ The following snippet illustrates how to exercise the Arduino actuator in the dr
 Refer to templates/arduino_drive.py for more details.
 
 
-## Using an L298N HBridge and a Steering Servo
+## HBridge Motor Controller and Steering Servo
 In this configuration the DC motor that drives the wheels is controlled by an L298N HBridge motor controller or compatible.  Steering the front wheels is accomplished with a Steering Servo that takes an PWM pulse.  The motor driver is wired in one of two ways; 3 pin wiring or 2 pin wiring.
 
 ### 3-pin HBridge and Steering Servo
@@ -144,6 +146,7 @@ A single DC gear motor is controlled with an L298N using two TTL output pins to 
 See https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/ for a discussion of how the L298N HBridge module is wired in 3-pin mode to the RaspberryPi GPIO. This also applies to the some other driver chips that emulate the L298N, such as the TB6612FNG motor driver.
 
 **Configuration**
+
 - use `DRIVETRAIN_TYPE = "SERVO_HBRIDGE_3PIN"` in myconfig.py
   - Example pin specifiers using 40 pin GPIO header to generate signals: 
 ```python
@@ -163,30 +166,31 @@ A single DC gear motor is controlled with an 'mini' L298N HBridge (or an L9110S 
 See https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/ for how an L298N mini-hbridge module is wired in 2-pin mode.  
 See https://electropeak.com/learn/interfacing-l9110s-dual-channel-h-bridge-motor-driver-module-with-arduino/ for how an L9110S/HG7881 motor driver module is wired.
 
-
 **Configuration**
+
 - use `DRIVETRAIN_TYPE = "SERVO_HBRIDGE_2PIN"` in myconfig.py
   - Example pin specifiers using 40 pin GPIO header to generate signals: 
 ```python
-HBRIDGE_2PIN_DUTY_FWD = "RPI_GPIO.BOARD.18"  # provides forward duty cycle to motor
-HBRIDGE_2PIN_DUTY_BWD = "RPI_GPIO.BOARD.16"  # provides reverse duty cycle to motor
-PWM_STEERING_PIN = "RPI_GPIO.BOARD.33"       # provides servo pulse to steering servo
-STEERING_LEFT_PWM = 460         # pwm value for full left steering (use `donkey calibrate` to measure value for your car)
-STEERING_RIGHT_PWM = 290        # pwm value for full right steering (use `donkey calibrate` to measure value for your car)
+  HBRIDGE_2PIN_DUTY_FWD = "RPI_GPIO.BOARD.18"  # provides forward duty cycle to motor
+  HBRIDGE_2PIN_DUTY_BWD = "RPI_GPIO.BOARD.16"  # provides reverse duty cycle to motor
+  PWM_STEERING_PIN = "RPI_GPIO.BOARD.33"       # provides servo pulse to steering servo
+  STEERING_LEFT_PWM = 460         # pwm value for full left steering (use `donkey calibrate` to measure value for your car)
+  STEERING_RIGHT_PWM = 290        # pwm value for full right steering (use `donkey calibrate` to measure value for your car)
 ```
 A PCA9685 could also be used to generate all control signals.  See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
-## Using an HBridge for both Steering and Throttle
+## HBridge for both Steering and Throttle
 Some very inexpensive toy cars use a DC motor to drive the back wheels forward and reverse and another DC motor to steer the front wheels left or right.  A single L298N HBridge (or L9110S HBridge) can be used to control these two motors.  This driver assumes 2-pin wiring where each motor uses two PWM pins, one for each direction.
 
 **Configuration**
+
 - use `DRIVETRAIN_TYPE = "DC_STEER_THROTTLE"` in myconfig.py
   - Example pin specifiers using 40 pin GPIO header to generate signals: 
 ```python
-HBRIDGE_PIN_LEFT = "RPI_GPIO.BOARD.18"   # pwm pin produces duty cycle for steering left
-HBRIDGE_PIN_RIGHT = "RPI_GPIO.BOARD.16"  # pwm pin produces duty cycle for steering right
-HBRIDGE_PIN_FWD = "RPI_GPIO.BOARD.15"    # pwm pin produces duty cycle for forward drive
-HBRIDGE_PIN_BWD = "RPI_GPIO.BOARD.13"    # pwm pin produces duty cycle for reverse drive
+  HBRIDGE_PIN_LEFT = "RPI_GPIO.BOARD.18"   # pwm pin produces duty cycle for steering left
+  HBRIDGE_PIN_RIGHT = "RPI_GPIO.BOARD.16"  # pwm pin produces duty cycle for steering right
+  HBRIDGE_PIN_FWD = "RPI_GPIO.BOARD.15"    # pwm pin produces duty cycle for forward drive
+  HBRIDGE_PIN_BWD = "RPI_GPIO.BOARD.13"    # pwm pin produces duty cycle for reverse drive
 ```
 A PCA9685 could also be used to generate all control signals.  See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
@@ -199,26 +203,27 @@ An inexpensive Donkeycar compatible robot can be constructed using a cheap smart
 See https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/ for a discussion of how the L298N HBridge module is wired in 3-pin mode to the RaspberryPi GPIO. This also applies to the some other driver chips that emulate the L298N, such as the TB6612FNG motor driver.
 
 **Configuration**
+
 - use `DRIVETRAIN_TYPE = "DC_TWO_WHEEL_L298N"` in myconfig.py
   - Example pin specifiers using 40 pin GPIO header to generate signals: 
-  ```python
+```python
   HBRIDGE_L298N_PIN_LEFT_FWD = "RPI_GPIO.BCM.16"  # BCM.16 == BOARD.36
   HBRIDGE_L298N_PIN_LEFT_BWD = "RPI_GPIO.BCM.20"  # BCM.20 == BOARD.38
   HBRIDGE_L298N_PIN_LEFT_EN = "RPI_GPIO.BCM.12"   # BCM.12 == BOARD.32
   HBRIDGE_L298N_PIN_RIGHT_FWD = "RPI_GPIO.BCM.5"  # BCM.5 == BOARD.29
   HBRIDGE_L298N_PIN_RIGHT_BWD = "RPI_GPIO.BCM.6"  # BCM.6 == BOARD.31
   HBRIDGE_L298N_PIN_RIGHT_EN = "RPI_GPIO.BCM.13"  # BCM.13 == BOARD.33   
-  ```
+```
   
   - Example pin specifiers using a PCA9685 to generate signals: 
-  ```python
+```python
   HBRIDGE_L298N_PIN_LEFT_FWD = "PCA9685.1:40.0"
   HBRIDGE_L298N_PIN_LEFT_BWD = "PCA9685.1:40.1"
   HBRIDGE_L298N_PIN_LEFT_EN = "PCA9685.1:40.2"
   HBRIDGE_L298N_PIN_RIGHT_FWD = "PCA9685.1:40.10"
   HBRIDGE_L298N_PIN_RIGHT_BWD = "PCA9685.1:40.11"
   HBRIDGE_L298N_PIN_RIGHT_EN = "PCA9685.1:40.13"
-  ```
+```
   - In the configuration, the HBRIDGE_L298N_PIN_xxxx_EN pins determine how fast the motors spin.  These pins must support PWM output.  Remember that the Jetson Nano only supports 2 PWM output pins and only if they are enabled using `/opt/nvidia/jetson-io/jetson-io.py`. See [Generating PWM from the Jetson Nano](pins.md#generating-pwm-from-the-jetson-nano).
   - The HBRIDGE_L298N_PIN_xxxx_FWD and HBRIDGE_L298N_PIN_xxxx_BWD pins are TTL output pins that determine the direction the motors spin.
 
@@ -231,21 +236,22 @@ See https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Boar
 
 
 **Configuration**
+
 - use `DRIVETRAIN_TYPE = "DC_TWO_WHEEL"` in myconfig.py
   - example pin specifiers using the 40 pin GPIO to generate signals: 
-  ```python
+  
+```python
   HBRIDGE_PIN_LEFT_FWD = "RPI_GPIO.BCM.16"  # BCM.16 == BOARD.36
   HBRIDGE_PIN_LEFT_BWD = "RPI_GPIO.BCM.20"  # BCM.20 == BOARD.38
   HBRIDGE_PIN_RIGHT_FWD = "RPI_GPIO.BCM.5"  # BCM.5 == BOARD.29
   HBRIDGE_PIN_RIGHT_BWD = "RPI_GPIO.BCM.6"  # BCM.6 == BOARD.31
-  ```
+```
   - example pin specifiers using a PCA9685 to generate signals: 
-  ```python
+```python
   HBRIDGE_PIN_LEFT_FWD = "PCA9685.1:40.0"
   HBRIDGE_PIN_LEFT_BWD = "PCA9685.1:40.1"
   HBRIDGE_PIN_RIGHT_FWD = "PCA9685.1:40.5"
   HBRIDGE_PIN_RIGHT_BWD = "PCA9685.1:40.6"
-  ```
-  - 
+```
 
 See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
