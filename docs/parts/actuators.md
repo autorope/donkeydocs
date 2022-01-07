@@ -197,7 +197,7 @@ A PCA9685 could also be used to generate all control signals.  See [pins](pins.m
 ## Differential Drive cars
 An inexpensive Donkeycar compatible robot can be constructed using a cheap smart car robot chassis that includes 2 DC gear motors and an L298N motor driver or compatible to run the motors.  Steering is accomplished by running one motor faster than the other, causing the car to drive in an arc.  The motor driver can be wired in one of two ways; 3 pin wiring or 2 pin wiring.
 
-### 3-pin HBridge differential drive
+### 3-pin HBridge Differential Drive
 2 DC gear motors are controlled with an L298N, each motor using two TTL output pins to select direction and a PWM pin to control the power to the motor.  Since each motor uses 3 pins, so a total of 6 pins are used in a differential drive configuration. The advantage of this wiring scheme is that it only requires 2 PWM pins, which happens to be the maximum number of PWM pins on the Jetson Nano.
 
 See https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/ for a discussion of how the L298N HBridge module is wired in 3-pin mode to the RaspberryPi GPIO. This also applies to the some other driver chips that emulate the L298N, such as the TB6612FNG motor driver.
