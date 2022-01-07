@@ -1,20 +1,20 @@
 # Windows
 
-Windows provides a few different methods for setting up and installing Donkey Car.  
+Windows provides a few different methods for setting up and installing Donkey Car. If you are unfamiliar with Python or concerned about the way that you install Donkey Car, please use option 1.
 
 1. Miniconda
 2. Native
 3. Windows Subsystem for Linux (WSL) - Experimental
 
-If you are unfamiliar or concerned about the way that you install Donkey Car, please use option 1 above.
-
 ## Install Donkeycar on Windows (miniconda)
 
 ![donkey](/assets/logos/windows_logo.png)
 
+### Prerequisites
+
 * Install [miniconda Python 3.7 64 bit](https://conda.io/miniconda.html).
 
-* Open the Anaconda prompt window via Start Menu | Anaconda 64bit | Anaconda Prompt
+* Open the Anaconda prompt window via Start Menu > Anaconda3 (64bit) > Anaconda Powershell Prompt (miniconda3)
 
 * type `git`. If the command is not found, then install [git 64 bit](https://git-scm.com/download/win)
 
@@ -33,6 +33,8 @@ cd donkeycar
 git checkout master
 ```
 
+### Create conda environment
+
 * If this is not your first install, update Conda and remove old donkey
 
 ```bash
@@ -45,41 +47,52 @@ conda env remove -n donkey
 ```bash
 conda env create -f install\envs\windows.yml
 conda activate donkey
-pip install --user tensorflow==2.2.0
-pip install -e .[pc]
-```
-Note: if you are using ZSH (you'll know if you are), you won't be able to run `pip install -e .[pc]`. You'll need to escape the brackets and run `pip install -e .\[pc\]`.
-
-* Optionally Install Tensorflow GPU - only for NVidia Graphics cards
-
-If you have an NVidia card, you should update to the lastest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
-
-```bash
-pip install tensorflow-gpu==2.2.0
-```
-
-* Optionally configure PyTorch to use GPU - only for NVidia Graphics cards
-
-If you have an NVidia card, you should update to the lastest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
-
-```bash
-conda install cudatoolkit=<CUDA Version> -c pytorch
-```
-
-You should replace `<CUDA Version>` with your CUDA version. Any version above 10.0 should work. You can find out your CUDA version by running `nvcc --version` or `nvidia-smi`.
-
-* Create your local working dir:
-
-```bash
-donkey createcar --path ~/mycar
 ```
 
 > Note: After closing the Anaconda Prompt, when you open it again, you will need to 
 > type ```conda activate donkey``` to re-enable the mappings to donkey specific 
 > Python libraries
 
-----
-### Next let's [install software on Donkeycar](/guide/install_software/#step-2-install-software-on-donkeycar)
+### Install TensorFlow
+
+#### Option 1: Standard TensorFlow installation is compatible with most PCs.
+
+```bash
+# with the donkey conda environment active
+# in the donkeycar directory
+pip install --user tensorflow==2.2.0
+```
+#### Option 2: GPU accelerated TensorFlow is much faster, but it only works with Nvidia graphics cards.
+
+```bash
+# with the donkey conda environment active
+# in the donkeycar directory
+pip install tensorflow-gpu==2.2.0
+conda install cudatoolkit=10.1 -c pytorch
+```
+
+> Note: `tensorflow-gpu` 2.2.0 requires `cudatoolkit` version 10.1. Future versions of tensorflow-gpu will require CUDA 11, which is available from the Pytorch channel (`conda install cudatoolkit=11.3 -c pytorch`) or from the Nvidia channel (`conda install cuda -c nvidia`). You can find out your CUDA version by running `nvcc --version` or `nvidia-smi`. See [TensorFlow GPU Support](https://www.tensorflow.org/install/gpu#windows_setup) for more advanced documentation about Nvidia drivers.
+
+### Install donkey on your PC
+
+Once TensorFlow is installed, install `donkey`.
+
+```bash
+# with the donkey conda environment active
+# with tensorflow installed
+# in the donkeycar directory
+pip install -e .[pc]
+```
+
+> Note: if you are using ZSH (you'll know if you are), you won't be able to run `pip install -e .[pc]`. You'll need to escape the brackets and run `pip install -e .\[pc\]`.
+
+### Create a car
+
+Congratulations! You've installed the `donkey` command line utility and are now ready to create your first car.
+
+* First time training an autopilot? Complete the [Donkey Simulator tutorial](/docs/guide/simulator.md) while you wait for your car parts to arrive in the mail.
+* If you're more advanced and already completed the [build a Donkey tutorial](/docs/guide/build_hardware.md)? It's time to [install Software on your Donkey Car](/docs/guide/install_software/#step-2-install-software-on-donkeycar).
+* For detailed guidance on the `createcar` command, see the [Create a Car tutorial](/docs/guide/create_application.md) and [`donkey`](/docs/guide/utility/donkey.md) utility manual.
 
 ---
 
