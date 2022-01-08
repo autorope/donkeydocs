@@ -23,7 +23,7 @@
 
 You need to flash a micro SD image with an operating system.
 
-1. Download [Latest Raspian(Buster)](https://downloads.raspberrypi.org/raspbian_lite_latest). 
+1. Download [Raspian Buster](https://downloads.raspberrypi.org/raspbian_lite_latest) The latest, Bullseye, will not work. 
 2. Follow OS specific guides [here](https://www.raspberrypi.org/documentation/installation/installing-images/).
 3. Leave micro SD card in your machine and edit/create some files as below:
 
