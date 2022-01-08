@@ -10,11 +10,11 @@
 * [Step 6: Update and Upgrade](#step-6-update-and-upgrade)
 * [Step 7: Raspi-config](#step-7-raspi-config)
 * [Step 8: Install Dependencies](#step-8-install-dependencies)
-* [Step 9: Install Optional OpenCV Dependencies](#step-9-install-optional-opencv-dependencies)
+* [Step 9: (Optional) Install OpenCV Dependencies](#step-9-optional-install-opencv-dependencies)
 * [Step 10: Setup Virtual Env](#step-10-setup-virtual-env)
 * [Step 11: Install Donkeycar Python Code](#step-11-install-donkeycar-python-code)
-* [Step 12: Install Optional OpenCV](#step-12-install-optional-opencv)
-* [Step 13: Install Optional Donkey Car Console](#step-13-install-donkeycar-console)
+* [Step 12: (Optional) Install OpenCV](#step-12-optional-install-opencv)
+* [Step 13: (Optional) Install Mobile App](#step-13-optional-install-mobile-app)
 * Then [Create your Donkeycar Application](/guide/create_application/)
 
 ## Step 1: Flash Operating System
@@ -189,7 +189,7 @@ Choose `<Finish>` and hit enter.
 sudo apt-get install build-essential python3 python3-dev python3-pip python3-virtualenv python3-numpy python3-picamera python3-pandas python3-rpi.gpio i2c-tools avahi-utils joystick libopenjp2-7-dev libtiff5-dev gfortran libatlas-base-dev libopenblas-dev libhdf5-serial-dev libgeos-dev git ntp
 ```
 
-## Step 9: Optional - Install OpenCV Dependencies
+## Step 9: (Optional) Install OpenCV Dependencies
 
 If you are going for a minimal install, you can get by without these. But it can be handy to have OpenCV.
 
@@ -239,7 +239,7 @@ You can validate your tensorflow install with
 python -c "import tensorflow"
 ```
 
-##  Step 12: Optional - Install OpenCV
+##  Step 12: (Optional) Install OpenCV
 
 If you've opted to install the OpenCV dependencies earlier, you can install Python OpenCV bindings now with command:
 
@@ -261,52 +261,10 @@ python -c "import cv2"
 
 And if no errors, you have OpenCV installed!
 
-## Step 13: Optional - Install Donkey Car Console
+## Step 13: (Optional) Install Mobile App
+There is a mobile application available on the iPhone and Android that provides an alternative user experience.  It can be installed manually or by downloading an SD card image.  Follow these [instructions](/guide/mobile_app/#optional-manual-installation) to install manually.
 
-[Donkey Car console](https://github.com/robocarstore/donkeycar-console) is a management software of the donkey car that provides a rest-based API to support Donkey Car mobile app. This software currently supports RPI 4B only.
-
-### Download the project
-
-```bash
-git clone https://github.com/robocarstore/donkeycar-console
-sudo mv donkeycar-console /opt
-cd /opt/donkeycar-console
-```
-
-### Install dependencies
-
-```bash
-pip install -r requirements/production.txt
-```
-
-### Run the init script to set up the database
-
-```bash
-python manage.py migrate
-```
-
-### Test the server if it is running properly
-
-```bash
-python manage.py runserver 0.0.0.0:8000
-```
-
-Go to http://your_pi_ip:8000/vehicle/status. If it returns something without error, it works.
-
-### Install the server as a service
-
-```bash
-sudo ln -s gunicorn.service /etc/systemd/system/gunicorn.service
-```
-
-### Download the mobile app
-
-- [iOS](https://apps.apple.com/app/robocar-controller/id1508125501)
-- [Android](https://play.google.com/store/apps/details?id=com.robocarLtd.RobocarController)
-
-Make sure your phone is connected to the same network as your Pi (if it won't connect, try turning off your cell data). Fire up the mobile app and you can search your car using the mobile app.
-
-For further information of using the app, check the [instruction here](../mobile_app.md).
+> -**Note**- The server component currently supports **RaspberryPi 4B only**.
 
 ----
 
