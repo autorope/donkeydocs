@@ -23,7 +23,9 @@
 
 You need to flash a micro SD image with an operating system.
 
-1. Download [Latest Raspian(Buster)](https://downloads.raspberrypi.org/raspbian_lite_latest). 
+> Note: Raspbian Latest (bullseye) is not compatible with the Python camera bindings.  The underlying camera system has changed and it has broken any software that uses the Python camera bindings.
+
+1. Download [Raspian Legacy (Buster)](https://downloads.raspberrypi.org/raspios_oldstable_lite_armhf/images/raspios_oldstable_lite_armhf-2021-12-02/2021-12-02-raspios-buster-armhf-lite.zip). 
 2. Follow OS specific guides [here](https://www.raspberrypi.org/documentation/installation/installing-images/).
 3. Leave micro SD card in your machine and edit/create some files as below:
 
