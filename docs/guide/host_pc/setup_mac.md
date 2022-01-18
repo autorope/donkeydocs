@@ -37,6 +37,15 @@ conda env create -f install/envs/mac.yml
 conda activate donkey
 pip install -e .[pc]
 ```
+We have observed that the `conda` installation can be slow (not as slow in OSX as in Linux, but 
+still slow). If the install looks like it's hanging then you can install with `mamba` instead. 
+This should take < 5 min. In that case please run:
+```bash
+conda install mamba -n base -c conda-forge
+mamba env create -f install/envs/ubuntu.yml
+conda activate donkey
+pip install -e .[pc]
+```
 Note: if you are using ZSH (you'll know if you are), you won't be able to run `pip install -e .[pc]`. You'll need to escape the brackets and run `pip install -e .\[pc\]`.
 
 * Tensorflow GPU
