@@ -89,6 +89,7 @@ Enable the display in `myconfig.py`.
 # SSD1306_128_32
 USE_SSD1306_128_32 = True     # Enable the SSD_1306 OLED Display
 SSD1306_128_32_I2C_BUSNUM = 1 # I2C bus number
+SSD1306_RESOLUTION = 1 # 1 = 128x32; 2 = 128x64
 ```
 ## Showing your IP address on startup. 
 
