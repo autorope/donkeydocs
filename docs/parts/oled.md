@@ -19,12 +19,13 @@ Simply connect the display to the I2C pins on the Raspberry Pi or the Jetson Nan
 
 ## Software Setup
 
-Enable the display in `myconfig.py`.
+Enable the display in `myconfig.py`. If you have a 128x32 OLED select resolution 1, if you have 128x64 select resolution 2
 
 ```python
 # SSD1306_128_32
 USE_SSD1306_128_32 = True     # Enable the SSD_1306 OLED Display
 SSD1306_128_32_I2C_BUSNUM = 1 # I2C bus number
+SSD1306_RESOLUTION = 1 # 1 = 128x32; 2 = 128x64
 ```
 ## Showing your IP address on startup. 
 
