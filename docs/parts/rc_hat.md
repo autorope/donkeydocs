@@ -1,4 +1,4 @@
-##Donkeycar RC Hat
+## Donkeycar RC Hat
 ![RC Hat for RaspberryPi](../assets/rc_hat.jpg "The Donkey RC Hat for RaspberryPi")
 
 If you started with a ready-to-run RC car, it probably came with a RC controller. Good news: you can use it with Donkeycar, both using the RC controller for manual driving and plugging in the car's servo and motor controller directly into the RaspberryPi without the need for a special motor/servo controller board. 
