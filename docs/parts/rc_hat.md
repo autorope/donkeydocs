@@ -1,9 +1,9 @@
 ## Donkeycar RC Hat
 ![RC Hat for RaspberryPi](../assets/rc_hat.jpg "The Donkey RC Hat for RaspberryPi")
 
-If you started with a ready-to-run RC car, it probably came with a RC controller. Good news: you can use it with Donkeycar, both using the RC controller for manual driving and plugging in the car's servo and motor controller directly into the RaspberryPi without the need for a special motor/servo controller board. 
+If you started with a ready-to-run RC car, it probably came with a RC controller. Good news: you can use it with Donkeycar, using the RC controller for manual driving. You can also plug in the car's servo and motor controller directly into the RaspberryPi without the need for a special motor/servo controller board. 
 
-To do so, you can either wire up it up manually as shown in [this tutorial](rc.md) (which works, but has a lot of fiddly wires that can fall off) or do it neatly with the Donkeycar RC hat, shown above, which handles all the wiring for you, along with including an OLED screen and a fan. 
+To do so, you can either wire up it up manually as shown in [this tutorial](rc.md) (which works, but has a lot of fiddly wires that can fall off) or do it far more neatly with the Donkeycar RC hat, shown above, which handles all the wiring for you, along with including an OLED screen and a fan. 
 
 The Donkeycar RC hat can be purchased from the [Donkeycar Store](https://store.donkeycar.com/products/donkey-car-rc-hat). Note that it only works with the RaspberryPi, not the Jetson Nano, due to limitations with the way the Jetson handles its I/O pins. 
 
@@ -80,4 +80,25 @@ THROTTLE_REVERSE_PWM = int(4096 * 1 / 20)    # pwm value for max reverse throttl
 ## Troubleshooting
 
 If one channel is reversed (steering left goes right, etc), either reverse that channel on your RC transmitter (that's usually a switch or setting) or change it in the output options shown above by channging the PWM_INVERTED value for that channel to `True`.
+
+## OLED setup
+
+Enable the display in `myconfig.py`.
+
+```python
+# SSD1306_128_32
+USE_SSD1306_128_32 = True     # Enable the SSD_1306 OLED Display
+SSD1306_128_32_I2C_BUSNUM = 1 # I2C bus number
+```
+## Showing your IP address on startup. 
+
+One of the cool things about having an OLED screen is that you can show your car's IP address on startup, so you can connect to it. Instructions to set that up are [here](https://diyrobocars.com/2021/12/29/show-your-raspberrypi-ip-address-on-startup-with-an-oled/)
+
+## Troubleshooting
+
+If you are unable to start the car, ensure that the `Adafruit_SSD1306` package is installed in your virtual environment. This should automatically be installed, if you are using a recent version of `donkeycar`.
+
+```bash
+pip install Adafruit_SSD1306
+```
 
