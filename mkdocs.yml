@@ -34,6 +34,7 @@ pages:
       - 'OLED': parts/oled.md
       - 'Voice Control': parts/voice_control.md
       - 'Stop Sign Detection': parts/stop_sign_detection.md
+      - 'Path following with the Intel Realsense T265': parts/path_following.md
   - Utilities:
       - 'donkey': utility/donkey.md
       - 'UI': utility/ui.md
