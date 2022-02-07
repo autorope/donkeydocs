@@ -102,7 +102,7 @@ If you want to buy the parts yourself, want to customize your donkey or live out
 
 ![adapter](../assets/Jetson_Adapter.jpg)
 
-Plug in the Servo driver the same as the Raspberry Pi, just keep in mind that the Jetson pinout is reversed and that the Sombrero is not supported.
+Plug in the Servo driver the same as the Raspberry Pi.  Note that the Sombrero is not supported.
 
 ![Jetson Servo](../assets/Servo_Wiring.png)
 
@@ -163,7 +163,7 @@ This is a relatively simple assembly step.   Just use the 3mm self tapping screw
 
 When attaching the roll cage to the top plate, ensure that the nubs on the top plate face the roll-cage. This will ensure the equipment you mount to the top plate fits easily.
 
-### Step 4: Connect Servo Shield to Raspberry Pi
+### Step 4: Connect Servo Driver to Raspberry Pi
 
 ***note: this is not necessary if you are using direct control with [RaspberyPi GPIO pins](https://docs.donkeycar.com/parts/rc/) or are using a Robohat MM1 board***
 
