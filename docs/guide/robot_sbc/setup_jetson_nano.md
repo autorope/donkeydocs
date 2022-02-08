@@ -90,7 +90,7 @@ cd ~/projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout dev
+git checkout master
 pip3 install -e .[nano]
 ```
 
