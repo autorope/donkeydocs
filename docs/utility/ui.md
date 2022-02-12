@@ -117,4 +117,9 @@ With the car connector you can transfer the tub data from the car to your PC and
 1. Support using only a single pilot (or more than two) in the pilot arena.
 
 ## Video tutorial
-You can find a video tutorial for the UI [here](https://youtu.be/J5-zHNeNebQ).
+You can find a video tutorial for the UI
+
+[![here](https://img.youtube.com/vi/J5-zHNeNebQ/0.jpg
+)](https://www.youtube.com/watch?v=J5-zHNeNebQ)
+
+
