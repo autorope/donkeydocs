@@ -21,7 +21,7 @@ to a PC computer to train. The Jetson nano is more powerful, but still quite slo
 
 ## Training the easy, GUI way
 
-The easiest way to do the training on your desktop is by using the [Donkey UI application](../utility/ui).
+The easiest way to do the training on your desktop is by using the [Donkey UI application](https://docs.donkeycar.com/utility/ui/).
  ![Tub_manager UI](../assets/ui-tub-manager.png)
 
 If, however, you want to do the training with the command line, read on....
@@ -102,7 +102,7 @@ Read [this](/guide/robot_sbc/tensorrt_jetson_nano) for more information.
 
   Be sure to also check out the **Max Throttle** and **Throttle Mode** options, and play around with a few settings. Can help with training quite a lot.
 
-2. **Build a Simple Track** : This isn't very well-documented, but the car should (theoretically) be able to train against any kind of track. To start off with, it might not be necessary to build a two-lane track with a striped center-lane. Try with a single lane with no center-line, or just a single strip that makes a circuit! At the least, you'll be able to do an end-to-end testing and verify that the software pipeline is all properly functional. Of course, as the next-step, you'll want to create a more standard track, and compete at a [meetup](https://diyrobocars.com/) nearest to you!
+2. **Build a Simple Track** : This isn't very well-documented, but the car should (theoretically) be able to train against any kind of track. To start off with, it might not be necessary to build a two-lane track with a striped center-lane. Try with a single lane with no center-line, or just a single strip that makes a circuit! At the least, you'll be able to do an end-to-end testing and verify that the software pipeline is all properly functional. Of course, as the next-step, you'll want to create a more standard track, and compete at a [meetup](https://diyrobocars.com/local-meetup-groups/) nearest to you!
 
 3. **Get help** : Try to get some helping hands from a friend or two. Again, this helps immensely with building the track, because it is harder than it looks to build a two-line track on your own! Also, you can save on resources (and tapes) by using a [ribbon](https://www.amazon.com/gp/product/B00L2MLCNO) instead of tapes. They'll still need a bit of tapes to hold them, but you can reuse them and they can be laid down with a lot less effort (Although the wind, if you're working outside, might make it difficult to lay them down initially).
 
