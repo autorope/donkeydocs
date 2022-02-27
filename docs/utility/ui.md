@@ -1,5 +1,7 @@
 # Donkey UI
 
+Launch the Donkey graphical training interface by entering `donkey ui` in the command line. This works on Linux, Mac, and Windows, although if you're on Windows it's recommended that you use WSL (![Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)) running Ubuntu 20 instead to get full functionality.
+
 The Donkey UI currently contains four screens supporting the following workflows:
 
 1. The tub manager - a replacement for the web-based application launched through `donkey tubclean`
