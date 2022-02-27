@@ -19,6 +19,15 @@ your car with `Ctrl-c` in the ssh session for your car.
 Since the Raspberry Pi is not very powerful, we need to transfer the data
 to a PC computer to train. The Jetson nano is more powerful, but still quite slow to train. If desired, skip this transfer step and train on the Nano.
 
+## Training the easy, GUI way:
+
+The easiest way to do the training on your desktop is by using the [Donkey UI application](/utility/ui/#the-trainer).
+ ![Tub_manager UI](../assets/ui-tub-manager.png)
+
+If, however, you want to do the training with the command line, read on....
+
+## Training with the command line
+
 In a new terminal session on your host PC use rsync to copy your cars
 folder from the Raspberry Pi.
 
@@ -46,8 +55,6 @@ donkey train --tub <tub folder names comma separated> --model ./models/mypilot.h
 
 > _**Note**_ The library used for image augmentations and transformations has an incompatibility on the Jetson Nano.  We are working on an alternative, but currently image augmentation and transformation will not work on the Jetson Nano. 
 
-* Alternatively you can perform the training in the Donkey UI application as explained [here](/utility/ui/#the-trainer).
-  ![Trainer UI](../assets/ui-trainer.png)
 
 ## Copy model back to car
 
@@ -73,7 +80,7 @@ python manage.py drive --model ~/mycar/models/mypilot.h5
 python manage.py drive --model ~/mycar/models/mypilot.tflite --type tflite_linear
 ```
 
-* The car should start to drive on it's own, congratulations!
+* The car should start to drive on its own, congratulations!
 
 ## [Optional] Use TensorRT on the Jetson Nano
 
