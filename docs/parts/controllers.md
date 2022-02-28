@@ -300,4 +300,4 @@ Now that your controller is trusted, it should automatically connect with your R
 
 ## Creating a New or Custom Game Controller
 
-To discover or modify the button and axis mappings for your controller, you can use the [Joystick Wizard](/utility/donkey.html#joystick-wizard). The Joystick Wizard will write a custom controller named 'my_joystick.py' to your mycar folder.  To use the custom controller, set `CONTROLLER_TYPE="custom"` in your myconfig.py.
+To discover or modify the button and axis mappings for your controller, you can use the [Joystick Wizard](/utility/donkey/#joystick-wizard). The Joystick Wizard will write a custom controller named 'my_joystick.py' to your mycar folder.  To use the custom controller, set `CONTROLLER_TYPE="custom"` in your myconfig.py.
