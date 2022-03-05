@@ -28,6 +28,7 @@ pages:
       - 'Odometry/encoders': parts/odometry.md
       - 'RC Hat': parts/rc_hat.md
       - 'Keras': parts/keras.md
+      - 'Fastai': parts/fastai.md
       - 'Stores': parts/stores.md
       - 'IMU': parts/imu.md
       - 'Lidar': parts/lidar.md
