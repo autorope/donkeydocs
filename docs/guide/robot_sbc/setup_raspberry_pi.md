@@ -223,7 +223,7 @@ cd projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
 pip install -e .[pi]
 pip install numpy --upgrade
 
