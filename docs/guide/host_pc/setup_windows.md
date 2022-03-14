@@ -114,10 +114,19 @@ cd projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
 ```
 
-> NOTE:  The `dev` branch has the latest (unstable) version of donkeycar with experimental features.
+> NOTE:  The `main` branch has the latest (unstable) version of donkeycar with experimental features.
+
+* Get a stable release from Github:
+
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+git checkout tags/4.3.6
+```
 
 * Install Donkeycar into Python
 
@@ -176,10 +185,21 @@ cd projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
 ```
 
-> NOTE:  The `dev` branch has the latest (unstable) version of donkeycar with experimental features.
+> NOTE:  The `main` branch has the latest (unstable) version of donkeycar with experimental features.
+
+* Get a stable release from Github:
+
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+git checkout tags/4.3.6
+```
+
+
 
 * Install Donkeycar into Python
 
