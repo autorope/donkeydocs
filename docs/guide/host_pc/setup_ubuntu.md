@@ -25,7 +25,16 @@ cd projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
+```
+
+* To get a stable release
+
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+git checkout tags/4.3.6
 ```
 
 * If this is not your first install, update Conda and remove old donkey
