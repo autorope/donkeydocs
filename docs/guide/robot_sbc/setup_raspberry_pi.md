@@ -203,7 +203,7 @@ This needs to be done only once:
 
 ```bash
 python3 -m virtualenv -p python3 env --system-site-packages
-echo "source env/bin/activate" >> ~/.bashrc
+echo "source ~/env/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 ```
 
