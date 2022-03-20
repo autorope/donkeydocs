@@ -40,7 +40,7 @@ sudo apt-get install -y openmpi-doc openmpi-bin libopenmpi-dev libopenblas-dev
 ```bash
 pip3 install virtualenv
 python3 -m virtualenv -p python3 env --system-site-packages
-echo "source env/bin/activate" >> ~/.bashrc
+echo "source ~/env/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 ```
 
