@@ -226,10 +226,8 @@ cd donkeycar
 git checkout main
 pip install -e .[pi]
 pip install numpy --upgrade
-
-curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=1DCfoSwlsdX9X4E3pLClE1z0fvw8tFESP" > /dev/null
-CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
-curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=1DCfoSwlsdX9X4E3pLClE1z0fvw8tFESP" -o tensorflow-2.2.0-cp37-cp37m-linux_armv7l.whl
+pip install gdown
+gdown "https://drive.google.com/uc?export=download&confirm=${CODE}&id=1DCfoSwlsdX9X4E3pLClE1z0fvw8tFESP" -O tensorflow-2.2.0-cp37-cp37m-linux_armv7l.whl
 pip install tensorflow-2.2.0-cp37-cp37m-linux_armv7l.whl
 ```
 
