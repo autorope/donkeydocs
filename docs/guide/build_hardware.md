@@ -20,20 +20,18 @@ The latest version of the software installation instructions are maintained in t
 
 ## Choosing a Car
 
-There are 4 fully supported chassis all made under the "Exceed" Brand:
+There are 4 fully supported chassis all made under the "Exceed" Brand, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html)
 
-*  Exceed Magnet [Blue](https://amzn.to/2BkBRka)
+*  Exceed Magnet [Blue](https://amzn.to/2BkBRka), [Red](https://amzn.to/3qKksIC)
 *  Exceed Desert Monster [Green](https://amzn.to/2MhOfn6)
 *  Exceed Short Course Truck  [Green](https://amzn.to/2Bek0ew),  [Red](https://amzn.to/3cmCNkE)
 *  Exceed Blaze [Blue](https://amzn.to/3cnP9ci), [Yellow](https://amzn.to/2zOGthR), [Wild Blue](https://amzn.to/3dkI4uD), [Max Red](https://amzn.to/2TWOxE8)
-
-Note: If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html)
 
 These cars are electrically identical but have different tires, mounting and other details.  It is worth noting that the Desert Monster, Short Course Truck and Blaze all require adapters which can be easily printed or purchased from the donkey store.  These are the standard build cars because they are mostly plug and play, both have a brushed motor which makes training easier, they handle rough driving surfaces well and are inexpensive.
 
 Here is a [video](https://youtu.be/UucnCmCAGTI) overview of the different cars and how to assemble them.
 
-In addition there are 3 more cars supported under the "Donkey Pro" name.  These are 1/10 scale cars which means that they are bigger, perform a little better and are slightly more expensive.  They can be found here:
+For advanced users there 3 more cars supported under the "Donkey Pro" name.  These are 1/10 scale cars which means that they are bigger, perform a little better and are slightly more expensive.  They can be found here:
 
 *  HobbyKing Trooper (not pro version) [found here](https://hobbyking.com/en_us/turnigy-trooper-sct-4x4-1-10-brushless-short-course-truck-arr.html?affiliate_code=XFPFGDFDZOPWEHF&_asc=9928905034)
 *  HobbyKing Mission-D [found here](https://hobbyking.com/en_us/1-10-hobbykingr-mission-d-4wd-gtr-drift-car-arr.html?affiliate_code=XFPFGDFDZOPWEHF&_asc=337569952)
