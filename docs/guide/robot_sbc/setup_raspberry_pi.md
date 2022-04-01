@@ -225,10 +225,7 @@ git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
 pip install -e .[pi]
-pip install numpy --upgrade
-
-wget https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.2.0/tensorflow-2.2.0-cp37-none-linux_armv7l.whl
-pip install tensorflow-2.2.0-cp37-none-linux_armv7l.whl
+pip install https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.2.0/tensorflow-2.2.0-cp37-none-linux_armv7l.whl
 ```
 
 You can validate your tensorflow install with
