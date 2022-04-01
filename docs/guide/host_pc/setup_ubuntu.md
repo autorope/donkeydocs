@@ -34,7 +34,7 @@ git checkout main
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git fetch --all --tags
-git checkout tags/4.3.6
+git checkout tags/4.3.6.1
 ```
 
 * If this is not your first install, update Conda and remove old donkey
