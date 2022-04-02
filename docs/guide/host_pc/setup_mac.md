@@ -20,7 +20,16 @@ cd projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
+```
+
+* Get a stable release from Github.
+
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+git checkout tags/4.3.6.1
 ```
 
 * If this is not your first install, update Conda and remove old donkey
@@ -34,6 +43,15 @@ conda env remove -n donkey
 
 ```bash
 conda env create -f install/envs/mac.yml
+conda activate donkey
+pip install -e .[pc]
+```
+We have observed that the `conda` installation can be slow (not as slow in OSX as in Linux, but 
+still slow). If the install looks like it's hanging then you can install with `mamba` instead. 
+This should take < 5 min. In that case please run:
+```bash
+conda install mamba -n base -c conda-forge
+mamba env create -f install/envs/mac.yml
 conda activate donkey
 pip install -e .[pc]
 ```

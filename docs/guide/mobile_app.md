@@ -24,6 +24,8 @@ Robocar Controller is a mobile app designed to provide a “commandless” user 
 ## Quickstart Guide
 Please refer to the <a href="https://medium.com/robocar-store/robocar-controller-quick-start-guide-bdf8cb16d7ce?source=friends_link&sk=8f21a5792f81a1d340abe9433d78cf5b" target="_blank">quick start guide here</a>.
 
+> If you do not want to use the prebuilt image then you can install the server component onto your Donkey Car manually.  See [Optional Manual Installation](#optional-manual-installation) below.
+
 
 ## Features Details
 ### Built-in Hotspot 
@@ -106,6 +108,53 @@ If you are using MM1, the app shows you the current battery level in percentage.
 ## Report a problem
 If you encountered a problem, please file an issue on [this github project](https://github.com/robocarstore/donkeycar_controller).
 
+## Optional Manual Installation
+If you can not or do not want to use the prebuild SD image for you Donkey Car, then you can install the server component onto your Donkey car manually.
+[Donkey Car console](https://github.com/robocarstore/donkeycar-console) is a management software of the donkey car that provides a rest-based API to support Donkey Car mobile app. 
+
+> _**Note**_ This software currently supports **RaspberryPi 4B only**.
+
+#### 1. Complete the [Setup for RaspberryPi](robot_sbc/setup_raspberry_pi.md)
+#### 2. Clone the Donkey Car Console project
+
+```bash
+git clone https://github.com/robocarstore/donkeycar-console
+sudo mv donkeycar-console /opt
+cd /opt/donkeycar-console
+```
+
+#### 3. Install dependencies
+
+```bash
+pip install -r requirements/production.txt
+```
+
+#### 4. Run the init script to set up the database
+
+```bash
+python manage.py migrate
+```
+
+#### 5. Test the server if it is running properly
+
+```bash
+python manage.py runserver 0.0.0.0:8000
+```
+
+Go to http://your_pi_ip:8000/vehicle/status. If it returns something without error, it works.
+
+#### 6. Install the server as a service
+
+```bash
+sudo ln -s gunicorn.service /etc/systemd/system/gunicorn.service
+```
+
+#### 7. Install the mobile app on your phone
+
+- [iOS](https://apps.apple.com/app/robocar-controller/id1508125501)
+- [Android](https://play.google.com/store/apps/details?id=com.robocarLtd.RobocarController)
+
+Make sure your phone is connected to the same network as your Pi (if it won't connect, try turning off your cell data). Fire up the mobile app and you can search your car using the mobile app.
 
 
 ## FAQ

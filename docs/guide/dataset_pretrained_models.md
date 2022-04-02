@@ -14,11 +14,10 @@ The purpose of providing a sample dataset and pre-trained models here is to help
 - Not available yet
 
 
-### Contributing dataset
+## Contributing dataset
 
 If you have a dataset you want to contribute, please contact us on Discord #dataset channel, or raise a PR on [donkey_datasets](https://github.com/autorope/donkey_datasets). Thank you.
 
 
 ## Pre-trained models
-- Not available yet
-
+Now available on [donkey_datasets](https://github.com/autorope/donkey_datasets). We plan to grow the repository of pre-trained models.

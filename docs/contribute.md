@@ -4,6 +4,8 @@
 Donkey is an open source project to help accelerate the development of
 self driving autos.
 
+There is a very good explanation of the DonkeyCar software architecture and theory [here](https://robocaresslingen.github.io/BookDownDocu/donkeyCarSoftwareAnalysis.html#how-to-add-parts-to-a-vehicle)
+
 ## Guiding Development Principles
 
 * **Modularity**: A self driving system is composed of standalone,

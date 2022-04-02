@@ -1,7 +1,12 @@
 # About Donkey&reg;
 
-Donkey is a high level self driving library written in Python. It was
-developed with a focus on enabling fast experimentation and easy contribution.
+Donkey is a Self Driving Car Platform for hobby remote control cars.  Donkey Car is made up of several components:
+* It is a high level self driving library written in Python. It was developed with a focus on enabling fast experimentation and easy contribution.
+* It is an Open Source Hardware design that makes it easy for you to build your own car
+* It is a simulator that enables you to use Donkey without hardware
+* It is a community of enthusiasts, developers and data scientists that enjoy racing, coding and discussing the future of ML, Cars and who will win the next race.
+
+Enjoy
 
 ---------
 

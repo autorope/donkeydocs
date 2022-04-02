@@ -10,10 +10,11 @@
 * [Step 6: Update and Upgrade](#step-6-update-and-upgrade)
 * [Step 7: Raspi-config](#step-7-raspi-config)
 * [Step 8: Install Dependencies](#step-8-install-dependencies)
-* [Step 9: Install Optional OpenCV Dependencies](#step-9-install-optional-opencv-dependencies)
+* [Step 9: (Optional) Install OpenCV Dependencies](#step-9-optional-install-opencv-dependencies)
 * [Step 10: Setup Virtual Env](#step-10-setup-virtual-env)
 * [Step 11: Install Donkeycar Python Code](#step-11-install-donkeycar-python-code)
-* [Step 12: Install Optional OpenCV](#step-12-install-optional-opencv)
+* [Step 12: (Optional) Install OpenCV](#step-12-optional-install-opencv)
+* [Step 13: (Optional) Install Mobile App](#step-13-optional-install-mobile-app)
 * Then [Create your Donkeycar Application](/guide/create_application/)
 
 ## Step 1: Flash Operating System
@@ -22,7 +23,9 @@
 
 You need to flash a micro SD image with an operating system.
 
-1. Download [Latest Raspian(Buster)](https://downloads.raspberrypi.org/raspbian_lite_latest). 
+> Note: Raspbian Latest (bullseye) is not compatible with the Python camera bindings.  The underlying camera system has changed and it has broken any software that uses the Python camera bindings.
+
+1. Download [Raspian Legacy (Buster)](https://downloads.raspberrypi.org/raspios_oldstable_lite_armhf/images/raspios_oldstable_lite_armhf-2021-12-02/2021-12-02-raspios-buster-armhf-lite.zip). 
 2. Follow OS specific guides [here](https://www.raspberrypi.org/documentation/installation/installing-images/).
 3. Leave micro SD card in your machine and edit/create some files as below:
 
@@ -36,7 +39,10 @@ This is formatted with the common FAT type and is where we will edit some files 
 
 > Note: If __boot__ is not visible right away, try unplugging and re-inserting the memory card reader.
 
-* Start a text editor: `gedit` on Linux. Notepad++ on Windows. TextEdit on a Mac.
+* Start a text editor
+    * `gedit` on Linux. 
+    * Notepad++ on Windows. 
+    * VI on Mac (type `vi /Volumes/boot/wpa_supplicant.conf` where `boot` is the name of the SD Card). 
 * Possible `country` codes to use can be found [here](https://www.thinkpenguin.com/gnu-linux/country-code-list)
 * Paste and edit this contents to match your wifi, adjust as needed:
 
@@ -83,7 +89,7 @@ sudo vi /media/userID/UUID/etc/hosts
 
 ## Step 4: Enable SSH on Boot
 
-Put a file named __ssh__ in the root of your __boot__ partition.
+Put a file named __ssh__ in the root of your __boot__ partition.  On Mac or Linux this can be done using the `touch` command.  For example, on the Mac, `touch /Volumes/boot/ssh` where `boot` is the name of the SD card.
 
 Now your SD card is ready. Eject it from your computer - wait until system shows the writing is done
 and it is safe to remove card. Ensure Pi is turned off, put the card in the Pi and power on the Pi.
@@ -157,7 +163,7 @@ or via Putty.
 ## Step 6: Update and Upgrade
 
 ```bash
-sudo apt-get update
+sudo apt-get update --allow-releaseinfo-change
 sudo apt-get upgrade
 ```
 
@@ -180,10 +186,10 @@ Choose `<Finish>` and hit enter.
 ## Step 8: Install Dependencies
 
 ```bash
-sudo apt-get install build-essential python3 python3-dev python3-pip python3-virtualenv python3-numpy python3-picamera python3-pandas python3-rpi.gpio i2c-tools avahi-utils joystick libopenjp2-7-dev libtiff5-dev gfortran libatlas-base-dev libopenblas-dev libhdf5-serial-dev git ntp
+sudo apt-get install build-essential python3 python3-dev python3-pip python3-virtualenv python3-numpy python3-picamera python3-pandas python3-rpi.gpio i2c-tools avahi-utils joystick libopenjp2-7-dev libtiff5-dev gfortran libatlas-base-dev libopenblas-dev libhdf5-serial-dev libgeos-dev git ntp
 ```
 
-## Step 9: Optional - Install OpenCV Dependencies
+## Step 9: (Optional) Install OpenCV Dependencies
 
 If you are going for a minimal install, you can get by without these. But it can be handy to have OpenCV.
 
@@ -217,23 +223,18 @@ cd projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
 pip install -e .[pi]
-pip install numpy --upgrade
-
-curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=1DCfoSwlsdX9X4E3pLClE1z0fvw8tFESP" > /dev/null
-CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
-curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=1DCfoSwlsdX9X4E3pLClE1z0fvw8tFESP" -o tensorflow-2.2.0-cp37-cp37m-linux_armv7l.whl
-pip install tensorflow-2.2.0-cp37-cp37m-linux_armv7l.whl
+pip install https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.2.0/tensorflow-2.2.0-cp37-none-linux_armv7l.whl
 ```
 
 You can validate your tensorflow install with
 
 ```bash
-python -c "import tensorflow"
+python -c "import tensorflow; print(tensorflow.__version__)"
 ```
 
-##  Step 12: Optional - Install OpenCV
+##  Step 12: (Optional) Install OpenCV
 
 If you've opted to install the OpenCV dependencies earlier, you can install Python OpenCV bindings now with command:
 
@@ -254,6 +255,11 @@ python -c "import cv2"
 ```
 
 And if no errors, you have OpenCV installed!
+
+## Step 13: (Optional) Install Mobile App
+There is a mobile application available on the iPhone and Android that provides an alternative user experience.  It can be installed manually or by downloading an SD card image.  Follow these [instructions](/guide/mobile_app/#optional-manual-installation) to install manually.
+
+> -**Note**- The server component currently supports **RaspberryPi 4B only**.
 
 ----
 

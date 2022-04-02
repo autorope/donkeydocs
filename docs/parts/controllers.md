@@ -15,31 +15,8 @@ The default controller to drive the car with your phone or browser. This has a w
 If you bought an RC car then it might have come with a standard 2.4GHz car radio and receiver as shown in picture below. This can be used to drive the car. 
 ![wiring diagram](../assets/rc.jpg)
 
-* Hardware setup
- 
-Using female-to-female jumper cables connect the following pins from your RC receiver to your RPi GPIO row as shown the diagram below
-![wiring diagram](../assets/rc_wiring.jpg)
+You can also use the RaspberryPi pins to output directly to the car's servo and motor controller, without the need for an I2C servo driver board. A full tutorial on doing this is [here](rc.md).
 
-Any of the RC receiver's + pin should go to any of the RPi's 3v pins. Any of the receiver's - pins can go to any RPi ground pin.
-
-For the three RC channels, CH-1 is for steering, CH-2 for throttle and CH-3 is linked to a press button on the remote control. The default connections are steering: GPIO 26, throttle: GPIO 20, channel 3 (for record deletion): GPIO 19.
-
-* Software setup
-
-You must have `pigpio` installed. Do so with these commands: `sudo apt update && sudo apt install python3-pigpio && sudo systemctl enable pigpiod & sudo systemctl start pigpiod`
-
-The `basic` template which you install with `donkey createcar --path ~/mycar --template basic` has an additional function `manage.py calibrate` which you should use to zero your angle and throttle PWM signal. 
-
-> Note: The PWM signal drifts over time. Hence check your calibration regularly before starting recording.
-
-To use RC control, change 'USE_RC' to 'True' in your myconfig.py file in your mycar directory. If you used different GPIO pins than the above, you can set them here, too.
-  
-```#RC CONTROL
-USE_RC = True
-STEERING_RC_GPIO = 26
-THROTTLE_RC_GPIO = 20
-DATA_WIPER_RC_GPIO = 19
-```
 
 ## Joystick Controller
 
@@ -218,6 +195,59 @@ To disconnect, kill the process `ds4drv` and hold **PS** for 10 seconds to power
 This code presumes the built-in linux driver for 'Xbox Wireless Controller'; this is pre-installed on Raspbian, so there is no need to install any other drivers.  This will generally show up on /dev/input/js0.  There is another userland driver called xboxdrv; this code has not been tested with that driver.
 
 The XBox One controller requires that the bluetooth disable_ertm parameter be set to true; to do this:
+
+#### **Jetson Nano**
+Adapted from: https://www.roboticsbuildlog.com/hardware/xbox-one-controller-with-nvidia-jetson-nano
+
+1. Install these python libraries before we disable ertm.
+```
+sudo apt-get install nano
+```
+
+2. Add Non-root access to your input folder:
+```
+sudo usermod -a -G dialout $USER
+sudo reboot
+```
+
+3. Install sysfsutils
+```
+sudo apt-get install sysfsutils
+```
+4.  Edit the config to disable bluetooth ertm
+```
+sudo nano /etc/sysfs.conf
+```
+- Append this to the end of the config
+```
+/module/bluetooth/parameters/disable_ertm=1
+```
+5. Reboot your computer
+```
+sudo reboot
+```
+6. Re-pair the Xbox One Bluetooth Controller
+- Unpair (forget) the controller first if you already tried to pair it, then pair it again.  You can do this with the Bluetooth Manager GUI appliation that ships with Jetpack or if you are using command line, then use bluetoothctl:
+
+  - Open terminal and type:
+    ```
+    bluetoothctl
+    ```
+  - then you should see the list of devices you have paired with and their corresponding MAC address. If you do not, type:
+    ```
+    paired-devices
+    ```
+  - To un-pair a device type (replace aa:bb:cc:dd:ee:ff with the MAC address of the device to un-pair):
+    ```
+    remove aa:bb:cc:dd:ee:ff
+    exit
+    ```
+- Pair your device using either Bluetooth Manager GUI or bluetoothctl (see RaspberryPi OS instruction starting with `sudo bluetoothctl`)
+
+Once paired you should have a solid light on the xbox button and a stable bluetooth connection.
+
+
+#### **RaspberryPi OS**
 
 * edit the file `/etc/modprobe.d/xbox_bt.conf`  (that may create the file; it is commonly not there by default)
 * add the line: `options bluetooth disable_ertm=1`

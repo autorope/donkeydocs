@@ -30,7 +30,16 @@ cd projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
+```
+
+* Get a stable release from Github.
+
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+git checkout tags/4.3.6.1
 ```
 
 * If this is not your first install, update Conda and remove old donkey
@@ -55,7 +64,7 @@ Note: if you are using ZSH (you'll know if you are), you won't be able to run `p
 If you have an NVidia card, you should update to the lastest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
 
 ```bash
-conda install tensorflow-gpu==2.2.0
+pip install tensorflow-gpu==2.2.0
 ```
 
 * Optionally configure PyTorch to use GPU - only for NVidia Graphics cards
@@ -105,10 +114,19 @@ cd projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
 ```
 
-> NOTE:  The `dev` branch has the latest (unstable) version of donkeycar with experimental features.
+> NOTE:  The `main` branch has the latest (unstable) version of donkeycar with experimental features.
+
+* Get a stable release from Github:
+
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+git checkout tags/4.3.6
+```
 
 * Install Donkeycar into Python
 
@@ -145,15 +163,15 @@ donkey createcar --path \Users\<username>\projects\mycar --template complete
 The Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environment -- including most command-line tools, utilities, and applications -- directly on Windows, unmodified, without the overhead of a traditional virtual machine or dualboot setup.
 
 * Install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
-  1.  Turn on Windows 10 "Windows Subsystem for Linux" Feature (Settings > Apps > Programs and Features > Turn Windows features on or off)
+  1.  If using Windows 10 (this is not necessary for Windows 11), turn on Windows 10 "Windows Subsystem for Linux" Feature (Settings > Apps > Programs and Features > Turn Windows features on or off)
   2.  Download a Linux Distribution from the Microsoft Store (recommend [Ubuntu](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab) Latest)
   3.  Open the Ubuntu App and configure.
 
 * Open the Ubuntu App to get a prompt window via Start Menu | Ubuntu
 
-* Install `git` using `sudo apt install git`
+* Install `pip` using `sudo apt install python3-pip`
 
-* Install `python3` using `sudo apt install python3`
+* Install the following two libraries for the UI to work: `sudo apt-get install libmtdev1 xclip`
 
 * Change to a directory that you would like to use as the head of all your projects.
 
@@ -167,16 +185,29 @@ cd projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
 ```
 
-> NOTE:  The `dev` branch has the latest (unstable) version of donkeycar with experimental features.
+> NOTE:  The `main` branch has the latest (unstable) version of donkeycar with experimental features.
+
+* Get a stable release from Github:
+
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+git checkout tags/4.3.6
+```
+
+
 
 * Install Donkeycar into Python
 
 ```
 pip3 install -e .[pc]
 ```
+
+Once you're done with this, close the Ubuntu terminal and then reopen it so the path changes take effect.
 
 * Experimental Support - GPU Users: Install Tensorflow GPU - only for NVIDIA Graphics cards
 

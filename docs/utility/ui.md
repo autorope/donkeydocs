@@ -1,15 +1,18 @@
 # Donkey UI
 
-The Donkey UI currently contains three screens supporting the following workflows:
+Launch the Donkey graphical training interface by entering `donkey ui` in the command line. This works on Linux, Mac, and Windows, although if you're on Windows it's recommended that you use WSL ([Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)) running Ubuntu 20 instead to get full functionality.
 
-1. The tub manager - this is a replacement for the web-based application launched through `donkey tubclean`
+The Donkey UI currently contains four screens supporting the following workflows:
+
+1. The tub manager - a replacement for the web-based application launched through `donkey tubclean`
    
-1. The trainer - this is a UI based alternative to train the pilot. Note, for longer trainings containing larger tubs or batches it is recommended to perform these in the shell using the `donkey train` command. The UI based training is geared towards an experimental and rapid analysis cycle consisting of:
+1. The trainer - a UI based alternative to train the pilot. Note, for longer trainings containing larger tubs or batches it is recommended to perform these in the shell using the `donkey train` command. The UI based training is geared towards an experimental and rapid analysis cycle consisting of:
      * data manipulation / selection
      * training
      * pilot benchmarking
 
-1. The pilot arena - here you can test two pilots' performance  against each other.
+1. The pilot arena - here you can test two pilots' performance against each other.
+1. The car connector - can pull tub data from the car and push back trained pilots or even start/stop the car. The screen does not work under windows.
 
 **_Note_:** Under linux the app depends on `xclip`, if this is not installed, then please run:
 ```bash
@@ -108,9 +111,17 @@ With the car connector you can transfer the tub data from the car to your PC and
 
 
 
-### Future plans
+## Future plans
 1. Moving the car connector screen to a web interface, supported on all OS.
 1. Handling of multiple tubs.
 1. The ability to also use the filter in training without the need to edit the `myconfig.py` file.
 1. Migration of the `~/.donkeyrc` file to the kivy internal settings.
 1. Support using only a single pilot (or more than two) in the pilot arena.
+
+## Video tutorial
+You can find a video tutorial for the UI below
+
+[![Video tutorial](https://img.youtube.com/vi/J5-zHNeNebQ/0.jpg
+)](https://www.youtube.com/watch?v=J5-zHNeNebQ)
+
+

@@ -82,7 +82,7 @@ As you drive, this will create a tub of records in your data dir as usual.
 You will not need to rsync your data, as it was recorded and resides locally. You can train as usual:
 
 ```bash
-python manage.py train --model models/mypilot.h5
+donkey train --tub ./data --model models/mypilot.h5
 ```
 
 ## Test
@@ -419,6 +419,7 @@ Example:
 Client=>Sim. Move the car to the given position (training only)
 
 Fields: 
+
 * *pos_x* :  x world coordinate.
 * *pos_y* :  y world coordinate.
 * *pos_z* :  z world coordinate. 
@@ -473,9 +474,8 @@ Example:
 ### Node position and rotation
 Sim=>Client. node_position packet (received after sending a node_position packet)
 
-Fields: 
+Fields:
 
-Fields: 
 * *pos_x* :  x world coordinate.
 * *pos_y* :  y world coordinate.
 * *pos_z* :  z world coordinate. 

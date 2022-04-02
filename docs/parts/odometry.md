@@ -47,12 +47,15 @@ Now replace the plate and drill two holes so you can screw in the encoder sensor
 Use three female-to-female jumper cables and connect the sensor to your RPi GPIO pins as follows. Connect the GND, V+ (which might say 5V or 3.3V) and data pin (which will say "Out or "D0") to the RPi 5V, Ground and GPIO 13 as shown here (if your sensor encoder has four pins, ignore the one that says "A0"):
 ![wiring diagram](../assets/encoder_wiring.jpg)
 
+Note: if you're already using GPIO 13 for another reason, such as RC input or output, you can use any other free GPIO pin. Just change the `ODOM_PIN` number accordingly in the `myconfig.py` file as shown below.
+
 
 ## Software Setup
 
 Enable odometry in `myconfig.py`.
 
-```HAVE_ODOM = True                   # Do you have an odometer/encoder 
+```
+HAVE_ODOM = True                   # Do you have an odometer/encoder 
 ENCODER_TYPE = 'GPIO'            # What kind of encoder? GPIO|Arduino|Astar 
 MM_PER_TICK = 12.7625               # How much travel with a single tick, in mm. Roll you car a meter and divide total ticks measured by 1,000
 ODOM_PIN = 13                        # if using GPIO, which GPIO board mode pin to use as input

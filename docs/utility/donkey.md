@@ -70,26 +70,34 @@ donkey tubclean <folder containing tubs>
 This command trains the model.
 
 ```bash
-donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--type=(linear|categorical|inferred)] 
+donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--type=(linear|categorical|inferred)] [--transfer=<transfer model path>]
 ```
 * Uses the data from the `--tub` datastore
 * Uses the config file from the `--config` path (optionally)
-* Saves the model into `--model`
+* Saves the model into path provided by `--model`. Auto-generates a model name if omitted. _**Note:**_ There was a regression in version 4.2 where you only had to provide the model name in the model argument, like `--model mypilot.h5`. This got resolved in version 4.2.1. Please update to that version.
 * Uses the model type `--type`
+* Allows to continue training a model given by `--transfer`
 * Supports filtering of records using a function defined in the variable 
   `TRAIN_FILTER` in the `my_config.py` file. For example: 
+
+```bash
+def filter_record(record):
+    return record.underlying['user/throttle'] > 0
+
+TRAIN_FILTER = filter_record
+```
   
-  ```python
-  def filter_record(record):
-      return record['user/throttle'] > 0
-  
-  TRAIN_FILTER = filter_record
-  ```
   only uses records with positive throttle in training.
  
+* In version 4.3.0 and later all 3.x models are supported again:
 
-The `createcar` command still creates a `train.py` file for backward 
-compatibility, but it's not required for training.
+```bash
+donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--type=(linear|categorical|inferred|rnn|imu|behavior|localizer|3d)] [--transfer=<transfer model path>]
+```
+
+In addition, a Tflite model is automatically generated in training. This can be suppressed by setting `CREATE_TF_LITE = False` in your config. Also Tensorrt models can now be generated. To do so, you set `CREATE_TENSOR_RT = True`.
+
+* Note: The `createcar` command still creates a `train.py` file for backward  compatibility, but it's not required for training.
 
 
 ## Make Movie from Tub
@@ -99,7 +107,7 @@ This command allows you to create a movie file from the images in a Tub.
 Usage:
 
 ```bash
-donkey makemovie --tub=<tub_path> [--out=<tub_movie.mp4>] [--config=<config.py>] [--model=<model path>] [--model_type=(linear|categorical|rnn|imu|behavior|3d)] [--start=0] [--end=-1] [--scale=2] [--salient]
+donkey makemovie --tub=<tub_path> [--out=<tub_movie.mp4>] [--config=<config.py>] [--model=<model path>] [--model_type=(linear|categorical|inferred|rnn|imu|behavior|localizer|3d)] [--start=0] [--end=-1] [--scale=2] [--salient]
 ```
 
 * Run on the host computer or the robot
@@ -113,38 +121,40 @@ donkey makemovie --tub=<tub_path> [--out=<tub_movie.mp4>] [--config=<config.py>]
 * scale will cause ouput image to be scaled by this amount
 
 
-## Histogram
-
-This command will show a pop-up window showing the histogram of record values in a given tub.
-
-> Note: This should be moved from manage.py to donkey command
-
-Usage:
-
-```bash
-donkey tubhist <tub_path> --rec=<"user/angle">
-```
-
-* Run on the host computer
-
-* When the `--tub` is omitted, it will check all tubs in the default data dir
-
 ## Plot Predictions
 
-This command allows you plot steering and throttle against predictions coming from a trained model.
-
-> Note: This should be moved from manage.py to donkey command
+This command allows you to plot steering and throttle against predictions coming from a trained model.
 
 Usage:
 
 ```bash
-donkey tubplot <tub_path> [--model=<model_path>]
+donkey tubplot --tub=<tub_path> --model=<model_path> [--limit=<end_index>] [--type=<model_type>] 
 ```
 
 * This command may be run from `~/mycar` dir
 * Run on the host computer
 * Will show a pop-up window showing the plot of steering values in a given tub compared to NN predictions from the trained model
-* When the `--tub` is omitted, it will check all tubs in the default data dir
+* Optional `--limit=<end_index>` will use all records up to that index, defaults to 1000.
+* Optional `--type=<model_type>` will use a different model type than the `DEFAULT_MODEL_TYPE`
+
+
+## Tub Histogram
+
+**_Note_**: Requires version >= 4.3
+
+This command allows you to plot tub data (usually steering and throttle) as a histogram.
+
+Usage:
+
+```bash
+donkey tubhist --tub=<tub_path> --record=<record_name> --out=<output_filename>
+```
+
+* This command may be run from `~/mycar` dir
+* Run on the host computer
+* Will show a pop-up window showing the histogram plot of tub values in a given tub
+* Optional `--record=<record_name>` will only show the histogram of a certain data series, for example "user/throttle"
+* Optional `--out=<output_filename>` saves histogram under that name, otherwise the name is auto-generated from the tub path
 
 ## Continuous Rsync
 
@@ -228,7 +238,29 @@ Example:
 donkey cnnactivations --model models/model.h5 --image data/tub/1_cam-image_array_.jpg
 ```
 
-## Tub manager UI
+## Show Models database
+
+**_Note:_** This is only available in donkeycar >= 4.3.1.
+
+This lists the models that are stored in `models/database.json`. Displays information
+like model type, model name, tubs used in training, transfer model and a comment if
+`--comment` was used in training or the model was trained in the UI.
+
+
+Usage:
+
+```bash
+donkey models [--group] 
+```
+
+* Run from your `~/mycar` directory
+* If the optional `--group` flag is given, then the tub path info is combined into groups, 
+if different models used different tubs. Useful, if you use multiple tubs, and the models 
+have used different tub combinations because it compresses the output information. 
+* You need to install `pandas` first if you want to run it on the car 
+
+
+## Donkey UI
 
 **Note:** _This section only applies to version >= 4.2.0_
 

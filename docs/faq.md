@@ -54,7 +54,7 @@ conda activate donkey
 
 ```bash
 cd donkeycar
-git pull origin master
+git pull origin main
 donkey createcar --path ~/mycar --overwrite
 ```
 

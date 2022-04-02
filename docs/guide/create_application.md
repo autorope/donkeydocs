@@ -151,7 +151,7 @@ If you plan to use a joystick, take a side track over to [here](/parts/controlle
 
 **Raspberry Pi**:
 
-If you are on a raspberry pi and using the recommended pi camera, then no changes are needed to your __myconfg.py__. 
+If you are on a raspberry pi and using the recommended pi camera ("PICAM"), then no changes are needed to your __myconfg.py__. 
 
 **Jetson Nano**:
 
@@ -166,11 +166,11 @@ WEBCAM is a camera type that uses the pygame library, also typically for USB cam
 
 ## Troubleshooting
 
-If you are having troubles with your camera, check out our [Discourse FAQ for hardware troubleshooting](https://donkey.discourse.group/t/faq-troubleshooting/33). Check this forum for more help.
+If you are having troubles with your camera, check out our [Discord hardware channel](https://discord.gg/zcyzK69S) for more help.
 
-## Keeping Things Up To Date
+## Upgrade Donkey Car Software
 
-Make all config changes to __myconfig.py__ and they will be preserved through an update. If you are a long time user, you might be used to editing config.py. You should switch to editing myconfig.py instead. Later on, when changes occur that you would like to get, you can pull latest code, then issue a:
+Make all config changes to __myconfig.py__ and they will be preserved through an update. When changes occur that you would like to get, you can pull the latest code, then issue a:
 
 ```bash
 cd projects/donkeycar
@@ -180,8 +180,7 @@ donkey createcar --path ~/mycar --overwrite
 
 Your ~/mycar/manage.py, ~/mycar/config.py and other files will change with this operation, but __myconfig.py__ will not be touched. Your __data__ and __models__ dirs will not be touched.
 
-> Note: If you are updating from Donkey<3.0 to 3.0+ it is very likely you will need to start over with a new virtual environment. We've had a few users hit this snag.
-
 -------
 
-### Next [calibrate your car](/guide/calibrate/).
+## Next 
+[Calibrate your car](/guide/calibrate)

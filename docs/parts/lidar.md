@@ -2,6 +2,8 @@
 
 A Lidar sensor can be used with Donkeycar to provide obstacle avoidance or to help navigate on tracks with walls. It records data along with the camera during training and this can be used for training
 
+NOTE: Lidar is currently only supported in the Dev branch. To use it, after you git clone donkeycar, do a `git checkout dev`
+
 ![Donkey lidar](../assets/lidar.jpg) 
 ## Supported Lidars
 
@@ -18,11 +20,8 @@ Mount the Lidar underneath the camera canopy as shown above (the RPLidar A2M8 is
 
 Lidar requires the glob library to be installed. If you don't already have that, install it with `pip3 install glob2`
 
-Also install the Lidar driver: `pip3 install rplidar`
+Also install the Lidar driver: `pip install Adafruit_CircuitPython_RPLIDAR`
 
-Right now Lidar is only supported with the basic template. Install it as follows:
-
-`donkey createcar --path ~/lidarcar --template basic`
 
 Then go to the lidarcar directory and edit the myconfig.py file to ensure that the Lidar is turned on. The upper and lower limits should be set to reflect the areas you want your Lidar to "look at", omitting the areas that are blocked by parts of the car body. An example is shown below. For the RPLidar series, 0 degrees is in the direction of the motor (in the case of the A1M8) or cable (in the case of the A2M8)
 
@@ -30,8 +29,8 @@ Then go to the lidarcar directory and edit the myconfig.py file to ensure that t
 # LIDAR
 USE_LIDAR = True
 LIDAR_TYPE = 'RP' #(RP|YD)
-LIDAR_LOWER_LIMIT = 44 # angles that will be recorded. Use this to block out obstructed areas on your car and/or to avoid looking backwards. Note that for the RP A1M8 Lidar, "0" is in the direction of the motor 
-LIDAR_UPPER_LIMIT = 136
+LIDAR_LOWER_LIMIT = 90 # angles that will be recorded. Use this to block out obstructed areas on your car and/or to avoid looking backwards. Note that for the RP A1M8 Lidar, "0" is in the direction of the motor 
+LIDAR_UPPER_LIMIT = 270
 ```
 ![Lidar limits](../assets/lidar_angle.png) 
 

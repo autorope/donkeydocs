@@ -90,7 +90,7 @@ cd ~/projects
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git checkout master
+git checkout main
 pip3 install -e .[nano]
 ```
 
@@ -120,4 +120,4 @@ Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
 
 ----
 
-### Next, [create your Donkeycar application](/guide/create_application/).
+### Next, [create your Donkeycar application](/guide/create_application).
