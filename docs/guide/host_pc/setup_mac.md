@@ -51,7 +51,7 @@ still slow). If the install looks like it's hanging then you can install with `m
 This should take < 5 min. In that case please run:
 ```bash
 conda install mamba -n base -c conda-forge
-mamba env create -f install/envs/ubuntu.yml
+mamba env create -f install/envs/mac.yml
 conda activate donkey
 pip install -e .[pc]
 ```
