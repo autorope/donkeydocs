@@ -4,11 +4,10 @@ theme: readthedocs
 
 repo_url: https://github.com/autorope/donkeydocs/
 edit_uri: edit/master/docs
-google_analytics: ['UA-99215530-2', 'github.io/donkey']
 extra_css:
   - extra.css
 
-pages:
+nav:
   - Home: index.md
   - User Guide:
       - 'Build a car.': guide/build_hardware.md
