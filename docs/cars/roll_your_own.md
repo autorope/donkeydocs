@@ -1,6 +1,6 @@
 # Roll Your Own Car
 
-![Crunch](./assets/build_hardware/Crunch.png)
+![Crunch](../assets/build_hardware/Crunch.png)
 
 ## The Quick and Dirty
 
@@ -28,7 +28,7 @@ Raspberry Pi. In fact, the expected signals may not even exist at all in an
 integrated car.
 
 Here is an example of an integrated RX and ESC - typically these should be avoided:
-![RX ESC example](./assets/ESC_RX.png)
+![RX ESC example](../assets/ESC_RX.png)
 
 You also need to know some things about electronics, such as the difference
 between power rails and control signals, what the duration of a microsecond is,

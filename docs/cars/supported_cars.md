@@ -3,7 +3,7 @@
 ## Magnet and HSP 94186
 
 The magnet chassis was the first standard Donkey build.  However in many cases it may not be available.
-![donkey](./assets/build_hardware/donkey2.png)
+![donkey](../assets/build_hardware/donkey2.png)
 
 Try searching for both the Magnet and HSP 94186 on ebay, banggood, ali express etc.
 
@@ -17,7 +17,7 @@ The Desert Monster, SCT and Blaze are made by the same manufacturer as the Magne
 
 It is worth noting that the Desert Monster and SCT also has some nice characteristics including narrower, more road friendly tires and the Blaze has a slightly narrower stance which makes it less likely to hit things.
 
-![Desert Monster](./assets/build_hardware/Desert_Monster.png)
+![Desert Monster](../assets/build_hardware/Desert_Monster.png)
 To purchase one of these cars follow the following links:
 
 *  Exceed Magnet [Blue](https://amzn.to/2BkBRka)
@@ -57,11 +57,11 @@ To build a donkey pro the following parts are Needed
 
 To assemble the Raspberry pi to the chassis this assembly picture should clarify how it fits together.
 
-![assy](./assets/screw_assy.jpg)
+![assy](../assets/screw_assy.jpg)
 
 ## Tamaya TT-01 (Advanced Build)
 
-![donkey](./assets/build_hardware/TT01.png)
+![donkey](../assets/build_hardware/TT01.png)
 
 The TT-01 is a new build that is a higher end version of the Donkey.  This is an advanced build and requires existing RC skills or the desire to learn them - along with some willingness to trial and error.  For first time builders we recommend the Magnet.  That said, it has some pros and cons that people should be aware of, presented below.
 

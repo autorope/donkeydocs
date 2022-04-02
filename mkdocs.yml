@@ -7,43 +7,46 @@ edit_uri: edit/master/docs
 extra_css:
   - extra.css
 
+
 nav:
   - Home: index.md
   - User Guide:
-      - 'Build a car.': guide/build_hardware.md
-      - 'Install the software.': guide/install_software.md
-      - 'Create Donkeycar App.': guide/create_application.md
-      - 'Calibrate steering and throttle.': guide/calibrate.md
-      - 'Get driving.': guide/get_driving.md
-      - 'Train an autopilot.': guide/train_autopilot.md
-      - 'Dataset and pre-trained models': guide/dataset_pretrained_models.md
-      - 'Donkey Simulator.': guide/simulator.md
-      - 'Virtual Race League.': guide/virtual_race_league.md
-      - 'Mobile app': guide/mobile_app.md
+    - Build a car.: guide/build_hardware.md
+    - Install the software.: guide/install_software.md
+    - Create Donkeycar App.: guide/create_application.md
+    - Calibrate steering and throttle.: guide/calibrate.md
+    - Get driving.: guide/get_driving.md
+    - Train an autopilot.: guide/train_autopilot.md
+    - Dataset and pre-trained models: guide/dataset_pretrained_models.md
+    - Donkey Simulator.: guide/simulator.md
+    - Virtual Race League.: guide/virtual_race_league.md
+    - Mobile app: guide/mobile_app.md
   - Parts:
-      - 'About': parts/about.md
-      - 'Actuators': parts/actuators.md
-      - 'Controllers': parts/controllers.md
-      - 'Odometry/encoders': parts/odometry.md
-      - 'RC Hat': parts/rc_hat.md
-      - 'Keras': parts/keras.md
-      - 'Stores': parts/stores.md
-      - 'IMU': parts/imu.md
-      - 'Lidar': parts/lidar.md
-      - 'OLED': parts/oled.md
-      - 'Voice Control': parts/voice_control.md
-      - 'Stop Sign Detection': parts/stop_sign_detection.md
-      - 'Path following with the Intel Realsense T265': parts/path_following.md
+    - About: parts/about.md
+    - Actuators: parts/actuators.md
+    - Controllers: parts/controllers.md
+    - Odometry/encoders: parts/odometry.md
+    - RC: parts/rc.md
+    - RC Hat: parts/rc_hat.md
+    - Keras: parts/keras.md
+    - Stores: parts/stores.md
+    - IMU: parts/imu.md
+    - Lidar: parts/lidar.md
+    - OLED: parts/oled.md
+    - Pins: parts/pins.md
+    - Voice Control: parts/voice_control.md
+    - Stop Sign Detection: parts/stop_sign_detection.md
+    - Path following with the Intel Realsense T265: parts/path_following.md
   - Utilities:
-      - 'donkey': utility/donkey.md
-      - 'UI': utility/ui.md
+    - donkey: utility/donkey.md
+    - UI: utility/ui.md
   - Developer Guide:
-      - 'Create your own model': dev_guide/model.md
-
-  - Supported Cars: supported_cars.md
-  - Roll Your Own: roll_your_own.md
-  - Contribute: contribute.md
-  - Tests: tests.md
-  - Releases: release.md
-  - FAQ: faq.md
-  - Legacy: legacy.md
+    - Contribute: dev_guide/contribute.md
+    - Tests: dev_guide/tests.md
+    - Create your own model: dev_guide/model.md
+  - Cars:
+    - Supported Cars: cars/supported_cars.md
+    - Roll Your Own: cars/roll_your_own.md
+  - Support:
+    - FAQ: support/faq.md
+    - Legacy: support/legacy.md

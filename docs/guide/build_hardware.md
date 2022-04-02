@@ -45,7 +45,7 @@ For more detail and other options, follow the link to: [supported cars](/support
 
 ## Roll Your Own Car
 
-Alternatively If you know RC or need something the standard Donkey does not support, you can roll your own.  Here is a quick reference to help you along the way.  [Roll Your Own](../roll_your_own)
+Alternatively If you know RC or need something the standard Donkey does not support, you can roll your own.  Here is a quick reference to help you along the way.  [Roll Your Own](../cars/roll_your_own.md)
 
 ## Video Overview of Hardware Assembly
 
