@@ -1,5 +1,11 @@
 # About Donkey&reg;
 
+![Release](https://img.shields.io/github/v/release/autorope/donkeycar)
+[![All Contributors](https://img.shields.io/github/contributors/autorope/donkeycar)](#contributors-)
+![License](https://img.shields.io/github/license/autorope/donkeycar)
+![Discord](https://img.shields.io/discord/662098530411741184.svg?logo=discord&colorB=7289DA)
+----
+
 Donkey is a Self Driving Car Platform for hobby remote control cars.  Donkey Car is made up of several components:
 * It is a high level self driving library written in Python. It was developed with a focus on enabling fast experimentation and easy contribution.
 * It is an Open Source Hardware design that makes it easy for you to build your own car
