@@ -34,7 +34,8 @@ git checkout main
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git fetch --all --tags
-git checkout tags/4.3.6.1
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+git checkout $latestTag
 ```
 
 * If this is not your first install, update Conda and remove old donkey
