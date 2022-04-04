@@ -94,6 +94,16 @@ git checkout main
 pip3 install -e .[nano]
 ```
 
+* Alternatively, to get the latest stable release
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+git checkout $latestTag
+pip install -e .[nano]
+```
+
 ## Step 6: (Optional) Fix for pink tint on CSIC cameras
 
 If you're using a CSIC camera you may have a pink tint on the images. As described [here](https://jonathantse.medium.com/fix-pink-tint-on-jetson-nano-wide-angle-camera-a8ce5fbd797f), this fix will remove it.
