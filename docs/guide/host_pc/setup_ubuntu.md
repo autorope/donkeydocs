@@ -1,6 +1,6 @@
 # Install Donkeycar on Linux
 
-![donkey](/assets/logos/linux_logo.png)
+![donkey](/docs/assets/logos/linux_logo.png)
 
 > Note : tested on Ubuntu 20.04 LTS
 
