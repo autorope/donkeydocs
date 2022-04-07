@@ -29,7 +29,8 @@ git checkout main
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git fetch --all --tags
-git checkout tags/4.3.6.1
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+git checkout $latestTag
 ```
 
 * If this is not your first install, update Conda and remove old donkey
@@ -51,7 +52,7 @@ still slow). If the install looks like it's hanging then you can install with `m
 This should take < 5 min. In that case please run:
 ```bash
 conda install mamba -n base -c conda-forge
-mamba env create -f install/envs/ubuntu.yml
+mamba env create -f install/envs/mac.yml
 conda activate donkey
 pip install -e .[pc]
 ```

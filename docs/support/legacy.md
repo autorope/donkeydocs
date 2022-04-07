@@ -62,7 +62,8 @@ The newer design is pretty simple, just slip the camera into the slot, cable end
 ![donkey](../assets/build_hardware/assemble_camera.jpg)
 
 If you need to remove the camera the temptation is to push on the lens, instead push on the connector as is shown in these pictures.  
-![donkey](../assets/build_hardware/Remove--good.jpg) ![donkey](../assets/build_hardware/Remove--bad.jpg)
+![donkey](../assets/build_hardware/Remove--good.jpg) 
+![donkey](../assets/build_hardware/Remove--bad.jpg)
 
 **Design with Screws**
 
@@ -102,6 +103,6 @@ Once this is done, go back to step 7
 
 ## Software
 
-Congrats!  Now to get your get your car moving, see the [software instructions](guide/install_software.md) section.
+Congrats!  Now to get your get your car moving, see the [software instructions](../guide/install_software.md) section.
 
 ![donkey](../assets/build_hardware/donkey2.png)

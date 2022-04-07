@@ -40,7 +40,7 @@ sudo apt-get install -y openmpi-doc openmpi-bin libopenmpi-dev libopenblas-dev
 ```bash
 pip3 install virtualenv
 python3 -m virtualenv -p python3 env --system-site-packages
-echo "source env/bin/activate" >> ~/.bashrc
+echo "source ~/env/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 ```
 
@@ -92,6 +92,16 @@ git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
 pip3 install -e .[nano]
+```
+
+* Alternatively, to get the latest stable release
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+git checkout $latestTag
+pip install -e .[nano]
 ```
 
 ## Step 6: (Optional) Fix for pink tint on CSIC cameras
