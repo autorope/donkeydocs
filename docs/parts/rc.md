@@ -6,9 +6,10 @@ You can drive Donkey with nothing more than the RC controller your car probably 
 
 To do this you need to either connect some jumper cables from your RC receiver to the RPi GPIO pins and then do the same for your steering servo and motor controller (it's a little fiddly but works fine) or use our [Donkeycar RC Hat](https://store.donkeycar.com/collections/accessories/products/donkey-car-rc-hat) (shown above), which is plug and play and includes other nice stuff like a OLED screen, a fan, encoder support and even an e-stop option (like a remote kill switch) if you happen to have a 3Ch (or more) RC transmitter.
 
-NOTE: RC control is currently only supported in the Dev branch. To use it, after you git clone donkeycar, do a `git checkout dev`
 
 ## Hardware Setup
+
+**If you're using the RC Hat above, you can skip this hardware part -- the hat does it all for you!**
 
 You can use the GPIO pins for RC input, output or both. In the case of RC input, the RC controller replaces a bluetooth joystick. In the case of RC output, it replaces the I2C servo driver board. 
 
