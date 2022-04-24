@@ -30,6 +30,7 @@ nav:
     - RC Hat: parts/rc_hat.md
     - Keras: parts/keras.md
     - Stores: parts/stores.md
+    - 'Fastai': parts/fastai.md    
     - IMU: parts/imu.md
     - Lidar: parts/lidar.md
     - OLED: parts/oled.md
