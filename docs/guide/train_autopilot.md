@@ -8,7 +8,7 @@ neural network to drive like you. Here are the steps.
  Make sure you collect good data.
 
 1. Practice driving around the track a couple times.
-2. When you're confident you can drive 10 laps without mistake, restart the python mange.py process to create a new tub session. Press `Start Recording` if using web controller. The joystick will auto record with any non-zero throttle.
+2. When you're confident you can drive 10 laps without mistake, restart the python manage.py process to create a new tub session. Press `Start Recording` if using web controller. The joystick will auto record with any non-zero throttle.
 3. If you crash or run off the track press Stop Car immediately to stop recording. If you are using a joystick tap the Triangle button to erase the last 5 seconds of records.
 4. After you've collected 10-20 laps of good data (5-20k images) you can stop
 your car with `Ctrl-c` in the ssh session for your car.
