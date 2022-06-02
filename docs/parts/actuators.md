@@ -215,7 +215,7 @@ Requires installation of PyVESC from source for servo control (pip install git+h
   VESC_BAUDRATE= 115200 # baudrate for the serial communication. Shouldn't need to change this.
   VESC_TIMEOUT= 0.05 # timeout for the serial communication
   VESC_STEERING_SCALE= 0.5 # VESC accepts steering inputs from 0 to 1. Joystick is usually -1 to 1. This changes it to -0.5 to 0.5
-  VESC_STEERING_OFFSET = 1.0 # VESC accepts steering inputs from 0 to 1. Coupled with above change we move Joystick to 0 to 1
+  VESC_STEERING_OFFSET = 0.5 # VESC accepts steering inputs from 0 to 1. Coupled with above change we move Joystick to 0 to 1
 ```
 
 ## Differential Drive cars
