@@ -201,6 +201,8 @@ VESC is an advanced version of ESC that provides you a lot of customization opti
 This was tested with a VESC 6 and Traxxas Brushless Motor
 Follow this tutorial to update your VESC firmware and calibrate it: https://f1tenth.readthedocs.io/en/stable/getting_started/firmware/firmware_vesc.html
 It's important to use the servo out bin so that we can control steering with the VESC as well
+
+Requires installation of PyVESC from source for servo control (pip install git+https://github.com/LiamBindle/PyVESC.git@master)
 **Configuration**
 
 - use `DRIVETRAIN_TYPE = "VESC"` in myconfig.py
