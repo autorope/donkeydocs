@@ -27,7 +27,7 @@ The default web controller may be replaced with a one line change to use a physi
 ### These joysticks are known to work:
 
 * [Logitech Gamepad F710](https://www.amazon.com/Logitech-940-000117-Gamepad-F710/dp/B0041RR0TW)
-* [Sony PS3 Sixaxis OEM](https://www.ebay.com/sch/i.html?&_nkw=Sony+PS3+Sixaxis+OEM) (Not compatible with Jetson Nano)
+* [Sony PS3 Sixaxis OEM](https://www.ebay.com/sch/i.html?&_nkw=Sony+PS3+Sixaxis+OEM) (For Jetson Nano through sixad)
 * [Sony PS4 Dualshock OEM](https://www.ebay.com/sch/i.html?&_nkw=Sony+PS4+Dualshock+OEM)
 * [WiiU Pro](https://www.amazon.com/Nintendo-Wii-U-Pro-Controller-Black/dp/B00MUY0OFU)
 * [XBox Controller](https://www.amazon.com/Xbox-Wireless-Controller-Blue-one/dp/B01M0F0OIY)
@@ -89,6 +89,50 @@ To test that the Bluetooth PS3 remote is working, verify that `/dev/input/js0` e
 
 ```bash
 ls /dev/input/js0
+```
+
+Then use `jstest` on `/dev/input/js0`:
+```bash
+sudo apt install joystick
+jstest /dev/input/js0
+```
+
+### Bluetooth setup for Jetson Nano
+It appears PS3 controller has trouble connecting to Nano through standard bluetooth. `sixad`, originally developed by falkTX, then maintained by RetroPie team, can be used to connect PS3 controller on Jetson Nano. Note the standard bluetooth will become stale after `sixad` daemon is up and running.
+
+A guide is provided [here on RetroPie](https://retropie.org.uk/docs/PS3-Controller/#for-older-versions-of-retropie): 
+
+A better and easier way is just using RetroPie's sixad repo, it is up-to-date and has sixpair included.
+```bash
+git clone https://github.com/RetroPie/sixad.git
+cd sixad
+make
+sudo mkdir -p /var/lib/sixad/profiles
+sudo make install
+```
+
+Test connection with:
+```bash
+# Plug in the PS3 controller via USB
+sudo ./bins/sixpair # This is essentially the same as doing sixpair mentioned above
+
+# Unplug the controller
+sudo sixad --start # Ctrl-C to stop
+```
+
+The LEDs on the controller should blink and run, then a solid LED on after making a successful connection. You should see message on the screen like:
+```
+sixad-bin[2251]: started
+sixad-bin[2251]: sixad started, press the PS button now
+Watching... (5s)
+sixad-sixaxis[2316]: started
+sixad-sixaxis[2316]: Connected 'PLAYSTATION(R)3 Controller (00:16:FE:73:BE:E0)' [Battery 05]
+```
+
+To make `sixad` run on boot:
+```bash
+sudo systemctl enable sixad
+sudo systemctl start sixad
 ```
 
 #### Troubleshooting
