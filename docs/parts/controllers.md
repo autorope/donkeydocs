@@ -139,7 +139,109 @@ Sometimes when you plug-in the PS3 joystick it starts taking over your mouse. If
 xinput set-prop "Sony PLAYSTATION(R)3 Controller" "Device Enabled" 0
 ```
 
-## PS4 Controller
+## PS4 DualShock 4 Wireless Gamepad Controller
+The following instructions are intended for use with the Raspberry Pi 3 or 4 running Raspberry Pi OS Buster.
+The DS4 gamepad will be connected via bluetooth without installing any additional software.  Bluetoothd is a system service
+that runs as a daemon automatically on boot.  Bluetoothctl is a program to manage connection and pairing devices.
+
+#### Configure your user account to use Bluetoothctl without sudo
+Add the pi user to the bluetooth group. And then reboot so that the change takes effect properly.
+
+```bash
+sudo usermod -a -G bluetooth pi
+sudo reboot
+```
+
+#### Scan for your PS4 gamepad
+After reboot, run bluetoothctl, turn on scanner to find bluetooth devices.  See below for an example response. Note that
+the actual HEX characters will be different for your devices!
+
+
+```bash
+bluetoothctl
+<response> Agent registered
+<response> [bluetooth]# 
+scan on
+<response>
+[CHG] Controller BB:22:EE:77:BB:CC Discovering: yes
+[NEW] Device 10:20:30:40:50:60 10-20-30-40-50-60
+[NEW] Device 10:20:30:40:50:70 10-20-30-40-50-70
+[NEW] Device 10:20:30:40:50:80 10-20-30-40-50-80
+[NEW] Device 10:20:30:40:50:90 10-20-30-40-50-90
+[NEW] Device 20:AA:88:44:BB:10 WHSCL1
+```
+
+Wait a couple of minutes for the scanner to find all your existing bluetooth devices. Now set your gamepad in pairing mode
+by holding down the share button and the playstation button together until the light double flashes. You should see a
+new entry for a Wireless Controller.
+
+```bash
+<response>
+[NEW] Device 1C:AA:BB:99:DD:AA Wireless Controller
+```
+Turn off scanning to stop the status reporting
+```bash
+scan off
+```
+
+#### Connect to your PS4 gamepad
+You will now connect, pair and trust the PS4 gamepad wireless controller. Trusting the paired devices will allow you to reconnect to the device after the Raspberry Pi reboots. Copy the wireless controller address. You will
+type CONNECT "your wireless controller address", TRUST "your wireless controller address". In this case, "your wireless controller address" is 1C:AA:BB:99:DD:AA
+
+```bash
+connect 1C:AA:BB:99:DD:AA
+<response>
+Attempting to connect to 1C:AA:BB:99:DD:AA
+[CHG] Device 1C:AA:BB:99:DD:AA Connected: yes
+[CHG] Device 1C:AA:BB:99:DD:AA UUIDs: 00001124-0000-1000-8000-00805f9b34fb
+[CHG] Device 1C:AA:BB:99:DD:AA UUIDs: 00001200-0000-1000-8000-00805f9b34fb
+[CHG] Device 1C:AA:BB:99:DD:AA ServicesResolved: yes
+[CHG] Device 1C:AA:BB:99:DD:AA Paired: yes
+Connection successful
+```
+The PS4 gamepad light should now be solid. Now TRUST the PS4 gamepad wireless controller.
+```bash
+trust 1C:AA:BB:99:DD:AA
+<response>
+[CHG] Device 1C:AA:BB:99:DD:AA Trusted: yes
+Changing 1C:AA:BB:99:DD:AA trust succeeded
+```
+Type devices to see the paired-devices.
+
+```bash
+paired-devices
+<response>
+Device 1C:AA:BB:99:DD:AA Wireless Controller
+```
+
+Type quit or exit to quit the program bluetoothctl
+```bash
+quit
+```
+
+#### Use your PS4 gamepad wireless controller
+After booting your pi, press playstation button once.  The light will flash for about 5 seconds and then turn solid.  If
+the light goes off, try again. If this does work, run bluetoothctl and verify devices and paired-devices.
+
+```bash
+devices
+<response>
+Device 1C:AA:BB:99:DD:AA Wireless Controller
+
+paired-devices
+<response>
+Device 1C:A0:B8:9B:DB:A2 Wireless Controller
+```
+
+If it fails to connect, while running bluetoothctl, press the playstation button once.  A good response will be:
+```bash
+<response>
+[CHG] Device 1C:AA:BB:99:DD:AA Connected: yes
+```
+
+To disconnect the controller from the Raspberry Pi, press and hold the playstation button for 10 seconds.
+
+## PS4 Controller (for Raspian Stretch)
 
 The following instructions are based on [RetroPie](https://github.com/RetroPie/RetroPie-Setup/wiki/PS4-Controller#installation) and [ds4drv](https://github.com/chrippa/ds4drv).
 
