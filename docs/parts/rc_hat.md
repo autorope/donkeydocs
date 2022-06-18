@@ -47,7 +47,7 @@ Also set `use joystick` to True
 USE_JOYSTICK_AS_DEFAULT = True
 ```
 
-There are additional settings you can change in the `#PIGPIO RC control` section, such as reversing the direction of output or the pins connected, or adjusting the expect PWM pulse width (see [Standard RC with ESC and Steering Servo](https://docs.donkeycar.com/parts/actuators/#standard-rc-with-esc-and-steering-servo)) for a discussion of PWM (Pulse Width Modulation); TLDR - a 1000 nanosecond pulse means full left/reverse, a 1500 nano second pulse means straight/stopped and a 2000 nanosecond pulse means full right/forward.  The defaults are generally good and you can start with them.  If you see any issues when calibrating then read the `Troubleshooting` section to see how you might change one or more of these values to compensate.
+There are additional settings you can change in the `#PIGPIO RC control` section, such as reversing the direction of output or the pins connected, or adjusting the expect PWM pulse width (see [Standard RC with ESC and Steering Servo](https://docs.donkeycar.com/parts/actuators/#standard-rc-with-esc-and-steering-servo) for a discussion of Pulse Width Modulation); TLDR - a 1000 nanosecond pulse means full left/reverse, a 1500 nano second pulse means straight/stopped and a 2000 nanosecond pulse means full right/forward.  The defaults are generally good and you can start with them.  If you see any issues when calibrating then read the `Troubleshooting` section to see how you might change one or more of these values to compensate.
 
 Input options for reading RC controller:
  
