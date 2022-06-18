@@ -72,7 +72,7 @@ Optionally, you can use the RaspberryPi to generate PWM ((see [Standard RC with 
 The RC hat includes two 3-pin headers compatible with the servo cables that connect to the ESC and the steering servo.  Plug your car's servo into the Servo pins and the Motor Controller into the Motor pins. In all cases, make sure you plug them in the right way, noting the +,- and S (Signal) markings. Typically the black wire is "-", the red wire in the middle is "+" and the white wire is "S". 
 
 **Configuration:**
-For RC output, select `PWM_STEERING_THROTTLE` as your drive train type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
+For RC output, select `PWM_STEERING_THROTTLE` as your drive train type in your myconfig.py file. Uncomment the `DRIVE_TRAIN_TYPE` line (remove the leading `#`) and edit it as follows:
 
 ```python
 DRIVE_TRAIN_TYPE =  "PWM_STEERING_THROTTLE"
