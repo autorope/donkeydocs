@@ -7,17 +7,13 @@ To do so, you can either wire up it up manually as shown in [this tutorial](rc.m
 
 The Donkeycar RC hat can be purchased from the [Donkeycar Store](https://store.donkeycar.com/products/donkey-car-rc-hat). Note that it only works with the RaspberryPi, not the Jetson Nano, due to limitations with the way the Jetson handles its I/O pins. 
 
-To use the hat, just use the included 3-wire cables to connect your RC receiver to the RC 1 and RC 2 pins (corresponding to the RC receiver's Channel 1 and Channel 2). Then plug your car's servo into the Servo pins and the Motor Controller into the Motor pins. In all cases, make sure you plug them in the right way, noting the +,- and S (Signal) markings. Typically the black wire is "-", the red wire in the middle is "+" and the white wire is "S". 
-
 If you're using a standard [wheel encoder](odometry.md), you can plug it into the "Encoder" pins. You can also power the RaspberryPi from this board if you have a 5V source with the "Optional 5v power in" pins
 
 Once you've plugged in all the cables, you can move to the software setup
 
-## Software Setup
-
 There are two parts to the software setup.  The first part is setting up to read the RC Controller using the RC Hat.  The Second, optional, part is setting up the drive train so we can control the ESC and SERVO using the RC hat (so you don't need a PCA9685 anymore)/
 
-### Install PiGPIO
+## Install PiGPIO
 In both cases we are going to use the PiGPIO library to control the I/O pins (remember, this only works on a RaspberryPi).  Install PiGPIO from a command prompt as follows;
 ```bash
 sudo apt-get update
@@ -30,7 +26,7 @@ Then, on the command line enter this to set the PIGPIO daemon to always run on s
 sudo systemctl enable pigpiod & sudo systemctl start pigpiod
 ```
 
-### Reading RC Controller with RC Hat
+## Reading RC Controller with RC Hat
 To use the RC hat to read your RC controller, just use the included 3-wire cables to connect your RC receiver to the RC 1 and RC 2 pins (corresponding to the RC receiver's Channel 1 and Channel 2). In all cases, make sure you plug them in the right way, noting the +,- and S (Signal) markings. Typically the black wire is "-", the red wire in the middle is "+" and the white wire is "S". 
 
 Now edit your myconfig.py file to use the RC Hat to read the RC Controller. In your `mycar` directory, edit the myconfig.py files as follows:
@@ -65,7 +61,7 @@ PIGPIO_INVERT = False              # rarely a controller uses an inverted pulse;
 PIGPIO_JITTER = 0.025              # threshold below which no signal is reported (debounce/noise rejection)
 ```
 
-### Controlling ESC and Steering Servo with RC Hat
+## Controlling ESC and Steering Servo with RC Hat
 Optionally, you can use the RaspberryPi to generate PWM ((see [Standard RC with ESC and Steering Servo](https://docs.donkeycar.com/parts/actuators/#standard-rc-with-esc-and-steering-servo))) for controller the motor speed and steering rather than a PCA9685 (there, see you just paid for the RC Hat!).  The RC hat includes two 3-pin headers compatible with the servo cables that connect to the ESC and the steering servo.  Plug your car's servo into the Servo pins and the Motor Controller into the Motor pins. In all cases, make sure you plug them in the right way, noting the +,- and S (Signal) markings. Typically the black wire is "-", the red wire in the middle is "+" and the white wire is "S". 
 
 * For RC output, select `PWM_STEERING_THROTTLE` as your drive train type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
@@ -91,11 +87,11 @@ PWM_STEERING_THROTTLE = {
 }
 ```
 
-### Calibration
+## Calibration
 After configuring the RC hat to read the RC controller and optionally control the ESC and steering servo you should do the normal [calibration](https://docs.donkeycar.com/guide/calibrate/) step to figure out the correct steering and throttle PWM values for your car (and to make sure you've hooked things up correctly).
 
 
-## Troubleshooting
+### Troubleshooting
 
 If one channel is reversed (steering left goes right, etc), either reverse that channel on your RC transmitter (that's usually a switch or setting) or change it in the output options shown above by channging the PWM_INVERTED value for that channel to `True`.
 
@@ -109,15 +105,19 @@ USE_SSD1306_128_32 = True     # Enable the SSD_1306 OLED Display
 SSD1306_128_32_I2C_BUSNUM = 1 # I2C bus number
 SSD1306_RESOLUTION = 1 # 1 = 128x32; 2 = 128x64
 ```
-## Showing your IP address on startup. 
+### Showing your IP address on startup. 
 
 One of the cool things about having an OLED screen is that you can show your car's IP address on startup, so you can connect to it. Instructions to set that up are [here](https://diyrobocars.com/2021/12/29/show-your-raspberrypi-ip-address-on-startup-with-an-oled/)
 
-## Troubleshooting
+### Troubleshooting
 
 If you are unable to start the car, ensure that the `Adafruit_SSD1306` package is installed in your virtual environment. This should automatically be installed, if you are using a recent version of `donkeycar`.
 
 ```bash
 pip install Adafruit_SSD1306
 ```
+
+## Encoder
+If you're using a standard [wheel encoder](odometry.md), you can plug it into the "Encoder" pins, the setup the encoder configuration in your myconfig.py to use the pin that is exposed by the RC hat's encoder header.
+
 
