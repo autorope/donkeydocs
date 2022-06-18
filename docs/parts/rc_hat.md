@@ -1,7 +1,7 @@
 # Donkeycar RC Hat
 ![RC Hat for RaspberryPi](../assets/rc_hat.jpg "The Donkey RC Hat for RaspberryPi")
 
-If you started with a ready-to-run RC car, it probably came with a RC controller. Good news: you can use it with Donkeycar, using the RC controller for manual driving. You can also plug in the car's servo and motor controller directly into the RaspberryPi without the need for a special motor/servo controller board. 
+If you started with a ready-to-run RC car, it probably came with a RC controller. Good news: you can use it with Donkeycar, using the RC controller for manual driving. You can also plug in the car's servo and motor controller directly into the RaspberryPi without the need for a PCA9685 motor/servo controller board. 
 
 To do so, you can either wire up it up manually as shown in [this tutorial](rc.md) (which works, but has a lot of fiddly wires that can fall off) or do it far more neatly with the Donkeycar RC hat, shown above, which handles all the wiring for you, along with including an OLED screen and a fan. 
 
@@ -15,15 +15,27 @@ Once you've plugged in all the cables, you can move to the software setup
 
 ## Software Setup
 
-First, on the command line enter this to set the PIGPIO daemon to always run on startup:
+There are two parts to the software setup.  The first part is setting up to read the RC Controller using the RC Hat.  The Second, optional, part is setting up the drive train so we can control the ESC and SERVO using the RC hat (so you don't need a PCA9685 anymore)/
+
+### Install PiGPIO
+In both cases we are going to use the PiGPIO library to control the I/O pins (remember, this only works on a RaspberryPi).  Install PiGPIO from a command prompt as follows;
+```bash
+sudo apt-get update
+sudo apt-get install pigpio
+```
+
+Then, on the command line enter this to set the PIGPIO daemon to always run on startup:
 
 ```bash
 sudo systemctl enable pigpiod & sudo systemctl start pigpiod
 ```
 
-Next, in your `mycar` directory, edit the myconfig.py files as follows:
+### Reading RC Controller with RC Hat
+To use the RC hat to read your RC controller, just use the included 3-wire cables to connect your RC receiver to the RC 1 and RC 2 pins (corresponding to the RC receiver's Channel 1 and Channel 2). In all cases, make sure you plug them in the right way, noting the +,- and S (Signal) markings. Typically the black wire is "-", the red wire in the middle is "+" and the white wire is "S". 
 
-* For RC input, select `pigpio_rc` as your controller type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
+Now edit your myconfig.py file to use the RC Hat to read the RC Controller. In your `mycar` directory, edit the myconfig.py files as follows:
+
+* Select `pigpio_rc` as your controller type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
 
 ```python
 CONTROLLER_TYPE = 'pigpio_rc'
@@ -35,47 +47,53 @@ Also set `use joystick` to True
 USE_JOYSTICK_AS_DEFAULT = True
 ```
 
+There are additional settings you can change in the `#PIGPIO RC control` section, such as reversing the direction of output or the pins connected, or adjusting the expect PWM pulse width (see [Standard RC with ESC and Steering Servo](https://docs.donkeycar.com/parts/actuators/#standard-rc-with-esc-and-steering-servo)) for a discussion of PWM (Pulse Width Modulation); TLDR - a 1000 nanosecond pulse means full left/reverse, a 1500 nano second pulse means straight/stopped and a 2000 nanosecond pulse means full right/forward.
+
+Input options for reading RC controller:
+ 
+```python
+#PIGPIO RC control
+STEERING_RC_GPIO = 26              # gpio pin (in broadcom numbering) for reading the RC controller's steering
+THROTTLE_RC_GPIO = 20              # gpio pin (in broadcom numbering) for reading the RC Controller's throttle
+DATA_WIPER_RC_GPIO = 19            # gpio pin (in broadcom numbering) for reading the RC Controller's button
+PIGPIO_STEERING_MID = 1500         # PWM pulse in nanoseconds for 'straight` steering.  Adjust this value if your car cannot run in a straight line.
+PIGPIO_MAX_FORWARD = 2000          # PWM pulse in nanoseconds for max forward throttle.
+PIGPIO_STOPPED_PWM = 1500          # PWM pulse in nanoseconds for zero throttle
+PIGPIO_MAX_REVERSE = 1000          # PWM pulse in nanoseconds for max reverse throttle. 
+PIGPIO_SHOW_STEERING_VALUE = False
+PIGPIO_INVERT = False              # rarely a controller uses an inverted pulse; if so then set to True
+PIGPIO_JITTER = 0.025              # threshold below which no signal is reported (debounce/noise rejection)
+```
+
+### Controlling ESC and Steering Servo with RC Hat
+Optionally, you can use the RaspberryPi to generate PWM ((see [Standard RC with ESC and Steering Servo](https://docs.donkeycar.com/parts/actuators/#standard-rc-with-esc-and-steering-servo))) for controller the motor speed and steering rather than a PCA9685 (there, see you just paid for the RC Hat!).  The RC hat includes two 3-pin headers compatible with the servo cables that connect to the ESC and the steering servo.  Plug your car's servo into the Servo pins and the Motor Controller into the Motor pins. In all cases, make sure you plug them in the right way, noting the +,- and S (Signal) markings. Typically the black wire is "-", the red wire in the middle is "+" and the white wire is "S". 
+
 * For RC output, select `PWM_STEERING_THROTTLE` as your drive train type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
 
 ```python
 DRIVE_TRAIN_TYPE =  "PWM_STEERING_THROTTLE"
 ```
 
-For both of these, there are additional settings you can change, such as reversing the direction of output or the pins connected: 
-
-Input options:
- 
+Then uncomment the entire `PWM_STEERING_THROTTLE` configuration block and make sure steering uses `"PIGPIO.BCM.13"` and throttle uses `"PIGPIO.BCM.18"` because that is how the pins on the RC Hat are connected to the RaspberryPi 40 pin header.
 ```python
-#PIGPIO RC control
-STEERING_RC_GPIO = 26
-THROTTLE_RC_GPIO = 20
-DATA_WIPER_RC_GPIO = 19
-PIGPIO_STEERING_MID = 1500         # Adjust this value if your car cannot run in a straight line
-PIGPIO_MAX_FORWARD = 2000          # Max throttle to go fowrward. The bigger the faster
-PIGPIO_STOPPED_PWM = 1500
-PIGPIO_MAX_REVERSE = 1000          # Max throttle to go reverse. The smaller the faster
-PIGPIO_SHOW_STEERING_VALUE = False
-PIGPIO_INVERT = False
-PIGPIO_JITTER = 0.025   # threshold below which no signal is reported
+PWM_STEERING_THROTTLE = {
+    "PWM_STEERING_PIN": "PIGPIO.BCM.13",    # PWM output pin for steering servo
+    "PWM_STEERING_SCALE": 1.0,              # used to compensate for PWM frequency differents from 60hz; NOT for adjusting steering range
+    "PWM_STEERING_INVERTED": False,         # True if hardware requires an inverted PWM pulse
+    "PWM_THROTTLE_PIN": "PIGPIO.BCM.18",    # PWM output pin for ESC
+    "PWM_THROTTLE_SCALE": 1.0,              # used to compensate for PWM frequence differences from 60hz; NOT for increasing/limiting speed
+    "PWM_THROTTLE_INVERTED": False,         # True if hardware requires an inverted PWM pulse
+    "STEERING_LEFT_PWM": 460,               #pwm value for full left steering
+    "STEERING_RIGHT_PWM": 290,              #pwm value for full right steering
+    "THROTTLE_FORWARD_PWM": 500,            #pwm value for max forward throttle
+    "THROTTLE_STOPPED_PWM": 370,            #pwm value for no movement
+    "THROTTLE_REVERSE_PWM": 220,            #pwm value for max reverse throttle
+}
 ```
 
-If you are using the RC hat then the PWM output pins shown below (and defaulted in myconfig.py) must be used.
-If you are not using the RC hat then you are free to choose different PWM output pins.
-NOTE: you must install pigpio to use this configuration.  See [PIGPIO](pins.md#PIGPIO)
+### Calibration
+After configuring the RC hat to read the RC controller and optionally control the ESC and steering servo you should do the normal [calibration](https://docs.donkeycar.com/guide/calibrate/) step to figure out the correct steering and throttle PWM values for your car (and to make sure you've hooked things up correctly).
 
-Output options:
-
-```python
-PWM_STEERING_PIN = "PIGPIO.BCM.13"           # PWM output pin for steering servo
-PWM_THROTTLE_PIN = "PIGPIO.BCM.18"           # PWM output pin for ESC
-
-STEERING_LEFT_PWM = int(4096 * 1 / 20)       # pwm value for full left steering (1ms pulse)
-STEERING_RIGHT_PWM = int(4096 * 2 / 20)      # pwm value for full right steering (2ms pulse)
-
-THROTTLE_FORWARD_PWM = int(4096 * 2 / 20)    # pwm value for max forward (2ms pulse)
-THROTTLE_STOPPED_PWM = int(4096 * 1.5 / 20)  # pwm value for no movement (1.5ms pulse)
-THROTTLE_REVERSE_PWM = int(4096 * 1 / 20)    # pwm value for max reverse throttle (1ms pulse)
-```
 
 ## Troubleshooting
 
