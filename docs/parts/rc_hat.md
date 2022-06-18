@@ -35,7 +35,7 @@ To use the RC hat to read your RC controller, use the included 3-wire cables to 
 **Configuration:**
 Now edit your myconfig.py file to use the RC Hat to read the RC Controller. In your `mycar` directory, edit the myconfig.py files as follows:
 
-* Select `pigpio_rc` as your controller type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
+Use `pigpio_rc` as your controller type in your myconfig.py file. Uncomment the `CONTROLLER_TYPE` line (remove the leading `#`) and edit it as follows:
 
 ```python
 CONTROLLER_TYPE = 'pigpio_rc'
@@ -47,7 +47,7 @@ Also set `use joystick` to True
 USE_JOYSTICK_AS_DEFAULT = True
 ```
 
-There are additional settings you can change in the `#PIGPIO RC control` section, such as reversing the direction of output or the pins connected, or adjusting the expect PWM pulse width (see [Standard RC with ESC and Steering Servo](https://docs.donkeycar.com/parts/actuators/#standard-rc-with-esc-and-steering-servo)) for a discussion of PWM (Pulse Width Modulation); TLDR - a 1000 nanosecond pulse means full left/reverse, a 1500 nano second pulse means straight/stopped and a 2000 nanosecond pulse means full right/forward.
+There are additional settings you can change in the `#PIGPIO RC control` section, such as reversing the direction of output or the pins connected, or adjusting the expect PWM pulse width (see [Standard RC with ESC and Steering Servo](https://docs.donkeycar.com/parts/actuators/#standard-rc-with-esc-and-steering-servo)) for a discussion of PWM (Pulse Width Modulation); TLDR - a 1000 nanosecond pulse means full left/reverse, a 1500 nano second pulse means straight/stopped and a 2000 nanosecond pulse means full right/forward.  The defaults are generally good and you can start with them.  If you see any issues when calibrating then read the `Troubleshooting` section to see how you might change one or more of these values to compensate.
 
 Input options for reading RC controller:
  
@@ -72,7 +72,7 @@ Optionally, you can use the RaspberryPi to generate PWM ((see [Standard RC with 
 The RC hat includes two 3-pin headers compatible with the servo cables that connect to the ESC and the steering servo.  Plug your car's servo into the Servo pins and the Motor Controller into the Motor pins. In all cases, make sure you plug them in the right way, noting the +,- and S (Signal) markings. Typically the black wire is "-", the red wire in the middle is "+" and the white wire is "S". 
 
 **Configuration:**
-* For RC output, select `PWM_STEERING_THROTTLE` as your drive train type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
+For RC output, select `PWM_STEERING_THROTTLE` as your drive train type in your myconfig.py file. Uncomment the line (remove the leading `#`) and edit it as follows:
 
 ```python
 DRIVE_TRAIN_TYPE =  "PWM_STEERING_THROTTLE"
@@ -126,5 +126,3 @@ pip install Adafruit_SSD1306
 
 ## Encoder
 If you're using a standard [wheel encoder](odometry.md), you can plug it into the "Encoder" pins, then setup the encoder configuration in your myconfig.py to use the pin that is exposed by the RC hat's encoder header.
-
-
