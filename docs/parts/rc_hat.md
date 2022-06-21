@@ -3,6 +3,8 @@
 
 If you started with a ready-to-run RC car, it probably came with a RC controller. Good news: you can use it with Donkeycar, using the RC controller for manual driving. You can also plug in the car's servo and motor controller directly into the RaspberryPi without the need for a PCA9685 motor/servo controller board. 
 
+Note that you will want your RC controller to be well trimmed prior to using it with the RC hat.  You want the throttle trim, steering trim and steering range to be well adjusted; see this [video](https://www.youtube.com/watch?v=NuVQz7FCAZk) for how to do that.
+
 To do so, you can either wire up it up manually as shown in [this tutorial](rc.md) (which works, but has a lot of fiddly wires that can fall off) or do it far more neatly with the Donkeycar RC hat, shown above, which handles all the wiring for you, along with including an OLED screen and a fan. 
 
 The Donkeycar RC hat can be purchased from the [Donkeycar Store](https://store.donkeycar.com/products/donkey-car-rc-hat). Note that it only works with the RaspberryPi, not the Jetson Nano, due to limitations with the way the Jetson handles its I/O pins. 
