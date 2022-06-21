@@ -11,6 +11,8 @@ To do this you need to either connect some jumper cables from your RC receiver t
 
 **If you're using the RC Hat above, you can skip this hardware part -- the hat does it all for you!**
 
+Note that you will want your RC controller to be well trimmed prior to using it to control your Donkeycar. You want the throttle trim, steering trim and steering range to be well adjusted; see this [video](https://www.youtube.com/watch?v=NuVQz7FCAZk) for how to do that.
+
 You can use the GPIO pins for RC input, output or both. In the case of RC input, the RC controller replaces a bluetooth joystick. In the case of RC output, it replaces the I2C servo driver board. 
 
 The easiest way to connect RC is via the custom "hat" that we've designed (see above). But if you're doing it yourself, follow this wiring guide. It's a bit of a forest of jumper cables if you're doing both input and output, but remember that you only have to connect one ground and V+ cable to the RC reciever (on any channel), rather than one for every channel. 
