@@ -167,14 +167,13 @@ Usage:
 donkey consync [--dir = <data_path>] [--delete=<y|n>]
 ```
 
-* Run on the host computer
-* First copy your public key to the pi so you don't need a password for each rsync:
+* On your host computer, create a public key if you don't already have one.  This identifies you to other computer's without the need to give up your password.  See [The Car Connection](donkey#the_car_connection) for how to create a public key.
+* You can copy your public key to the pi so you don't need a password for each rsync:
 
 ```bash
 cat ~/.ssh/id_rsa.pub | ssh pi@<your pi ip> 'cat >> .ssh/authorized_keys'
 ```
 
-* If you don't have a id_rsa.pub then google how to make one
 * Edit your config.py and make sure the fields `PI_USERNAME`, `PI_HOSTNAME`, `PI_DONKEY_ROOT` are setup. Only on windows, you need to set `PI_PASSWD`.
 * This command may be run from `~/mycar` dir
 
@@ -189,14 +188,13 @@ donkey contrain [--tub=<data_path>] [--model=<path to model>] [--transfer=<path 
 ```
 
 * This command may be run from `~/mycar` dir
-* Run on the host computer
-* First copy your public key to the pi so you don't need a password for each rsync:
+* On your host computer, create a public key if you don't already have one.  This identifies you to other computer's without the need to give up your password.  See [The Car Connection](donkey#the_car_connection) for how to create a public key.
+* You can copy your public key to the pi so you don't need a password for each rsync:
 
 ```bash
 cat ~/.ssh/id_rsa.pub | ssh pi@<your pi ip> 'cat >> .ssh/authorized_keys'
 ```
 
-* If you don't have a id_rsa.pub then google how to make one
 * Edit your config.py and make sure the fields `PI_USERNAME`, `PI_HOSTNAME`, `PI_DONKEY_ROOT` are setup. Only on windows, you need to set `PI_PASSWD`.
 * Optionally it can send the model file to your pi when it achieves a best loss. In config.py set `SEND_BEST_MODEL_TO_PI = True`.
 * Your pi drive loop will autoload the weights file when it changes. This works best if car started with `.json` weights like:

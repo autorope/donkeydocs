@@ -101,6 +101,8 @@ ssh pi@donkeypi.local
 ```
 If SSH asks you if that host should be added to the list of known hosts, hit &lt;return&gt; and you are done. From now on, you can ssh into the car without being prompted for the password again. **The login-free setup is required for the screen to work.**
 
+* You also need to edit your config.py and make sure the fields `PI_USERNAME` and `PI_HOSTNAME` are set to your car user's username and the hostname of the car.
+
 With the car connector you can transfer the tub data from the car to your PC and transfer the pilots back to the car.
 
 * Under the `Car directory` enter the car folder and hit return. This should populate the `Select tub` drop down. Most likely you want to select the `data/` directory but you might have tubs in subfolders. In that case use `~/mycar/data` in the `Car directory`, select the tub you want to pull and enable `Create new folder` on the button. This will copy a tub on the car like `~/mycar/data/tub_21-04-09_11` into the same location on your PC. Without the `Create new folder` it would copy the content of the car's tub folder into `~/mycar/data` of your PC, possibly overwriting other tub data that might be there.
