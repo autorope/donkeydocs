@@ -167,7 +167,7 @@ Usage:
 donkey consync [--dir = <data_path>] [--delete=<y|n>]
 ```
 
-* On your host computer, create a public key if you don't already have one.  This identifies you to other computer's without the need to give up your password.  See [The Car Connection](./ui.md#the_car_connection) for how to create a public key.
+* On your host computer, create a public key if you don't already have one.  This identifies you to other computer's without the need to give up your password.  See [The Car Connection](./ui.md#the-car-connection) for how to create a public key.
 * You can copy your public key to the pi so you don't need a password for each rsync:
 
 ```bash
@@ -188,7 +188,7 @@ donkey contrain [--tub=<data_path>] [--model=<path to model>] [--transfer=<path 
 ```
 
 * This command may be run from `~/mycar` dir
-* On your host computer, create a public key if you don't already have one.  This identifies you to other computer's without the need to give up your password.  See [The Car Connection](./ui.md#the_car_connection) for how to create a public key.
+* On your host computer, create a public key if you don't already have one.  This identifies you to other computer's without the need to give up your password.  See [The Car Connection](./ui.md#the-car-connection) for how to create a public key.
 * You can copy your public key to the pi so you don't need a password for each rsync:
 
 ```bash
