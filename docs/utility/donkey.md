@@ -156,52 +156,6 @@ donkey tubhist --tub=<tub_path> --record=<record_name> --out=<output_filename>
 * Optional `--record=<record_name>` will only show the histogram of a certain data series, for example "user/throttle"
 * Optional `--out=<output_filename>` saves histogram under that name, otherwise the name is auto-generated from the tub path
 
-## Continuous Rsync
-
-This command uses rsync to copy files from your pi to your host. It does so in a loop, continuously copying files. By default, it will also delete any files
-on the host that are deleted on the pi. This allows your PS3 Triangle edits to affect the files on both machines.
-
-Usage:
-
-```bash
-donkey consync [--dir = <data_path>] [--delete=<y|n>]
-```
-
-* On your host computer, create a public key if you don't already have one.  This identifies you to other computer's without the need to give up your password.  See [The Car Connection](./ui.md#the-car-connection) for how to create a public key.
-* You can copy your public key to the pi so you don't need a password for each rsync:
-
-```bash
-cat ~/.ssh/id_rsa.pub | ssh pi@<your pi ip> 'cat >> .ssh/authorized_keys'
-```
-
-* Edit your config.py and make sure the fields `PI_USERNAME`, `PI_HOSTNAME`, `PI_DONKEY_ROOT` are setup. Only on windows, you need to set `PI_PASSWD`.
-* This command may be run from `~/mycar` dir
-
-## Continuous Train
-
-This command fires off the keras training in a mode where it will continuously look for new data at the end of every epoch.
-
-Usage:
-
-```bash
-donkey contrain [--tub=<data_path>] [--model=<path to model>] [--transfer=<path to model>] [--type=<linear|categorical|rnn|imu|behavior|3d>] [--aug]
-```
-
-* This command may be run from `~/mycar` dir
-* On your host computer, create a public key if you don't already have one.  This identifies you to other computer's without the need to give up your password.  See [The Car Connection](./ui.md#the-car-connection) for how to create a public key.
-* You can copy your public key to the pi so you don't need a password for each rsync:
-
-```bash
-cat ~/.ssh/id_rsa.pub | ssh pi@<your pi ip> 'cat >> .ssh/authorized_keys'
-```
-
-* Edit your config.py and make sure the fields `PI_USERNAME`, `PI_HOSTNAME`, `PI_DONKEY_ROOT` are setup. Only on windows, you need to set `PI_PASSWD`.
-* Optionally it can send the model file to your pi when it achieves a best loss. In config.py set `SEND_BEST_MODEL_TO_PI = True`.
-* Your pi drive loop will autoload the weights file when it changes. This works best if car started with `.json` weights like:
-
-```bash
-python manage.py drive --model models/drive.json
-```
 
 ## Joystick Wizard
 
