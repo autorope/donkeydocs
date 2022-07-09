@@ -194,6 +194,30 @@ Some very inexpensive toy cars use a DC motor to drive the back wheels forward a
 ```
 A PCA9685 could also be used to generate all control signals.  See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
+## VESC for both Steering and Throttle
+
+VESC is an advanced version of ESC that provides you a lot of customization options on how the ESC operates. It includes features such as regenerative braking, temperature control etc.
+
+This was tested with a VESC 6 and Traxxas Brushless Motor
+Follow this tutorial to update your VESC firmware and calibrate it: https://f1tenth.readthedocs.io/en/stable/getting_started/firmware/firmware_vesc.html
+It's important to use the servo out bin so that we can control steering with the VESC as well
+
+Requires installation of PyVESC from source for servo control (pip install git+https://github.com/LiamBindle/PyVESC.git@master)
+**Configuration**
+
+- use `DRIVETRAIN_TYPE = "VESC"` in myconfig.py
+  - Example parameters 
+```python
+  VESC_MAX_SPEED_PERCENT =.2  # Max speed as a percent of the actual speed
+  VESC_SERIAL_PORT= "/dev/ttyACM0" # Serial device to use for communication. Can check with ls /dev/tty*
+  VESC_HAS_SENSOR= True # Whether or not the bldc motor is using a hall effect sensor
+  VESC_START_HEARTBEAT= True # Whether or not to automatically start the heartbeat thread that will keep commands alive.
+  VESC_BAUDRATE= 115200 # baudrate for the serial communication. Shouldn't need to change this.
+  VESC_TIMEOUT= 0.05 # timeout for the serial communication
+  VESC_STEERING_SCALE= 0.5 # VESC accepts steering inputs from 0 to 1. Joystick is usually -1 to 1. This changes it to -0.5 to 0.5
+  VESC_STEERING_OFFSET = 0.5 # VESC accepts steering inputs from 0 to 1. Coupled with above change we move Joystick to 0 to 1
+```
+
 ## Differential Drive cars
 An inexpensive Donkeycar compatible robot can be constructed using a cheap smart car robot chassis that includes 2 DC gear motors and an L298N motor driver or compatible to run the motors.  Steering is accomplished by running one motor faster than the other, causing the car to drive in an arc.  The motor driver can be wired in one of two ways; 3 pin wiring or 2 pin wiring.
 
