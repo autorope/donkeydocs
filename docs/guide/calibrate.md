@@ -1,6 +1,10 @@
 # Calibrate your Car
 
-The point of calibrating your car is to make it drive consistently.
+The point of calibrating your car is to make it drive consistently.  If you have a steering servo then donkey needs to know the PWM values associated with full left and full right turns.  If you have an ESC, then donkey needs to know the PWM values for full forward throttle, stopped and full reverse throttle.  You figure out those values in the calibration process, then save them to your myconfig.py file so they can be used then the car is driving.
+
+Some kinds of drivetrains do not need to be calibrated.  If you are using any drivetrain that uses an L298N motor controller or similar, then no calibraton is necessary; those drivetrains do not use PWM; they use a duty cycle that does not need to be calibrated.  Most of the differential drivetrains are of that type.  If your drivetrain uses an L298N motor controller or similar for throttle, but uses a servo for steering, then you will need to calibrate steering, but not throttle.
+
+There is a more complete discussion of drivetrains in [Actuators](../parts/actuators.md)
 
 ## How to adjust your car's settings
 
@@ -17,8 +21,12 @@ nano ~/mycar/myconfig.py
 > **Make sure your car is off the ground to prevent a runaway situation.**  
 
 1. Turn on your car.
-2. Find the servo cable on your car and see what channel it's plugged into the PCA board. It should be 1 or 0.
-3. Run `donkey calibrate --channel <your_steering_channel> --bus=1`
+2. Find the servo's 3-pin cable and make sure it is connected property to the PWM output pins. 
+    - if using the Donkey Hat, the 3-pin servo cable will be plugged into the hat.  See [Controlling ESC and Steering Servo with RC Hat](../parts/rc_hat.md/#controlling-esc-and-steering-servo-with-rc-hat) for a complete description on the connections.
+    - if using a PCA9685, the servo cable will be connected to one of the PCA9685's 3-pin input channels.  See [Connect Servo Shield to Raspberry Pi](build_hardware.md/#step-4-connect-servo-shield-to-raspberry-pi) for a description.
+3. Run `donkey calibrate ...` and provide it with arguments to specify which pin will produce the PWM
+    - When calibrating a drivetrain that uses pin specifiers, like `PWM_STEERING_THROTTLE`, then use `--pwm-pin` argument to specify the target pin,  like `RPI_GPIO.BOARD.33` or `PCA9685.1:40.13`.  If you are using the [Donkey Hat](../parts/rc_hat.md/#controlling-esc-and-steering-servo-with-rc-hat) then you would use `donkey calibrate --pwm-pin=PIGPIO.BCM.13` to calibrate steering.  See [Pins](../parts/pins.md) for a more complete discussion of pins and pin specifiers.
+    - When using a legacy PCA9685 drivetrain, like `I2C_SERVO`, then specify the PCA9685 channel (the index of the 3-pin connector that cable in connected to) and the I2C bus the PCA9685 is connected to; `donkey calibrate --channel <your_steering_channel> --bus=<your_i2c_bus>`
 4. First **find the value that turns the tires all the way to the left** extreme. When calibrating steering you want to **choose the value that just turns the wheels to the maximum**; the wheels should turn all the way but **the servo should _NOT_ make a whining noise**.  Try the value `360` and you should see the wheels on your car move slightly. If not try `400` or `300`.  Next enter values +/- 10 from your starting value to find the PWM setting that makes your car turn all the way left, again making sure the motor is not making a whining sound. Remember this value.
 5. Next **find the value that turns the tires all the way to the right** extreme.  Enter values +/- 10 from your starting value to find the PWM setting that makes your car turn all the way right, again making sure the motor is not making a whining sound. Remember this value.
 
@@ -29,8 +37,12 @@ nano ~/mycar/myconfig.py
 
 ## Throttle Calibration
 
-1. Find the cable coming from your ESC and see what channel it goes into the PCA board. This is your throttle channel.
-2. run `donkey calibrate --channel <your_throttle_channel> --bus=1`
+1. Find the ESC's 3-pin cable and make sure it is connected property to the PWM output pins. 
+    - if using the Donkey Hat, the ESC's 3-pin cable will be plugged into the hat.  See [Controlling ESC and Steering Servo with RC Hat](../parts/rc_hat.md/#controlling-esc-and-steering-servo-with-rc-hat) for a complete description on the connections.
+    - if using a PCA9685, the ESC's 3-pin cable will be connected to one of the PCA9685's 3-pin input channels.  See [Connect Servo Shield to Raspberry Pi](build_hardware.md/#step-4-connect-servo-shield-to-raspberry-pi) for a description.
+2. Run `donkey calibrate ...` and provide it with arguments to specify which pin will produce the PWM
+    - When calibrating a drivetrain that uses pin specifiers, like `PWM_STEERING_THROTTLE`, then use `--pwm-pin` argument to specify the target pin, like `RPI_GPIO.BOARD.33` or `PCA9685.1:40.13`.  If you are using the [Donkey Hat](../parts/rc_hat/#controlling-esc-and-steering-servo-with-rc-hat) then you would use `donkey calibrate --pwm-pin=PIGPIO.BCM.18` to calibrate throttle.  See [Pins](../parts/pins.md) for a more complete discussion of pins and pin specifiers.
+    - When using a legacy PCA9685 drivetrain, like `I2C_SERVO`, then specify the PCA9685 channel (the index of the 3-pin connector that cable in connected to) and the I2C bus the PCA9685 is connected to; `donkey calibrate --channel <your_throttle_channel> --bus=<your_i2c_bus>`
 3. Enter `370` when prompted for a PWM value.
 4. You should hear your ESC beep indicating that it's calibrated.
 5. Enter `400` and you should see your cars wheels start to go forward. If not,
