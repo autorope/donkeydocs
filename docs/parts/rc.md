@@ -29,7 +29,7 @@ Here's what the RC receiver connection should look like
 
 ## Software Setup
 
-First, on the command line enter this to set the PIGPIO daemon to always run on startup:
+First, make sure PIGPIO is installed; see [pins](pins.md#pigpio) You probably want the PIGPIO daemon to allows be started whe the RaspberrpyPi start.  On the command line enter this to set the PIGPIO daemon to always run on startup:
 
 ```bash
 sudo systemctl enable pigpiod & sudo systemctl start pigpiod
@@ -75,7 +75,7 @@ PIGPIO_JITTER = 0.025   # threshold below which no signal is reported
 
 If you are using the RC hat then the PWM output pins shown below (and defaulted in myconfig.py) must be used.
 If you are not using the RC hat then you are free to choose different PWM output pins.
-NOTE: you must install pigpio to use this configuration.  See [PIGPIO](pins.md#PIGPIO)
+NOTE: you must install pigpio to use this configuration.  See [PIGPIO](pins.md#pigpio)
 
 Output options:
 
