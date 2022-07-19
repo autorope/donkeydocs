@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Get Your Raspberry Pi Working - Donkey Car</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Get Your Raspberry Pi Working";
+        var mkdocs_page_input_path = "guide/robot_sbc/setup_raspberry_pi.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Donkey Car
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../train_autopilot/">Train an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dataset_pretrained_models/">Dataset and pre-trained models</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/rc/">RC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/rc_hat/">RC Hat</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/path_following/">Path following with the Intel Realsense T265</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">UI</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li><li>Get Your Raspberry Pi Working</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/robot_sbc/setup_raspberry_pi.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="get-your-raspberry-pi-working">Get Your Raspberry Pi Working</h1>
+<p><img alt="donkey" src="/assets/logos/rpi_logo.png" /></p>
+<ul>
+<li><a href="#step-1-flash-operating-system">Step 1: Flash Operating System</a></li>
+<li><a href="#step-2-setup-the-wifi-for-first-boot">Step 2: Setup the WiFi for First Boot</a></li>
+<li><a href="#step-3-setup-pis-hostname">Step 3: Setup Pi's Hostname</a></li>
+<li><a href="#step-4-enable-ssh-on-boot">Step 4: Enable SSH on Boot</a></li>
+<li><a href="#step-5-connecting-to-the-pi">Step 5: Connecting to the Pi</a></li>
+<li><a href="#step-6-update-and-upgrade">Step 6: Update and Upgrade</a></li>
+<li><a href="#step-7-raspi-config">Step 7: Raspi-config</a></li>
+<li><a href="#step-8-install-dependencies">Step 8: Install Dependencies</a></li>
+<li><a href="#step-9-optional-install-opencv-dependencies">Step 9: (Optional) Install OpenCV Dependencies</a></li>
+<li><a href="#step-10-setup-virtual-env">Step 10: Setup Virtual Env</a></li>
+<li><a href="#step-11-install-donkeycar-python-code">Step 11: Install Donkeycar Python Code</a></li>
+<li><a href="#step-12-optional-install-opencv">Step 12: (Optional) Install OpenCV</a></li>
+<li><a href="#step-13-optional-install-mobile-app">Step 13: (Optional) Install Mobile App</a></li>
+<li>Then <a href="/guide/create_application/">Create your Donkeycar Application</a></li>
+</ul>
+<h2 id="step-1-flash-operating-system">Step 1: Flash Operating System</h2>
+<blockquote>
+<p>Note:  If you plan to use the mobile app, consider using the pre-built image. Refer to the <a href="../../mobile_app/">mobile app user guide</a> for details. </p>
+</blockquote>
+<p>You need to flash a micro SD image with an operating system.</p>
+<blockquote>
+<p>Note: Raspbian Latest (bullseye) is not compatible with the Python camera bindings.  The underlying camera system has changed and it has broken any software that uses the Python camera bindings.</p>
+</blockquote>
+<ol>
+<li>Download <a href="https://downloads.raspberrypi.org/raspios_oldstable_lite_armhf/images/raspios_oldstable_lite_armhf-2021-12-02/2021-12-02-raspios-buster-armhf-lite.zip">Raspian Legacy (Buster)</a>. </li>
+<li>Follow OS specific guides <a href="https://www.raspberrypi.org/documentation/installation/installing-images/">here</a>.</li>
+<li>Leave micro SD card in your machine and edit/create some files as below:</li>
+</ol>
+<h2 id="step-2-setup-the-wifi-for-first-boot">Step 2: Setup the WiFi for first boot</h2>
+<p>We can create a special file which will be used to login to wifi on first boot. More reading <a href="https://raspberrypi.stackexchange.com/questions/10251/prepare-sd-card-for-wifi-on-headless-pi">here</a>, but we will walk you through it. </p>
+<p>On Windows, with your memory card image burned and memory disc still inserted, you should see two drives, which are actually two partitions on the mem disc.
+One is labeled <strong>boot</strong>. On Mac and Linux, you should also have access to the <strong>boot</strong> partition of the mem disc.
+This is formatted with the common FAT type and is where we will edit some files to help it find and log-on to your wifi on its first boot. </p>
+<blockquote>
+<p>Note: If <strong>boot</strong> is not visible right away, try unplugging and re-inserting the memory card reader.</p>
+</blockquote>
+<ul>
+<li>Start a text editor<ul>
+<li><code>gedit</code> on Linux. </li>
+<li>Notepad++ on Windows. </li>
+<li>VI on Mac (type <code>vi /Volumes/boot/wpa_supplicant.conf</code> where <code>boot</code> is the name of the SD Card). </li>
+</ul>
+</li>
+<li>Possible <code>country</code> codes to use can be found <a href="https://www.thinkpenguin.com/gnu-linux/country-code-list">here</a></li>
+<li>Paste and edit this contents to match your wifi, adjust as needed:</li>
+</ul>
+<pre><code class="language-text">country=US
+ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid=&quot;&lt;your network name&gt;&quot;
+    psk=&quot;&lt;your password&gt;&quot;
+}
+
+</code></pre>
+<p>Note - <code>country</code> defines allowed wifi channels, ensure to set it properly to your location and hardware.</p>
+<p>Replace <code>&lt;your network name&gt;</code> with the ID of your network. Leave the quotes. I've seen problems when the network name contained an apostrophe, like "Joe's iPhone".
+Replace <code>&lt;your password&gt;</code> with your password, leaving it surrounded by quotes. 
+If it bothers you to leave your password unencrypted, you may change the <a href="https://unix.stackexchange.com/questions/278946/hiding-passwords-in-wpa-supplicant-conf-with-wpa-eap-and-mschap-v2">contents later</a> once you've gotten the pi to boot and log-in.</p>
+<ul>
+<li>Save this file to the root of <strong>boot</strong> partition with the filename <code>wpa_supplicant.conf</code>. On first boot, this file will be moved to <code>/etc/wpa_supplicant/wpa_supplicant.conf</code> where it may be edited later. If you are using Notepad on Windows, make sure it doesn't have a .txt at the end.</li>
+</ul>
+<h2 id="step-3-setup-pis-hostname">Step 3: Setup Pi's Hostname</h2>
+<blockquote>
+<p>Note: This step only possible on a Linux host pc. Otherwise you can set it up later in <code>raspi-config</code> after logging in to your pi.</p>
+</blockquote>
+<p>We can also setup the hostname so that your Pi easier to find once on the network. If yours is the only Pi on the network, then you can find it with </p>
+<pre><code class="language-bash">ping raspberrypi.local
+</code></pre>
+<p>once it's booted. If there are many other Pi's on the network, then this will have problems.
+If you are on a Linux machine, or are able to edit the UUID partition, then you can edit the <code>/etc/hostname</code> and <code>/etc/hosts</code> files now to make finding your pi on the network easier after boot.
+Edit those to replace <code>raspberrypi</code> with a name of your choosing.
+Use all lower case, no special characters, no hyphens, yes underscores <code>_</code>. 
+Good idea is to use something like <code>pi-&lt;MAC_ADDRESS&gt;</code> such as <code>pi-deadbeef</code> especially if you have more pi devices in the same network.</p>
+<pre><code class="language-bash">sudo vi /media/userID/UUID/etc/hostname
+sudo vi /media/userID/UUID/etc/hosts
+</code></pre>
+<h2 id="step-4-enable-ssh-on-boot">Step 4: Enable SSH on Boot</h2>
+<p>Put a file named <strong>ssh</strong> in the root of your <strong>boot</strong> partition.  On Mac or Linux this can be done using the <code>touch</code> command.  For example, on the Mac, <code>touch /Volumes/boot/ssh</code> where <code>boot</code> is the name of the SD card.</p>
+<p>Now your SD card is ready. Eject it from your computer - wait until system shows the writing is done
+and it is safe to remove card. Ensure Pi is turned off, put the card in the Pi and power on the Pi.</p>
+<h2 id="step-5-connecting-to-the-pi">Step 5: Connecting to the Pi</h2>
+<p>If you followed the above instructions to add wifi access, your Pi should
+now be connected to your wifi network. Now you need to find its IP address
+so you can connect to it via SSH. </p>
+<p>The easiest way (on Ubuntu) is to use the <code>findcar</code> donkey command.
+You can try <code>ping raspberrypi.local</code>. If you've modified the hostname, then you should try:</p>
+<pre><code class="language-bash">ping &lt;your hostname&gt;.local
+</code></pre>
+<p>This will fail on a windows machine. Windows users will need the full IP address (unless using cygwin). </p>
+<p>If you are having troubles locating your Pi on the network, you will want to plug in an HDMI monitor and USB keyboard into the Pi. Boot it. Login with:</p>
+<ul>
+<li>Username: <code>pi</code></li>
+<li>Password: <code>raspberry</code></li>
+</ul>
+<p>Then try the command:</p>
+<pre><code class="language-bash">ifconfig wlan0
+</code></pre>
+<p>or just all Ip addresses assigned to the pi (wifi or cable):</p>
+<pre><code class="language-bash">ip -br a
+</code></pre>
+<p>If this has a valid IPv4 address, 4 groups of numbers separated by dots, then you can try that with your SSH command. If you don't see anything like that, then your wifi config might have a mistake. You can try to fix with</p>
+<pre><code class="language-bash">sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+</code></pre>
+<p>If you don't have a HDMI monitor and keyboard, you can plug-in the Pi with a CAT5 cable to a router with DHCP.
+If that router is on the same network as your PC, you can try:</p>
+<pre><code class="language-bash">ping raspberrypi.local
+</code></pre>
+<p>Hopefully, one of those methods worked and you are now ready to SSH into your Pi. On Mac and Linux, you can open Terminal.
+On Windows you can install <a href="http://www.putty.org/">Putty</a>, <a href="https://www.htpcbeginner.com/best-ssh-clients-windows-putty-alternatives/2/">one of the alternatives</a>, or on Windows 10 you may have ssh via the command prompt.</p>
+<p>If you have a command prompt, you can try:</p>
+<pre><code class="language-bash">ssh pi@raspberrypi.local
+</code></pre>
+<p>or</p>
+<pre><code class="language-bash">ssh pi@&lt;your pi ip address&gt;
+</code></pre>
+<p>or via Putty.</p>
+<ul>
+<li>Username: <code>pi</code></li>
+<li>Password: <code>raspberry</code></li>
+<li>Hostname: <code>&lt;your pi IP address&gt;</code></li>
+</ul>
+<h2 id="step-6-update-and-upgrade">Step 6: Update and Upgrade</h2>
+<pre><code class="language-bash">sudo apt-get update --allow-releaseinfo-change
+sudo apt-get upgrade
+</code></pre>
+<h2 id="step-7-raspi-config">Step 7: Raspi-config</h2>
+<pre><code class="language-bash">sudo raspi-config
+</code></pre>
+<ul>
+<li>change default password for pi</li>
+<li>change hostname</li>
+<li>enable <code>Interfacing Options</code> - <code>I2C</code></li>
+<li>enable <code>Interfacing Options</code> - <code>Camera</code></li>
+<li>select <code>Advanced Options</code> - <code>Expand Filesystem</code> so you can use your whole sd-card storage</li>
+</ul>
+<p>Choose <code>&lt;Finish&gt;</code> and hit enter.</p>
+<blockquote>
+<p>Note: Reboot after changing these settings. Should happen if you select <code>yes</code>.</p>
+</blockquote>
+<h2 id="step-8-install-dependencies">Step 8: Install Dependencies</h2>
+<pre><code class="language-bash">sudo apt-get install build-essential python3 python3-dev python3-pip python3-virtualenv python3-numpy python3-picamera python3-pandas python3-rpi.gpio i2c-tools avahi-utils joystick libopenjp2-7-dev libtiff5-dev gfortran libatlas-base-dev libopenblas-dev libhdf5-serial-dev libgeos-dev git ntp
+</code></pre>
+<h2 id="step-9-optional-install-opencv-dependencies">Step 9: (Optional) Install OpenCV Dependencies</h2>
+<p>If you are going for a minimal install, you can get by without these. But it can be handy to have OpenCV.</p>
+<pre><code class="language-bash">sudo apt-get install libilmbase-dev libopenexr-dev libgstreamer1.0-dev libjasper-dev libwebp-dev libatlas-base-dev libavcodec-dev libavformat-dev libswscale-dev libqtgui4 libqt4-test
+</code></pre>
+<h2 id="step-10-setup-virtual-env">Step 10: Setup Virtual Env</h2>
+<p>This needs to be done only once:</p>
+<pre><code class="language-bash">python3 -m virtualenv -p python3 env --system-site-packages
+echo &quot;source ~/env/bin/activate&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<p>Modifying your <code>.bashrc</code> in this way will automatically enable this environment each time you login. To return to the system python you can type <code>deactivate</code>.</p>
+<h2 id="step-11-install-donkeycar-python-code">Step 11: Install Donkeycar Python Code</h2>
+<ul>
+<li>Create and change to a directory you would like to use as the head of your projects.</li>
+</ul>
+<pre><code class="language-bash">mkdir projects
+cd projects
+</code></pre>
+<ul>
+<li>Get the latest donkeycar from Github.</li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git checkout main
+pip install -e .[pi]
+pip install https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.2.0/tensorflow-2.2.0-cp37-none-linux_armv7l.whl
+</code></pre>
+<ul>
+<li>Alternatively, to get the latest stable release</li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags
+latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
+git checkout $latestTag
+pip install -e .[pi]
+pip install https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.2.0/tensorflow-2.2.0-cp37-none-linux_armv7l.whl
+</code></pre>
+<p>You can validate your tensorflow install with</p>
+<pre><code class="language-bash">python -c &quot;import tensorflow; print(tensorflow.__version__)&quot;
+</code></pre>
+<h2 id="step-12-optional-install-opencv">Step 12: (Optional) Install OpenCV</h2>
+<p>If you've opted to install the OpenCV dependencies earlier, you can install Python OpenCV bindings now with command:</p>
+<pre><code class="language-bash">sudo apt install python3-opencv
+</code></pre>
+<p>If that failed, you can try pip:</p>
+<pre><code class="language-bash">pip install opencv-python
+</code></pre>
+<p>Then test to see if import succeeds.</p>
+<pre><code class="language-bash">python -c &quot;import cv2&quot;
+</code></pre>
+<p>And if no errors, you have OpenCV installed!</p>
+<h2 id="step-13-optional-install-mobile-app">Step 13: (Optional) Install Mobile App</h2>
+<p>There is a mobile application available on the iPhone and Android that provides an alternative user experience.  It can be installed manually or by downloading an SD card image.  Follow these <a href="/guide/mobile_app/#optional-manual-installation">instructions</a> to install manually.</p>
+<blockquote>
+<p>-<strong>Note</strong>- The server component currently supports <strong>RaspberryPi 4B only</strong>.</p>
+</blockquote>
+<hr />
+<h3 id="next-create-your-donkeycar-application">Next, <a href="/guide/create_application/">create your Donkeycar application</a>.</h3>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

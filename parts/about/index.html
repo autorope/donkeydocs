@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>About - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "About";
+        var mkdocs_page_input_path = "parts/about.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/train_autopilot/">Train an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/dataset_pretrained_models/">Dataset and pre-trained models</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">About</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#anatomy-of-a-part">Anatomy of a Part</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#threaded-parts">Threaded Parts</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rc/">RC</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rc_hat/">RC Hat</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../path_following/">Path following with the Intel Realsense T265</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">UI</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Parts &raquo;</li><li>About</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/autorope/donkeydocs/edit/master/docs/parts/about.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="what-is-a-part">What is a Part</h1>
+<p>A part is a Python class that wraps a functional component of a vehicle.</p>
+<p>These include:</p>
+<ul>
+<li>Sensors - Cameras, Lidar, Odometers, GPS ...</li>
+<li>Actuators - Motor Controllers</li>
+<li>Pilots - Lane Detectors, Behavioral Cloning models, ...</li>
+<li>Controllers - Web based or Bluetooth.</li>
+<li>Stores - Tub, or a way to save data.</li>
+</ul>
+<p>This is an excellent video by Tawn Kramer that walks through how to make a part: https://www.youtube.com/watch?v=YZ4ESrtfShs</p>
+<p>Here is an example how to use the PiCamera part to publish an image in the
+'cam/img' channel on every drive loop.</p>
+<pre><code class="language-python">V = dk.Vehicle()
+
+#initialize the camera part
+cam = PiCamera()
+
+#add the part to the vehicle.
+V.add(cam, outputs=['cam/img'])
+
+V.start()
+</code></pre>
+<h2 id="anatomy-of-a-part">Anatomy of a Part</h2>
+<p>All parts share a common structure so that they can all be run by the vehicle's
+drive loop. </p>
+<p>A part must have either an "run" or a "run_threaded" function that does the work (see below). It may also require <code>inputs=['in single quotes', 'seperated by commas']</code> and will always generate at least one <code>outputs=['in single quotes', 'seperated by commas']</code></p>
+<p>If the part grabs some hardware resource, such as a camera or a serial port, it should also have a <code>shutdown</code> function that releases those resources properly when donkey is stopped.</p>
+<p>Here is an example of a part that will accept a number, multiply
+it by a random number and return the result.</p>
+<pre><code class="language-python">import random
+
+class RandPercent:
+    def run(self, x):
+        return x * random.random()
+</code></pre>
+<p>Now to add this to a vehicle:</p>
+<pre><code class="language-python">V = dk.Vehicle()
+
+# initialize the channel value
+V.mem['const'] = 4
+
+# add the part to read and write to the same channel.
+V.add(RandPercent, inputs=['const'], outputs=['const'])
+
+V.start(max_loops=5)
+</code></pre>
+<h2 id="threaded-parts">Threaded Parts</h2>
+<p>For a vehicle to perform well the drive loop must execute 10-30 times per
+second (determined by the <code>DRIVE_LOOP_HZ</code> setting in your config file; the default is 20hz)
+overall, so slow parts should be threaded to avoid holding up the drive loop.</p>
+<p>A threaded part needs to define the function that runs in the separate thread
+and the function to call that will return the most recent values quickly.</p>
+<p>When you add <code>threaded = True</code> when adding a part, the main Donkey program 
+will call the part's "run_threaded" function instead of the "run" function. So for
+the below example you would add the part with this:</p>
+<p><code>V.add(RandPercent, inputs=['const'], outputs=['const'], threaded=True)</code></p>
+<p>Once you have a "run_threaded" function, Donkey will automatically look for an "update" 
+function and run that in its own thread, as you can see below. </p>
+<p>Here's an example how to make the <code>RandPercent</code> part threaded if the run
+function takes a second to complete.</p>
+<pre><code class="language-python">import random
+import time
+
+class RandPercent:
+    self.in = 0.0
+    self.out = 0.0
+    def run(self, x):
+        return x * random.random()
+        time.sleep(1)
+
+    def update(self):
+        # the function run in its own thread
+        while True:
+            self.out = self.run(self.in)
+
+    def run_threaded(self, x):
+        self.in = x
+        return self.out
+
+</code></pre>
+<ul>
+<li><code>part.run</code> : function used to run the part</li>
+<li><code>part.run_threaded</code> : drive loop function run if part is threaded.</li>
+<li><code>part.update</code> : threaded function</li>
+<li><code>part.shutdown</code></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../guide/mobile_app/" class="btn btn-neutral float-left" title="Mobile app"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../actuators/" class="btn btn-neutral float-right" title="Actuators">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../guide/mobile_app/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../actuators/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
