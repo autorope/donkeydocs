@@ -11,8 +11,9 @@
 ## Step 1: Flash Operating System
 
 These instructions work for Jetpack 4.5.1.  They are known to *NOT* work on Jetpack 4.6 or 4.6.1.  
-- If you have a 4gb Jetson Nano then download Jetpack 4.5.1 from Nvidia here; [jetson-nano-jp451-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/jeston_nano/jetson-nano-jp451-sd-card-image.zip)
-- If you have a 2gb Jetson Nano the download Jetpack 4.5.1from Nvidia here; [jetson-nano-2gb-jp451-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/jeston_nano_2gb/jetson-nano-2gb-jp451-sd-card-image.zip)
+
+* If you have a 4gb Jetson Nano then download Jetpack 4.5.1 from Nvidia here; [jetson-nano-jp451-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/jeston_nano/jetson-nano-jp451-sd-card-image.zip)
+* If you have a 2gb Jetson Nano the download Jetpack 4.5.1from Nvidia here; [jetson-nano-2gb-jp451-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/jeston_nano_2gb/jetson-nano-2gb-jp451-sd-card-image.zip)
 
 This installs the official Nvidia build of Tensorflow 2.3.1; make sure you are using the same version of Tensorflow on your host PC if you are using one.  Using a different version of Tensorflow to train your network may result in errors when you attempt to use it as an autopilot.
 
