@@ -25,14 +25,9 @@ STOP_SIGN_SHOW_BOUNDING_BOX = True
 
 ### Install Edge TPU dependencies
 
-Follow [this instruction ](https://coral.ai/docs/accelerator/get-started) to install and setup Google Coral on Pi 4
+Follow the Coral Edge TPU [get started](https://coral.ai/docs/accelerator/get-started) instructions to install the necessary software.  For the RaspberryPi follow the Linux instructions.
 
-In addition, install the dependency on your dev pc or pi4 like this
-
-```
-pip3 install https://dl.google.com/coral/edgetpu_api/edgetpu-2.14.0-py3-none-any.whl
-
-```
+The stop sign detector uses a pre-compiled model, so we only need the inference runtime to make this work.  However, if you are creating your own model then you will need the [Edge TPU Compiler](https://coral.ai/docs/edgetpu/compiler/) on your RaspberryPi (or Linux laptop if you are training on that).  Note that the compiler only runs on Linux.
 
 ## Detecting other objects
 
@@ -41,5 +36,8 @@ Since the pre-trained model are trained on coco, there are 80 objects that the m
 ## Accuracy
 
 Since SSD [is not good at detecting small objects](https://medium.com/@jonathan_hui/what-do-we-learn-from-single-shot-object-detectors-ssd-yolo-fpn-focal-loss-3888677c5f4d), the accuracy of detecting the stop sign from far away may not be good. There are some ways that we can make enhancement but this is out of the scope of this part.
+
+### Getting this to work without the Coral Edge TPU
+There is an [issue in the Github](https://github.com/autorope/donkeycar/issues/953) for making this work without the Coral Edge TPU.  If you get this working please submit a pull request.  
 
 
