@@ -12,7 +12,7 @@ neural network to drive like you. Here are the steps.
 3. If you crash or run off the track press Stop Car immediately to stop recording. If you are using a joystick tap the Triangle button to erase the last 5 seconds of records.
 4. After you've collected 10-20 laps of good data (5-20k images) you can stop
 your car with `Ctrl-c` in the ssh session for your car.
-5. The data you've collected is in the data folder in the most recent tub folder.
+5. The data you've collected is in the mycar data folder.
 
 ## Transfer data from your car to your computer
 
@@ -37,10 +37,11 @@ rsync -rv --progress --partial pi@<your_pi_ip_address>:~/mycar/data/  ~/mycar/da
 
 ## Train a model
 
-* In the same terminal you can now run the training script on the latest tub by passing the path to that tub as an argument. You can optionally pass path masks, such as `./data/*` or `./data/tub_?_17-08-28` to gather multiple tubs. For example:
+* In the same terminal you can now run the training script on the latest data by passing the path to that data as an argument. You can optionally pass path masks, such as `./data/*` to gather multiple manifests. For example, from your mycar folder on your host PC:
+
 
 ```bash
-donkey train --tub <tub folder names comma separated> --model ./models/mypilot.h5
+~\mycar$ donkey train --tub ./data --model ./models/mypilot.h5
 ```
 
 * You can create different model types with the `--type` argument during training. You may also choose to change the default model type in myconfig.py `DEFAULT_MODEL_TYPE`. When specifying a new model type, be sure to provide that type when running the model, or using the model in other tools like plotting or profiling. For more information on the different model types, look here for [Keras Parts](/parts/keras). The model will be placed into the folder `models/`. You can as well omit the `--model` flag and the model name will be auto created using the pattern `pilot_YY-MM-DD_N.h5`. 
