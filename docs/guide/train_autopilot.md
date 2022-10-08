@@ -8,7 +8,7 @@ neural network to drive like you. Here are the steps.
  Make sure you collect good data.
 
 1. Practice driving around the track a couple times.
-2. When you're confident you can drive 10 laps without mistake, restart the python mange.py process to create a new tub session. Press `Start Recording` if using web controller. The joystick will auto record with any non-zero throttle.
+2. When you're confident you can drive 10 laps without mistake, restart the python mange.py process to create a new data recording session. Press `Start Recording` if using web controller. The joystick will auto record with any non-zero throttle.
 3. If you crash or run off the track press Stop Car immediately to stop recording. If you are using a joystick tap the Triangle button to erase the last 5 seconds of records.
 4. After you've collected 10-20 laps of good data (5-20k images) you can stop
 your car with `Ctrl-c` in the ssh session for your car.
@@ -125,7 +125,7 @@ Read [this](/guide/robot_sbc/tensorrt_jetson_nano) for more information.
 
 * For the two lane case. Drive 33% in one lane, 33% in the other, and 33% transitioning between them. It's important to trigger the state transition before changing lanes.
 
-* Check the records in the tub. Open a .json. In addition to steering and throttle, you should also have some additional state information about your behavior vector and which was was activate on that frame. This is crucial to training correctly.
+* Check the records in the data file. Open a .json. In addition to steering and throttle, you should also have some additional state information about your behavior vector and which was was activate on that frame. This is crucial to training correctly.
 
 * Move data to PC and train as normal, ensuring ```TRAIN_BEHAVIORS = True``` in myconfig.py on PC, otherwise extra state information will be ignored.
 
