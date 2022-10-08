@@ -1,7 +1,6 @@
 ## Tub
 
-This is the standard donkey data store and it is modeled after the [ROSBAG](http://wiki.ros.org/rosbag).
-All sensor data is stored in a `Tub`. 
+This is the standard donkey data store. The "data" folder is what we call a "tub"
 
 ### Accepted Types
 
