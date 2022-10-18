@@ -2,7 +2,7 @@
 
 Donkey supports two kinds of autopilots; a deep-learning autopilot and a path follow autopilot.  
 
-If you followed along with the [Get Driving](./get_driving.md) section, then you know that you choose which template to use when you create your **mycar** appliation folder using the **createcar** command.
+If you followed along with the [Get Driving](./get_driving.md) section, then you know that you choose which template to use when you create your **mycar** application folder using the **createcar** command.
 
 This section will talk about what the templates are for, then we can get onto training an autopilot.
 

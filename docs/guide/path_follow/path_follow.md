@@ -32,7 +32,7 @@ donkey createcar --template=path_follow --path=~/mycar --overwrite
 
 Again, like the deep learning template, we can change default configuration values by editing the **myconfig.py** file in the **mycar** folder you created with the `createcar` command.
 
-You will need to calibrate and configure the drivetrain as described in [**Get Driving**](../get_driving.md).  If you have a game controller paired to your car, then you will want to configure it as described in [Controllers](/docs/parts/controllers.md).
+You will need to calibrate and configure the drivetrain as described in [**Get Driving**](/guide/get_driving).  If you have a game controller paired to your car, then you will want to configure it as described in [Controllers](/parts/controllers).
 
 ### Configuring GPS
 In **myconfig.py**, search for the 'gps' section.  Make sure `HAVE_GPS = True` is set.  You will need to determine the serial port that the GPS receiver is connected to and the baud rate to use.  If possible, set your serial port to `115200` baud to get good throughput.
@@ -57,7 +57,7 @@ Those two settings are the only ones related to the GPS receiver that need to be
 
 ### Configure button actions
 
-You can use either the [web controller](/docs/guide/get_driving.md/#driving-with-web-controller) or a [game controller](/docs/guide/get_driving.md/#driving-with-physical-joystick-controller).  You can assign a game pad button OR web ui button to an action by editing the button assignments in **myconfig.py**.  The name of the game pad buttons depend on the game controller you have configured (NOTE: one button is reserved for the emergency stop; you can see which one is assigned by looking at the console output when you start that car using the `python manage.py drive` command).  The 5 available web ui buttons are named `web/w1` to `web/w5`. If you assign `None` action to a button then it is ignored.
+You can use either the [web controller](/guide/get_driving/#driving-with-web-controller) or a [game controller](/guide/get_driving/#driving-with-physical-joystick-controller).  You can assign a game pad button OR web ui button to an action by editing the button assignments in **myconfig.py**.  The name of the game pad buttons depend on the game controller you have configured (NOTE: one button is reserved for the emergency stop; you can see which one is assigned by looking at the console output when you start that car using the `python manage.py drive` command).  The 5 available web ui buttons are named `web/w1` to `web/w5`. If you assign `None` action to a button then it is ignored.
 
 - `SAVE_PATH_BTN` is the button to save the in-memory path to a file.
 - `LOAD_PATH_BTN` is the button to (re)load path from the csv file into memory.
@@ -76,7 +76,7 @@ The algorithm assumes will will be driving in a continuous connected path such t
 
 The workflow for recording a path is as follows:
 
-- Enter **User** mode using either the [web controller](/docs/guide/get_driving.md/#driving-with-web-controller) or a [game controller](/docs/guide/get_driving.md/#driving-with-physical-joystick-controller).
+- Enter **User** mode using either the [web controller](/guide/get_driving/#driving-with-web-controller) or a [game controller](/guide/get_driving/#driving-with-physical-joystick-controller).
 - Move the car to the desired starting point
 - Erase the path in memory (which will also reset the origin).
 - Toggle recording on.
@@ -92,7 +92,7 @@ The current autopilot uses a constant throttle value.  You can set this by editi
 
 The workflow for following a path is as follows:
 
-- Enter **User** mode using either the [web controller](/docs/guide/get_driving.md/#driving-with-web-controller) or a [game controller](/docs/guide/get_driving.md/#driving-with-physical-joystick-controller).
+- Enter **User** mode using either the [web controller](/guide/get_driving/#driving-with-web-controller) or a [game controller](/guide/get_driving/#driving-with-physical-joystick-controller).
 - Move the car to the desired starting point.
 - If you are following a saved path, then load the path into memory.
 - Reset the origin (be careful; don't erase the path, just reset the origin).

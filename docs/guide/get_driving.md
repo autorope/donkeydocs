@@ -51,7 +51,7 @@ races if you have a pilot that will steer but doesn't control throttle.
 
 -----
 
-If you don't have a joystick then you can skip to next section - [train an autopilot](/guide/deep_learning/train_autopilot/).
+If you don't have a joystick then you can skip to next section - [train an autopilot](/guide/train_autopilot/).
 
 -----
 
@@ -98,4 +98,4 @@ nano myconfig.py
 
 ### Next let's train an autopilot.
 - [Train a deep-learning autopilot](/guide/deep_learning/train_autopilot)
-- [Train a gps path-follow autopilot](/guid/path_follow/train_autopilot)
+- [Train a gps path-follow autopilot](/guide/path_follow/path_follow)
