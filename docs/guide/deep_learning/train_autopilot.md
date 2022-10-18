@@ -21,8 +21,8 @@ to a PC computer to train. The Jetson nano is more powerful, but still quite slo
 
 ## Training the easy, GUI way
 
-The easiest way to do the training on your desktop is by using the [Donkey UI application](https://docs.donkeycar.com/utility/ui/).
- ![Tub_manager UI](../assets/ui-tub-manager.png)
+The easiest way to do the training on your desktop is by using the [Donkey UI application](/docs/utility/ui.md).
+ ![Tub_manager UI](/docs/assets/ui-tub-manager.png)
 
 If, however, you want to do the training with the command line, read on....
 
@@ -85,7 +85,7 @@ python manage.py drive --model ~/mycar/models/mypilot.tflite --type tflite_linea
 
 ## [Optional] Use TensorRT on the Jetson Nano
 
-Read [this](/guide/robot_sbc/tensorrt_jetson_nano) for more information.
+Read [this](/docs/guide/robot_sbc/tensorrt_jetson_nano.md) for more information.
 
 ## Training Tips
 
