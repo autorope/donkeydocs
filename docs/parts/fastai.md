@@ -5,7 +5,7 @@ These parts encapsulate models defined using the [FastAi](https://docs.fast.ai/)
  > _**Note**_ This part is interchangeable with the Keras part but does not have TensorRT or TfLite support.
  
 
-The parts are designed to use the trained artificial neural network to reproduce the steering and throttle given the image the camera sees. They are created by using the [train command](/guide/train_autopilot/).
+The parts are designed to use the trained artificial neural network to reproduce the steering and throttle given the image the camera sees. They are created by using the [train command](/guide/deep_learning/train_autopilot/).
 
 ## FastAi Linear
 
