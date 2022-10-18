@@ -96,6 +96,6 @@ nano myconfig.py
 
 -----
 
-### Next let's train and autopilot.
+### Next let's train an autopilot.
 - [Train a deep-learning autopilot](/guide/deep_learning/train_autopilot)
 - [Train a gps path-follow autopilot](/guid/path_follow/train_autopilot)
