@@ -25,7 +25,7 @@ Donkey is the standard car that most people build first. The parts cost about $2
 3. [Create Donkey App.](guide/create_application.md)
 4. [Calibrate your car.](guide/calibrate.md)
 5. [Start driving.](guide/get_driving.md)
-6. [Train an autopilot.](guide/deep_learning/train_autopilot.md)
+6. [Train an autopilot.](guide/train_autopilot.md)
 7. [Experiment with simulator.](guide/deep_learning/simulator.md)
 
 ---------------

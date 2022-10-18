@@ -1,4 +1,4 @@
-# The path_follow Template
+# The Path Follow Template
 
 The path follow template is an alternative to the deep learning template.  The deep learning template is great for an indoor track where lighting conditions and the details of the room can be controlled, but it can be more difficult to get working outside where lighting conditions are variable and things change in the environment.  Outside we have access to GPS; the path_follow template allows you to record a path using a GPS receiver and then configure an autopilot that can follow that path.
 
