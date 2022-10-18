@@ -16,7 +16,11 @@ The deep learning autopilot uses a single forward facing camera and a convolutio
 
 Because the deep learning autopilot depends on a camera image, lighting conditions are important.  The deep learning template is great for an indoor track where lighting conditions and the details of the room can be controlled, but it can be more difficult to get working outside where lighting conditions are variable and things change in the environment.  
 
+**Aside:** The Donkeycar approach to deep learning driving was inspired by an Nvidia research paper entitled [End to End Learning for Self-Driving Cars](https://arxiv.org/pdf/1604.07316v1.pdf).
+
+
 [Train a deep learning autopilot](./deep_learning/train_autopilot.md)
+
 
 ## Path Follow Autopilot
 The path follow template is an alternative to the deep learning template.  Outside we have access to GPS; the path follow template allows you to record a path using a GPS receiver and then configure an autopilot that can follow that path.  The overall process looks like this;
