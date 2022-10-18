@@ -7,7 +7,7 @@ on:
 
 jobs:
   mkdocs-build-and-push:
-    name: mkdocs and push to docs.donkeycar1.com
+    name: mkdocs and push to docs1.donkeycar.com
     runs-on: ubuntu-latest
     defaults:
       run:
