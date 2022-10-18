@@ -2,7 +2,7 @@
 
 We've taken the next step in DIY Robocars competitions. We are now hosting special events online! We welcome competitors from all over the world. Events will be scheduled by Chris Anderson and the Donkeycar maintainers. But this is by no means donkeycar only. Please read on, and we will provide two paths depending on whether you decide to use the donkeycar framework to race.
 
-![race_previe](../assets/virtual_race_league.jpg) 
+![race_previe](/docs/assets/virtual_race_league.jpg) 
 
 We will be broadcasting the race stream over Twitch. Check the event annoucement for the url. Race comepetitors will join a group Zoom chat event. Tawn will host the race server and share the stream over Zoom/Twitch. And we will see how things go.
 
@@ -16,7 +16,7 @@ You can build the server from the source project above, or use [pre-built binari
 
 ## Setup for Donkeycar users
 
-If you are using the donkeycar framework to race, you can use follow the guide to [setup the simulator](/guide/simulator/). If visuals directions help out, checkout the [Windows Sim Setup Screen-Cast on Youtube](https://youtu.be/wqQMmHVT8qw). Use this to practice before the race. When it comes time to race, modify your myconfig.py to have these two changes:
+If you are using the donkeycar framework to race, you can use follow the guide to [setup the simulator](/docs/guide/deep_learning/simulator.md). If visuals directions help out, checkout the [Windows Sim Setup Screen-Cast on Youtube](https://youtu.be/wqQMmHVT8qw). Use this to practice before the race. When it comes time to race, modify your myconfig.py to have these two changes:
 
 ```
 DONKEY_SIM_PATH = "remote"
