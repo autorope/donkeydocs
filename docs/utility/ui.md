@@ -22,7 +22,7 @@ sudo apt-get install xclip
 ## The tub manager
 ![Tub_manager UI](../assets/ui-tub-manager.png)
 
-In the tub manager screen you have to select the car directory that contains the config file `config.py` first, using the `Load car directory` button. Then select the tub you want to be working with using `Load tub`, the tub needs to be inside the car directory. The application remembers the last loaded config and tub.
+In the tub manager screen you have to select the car directory that contains the config file `myconfig.py` first, using the `Load car directory` button. Then select the tub you want to be working with using `Load tub`, the tub needs to be inside the car directory. The application remembers the last loaded config and tub.
 
 The drop-down menu `Add/remove' in the data panel to the left of the image allows to select the record fields, like `user/angle`, `user/throttle`, etc. 
 
@@ -101,7 +101,7 @@ ssh pi@donkeypi.local
 ```
 If SSH asks you if that host should be added to the list of known hosts, hit &lt;return&gt; and you are done. From now on, you can ssh into the car without being prompted for the password again. **The login-free setup is required for the screen to work.**
 
-* You also need to edit your config.py and make sure the fields `PI_USERNAME` and `PI_HOSTNAME` are set to your car user's username and the hostname of the car.
+* You also need to edit your myconfig.py and make sure the fields `PI_USERNAME` and `PI_HOSTNAME` are set to your car user's username and the hostname of the car.
 
 With the car connector you can transfer the tub data from the car to your PC and transfer the pilots back to the car.
 

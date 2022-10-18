@@ -78,7 +78,7 @@ donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--t
 * Uses the model type `--type`
 * Allows to continue training a model given by `--transfer`
 * Supports filtering of records using a function defined in the variable 
-  `TRAIN_FILTER` in the `my_config.py` file. For example: 
+  `TRAIN_FILTER` in the `myconfig.py` file. For example: 
 
 ```bash
 def filter_record(record):
