@@ -63,7 +63,7 @@ Now open your `myconfig.py` script and enter the PWM values for your car into th
 
 ## Fine tuning your calibration
 
-> Note : optional
+> Note: optional
 
 ![fine calibration](../assets/fine_calibration.gif)
 
