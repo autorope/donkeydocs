@@ -3,11 +3,11 @@ name: Push docs
 on:
   push:
     branches:
-      - master
+      - ed/gps-path-follow-documentation
 
 jobs:
   mkdocs-build-and-push:
-    name: mkdocs and push to docs.donkeycar.com
+    name: mkdocs and push to docs.donkeycar1.com
     runs-on: ubuntu-latest
     defaults:
       run:
