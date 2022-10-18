@@ -10,6 +10,12 @@ Create a set of files to control your Donkey with this command:
 donkey createcar --path ~/mycar
 ```
 
+That creates a car using the default deep learning template.  You can also create a car the uses the gps path follow template;
+
+```bash
+donkey createcar --template=path_follow --path ~/mycar
+```
+
 See also more information on [createcar.](/utility/donkey/#create-car)
 
 ## Configure Options
@@ -149,9 +155,13 @@ If you plan to use a joystick, take a side track over to [here](/parts/controlle
 
 ## Camera Setup
 
+If you are using the default deep learning template then you will need a camera.  By default __myconfig.py__ assumes a RaspberryPi camera.  You can change this by editing the __myconfig.py__ file in your `~/mycar` folder.  
+
+If you are using the gps path follow template then you do not need, and may not want, a camera.  In this case you can change the camera type to mock; `CAMERA_TYPE = "MOCK"`.
+
 **Raspberry Pi**:
 
-If you are on a raspberry pi and using the recommended pi camera ("PICAM"), then no changes are needed to your __myconfg.py__. 
+If you are on a raspberry pi and using the recommended pi camera ("PICAM"), then no changes are needed to your __myconfg.py__.
 
 **Jetson Nano**:
 
@@ -162,7 +172,11 @@ Set `IMAGE_W = 224` and also `IMAGE_H = 224`.
 
 CVCAM is a camera type that has worked for USB cameras when OpenCV is setup. This requires additional setup for [OpenCV for Nano](/guide/robot_sbc/setup_jetson_nano/#step-4-install-opencv) or [OpenCV for Raspberry Pi](https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/).
 
-WEBCAM is a camera type that uses the pygame library, also typically for USB cameras. That requires additional setup for [pygame](https://www.pygame.org/wiki/GettingStarted).
+**USB Cameras**
+
+You can also use a USB camera if you prefer.  If you have installed the optional OpenCV dependencies then you can use OpenCV to connect to the camera by editing the camera type to `CAMERA_TYPE = "CVCAM"`. If you have installed the optional pygame library then you can connect to the camera by editing the camera type to `CAMERA_TYPE = "WEBCAM"`.  See the required additional setup for [pygame](https://www.pygame.org/wiki/GettingStarted).
+
+We are adding other cameras over time, so read the camera section in __myconfig.py__ to see what options are available.
 
 ## Troubleshooting
 
@@ -177,6 +191,13 @@ cd projects/donkeycar
 git pull
 donkey createcar --path ~/mycar --overwrite
 ```
+
+If you created a car with the gps path follow template then remember to include the --template argument;
+
+```bash
+donkey createcar --template=path_follow --path ~/mycar --overwrite
+```
+
 
 Your ~/mycar/manage.py, ~/mycar/config.py and other files will change with this operation, but __myconfig.py__ will not be touched. Your __data__ and __models__ dirs will not be touched.
 
