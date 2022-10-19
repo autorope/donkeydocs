@@ -83,7 +83,7 @@ Next, try to make it so that a full left turn and a full right turn are the same
 1. Start your car by running `python manage.py drive`.
 2. Go to `<your_cars_hostname.local>:8887` in a browser.
 3. Press `j` until the cars steering is all the way right.
-4. Press `i` a couple times to get the car to go forward.
+4. Press `i` a couple of times to get the car to go forward.
 5. Measure the diameter of the turn and record it on a spreadsheet.
 6. Repeat this measurement for different steering values for turning each direction.
 7. Chart these so you can see if your car turns the same in each direction.
