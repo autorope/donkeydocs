@@ -2,7 +2,7 @@
 
 Robocar Controller is a mobile app designed to provide a “commandless” user experience to get started with the Donkey Car. 
 
-![cover](../assets/mobile_app/cover.png)
+![cover](/docs/assets/mobile_app/cover.png)
 
 ## Features
 - Commandless experience - No SSH or text editor
@@ -34,35 +34,35 @@ The car will become a hotspot when there is no known Wifi network to connect. Af
 ### Search vehicle on the network
 Once your car connects to the same network as your phone, the app will scan the whole network to discover it. The app will also show you the IP address of the car in case you want to connect to it via SSH.
 
-![Search Vehicle](../assets/mobile_app/search-vehicle.png)
+![Search Vehicle](/docs/assets/mobile_app/search-vehicle.png)
 
 ### Real-time Calibration
 Sometimes it is quite annoying if the car goes too fast or does not run in a straight line. The calibration UI assists you to find the right settings so that your car could be properly calibrated. With the enhanced calibration function, the change will take place in real time and you could observe the change immediately.
 
-![Real-time calibration](../assets/mobile_app/calibration.png)
+![Real-time calibration](/docs/assets/mobile_app/calibration.png)
 
 ### Virtual Joystick
 The virtual joystick offers a quick way to test drive the car if you don't have a physical gamepad controller. It also streams the video captured from the camera in real time. You can just look at the screen and start driving.
 
-![Drive UI](../assets/mobile_app/drive-ui.gif)
+![Drive UI](/docs/assets/mobile_app/drive-ui.gif)
 
 
 ### Drive Summary
 The app presents a drive summary with histogram, the size and the number of images you have collected. The histogram is generated automatically by calling the ```tubhist``` function in the Donkey car software. 
 
-![Drive summary](../assets/mobile_app/drive-summary.png)
+![Drive summary](/docs/assets/mobile_app/drive-summary.png)
 
 ### Visualize the data 
 The app shows all the data(tubs) and the metadata you have collected on the Pi. The metadata includes number of images, size of the tub, the resolutions, the histogram and the location. The app will make use of the donkey makemovie command to generate a video so you can review how the data look like.
 
-![Data](../assets/mobile_app/data.png)
+![Data](/docs/assets/mobile_app/data.png)
 
 ### Free GPU Training
 Free GPU training is available to user who use the app. You can train a model by selecting the data(tubs) you wish to train. The data will be uploaded to our server to start the training process. Once the training is completed, the app will show you the training loss and accuracy graph. At the same time, the app will download the model to your car and you can test the model right away.
 
 Note: We keep the data and models for a period of time. After that, we will delete it from our storage. 
 
-![Train](../assets/mobile_app/train.png)
+![Train](/docs/assets/mobile_app/train.png)
 
 #### More on Free GPU Training
 
@@ -79,7 +79,7 @@ N.B.: To protect our equipment from being abused, we have the following rules to
 
 The app will list all models inside the Pi, no matter it is generated from the training function or just a model copied to the Pi. You can start the autopilot mode using a similar UI as the Drive UI.
 
-![Autopilot](../assets/mobile_app/autopilot.gif)
+![Autopilot](/docs/assets/mobile_app/autopilot.gif)
 
 ### Advanced configuration
 The Doneky car software comes with a vast of configuration that you can experiment. We have included some of the popular options that you may want to change.
@@ -88,7 +88,7 @@ The Doneky car software comes with a vast of configuration that you can experime
 - Training configuration 
 - Drive train settings
 
-![Advanced configuration](../assets/mobile_app/advanced-configuration.png)
+![Advanced configuration](/docs/assets/mobile_app/advanced-configuration.png)
 
 
 
@@ -114,7 +114,7 @@ If you can not or do not want to use the prebuild SD image for you Donkey Car, t
 
 > _**Note**_ This software currently supports **RaspberryPi 4B only**.
 
-#### 1. Complete the [Setup for RaspberryPi](robot_sbc/setup_raspberry_pi.md)
+#### 1. Complete the [Setup for RaspberryPi](/docs/guide/robot_sbc/setup_raspberry_pi.md)
 #### 2. Clone the Donkey Car Console project
 
 ```bash

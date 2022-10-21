@@ -9,8 +9,11 @@ Our docs use extended markdown as implemented by MkDocs.
 
 ## Building the documentation
 
+* create a python3 environment `python -m venv env`
+* activate the python environment `source env/bin/activate`
 * install MkDocs `pip install mkdocs`
-* `mkdocs serve` starts a local webserver at localhost:8000
+* install MkDocs redirect `pin install mkdocs-redirects`
+* `mkdocs serve` starts a local webserver at localhost:8000.  This is a live server; it will be updated when you save any of the .md files in the docs folder.  So you should be running this as you make changes so you can see their effects.
 * `mkdocs build` Builds a static site in `./site` directory
 * config docs by editing `./mkdocs.yml`
 

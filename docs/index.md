@@ -20,13 +20,13 @@ Enjoy
 
 Donkey is the standard car that most people build first. The parts cost about $250 to $300 and take 2 hours to assemble. Here are the main steps to build your own car:
 
-1. [Assemble hardware.](guide/build_hardware.md)
-2. [Install software.](guide/install_software.md)
-3. [Create Donkey App.](guide/create_application.md)
-4. [Calibrate your car.](guide/calibrate.md)
-5. [Start driving.](guide/get_driving.md)
-6. [Train an autopilot.](guide/train_autopilot.md)
-7. [Experiment with simulator.](guide/simulator.md)
+1. [Assemble hardware.](guide/build_hardware)
+2. [Install software.](guide/install_software)
+3. [Create Donkey App.](guide/create_application)
+4. [Calibrate your car.](guide/calibrate)
+5. [Start driving.](guide/get_driving)
+6. [Train an autopilot.](guide/train_autopilot)
+7. [Experiment with simulator.](guide/deep_learning/simulator)
 
 ---------------
 

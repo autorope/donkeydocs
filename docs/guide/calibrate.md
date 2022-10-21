@@ -63,11 +63,22 @@ Now open your `myconfig.py` script and enter the PWM values for your car into th
 
 ## Fine tuning your calibration
 
-> Note: optional
-
 ![fine calibration](../assets/fine_calibration.gif)
 
 Now that you have your car roughly calibrated you can try driving it to verify that it drives as expected. Here's how to fine tune your car's calibration.
+
+First and most importantly, **make sure your car goes perfectly straight** when no steering input is applied.
+
+1. Start your car by running `python manage.py drive`.
+2. Go to `<your_cars_hostname.local>:8887` in a browser.
+3. Press the `i` key on your keyboard a couple of times to get the car to move forward.  This is best done if you have your car on a very flat floor with some kind of grid, so you can guage if it going straight.  Be careful not to confuse driving off at an angle versus driving along an arc. Driving at an angle may simply mean you pointed the car at an angle when starting it.  Driving a curved arc indicates the car is steering.
+4. If your car tends to turn left without steering applied then update the `STEERING_LEFT_PWM` in your **myconfig.py** file so it is closer to neutral.  For example, if `STEERING_LEFT_PWM` is 460 and `STEERING_RIGHT_PWM` is 290, then reduce `STEERING_LEFT_PWM` a little, maybe 458.
+5. If your car tends to steer right with no steering applied, then update `STEERING_RIGHT_PWM` in your **myconfig.py** file so it is closer to neutral.  For example, if `STEERING_LEFT_PWM` is 460 and `STEERING_RIGHT_PWM` is 290, then increase `STEERING_RIGHT_PWM` a little, maybe 292.
+6. Repeat this process a couple of times until you have your car driving straight.
+
+Next, try to make it so that a full left turn and a full right turn are the same turn angle (they make the same diameter circle when driven all the way around). 
+
+> Note : optional
 
 1. Start your car by running `python manage.py drive`.
 2. Go to `<your_cars_hostname.local>:8887` in a browser.
@@ -85,5 +96,7 @@ Corrections:
 After you've fine tuned your car the steering chart should look something like this.
 
 ![calibration graph](../assets/calibration_graph.png)
+
+You may need to iterate making sure the car is driving straight and that the left and right turns are the same to get those both to work.  Prioritize making sure the car drives straight.
 
 ### Next let's [get driving!](/guide/get_driving)

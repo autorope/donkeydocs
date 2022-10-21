@@ -20,11 +20,17 @@ This script will start the drive loop in your car which includes a part that
 is a web server for you to control your car. You can now control your car
 from a web browser at the URL: `<your car's hostname.local>:8887`
 
-![drive UI](../assets/drive_UI.png)
+![drive UI](../assets/web_controller.png)
 
 ## Driving with Web Controller
-On your phone you can now press start to set your phones current tilt to be
-zero throttle and steering. Now tilting your phone forward will increase throttle and tilting it side to side will turn the steering. 
+
+There are 3 ways to move the car using the web controller
+- **Device Tilt**: 
+Select **Device Tilt** in the **Control Mode** section of the web controller.  Then select **User** in the **Mode** section.  You can then tilt your phone forward to increase throttle and tilt it side to side to turn the steering. 
+- **Joystick**:
+Select **Joystick** in the **Control Mode** section of the web controller.  Then select **User** in the **Mode** section.  You can then touch and drag on the virtual joystick area that appears.  Moving up increases throttle, moving down decreases or reverses.  Moving left turns left, moving right turns right.  Releasing you finger stops.
+- **Gamepad**:
+If you have a game controller attached (either by cable or by bluetooth) to the machine on which you are viewing the web ui, and that game controller is compatible with the HTML5 Gamepad API, then you can choose **Gamepad** in the **Control Mode** section of the web controller.  Then select **User** in the **Mode** section.  You can then drive the donkeycar using the game controller..
 
 ### Features
 
@@ -90,4 +96,6 @@ nano myconfig.py
 
 -----
 
-### Next let's [train an autopilot](/guide/train_autopilot).
+### Next let's train an autopilot.
+- [Train a deep-learning autopilot](/guide/deep_learning/train_autopilot)
+- [Train a gps path-follow autopilot](/guide/path_follow/path_follow)

@@ -19,7 +19,7 @@
 
 ## Step 1: Flash Operating System
 
-> Note:  If you plan to use the mobile app, consider using the pre-built image. Refer to the [mobile app user guide](../mobile_app.md) for details. 
+> Note:  If you plan to use the mobile app, consider using the pre-built image. Refer to the [mobile app user guide](../deep_learning/mobile_app.md) for details. 
 
 You need to flash a micro SD image with an operating system.
 
@@ -269,7 +269,7 @@ python -c "import cv2"
 And if no errors, you have OpenCV installed!
 
 ## Step 13: (Optional) Install Mobile App
-There is a mobile application available on the iPhone and Android that provides an alternative user experience.  It can be installed manually or by downloading an SD card image.  Follow these [instructions](/guide/mobile_app/#optional-manual-installation) to install manually.
+There is a mobile application available on the iPhone and Android that provides an alternative user experience.  It can be installed manually or by downloading an SD card image.  Follow these [instructions](/guide/deep_learning/mobile_app/#optional-manual-installation) to install manually.
 
 > -**Note**- The server component currently supports **RaspberryPi 4B only**.
 

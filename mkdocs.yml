@@ -7,6 +7,13 @@ edit_uri: edit/master/docs
 extra_css:
   - extra.css
 
+plugins:
+    - redirects:
+        redirect_maps:
+            'guide/simulator.md': 'guide/deep_learning/simulator.md'
+            'guide/mobile_app.md': 'guide/deep_learning/mobile_app.md'
+            'guide/virtual_race_league.md': 'guide/deep_learning/virtual_race_league.md'
+            'guide/dataset_pretrained_models.md': 'guide/deep_learning/dataset_pretrained_models.md'
 
 nav:
   - Home: index.md
@@ -17,10 +24,10 @@ nav:
     - Calibrate steering and throttle.: guide/calibrate.md
     - Get driving.: guide/get_driving.md
     - Train an autopilot.: guide/train_autopilot.md
-    - Dataset and pre-trained models: guide/dataset_pretrained_models.md
-    - Donkey Simulator.: guide/simulator.md
-    - Virtual Race League.: guide/virtual_race_league.md
-    - Mobile app: guide/mobile_app.md
+    - Donkey UI.: utility/ui.md
+    - Donkey Simulator.: guide/deep_learning/simulator.md
+    - Virtual Race League.: guide/deep_learning/virtual_race_league.md
+    - Mobile app: guide/deep_learning/mobile_app.md
   - Parts:
     - About: parts/about.md
     - Actuators: parts/actuators.md
@@ -37,7 +44,6 @@ nav:
     - Pins: parts/pins.md
     - Voice Control: parts/voice_control.md
     - Stop Sign Detection: parts/stop_sign_detection.md
-    - Path following with the Intel Realsense T265: parts/path_following.md
   - Utilities:
     - donkey: utility/donkey.md
     - UI: utility/ui.md

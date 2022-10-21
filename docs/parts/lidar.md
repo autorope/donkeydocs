@@ -34,4 +34,8 @@ LIDAR_UPPER_LIMIT = 270
 ```
 ![Lidar limits](../assets/lidar_angle.png) 
 
+## Template support
+Neither the [deep learning template](/guide/train_autopilot/#deep-earning-autopilot) nor the [path follow template](/guide/path_follow/path_follow/) supports Lidar data directly.  There is an issue to [add Lidar data to the deep learning template](https://github.com/autorope/donkeycar/issues/910).  Lidar would also be very useful in the [path follow template](/guide/path_follow/path_follow/) for obstacle detection and avoidance.  If you are interested in working on such projects, please [join the discord community](https://www.donkeycar.com/community.html) and let us know; we will be happy to provide you with support.
+
+
 
