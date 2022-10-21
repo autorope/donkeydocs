@@ -7,6 +7,13 @@ edit_uri: edit/master/docs
 extra_css:
   - extra.css
 
+plugins:
+    - redirects:
+        redirect_maps:
+            'guide/simulator.md': 'guide/deep_learning/simulator.md'
+            'guide/mobile_app.md': 'guide/deep_learning/mobile_app.md'
+            'guide/virtual_race_league.md': 'guide/deep_learning/virtual_race_league.md'
+            'guide/dataset_pretrained_models.md': 'guide/deep_learning/dataset_pretrained_models.md'
 
 nav:
   - Home: index.md
