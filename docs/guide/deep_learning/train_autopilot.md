@@ -21,8 +21,8 @@ to a PC computer to train. The Jetson nano is more powerful, but still quite slo
 
 ## Training the easy, GUI way
 
-The easiest way to do the training on your desktop is by using the [Donkey UI application](/docs/utility/ui.md).
- ![Tub_manager UI](/docs/assets/ui-tub-manager.png)
+The easiest way to do the training on your desktop is by using the [Donkey UI application](/utility/ui).
+ ![Tub_manager UI](/assets/ui-tub-manager.png)
 
 If, however, you want to do the training with the command line, read on....
 
