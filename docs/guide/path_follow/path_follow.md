@@ -9,10 +9,10 @@ When we record a path, we save each (x, y) coordinate pair (each waypoint) we ge
 Similar to the deep learning template, we have 3 modes of operation:
 
 - In **User** mode you manually control the car.   Again similar to the deep learning template, you can use the web controller and/or a game controller to steer, apply throttle and choose actions using buttons.  
-- In **Autosteering** mode the car will try to follow the set of recorded waypoints, but it will only control steering; you still control throttle manually.  This is a good mode to start in when following the path as you can safely stop the car by letting off the throttle.  It's also helpful to can determine the maximum speed at which the car can reliably follow the waypoints.
-- In **Autopilot** mode the car will try to follow the set of recorded waypoints by controlling both steering and throttle.  This is fully autonomous.  To stop the car use your controller to ender User mode.
+- In **Autosteering** mode the car will try to follow the set of recorded waypoints, but it will only control steering; you still control throttle manually.  This is a good mode to start in when following the path as you can safely stop the car by letting off the throttle.  It's also helpful in determining the maximum speed at which the car can reliably follow the waypoints.
+- In **Autopilot** mode the car will try to follow the set of recorded waypoints by controlling both steering and throttle.  This is fully autonomous.  To stop the car use your controller to end User mode.
 
-Before we can record of follow a path, we need to create an application and do a little configuration.
+Before we can record or follow a path, we need to create an application and do a little configuration.
 
 ## Create a path follow Application
 
@@ -38,22 +38,22 @@ You will need to calibrate and configure the drivetrain as described in [**Get D
 In **myconfig.py**, search for the 'gps' section.  Make sure `HAVE_GPS = True` is set.  You will need to determine the serial port that the GPS receiver is connected to and the baud rate to use.  If possible, set your serial port to `115200` baud to get good throughput.
 
 - `GPS_SERIAL = <serialport>`
-  - The `<serialport>` value differs depending on how you have your gps receiver connected (by usb or gpio serial) and by SBC (RPi vs Nano)
+    - The `<serialport>` value differs depending on how you have your gps receiver connected (by usb or gpio serial) and by SBC (RPi vs Nano)
     - You can list all potential serial ports; `ls /dev/tty*`.  Note that most of these are actually not usable.
     - If connecting to the Nano USB port, use `/dev/ttyUSB0`.
     - If connecting to the RPi USB port, use `/dev/ttyACM01`.
     - If connecting to the default RPi gpio serial port (board pins 8&10) use `/dev/ttyAMA0`.
     - If connecting to the default Jetson Nano gpio serial port (board pins 8&10) use `/dev/ttyTHS1`.
 - `GPS_SERIAL_BAUDRATE = <baudrate>`
-  - The `<baudrate>` value differs depending on your gps and if you have changed it using U-Center.  
+    - The `<baudrate>` value differs depending on your gps and if you have changed it using U-Center.  
     - when connecting between the SBC's USB port and the usb port on the gps receiver the baud rate is detected by USB, so choose 115200 so you have a fast connection.
     - The ZED-F9P's other serial ports default to 38400 baud.
     - Cheap gps receivers generally default to 9600 baud.  
     - See this [video](https://youtu.be/GLtEtxPWoIk) on how to use UBlox' U-Center to change the baudrate of the uarts on a UBlox GPS receiver.
 
-Note that both the RPi and Jetson Nano may be using the gpio serial ports as login consoles (you can connect up a serial 'terminal' and login).  If using the gpio serial ports you need to disable the login console.  See [Writing to a serial port](https://ezward.github.io/gps/#writing-to-the-serial-port) for details.
+Note that both the RPi and Jetson Nano may be using the default gpio serial port as a login console (you can connect up a serial 'terminal' and login).  If using the gpio serial ports you need to disable the login console.  See [Writing to a serial port](https://ezward.github.io/gps/#writing-to-the-serial-port) for details.
 
-Those two settings are the only ones related to the GPS receiver that need to be set in **myconfig.py**.  However, if you are using RTK high resolution GPS then you need to do a lot more configuration and wiring outside of Donkeycar.  See [Donkeycar meets RTK GPS](https://ezward.github.io/gps/#donkeycar-meets-rtk-gps) for a detailed discussion of one way to setup an RTK GPS receiver for use with Donkeycar.  Here is a related [video](https://youtu.be/q4T7kTaExTs) that goes over the same information.
+Those two settings are the only ones related to the GPS receiver that need to be set in **myconfig.py**.  However, if you are using RTK high resolution GPS then you need to do a lot more configuration and wiring outside of Donkeycar.  See [Donkeycar meets RTK GPS](https://ezward.github.io/gps/#donkeycar-meets-rtk-gps) for a detailed discussion of one way to setup an RTK GPS receiver for use with Donkeycar.  Here is a related [video](https://youtu.be/q4T7kTaExTs?t=970) that goes over the same information.
 
 ### Configure button actions
 
@@ -126,11 +126,11 @@ The coefficients can be changed by editing their values in the **myconfig.py** f
 Determining PID Coefficients can be difficult.  One approach is:
 
 - First determine the P coefficient.
-  - zero out the D and the I coefficients.
-  - Use a kind of 'binary' search to find a value where the vehicle will roughly follow a recorded straight line; probably oscillating around it.  It will be weaving like it is under the influence.
-- Next find a D coofficient that reduces the weaving on a straight line.  Then record a path with a tight turn.  Find a D coefficient that reduces the overshoot when turning.
-- You may not even need and I value.  If the car becomes unstabled after driving for a while then you may want to start to set this value.  It will likely be much smaller than the other values.
+    - zero out the D and the I coefficients.
+    - Use a kind of 'binary' search to find a value where the vehicle will roughly follow a recorded straight line; probably oscillating around it.  It will be weaving like it is under the influence.
+- Next find a D coefficient that reduces the weaving on a straight line.  Then record a path with a tight turn.  Find a D coefficient that reduces the overshoot when turning.
+- You may not even need the I value.  If the car becomes unstabled after driving for a while then you may want to start to set this value.  It will likely be much smaller than the other values.
 
 Be patient.  Start with a reasonably slow speed.  Don't make many changes at once.  Write down what is working.
 
-Once you have a stable PID controller, then you can figure our just how fast you can go with it before autopilot becomes unstable.  If you want to go faster then start tweaking the values again using the method suggested above and the using faster speed.
+Once you have a stable PID controller, then you can figure our just how fast you can go with it before autopilot becomes unstable.  If you want to go faster then set the desired speed and start tweaking the values again using the method suggested above.
