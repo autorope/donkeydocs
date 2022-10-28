@@ -1,8 +1,8 @@
 # Donkeycar Software Architecture
 
-A 'template' is a python file that contains code to construct a 'vehicle' and one or more 'parts'.  A part is a Python class that wraps a functional component of a vehicle.  The parts are added to the vehicle.  The parts can take values from the vehicle's memory as inputs and can write values to the vehicle's memory as outputs.  When the vehicle loop is started the parts are run in the order that they were added; getting their inputs from memory and outputing their results to memory.  This continues in a loop until the vehicle is stopped, then all the parts are shutdown and the template exits.
+Donkeycar is very simple; code is organized into parts that take inputs and return outputs.  These parts are added to a vehicle.  The vehicle loop, once started, runs the parts in order.  The parts effectively communicate by reading and mutating the vehicle memory.
 
-So Donkeycar is very simple; code is organized into parts that take inputs and return outputs.  These parts are added to a vehicle.  The vehicle loop, once started, runs the parts in order.  The parts effectively communicate by reading and mutating the vehicle memory.
+A 'template' is a python file that contains code to construct a 'vehicle' and one or more 'parts'.  A part is a Python class that wraps a functional component of a vehicle.  The parts are added to the vehicle.  The parts can take values from the vehicle's memory as inputs and can write values to the vehicle's memory as outputs.  When the vehicle loop is started the parts are run in the order that they were added; getting their inputs from memory and outputing their results to memory.  This continues in a loop until the vehicle is stopped, then all the parts are shutdown and the template exits.
 
 ## Templates
 When you create your car application using the `donkey createcar ...` command as described in the [Create Donkeycar App](https://docs.donkeycar.com/guide/create_application/) section of the docs, what happens under the hood is that a few files are copied from the `donkeycar/templates` folder into your my car folder.  The two we need to talk about are manage.py and myconfig.py.
