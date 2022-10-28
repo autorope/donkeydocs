@@ -199,7 +199,7 @@ A PCA9685 could also be used to generate all control signals.  See [pins](pins.m
 VESC is an advanced version of ESC that provides you a lot of customization options on how the ESC operates. It includes features such as regenerative braking, temperature control etc.
 
 This was tested with a VESC 6 and Traxxas Brushless Motor
-Follow this tutorial to update your VESC firmware and calibrate it: https://f1tenth.readthedocs.io/en/stable/getting_started/firmware/firmware_vesc.html
+Follow this F1Tenth tutorial to update your VESC firmware and calibrate it: [https://f1tenth.readthedocs.io/en/stable/getting_started/firmware/firmware_vesc.html](https://f1tenth.readthedocs.io/en/stable/getting_started/firmware/firmware_vesc.html)
 It's important to use the servo out bin so that we can control steering with the VESC as well
 
 Requires installation of PyVESC from source for servo control (pip install git+https://github.com/LiamBindle/PyVESC.git@master)
