@@ -49,7 +49,7 @@ These include:
 * Controllers - Web based or Bluetooth.
 * Stores - Tub, or a way to save data.
 
-This is an excellent video by Tawn Kramer that walks through how to make a part: https://www.youtube.com/watch?v=YZ4ESrtfShs and the second half of this video shows how the Oled part was created https://youtu.be/GOkYPXheWSY?t=1213
+Tawn Kramer has created a video (actual two parts) that walks through [how to make a part](https://www.youtube.com/watch?v=YZ4ESrtfShs). Also, there is a video of a presentationat the Arm AIoT conference that shows [how the OLED part was created](https://youtu.be/GOkYPXheWSY?t=1213).
 
 Each part is constructed and then added to the vehicle loop with its named inputs and named outputs specified.  The vehicle's parts are (for the most part) executed in the order that they are added to the vehicle loop.  Each time the vehicle loop runs the part's inputs are read from vehicle memory and passed to the part's run() method, the run() method does it's work, the returns the output values.  Here is an example of adding a part; the [AiLaunch part](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/launch.py) overides the throttle when then driving mode transitions from manual driving to autopilot; it is used to private a high throttle for a short time at the very start of a race.  
 
