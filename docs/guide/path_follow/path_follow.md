@@ -8,7 +8,7 @@ When we record a path, we save each (x, y) coordinate pair (each waypoint) we ge
 
 Similar to the deep learning template, we have 3 modes of operation:
 
-- In **User** mode you manually control the car.   Again similar to the deep learning template, you can use the web controller and/or a game controller to steer, apply throttle and choose actions using buttons.  
+- In **User** driving mode you manually control the car.   Again similar to the deep learning template, you can use the web controller and/or a game controller to steer, apply throttle and choose actions using buttons.  
 - In **Autosteering** mode the car will try to follow the set of recorded waypoints, but it will only control steering; you still control throttle manually.  This is a good mode to start in when following the path as you can safely stop the car by letting off the throttle.  It's also helpful in determining the maximum speed at which the car can reliably follow the waypoints.
 - In **Autopilot** mode the car will try to follow the set of recorded waypoints by controlling both steering and throttle.  This is fully autonomous.  To stop the car use your controller to end User mode.
 
@@ -72,11 +72,11 @@ You can use either the [web controller](/guide/get_driving/#driving-with-web-con
 
 ## Recording a path
 
-The algorithm assumes will will be driving in a continuous connected path such that that start and end are the same.  You can adjust the space between recorded waypoints by editing the `PATH_MIN_DIST` value in **myconfig.py** You can change the name and location of the saved file by editing the `PATH_FILENAME` value.
+The algorithm assumes we will be driving in a continuous connected path such that the start and end are the same.  You can adjust the space between recorded waypoints by editing the `PATH_MIN_DIST` value in **myconfig.py** You can change the name and location of the saved file by editing the `PATH_FILENAME` value.
 
 The workflow for recording a path is as follows:
 
-- Enter **User** mode using either the [web controller](/guide/get_driving/#driving-with-web-controller) or a [game controller](/guide/get_driving/#driving-with-physical-joystick-controller).
+- Enter **User** driving mode using either the [web controller](/guide/get_driving/#driving-with-web-controller) or a [game controller](/guide/get_driving/#driving-with-physical-joystick-controller).
 - Move the car to the desired starting point
 - Erase the path in memory (which will also reset the origin).
 - Toggle recording on.
@@ -92,11 +92,11 @@ The current autopilot uses a constant throttle value.  You can set this by editi
 
 The workflow for following a path is as follows:
 
-- Enter **User** mode using either the [web controller](/guide/get_driving/#driving-with-web-controller) or a [game controller](/guide/get_driving/#driving-with-physical-joystick-controller).
+- Enter **User** driving mode using either the [web controller](/guide/get_driving/#driving-with-web-controller) or a [game controller](/guide/get_driving/#driving-with-physical-joystick-controller).
 - Move the car to the desired starting point.
 - If you are following a saved path, then load the path into memory.
 - Reset the origin (be careful; don't erase the path, just reset the origin).
-- Enter **Autosteering** or **Autopilot** mode.  If you are in **Autosteering** mode you will need to manually provide throttle for the car to move.  If you are in **Autopilot** mode the car should drive itself completely.
+- Enter **Autosteering** or **Autopilot** driving mode.  If you are in **Autosteering** mode you will need to manually provide throttle for the car to move.  If you are in **Autopilot** mode the car should drive itself completely.
 - Re-enter **User** mode to stop the car.
 
 ### The algorithm
@@ -106,8 +106,8 @@ The algorithm for following the path is extremely simple; it's the Hello World o
 - Get the vehicle's current GPS position
 - Find the nearest point in the list of waypoints.
 - Choose the next point on the path from this point.
-- Use these to points to create a line that represents the desired track.
-- Calculate the cross-track error between the vehicle's current position and the line.  The cross-track error is a signed value.
+- Use these two points to create a line that represents the desired track.
+- Calculate the cross-track error between the vehicle's current position and the line.  The cross-track error is a signed value that represents the distance from the line and which side of the line we are on.
 - Use the cross-track error as the error input into the PID controller that controls steering.  
 - The PID controller outputs a new steering value.
 
@@ -131,6 +131,6 @@ Determining PID Coefficients can be difficult.  One approach is:
 - Next find a D coefficient that reduces the weaving on a straight line.  Then record a path with a tight turn.  Find a D coefficient that reduces the overshoot when turning.
 - You may not even need the I value.  If the car becomes unstabled after driving for a while then you may want to start to set this value.  It will likely be much smaller than the other values.
 
-Be patient.  Start with a reasonably slow speed.  Don't make many changes at once.  Write down what is working.
+Be patient.  Start with a reasonably slow speed.  Change one thing at a time and test he change; don't make many changes at once.  Write down what is working.
 
 Once you have a stable PID controller, then you can figure our just how fast you can go with it before autopilot becomes unstable.  If you want to go faster then set the desired speed and start tweaking the values again using the method suggested above.
