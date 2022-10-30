@@ -1,3 +1,4 @@
+1`
 # The Path Follow Template
 
 The path follow template is an alternative to the deep learning template.  The deep learning template is great for an indoor track where lighting conditions and the details of the room can be controlled, but it can be more difficult to get working outside where lighting conditions are variable and things change in the environment.  Outside we have access to GPS; the path_follow template allows you to record a path using a GPS receiver and then configure an autopilot that can follow that path.
@@ -32,7 +33,7 @@ donkey createcar --template=path_follow --path=~/mycar --overwrite
 
 Again, like the deep learning template, we can change default configuration values by editing the **myconfig.py** file in the **mycar** folder you created with the `createcar` command.
 
-You will need to calibrate and configure the drivetrain as described in [**Get Driving**](/guide/get_driving).  If you have a game controller paired to your car, then you will want to configure it as described in [Controllers](/parts/controllers).
+You will need to calibrate and configure the drivetrain as described in [**Configure your car**](/guide/calibrate/).  If you have a game controller paired to your car, then you will want to configure it as described in [Controllers](/parts/controllers).
 
 ### Configuring GPS
 In **myconfig.py**, search for the 'gps' section.  Make sure `HAVE_GPS = True` is set.  You will need to determine the serial port that the GPS receiver is connected to and the baud rate to use.  If possible, set your serial port to `115200` baud to get good throughput.
