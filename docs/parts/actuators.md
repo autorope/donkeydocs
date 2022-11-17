@@ -255,9 +255,11 @@ See https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control
 See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### 2 Pin HBridge Differential Drive
-2 DC Motors controlled with an 'mini' L298N HBridge, each motor using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.  This advantage of this wiring method is that it only requires a total of 4 pins.
+2 DC Motors controlled with an 'mini' L298N HBridge, each motor using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.  This advantage of this wiring method is that it only requires a total of 4 pins; however all of those pins must be able to output PWM.  
 
-See https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/ for how an L298N mini-HBridge modules is wired in 2-pin mode. This driver can also be used with an L9110S/HG7881 motor driver.  See https://electropeak.com/learn/interfacing-l9110s-dual-channel-h-bridge-motor-driver-module-with-arduino/ for how an L9110S motor driver module is wired.
+- See [L298 Tutorial](https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/) for how an L298 mini-HBridge modules is wired in 2-pin mode. 
+- This driver can also be used with an L9110S/HG7881 motor driver.  See [Interfacing L9110S](https://electropeak.com/learn/interfacing-l9110s-dual-channel-h-bridge-motor-driver-module-with-arduino/) for how an L9110S motor driver module is wired.  
+- The driver can also be used with a DRV8833.  See [DRV8833 HBridge](https://electropeak.com/learn/interfacing-drv8833-dual-motor-driver-module-with-arduino/) for how to interface to an arduino.
 
 
 **Configuration**
