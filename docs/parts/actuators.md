@@ -6,6 +6,7 @@ A car needs a way to to move forward and backward and to turn left and right.  W
 - **Differential drive vehicles**  have two independently controlled drive wheels to provide both movement and steering.  For instance a differential drive car can be driven straight forward by turning the two drive wheels forward at the same speed. In order to turn, one motor can be driven faster than the other and the car will turn an arc in the direction of the slower motor.
 
 Actuators take control signals from the Donkeycar to control their actions.  There are several options for generating these control signals.
+
 - PCA9685 Servo controller board
 - RPi/Jetson 40 pin GPIO header
   - see [Generating PWM from the Jetson Nano](./pins.md#generating-pwm-from-the-jetson-nano) for how to enable PWM output from the Jetson Nano 40 pin GPIO header.
