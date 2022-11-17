@@ -9,7 +9,7 @@ Actuators take control signals from the Donkeycar to control their actions.  The
 
 - PCA9685 Servo controller board
 - RPi/Jetson 40 pin GPIO header
-  - see [Generating PWM from the Jetson Nano](./pins.md#generating-pwm-from-the-jetson-nano) for how to enable PWM output from the Jetson Nano 40 pin GPIO header.
+    - see [Generating PWM from the Jetson Nano](./pins.md#generating-pwm-from-the-jetson-nano) for how to enable PWM output from the Jetson Nano 40 pin GPIO header.
 - Arduino
 
 Below we will describe the supported actuator setups and software configuration of their control signals.
