@@ -16,6 +16,7 @@ cd projects
 ```
 
 * Get the latest donkeycar from Github.
+> Note: There are currently version upgrades happening on the `main` branch so you might want to rather checkout a stable release as discribed below.
 
 ```bash
 git clone https://github.com/autorope/donkeycar
@@ -28,7 +29,7 @@ git checkout main
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git fetch --all --tags
+git fetch --all --tags -f
 latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 git checkout $latestTag
 ```
