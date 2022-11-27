@@ -21,7 +21,7 @@ cd projects
 
 * Get the latest donkeycar from Github
 
-**_Note_**: There are version changes happening on the `main` branch at the moment, so you might want to checkout a release as explained in the next step.
+> Note: There are version changes happening on the `main` branch at the moment, so you might want to checkout a release as explained in the next step.
 
 ```bash
 git clone https://github.com/autorope/donkeycar
