@@ -93,6 +93,7 @@ cd ~/projects
 ```
 
 * Get the latest donkeycar from Github.
+> Note: There are currently version updates happening on the `main` branch so you might rather want to checkout the latest stable release as explained below.
 
 ```bash
 git clone https://github.com/autorope/donkeycar
@@ -105,7 +106,7 @@ pip3 install -e .[nano]
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git fetch --all --tags
+git fetch --all --tags -f
 latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 git checkout $latestTag
 pip install -e .[nano]
