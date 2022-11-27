@@ -27,6 +27,8 @@ cd projects
 
 * Get the latest donkey from Github.
 
+**_Note_**: There are currently version changes happening on the `main` branch so you might rather want to check out a stable release as explained below.
+
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
@@ -38,8 +40,8 @@ git checkout main
 ```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
-git fetch --all --tags
-git checkout tags/4.3.6.1
+git fetch --all --tags -f
+git checkout tags/4.4.0
 ```
 
 * If this is not your first install, update Conda and remove old donkey
