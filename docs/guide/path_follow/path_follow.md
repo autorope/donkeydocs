@@ -12,6 +12,12 @@ Similar to the deep learning template, we have 3 modes of operation:
 - In **Autosteering** mode the car will try to follow the set of recorded waypoints, but it will only control steering; you still control throttle manually.  This is a good mode to start in when following the path as you can safely stop the car by letting off the throttle.  It's also helpful in determining the maximum speed at which the car can reliably follow the waypoints.
 - In **Autopilot** mode the car will try to follow the set of recorded waypoints by controlling both steering and throttle.  This is fully autonomous.  To stop the car use your controller to end User mode.
 
+<div class="video-container" align="center">
+    <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/tjWmrCIKgnE" allowfullscreen></iframe>
+<p>Path Follow Autopilot in Action</p>
+  </div><br/>
+
+
 Before we can record or follow a path, we need to create an application and do a little configuration.
 
 ## Create a path follow Application
