@@ -84,7 +84,9 @@ The workflow for recording a path is as follows:
 - Toggle recording off.
 - If desired, save the path.
 
-Since the path is saved in a simple csv file it can be visualized in many tools.  A simple one to visualize your path is [CSV Plot](https://csvplot.com)
+Since the path is saved in a simple csv file it can be visualized in many tools.  A simple one to visualize your path is [CSV Plot](https://csvplot.com).  Use the button in the upper-right (just to the left of the home button) to make the axis scale square.  Here is an example path (rotated to fit a little better);
+
+![A CSV Path plotted in https://csvplot.com](../../assets/path_8_rotate.png)
 
 ## Following a path
 
@@ -99,38 +101,58 @@ The workflow for following a path is as follows:
 - Enter **Autosteering** or **Autopilot** driving mode.  If you are in **Autosteering** mode you will need to manually provide throttle for the car to move.  If you are in **Autopilot** mode the car should drive itself completely.
 - Re-enter **User** mode to stop the car.
 
-### The algorithm
+## The Path Follow Algorithm
 
-The algorithm for following the path is extremely simple; it's the Hello World of path following.
+The algorithm we use for following the path is extremely simple; it's the Hello World of path following.
 
 - Get the vehicle's current GPS position
-- Find the nearest point in the list of waypoints.
-- Choose the next point on the path from this point.
-- Use these two points to create a line that represents the desired track.
-- Calculate the cross-track error between the vehicle's current position and the line.  The cross-track error is a signed value that represents the distance from the line and which side of the line we are on.
+- Find the nearest point in the list of waypoints; starting at the last nearest waypoint, search up to `PATH_SEARCH_LENGTH` points and choose the waypoint that is closest to the current position.
+- Choose the waypoint `PATH_LOOK_AHEAD` points ahead of the closest point on the path.
+- Choose the waypoint `PATH_LOOK_BEHIND` points behind the closes point on the path.
+- Use behind and ahead waypoints to create a line that represents the desired track.
+- Calculate the cross-track error between the vehicle's current position and the desired track.  The cross-track error is a signed value that represents the distance from the line and which side of the line we are on.
 - Use the cross-track error as the error input into the PID controller that controls steering.  
 - The PID controller outputs a new steering value.
 
+
+### Configuring Path Follow Parameters
+
+So the algorithm uses the cross-track error between a desired line and the vehicle's measured position to decide how much and which way to steer.  But the path we recorded is not a simple line; it is a lot of points that is typically some kind of circuit.  As described above, we use the vehicle's current position to choose a short segment of the path that we use as our desired track.  That short segment is recalculated every time we get a new measured car position.  There are a few configuration parameters that determine exactly which two points on the path that we use to calculate the desired track line.
+
+```python
+PATH_SEARCH_LENGTH = None   # number of points to search for closest point, None to search entire path
+PATH_LOOK_AHEAD = 1         # number of points ahead of the closest point to include in cte track
+PATH_LOOK_BEHIND = 1        # number of points behind the closest point to include in cte track   
+```
+
+Generally, if you are driving very fast you might want the look ahead to be larger than if driving slowly so that your steering can anticipate upcoming curves.  Increasing the length of the resulting track line, by increasing the look behind and/or look ahead, also acts as a noise filter; it smooths out the track.  This reduces the amount of jitter in the controller.  However, this must be balanced with the true curves in the path; longer track segments effectively 'flatten' curves and so can result in understeer; not steering enough when on a curve.
+   
+### What is a PID Controller?
+
+A PID controller is function that takes two parameters; 1) a target value to be achieved and 2) the current measured value. The PID function uses the difference between the target value and the measured value (the error) to calculate a control value that can be used to achieve the target value (so to drive the error between the desired value and the measured value to zero).  
+
+In our case, we want to stay on the desired track; we want the cross-track error (the distance between the desired line and the vehicle's measured position) to be zero; the control value that is output is a steering value that should move the vehicle closer to the desired line.  So our PID controller is controlling steering based on which side of the line and how far from the desired line the car is.
+ 
 The algorithm uses the sign of the cross track error to determine which way to steer.  Naturally, if the cross-track error indicates the vehicle is to the left of the desired track, then the vehicle should turn right to move towards the desired track.  If the cross-track error indicates the vehicle is to the right of the desired track, then the vehicle should turn left to move towards the desired track.  If the vehicle is on the desired track, then the steering should be neutral.
 
 But how much should we steer; should we turn only slightly or should be turn very hard?  The PID controller will output a steering value that is proportional to the magnitude of the cross-track error.  So if we are near the desired track, then it will steer slightly.  If we are far off the desired track then it will turn harder.  
 
 ### Determining PID Coefficients
 
-The coefficients can be changed by editing their values in the **myconfig.py** file.
+The PID coefficients are the most important (and time consuming) parameters to configure.  If they are not correct for your car then it will not follow the path.  The coefficients can be changed by editing their values in the **myconfig.py** file.  
 
-- `PID_P` is the proportional coefficient; it is multiplied with the cross-track error.
-- `PID_D` is the differential coefficent; it is multiplied with the change in the cross-track error.
-- `PID_I` is the integral coefficient; it is multiplied with the total accumulated cross-track error.
+- `PID_P` is the proportional coefficient; it is multiplied with the cross-track error.  This is the most important parameter; it contributes the most to the output steering value and in some cases may be all that is needed to follow the line.  If this is too small then car will not turn enough when it reaches a curve.  If this to too large then it will over-react to small changes in the path and may start turning in circles; especially when it gets to a curve.
+- `PID_D` is the differential coefficient; it is multiplied with the change in the cross-track error.  This parameter can be useful in reducing oscillations and overshoot.
+- `PID_I` is the integral coefficient; it is multiplied with the total accumulated cross-track error.  This may be useful in reducing offsets caused by accumulated error; such as if one wheel is slightly smaller in diameter than another.
 
 Determining PID Coefficients can be difficult.  One approach is:
 
 - First determine the P coefficient.
     - zero out the D and the I coefficients.
     - Use a kind of 'binary' search to find a value where the vehicle will roughly follow a recorded straight line; probably oscillating around it.  It will be weaving like it is under the influence.
-- Next find a D coefficient that reduces the weaving on a straight line.  Then record a path with a tight turn.  Find a D coefficient that reduces the overshoot when turning.
-- You may not even need the I value.  If the car becomes unstabled after driving for a while then you may want to start to set this value.  It will likely be much smaller than the other values.
+- Next find a D coefficient that reduces the weaving (oscillations) on a straight line.  Then record a path with a tight turn.  Find a D coefficient that reduces the overshoot when turning.
+- You may not even need the I value.  If the car becomes unstable after driving for a while then you may want to start to set this value.  It will likely be much smaller than the other values.
 
-Be patient.  Start with a reasonably slow speed.  Change one thing at a time and test he change; don't make many changes at once.  Write down what is working.
+Be patient.  Start with a reasonably slow speed.  Change one thing at a time and test the change; don't make many changes at once.  Write down what is working.
 
 Once you have a stable PID controller, then you can figure our just how fast you can go with it before autopilot becomes unstable.  If you want to go faster then set the desired speed and start tweaking the values again using the method suggested above.
