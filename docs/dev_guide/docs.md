@@ -12,7 +12,7 @@ We use the [mkdocs package](https://www.mkdocs.org/user-guide/) to create the ht
     - create a python virtual environment and activate it.
     - install the mkdocs package into the activated virtual environment.
     - run the mkdocs server.  This will provide you with a url that you can open in your browser to see the rendered docs.  
-    ```bash
+    ```
         python3 -m venv env
         source env/bin/activate
         pip3 install mkdocs
