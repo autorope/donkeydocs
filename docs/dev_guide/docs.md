@@ -1,6 +1,8 @@
-Thank you for contributing to the Donkeycar projects.  The documentation is critical for the success of your users so we appreciate you contributions.  Accuracy and completeness is critical. Many users are beginners so please write your contributions with this in mind; don't assume that 'they should already know that'.  
+# Contributing to the documentation
 
-We use the [mkdocs package](https://www.mkdocs.org/user-guide/) to create the html for the https://docs.donkeycar.com site.  The files in repo are in markdown format; mkdocs `compiles` those to html so they can be displayed in a browser.  You make your changes in your own fork of the donkeydocs repo and open a pull request so it can be merged into the main donkeydocs repo.  Once the PR is merged then the changes will automatically be compiled and pushed to the https://docs.donkeycar.com site.   
+Thank you for contributing to the Donkeycar project.  The documentation is critical for the success of our users so we appreciate your contributions.  Accuracy and completeness is critical. Many users are beginners so please write your contributions with this in mind; don't assume that 'they should already know that'.  
+
+We use the [mkdocs package](https://www.mkdocs.org/user-guide/) to create the html for the https://docs.donkeycar.com site.  The files in the repo are in markdown format; mkdocs `compiles` those to html so they can be displayed in a browser.  You make your changes in your own fork of the donkeydocs repo and open a pull request so it can be merged into the main donkeydocs repo by one of the maintainers.  Once the PR is merged then the changes will automatically be compiled and pushed to the https://docs.donkeycar.com site.   
 
  1. Fork the [donkeydocs](https://github.com/autorope/donkeydocs) repo in your own github account.
  2. Clone your fork to your computer so you have a local copy that can be changed.
@@ -10,12 +12,12 @@ We use the [mkdocs package](https://www.mkdocs.org/user-guide/) to create the ht
    - create a python virtual environment and activate it.
    - install the mkdocs package into the activated virtual environment.
    - run the mkdocs server.  This will provide you with a url that you can open in your browser to see the rendered docs.  
-     ```
-     python3 -m venv env
-     source env/bin/activate
-     pip3 install mkdocs
-     mkdocs serve
-     ```
+```
+    python3 -m venv env
+    source env/bin/activate
+    pip3 install mkdocs
+    mkdocs serve
+```
    - On subsequent edit sessions, just reactivate the virtual environment and start the mkdocs server (you don't need to recreate the environment, just reactivate it).
 
  5. Once you are done making changes/addtions in your branch, commit the changes and push them to your forked repo.  If you find that you need to make more changes then just rinse and repeat; make changes, commit them, push them.
