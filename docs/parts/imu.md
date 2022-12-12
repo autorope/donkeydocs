@@ -76,7 +76,7 @@ Valid settings are from 0 (`0x00`), 1 (`0x01`), ... to 6 (`0x06`):
 
 On lines `29`,`45` and `54` of `imu.py`, implement the following adjustments.
 
-* On line `29` change `addr=0x68` to IMU_ADDRESS` (`...def __init__(self, addr=IMU_ADDRESS, poll_delay=0.0166, ...`)
+* On line `29` change `addr=0x68` to `IMU_ADDRESS` (`...def __init__(self, addr=IMU_ADDRESS, poll_delay=0.0166, ...`)
 
 * On line `45` change `address_mpu_slave=None` to `address_mpu_slave=0x0c`
 
