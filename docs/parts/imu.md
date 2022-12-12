@@ -55,11 +55,12 @@ pip install mpu9250-jmdev
 HAVE_IMU = True
 IMU_SENSOR = 'mpu9250'          # (mpu6050|mpu9250)
 IMU_DLP_CONFIG = 0x05           # Digital Lowpass Filter setting (0x00:250Hz, 0x01:184Hz, 0x02:92Hz, 0x03:41Hz, 0x04:20Hz, 0x05:10Hz, 0x06:5Hz)
+IMU_ADDRESS = 0x69              # Please use i2c_detect to validate this address (0x68, 0x69, other; depends on your configuration)
 ```
 `IMU_SENSOR` can be either `mpu6050` or `mpu9250` based on the sensor you are using.
 
 `IMU_DLP_CONFIG` allows to change the digital lowpass filter settings for your IMU. Lower frequency settings (see below) can filter high frequency noise at the expense of increased latency in IMU sensor data.
-Valid settings are from 0 (`0x00`) to 6 (`0x06`):
+Valid settings are from 0 (`0x00`), 1 (`0x01`), ... to 6 (`0x06`):
 
 - `0` 250Hz
 - `1` 184Hz
@@ -75,7 +76,7 @@ Valid settings are from 0 (`0x00`) to 6 (`0x06`):
 
 On lines `29`,`45` and `54` of `imu.py`, implement the following adjustments.
 
-* On line `29` change `addr=0x68` to `addr=0x69` (`...def __init__(self, addr=0x69, poll_delay=0.0166, ...`)
+* On line `29` change `addr=0x68` to IMU_ADDRESS` (`...def __init__(self, addr=IMU_ADDRESS, poll_delay=0.0166, ...`)
 
 * On line `45` change `address_mpu_slave=None` to `address_mpu_slave=0x0c`
 
