@@ -169,7 +169,7 @@ When using a Sony IMX219 based camera, and you are using the default car templat
 `CAMERA_TYPE = "CSIC"`.
 For flipping the image vertically set `CSIC_CAM_GSTREAMER_FLIP_PARM = 6` - this is helpful if you have to mount the camera in a rotated position.
 
-CVCAM is a camera type that has worked for USB cameras when OpenCV is setup. This requires additional setup for [OpenCV for Nano](/guide/robot_sbc/setup_jetson_nano/#step-4-install-opencv) or [OpenCV for Raspberry Pi](https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/).
+`CAMERA_TYPE = CVCAM` is a camera type that has worked for USB cameras when OpenCV is setup. This requires additional setup for [OpenCV for Nano](/guide/robot_sbc/setup_jetson_nano/#step-4-install-opencv) or [OpenCV for Raspberry Pi](https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/).
 
 **USB Cameras**
 
