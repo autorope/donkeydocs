@@ -41,7 +41,7 @@ A standard RC car is equipped with a steering servo for steering the front wheel
   PWM_STEERING_PIN = "PCA9685.1:40.0"  # PCA9685, I2C bus 1, address 0x40, channel 0
   PWM_THROTTLE_PIN = "PCA9685.1:40.1"  # PCA9685, I2C bus 1, address 0x40, channel 1
 ```
-  See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
+> See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### Generating PWM pulses from the 40 pin GPIO header
 - Here the PWM signal is generated from the 40 pin GPIO header.  The data pin on the 3-pin ESC and Servo connectors are connected to a PWM pin on the GPIO.  The ground pins on the 3-pin connectors are connected to a common ground.  The 5V pins on the 3-pin connectors are connected to the 5V pins on the GPIO: the 3-pin connector from the ESC will generally provide 5V that can then be used to power the Servo. 
@@ -54,7 +54,7 @@ A standard RC car is equipped with a steering servo for steering the front wheel
   PWM_STEERING_PIN = "RPI_GPIO.BOARD.33"  # GPIO board mode pin-33 == BCM mode pin-13
   PWM_THROTTLE_PIN = "RPI_GPIO.BOARD.12"  # GPIO board mode pin-12 == BCM mode pin-18
 ```
-  See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
+> See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### Direct control with the RaspberryPi GPIO pins. 
 
@@ -231,28 +231,37 @@ See https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control
 
 - use `DRIVETRAIN_TYPE = "DC_TWO_WHEEL_L298N"` in myconfig.py
   - Example pin specifiers using 40 pin GPIO header to generate signals: 
+
 ```python
-  HBRIDGE_L298N_PIN_LEFT_FWD = "RPI_GPIO.BCM.16"  # BCM.16 == BOARD.36
-  HBRIDGE_L298N_PIN_LEFT_BWD = "RPI_GPIO.BCM.20"  # BCM.20 == BOARD.38
-  HBRIDGE_L298N_PIN_LEFT_EN = "RPI_GPIO.BCM.12"   # BCM.12 == BOARD.32
-  HBRIDGE_L298N_PIN_RIGHT_FWD = "RPI_GPIO.BCM.5"  # BCM.5 == BOARD.29
-  HBRIDGE_L298N_PIN_RIGHT_BWD = "RPI_GPIO.BCM.6"  # BCM.6 == BOARD.31
-  HBRIDGE_L298N_PIN_RIGHT_EN = "RPI_GPIO.BCM.13"  # BCM.13 == BOARD.33   
+DC_TWO_WHEEL_L298N = {
+    "LEFT_FWD_PIN": "RPI_GPIO.BOARD.16",        # TTL output pin enables left wheel forward
+    "LEFT_BWD_PIN": "RPI_GPIO.BOARD.18",        # TTL output pin enables left wheel reverse
+    "LEFT_EN_DUTY_PIN": "RPI_GPIO.BOARD.22",    # PWM pin generates duty cycle for left motor speed
+
+    "RIGHT_FWD_PIN": "RPI_GPIO.BOARD.15",       # TTL output pin enables right wheel forward
+    "RIGHT_BWD_PIN": "RPI_GPIO.BOARD.13",       # TTL output pin enables right wheel reverse
+    "RIGHT_EN_DUTY_PIN": "RPI_GPIO.BOARD.11",   # PWM pin generates duty cycle for right wheel speed
+}
 ```
-  
+
   - Example pin specifiers using a PCA9685 to generate signals: 
+
 ```python
-  HBRIDGE_L298N_PIN_LEFT_FWD = "PCA9685.1:40.0"
-  HBRIDGE_L298N_PIN_LEFT_BWD = "PCA9685.1:40.1"
-  HBRIDGE_L298N_PIN_LEFT_EN = "PCA9685.1:40.2"
-  HBRIDGE_L298N_PIN_RIGHT_FWD = "PCA9685.1:40.10"
-  HBRIDGE_L298N_PIN_RIGHT_BWD = "PCA9685.1:40.11"
-  HBRIDGE_L298N_PIN_RIGHT_EN = "PCA9685.1:40.13"
+DC_TWO_WHEEL_L298N = {
+    "LEFT_FWD_PIN": "PCA9685.1:40.3",        # TTL output pin enables left wheel forward
+    "LEFT_BWD_PIN": "PCA9685.1:40.2",        # TTL output pin enables left wheel reverse
+    "LEFT_EN_DUTY_PIN": "PCA9685.1:40.1",    # PWM pin generates duty cycle for left motor speed
+
+    "RIGHT_FWD_PIN": "PCA9685.1:40.6",       # TTL output pin enables right wheel forward
+    "RIGHT_BWD_PIN": "PCA9685.1:40.5",       # TTL output pin enables right wheel reverse
+    "RIGHT_EN_DUTY_PIN": "PCA9685.1:40.4",   # PWM pin generates duty cycle for right wheel speed
+}
 ```
+
   - In the configuration, the HBRIDGE_L298N_PIN_xxxx_EN pins determine how fast the motors spin.  These pins must support PWM output.  Remember that the Jetson Nano only supports 2 PWM output pins and only if they are enabled using `/opt/nvidia/jetson-io/jetson-io.py`. See [Generating PWM from the Jetson Nano](pins.md#generating-pwm-from-the-jetson-nano).
   - The HBRIDGE_L298N_PIN_xxxx_FWD and HBRIDGE_L298N_PIN_xxxx_BWD pins are TTL output pins that determine the direction the motors spin.
 
-See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
+> See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### 2 Pin HBridge Differential Drive
 2 DC Motors controlled with an 'mini' L298N HBridge, each motor using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.  This advantage of this wiring method is that it only requires a total of 4 pins; however all of those pins must be able to output PWM.  
@@ -268,17 +277,22 @@ See [pins](pins.md) for a detailed discussion of pin providers and pin specifier
   - example pin specifiers using the 40 pin GPIO to generate signals: 
   
 ```python
-  HBRIDGE_PIN_LEFT_FWD = "RPI_GPIO.BCM.16"  # BCM.16 == BOARD.36
-  HBRIDGE_PIN_LEFT_BWD = "RPI_GPIO.BCM.20"  # BCM.20 == BOARD.38
-  HBRIDGE_PIN_RIGHT_FWD = "RPI_GPIO.BCM.5"  # BCM.5 == BOARD.29
-  HBRIDGE_PIN_RIGHT_BWD = "RPI_GPIO.BCM.6"  # BCM.6 == BOARD.31
+DC_TWO_WHEEL = {
+    "LEFT_FWD_DUTY_PIN": "RPI_GPIO.BCM.16",  # BCM.16 == BOARD.36, pwm pin produces duty cycle for left wheel forward
+    "LEFT_BWD_DUTY_PIN": "RPI_GPIO.BCM.20",  # BCM.20 == BOARD.38, pwm pin produces duty cycle for left wheel reverse
+    "RIGHT_FWD_DUTY_PIN": "RPI_GPIO.BCM.5",  # BCM.5 == BOARD.29, pwm pin produces duty cycle for right wheel forward
+    "RIGHT_BWD_DUTY_PIN": "RPI_GPIO.BCM.6",  # BCM.6 == BOARD.31, pwm pin produces duty cycle for right wheel reverse
+}
 ```
   - example pin specifiers using a PCA9685 to generate signals: 
+
 ```python
-  HBRIDGE_PIN_LEFT_FWD = "PCA9685.1:40.0"
-  HBRIDGE_PIN_LEFT_BWD = "PCA9685.1:40.1"
-  HBRIDGE_PIN_RIGHT_FWD = "PCA9685.1:40.5"
-  HBRIDGE_PIN_RIGHT_BWD = "PCA9685.1:40.6"
+DC_TWO_WHEEL = {
+    "LEFT_FWD_DUTY_PIN": "PCA9685.1:40.0",  # pwm pin produces duty cycle for left wheel forward
+    "LEFT_BWD_DUTY_PIN": "PCA9685.1:40.1",  # pwm pin produces duty cycle for left wheel reverse
+    "RIGHT_FWD_DUTY_PIN": "PCA9685.1:40.5",  # pwm pin produces duty cycle for right wheel forward
+    "RIGHT_BWD_DUTY_PIN": "PCA9685.1:40.6",  # pwm pin produces duty cycle for right wheel reverse
+}
 ```
 
-See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
+> See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
