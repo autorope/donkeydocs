@@ -198,7 +198,7 @@ git checkout main
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git fetch --all --tags
-git checkout tags/4.3.6.1
+git checkout tags/4.4.0
 ```
 
 * Install Donkeycar into Python
