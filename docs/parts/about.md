@@ -195,4 +195,20 @@ class TFMini:
 
 In the TFMini part the update() method runs a loop as long as the serial port remains open.  The serial port is opened in the constructor and closed when the shutdown() method is called.  In a threaded part, the update() method is almost like an infinite loop, running over and over as much as python will give it time to run.  This is the section of code that can run much faster than the vehicle loop runs.  
 
-The reason to use a threaded part is if your part needs to go faster than the vehicle loop or needs to respond to a device in closer to real time.  The loop in the `update()` method will run as fast as the python interpreter can let it, which will usually be much faster than the vehicle loop.  It's important to understand that the `update()` method is called by the part's thread BUT the `run_threaded()` method is called by the main vehicle loop thread.  This means that these two methods may interupt each other in the middle of what they are doing.  You should use approprate multi-thread patterns, such as mutexes, to make sure that data updates and/or reads and other critical sections of code are safely isolated and atomic.
+The reason to use a threaded part is if your part needs to go faster than the vehicle loop or needs to respond to a device in closer to real time.  The loop in the `update()` method will run as fast as the python interpreter can let it, which will usually be much faster than the vehicle loop.  It's important to understand that the `update()` method is called by the part's thread BUT the `run_threaded()` method is called by the main vehicle loop thread.  This means that these two methods may interupt each other in the middle of what they are doing.  
+
+You should use approprate thread-safe patterns, such as mutexes, to make sure that data updates and/or reads and other critical sections of code are safely isolated and atomic.  In some cases this requires a Lock to make sure resources are accessed safely from threads or that multiple lines of code are executated atomically.  It is worth remembering that assignment in Python is atomic (so there is one good thing about that Global Interpreter Lock, GIL).  So while this is NOT atomic;
+
+```
+x = 12.34
+y = 34.56
+angle = 1.34
+```
+
+because your code could be interrupted in between those assignments.  This IS atomic;
+
+```
+pose = (12.34, 34.56, 1.34)
+```
+
+So if you have aggregate internal state that may be mutated in a thread, then put it in a tuple and you can read and write it atomically without locks.
