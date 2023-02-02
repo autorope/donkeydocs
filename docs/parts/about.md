@@ -127,7 +127,11 @@ So as we said, the part's run() method is called each time the vehicle loop is r
 
 ## Threaded Parts
 
-I say parts run in the order they were added 'for the most part' because you can also specify that a part is to be run in it's own thread so it can operate at it's own rate.  A threaded part has a `run_threaded()` method rather than a `run()` method; the inputs are arguments and the return values are outputs just like the `run()` method.  Also similar to the run() method, the run_threaded() method is called once each time the vehicle loop runs.  Here is an example of adding a threaded part to the vehicle loop.  This part interfaces to a TF-Mini single bean lidar via a serial port; it reports a distance.  It takes no input arguments and outputs just the distance value.  Note that the argument `inputs=[]` is not really necessary; that is the default for inputs so it can be left off.
+I say parts run in the order they were added 'for the most part' because you can also specify that a part is to be run in it's own thread so it can operate at it's own rate.  A threaded part has a `run_threaded()` method rather than a `run()` method; the inputs are arguments and the return values are outputs just like the `run()` method.  Also similar to the run() method, the run_threaded() method is called once each time the vehicle loop runs.  
+
+So if the run_threaded() part is called each time through the vehicle loop, just like the run() method, and it's inputs and outputs are organized just the like a non-threaded part, then what is the difference between a threaded part and a non-threaded part?  One difference you can see below is that when you add a threaded part you pass `threaded=True`.  But the most important difference with a threaded part is that it must have a no-argument update() method.  When the threaded part is launched a thread is created and the part's update() method is registered as the method that is executed on the thread.  The update method will run separately from the vehicle loop and it will run as fast as python's scheduler will allow; generally much faster than the vehicle loop runs.  The update() method should not return until the part is told to shutdown(); it should run a loop that does its work over and over; like reading from a device as the TFMini part does. In a threaded part the run_threaded() method is usually quite simple; it typically just sets class properties used by the update() method and returns class properties that are maintained by the update() method. 
+
+Here is an example of adding a threaded part to the vehicle loop.  This part interfaces to a TF-Mini single-beam lidar via a serial port; it reports a distance.  The part takes no input arguments and outputs just the distance value.  Note that the argument `inputs=[]` is not really necessary; that is the default for inputs so it can be left off.
 
 ```python
     if cfg.HAVE_TFMINI:
@@ -136,9 +140,7 @@ I say parts run in the order they were added 'for the most part' because you can
         V.add(lidar, inputs=[], outputs=['lidar/dist'], threaded=True)
 ```
 
-So if the run_threaded() part is called each time through the vehicle loop, just like the run() method, and it's inputs and outputs are organized just the like a non-threaded part, then what is the difference between a threaded part and a non-threaded part?  One difference you can see above is that when you add a threaded part you pass `threaded=True`.  But the most important difference with a threaded part is that it must have a no-argument update() method.  When the threaded part is launched a thread is created and the part's update() method is registered as the method that is executed on the thread.  The update method will run separately from the vehicle loop and it will run as fast as python's scheduler will allow; generally must faster than the vehicle loop runs.  The update() method should not return until the part is told to shutdown(); it should run a loop that does its work over and over; like reading from a device for instance. In a threaded part the run_threaded() method is usually quite simple; it typically just sets class properties used by the update() method and returns class properties that are maintained by the update() method. 
-
-Here is a listing of the [TFMini part](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/tfmini.py) to show this; 
+Here is a listing of the [TFMini part](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/tfmini.py); 
 
 ```python
 class TFMini:
