@@ -127,7 +127,7 @@ So as we said, the part's run() method is called each time the vehicle loop is r
 
 ## Threaded Parts
 
-I say parts run in the order they were added 'for the most part' because you can also specify that a part is to be run in it's own thread so it can at it's own rate.  A threaded part has a `run_threaded()` method rather than a `run()` method; the inputs are arguments and the return values are outputs just like the `run()` method.  Also similar to the run() method, the run_threaded() method is called once each time the vehicle loop runs.  Here is an example of adding a threaded part to the vehicle loop.  This part interfaces to a TF-Mini single bean lidar via a serial port; it reports a distance.  It takes no input arguments and outputs just the distance value.  Note that the argument `inputs=[]` is not really necessary; that is the default for inputs so it can be left off.
+I say parts run in the order they were added 'for the most part' because you can also specify that a part is to be run in it's own thread so it can operate at it's own rate.  A threaded part has a `run_threaded()` method rather than a `run()` method; the inputs are arguments and the return values are outputs just like the `run()` method.  Also similar to the run() method, the run_threaded() method is called once each time the vehicle loop runs.  Here is an example of adding a threaded part to the vehicle loop.  This part interfaces to a TF-Mini single bean lidar via a serial port; it reports a distance.  It takes no input arguments and outputs just the distance value.  Note that the argument `inputs=[]` is not really necessary; that is the default for inputs so it can be left off.
 
 ```python
     if cfg.HAVE_TFMINI:
