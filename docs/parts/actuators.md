@@ -220,7 +220,7 @@ Requires installation of PyVESC from source for servo control (pip install git+h
 ```
 
 ## Differential Drive cars
-An inexpensive Donkeycar compatible robot can be constructed using a cheap smart car robot chassis that includes 2 DC gear motors and an L298N motor driver or compatible to run the motors.  Steering is accomplished by running one motor faster than the other, causing the car to drive in an arc.  The motor driver can be wired in one of two ways; 3 pin wiring or 2 pin wiring.
+An inexpensive Donkeycar compatible robot can be constructed using a cheap smart car robot chassis that includes 2 DC gear motors and an L298N motor driver or compatible to run the motors.  Steering is accomplished by running one motor faster than the other, causing the car to drive in an arc.  The motor driver can be wired in one of two ways; 3 pin wiring or 2 pin wiring.  The name of the DonkeyCar drivetrains for differential drive all start with `DC_TWO_WHEEL`.
 
 ### 3-pin HBridge Differential Drive
 2 DC gear motors are controlled with an L298N, each motor using two TTL output pins to select direction and a PWM pin to control the power to the motor.  Since each motor uses 3 pins, so a total of 6 pins are used in a differential drive configuration. The advantage of this wiring scheme is that it only requires 2 PWM pins, which happens to be the maximum number of PWM pins on the Jetson Nano.
@@ -264,9 +264,9 @@ DC_TWO_WHEEL_L298N = {
 > See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### 2 Pin HBridge Differential Drive
-2 DC Motors controlled with an 'mini' L298N HBridge, each motor using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.  This advantage of this wiring method is that it only requires a total of 4 pins; however all of those pins must be able to output PWM.  
+2 DC Motors controlled with an 'mini' L293D HBridge, each motor using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.  This advantage of this wiring method is that it only requires a total of 4 pins; however all of those pins must be able to output PWM.  
 
-- See [L298 Tutorial](https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/) for how an L298 mini-HBridge modules is wired in 2-pin mode. 
+- See [L293 Tutorial](https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/) for how an L293D mini-HBridge module is wired in 2-pin mode. 
 - This driver can also be used with an L9110S/HG7881 motor driver.  See [Interfacing L9110S](https://electropeak.com/learn/interfacing-l9110s-dual-channel-h-bridge-motor-driver-module-with-arduino/) for how an L9110S motor driver module is wired.  
 - The driver can also be used with a DRV8833.  See [DRV8833 HBridge](https://electropeak.com/learn/interfacing-drv8833-dual-motor-driver-module-with-arduino/) for how to interface to an arduino.
 
