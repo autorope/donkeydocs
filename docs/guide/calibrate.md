@@ -2,7 +2,7 @@
 
 The point of calibrating your car is to make it drive consistently.  If you have a steering servo then donkey needs to know the PWM values associated with full left and full right turns.  If you have an ESC, then donkey needs to know the PWM values for full forward throttle, stopped and full reverse throttle.  You figure out those values in the calibration process, then save them to your myconfig.py file so they can be used then the car is driving.
 
-Some kinds of drivetrains do not need to be calibrated.  If you are using any drivetrain that uses an L298N motor controller or similar, then no calibraton is necessary; those drivetrains do not use PWM; they use a duty cycle that does not need to be calibrated.  Most of the differential drivetrains are of that type.  If your drivetrain uses an L298N motor controller or similar for throttle, but uses a servo for steering, then you will need to calibrate steering, but not throttle.
+**Some kinds of drivetrains do not need to be calibrated**.  If you are using any drivetrain that uses an L298N motor controller or similar (rather than and ESC), then no calibration is necessary; those drivetrains do not use PWM; they use a duty cycle that does not need to be calibrated.  Most of the [differential drivetrains](../parts/actuators.md#differential-drive-cars) (those whose name begins with `DC_TWO_WHEEL`) are of that type.  If your drivetrain uses an L298N motor controller or similar for throttle, but uses a servo for steering, then you will need to calibrate steering, but not throttle.
 
 There is a more complete discussion of drivetrains in [Actuators](../parts/actuators.md)
 
