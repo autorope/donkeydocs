@@ -43,6 +43,7 @@ rsync -rv --progress --partial pi@<your_pi_ip_address>:~/mycar/data/  ~/mycar/da
 ```bash
 ~\mycar$ donkey train --tub ./data --model ./models/mypilot.h5
 ```
+You may specify more than one tub using a comma separated list `--tub=foo/data,bar/data` or just leaving spaces like `--tub foo/data bar/data`.  See [Train the Model](/utility/donkey#train-the-model)
 
 * You can create different model types with the `--type` argument during training. You may also choose to change the default model type in myconfig.py `DEFAULT_MODEL_TYPE`. When specifying a new model type, be sure to provide that type when running the model, or using the model in other tools like plotting or profiling. For more information on the different model types, look here for [Keras Parts](/parts/keras). The model will be placed into the folder `models/`. You can as well omit the `--model` flag and the model name will be auto created using the pattern `pilot_YY-MM-DD_N.h5`. 
 
