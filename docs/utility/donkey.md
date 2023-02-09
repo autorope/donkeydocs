@@ -67,7 +67,7 @@ donkey tubclean <folder containing tubs>
 
 ## Train the model
 **Note:** _This section only applies to version >= 4.1_
-This command trains the model.
+This command trains the model.  There is more detail in [Deep Learning Autopilot](/guide/deep_learning/train_autopilot/#train-a-model).
 
 ```bash
 donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--type=(linear|categorical|inferred)] [--transfer=<transfer model path>]
