@@ -72,7 +72,7 @@ This command trains the model.
 ```bash
 donkey train --tub=<tub_path> [--config=<config.py>] [--model=<model path>] [--type=(linear|categorical|inferred)] [--transfer=<transfer model path>]
 ```
-* Uses the data from the `--tub` datastore
+* Uses the data from the `--tub` datastore.  You may specify more than one tub using a comma separated list `--tub=foo/data,bar/data` or just leaving spaces like `--tub foo/data bar/data`.
 * Uses the config file from the `--config` path (optionally)
 * Saves the model into path provided by `--model`. Auto-generates a model name if omitted. _**Note:**_ There was a regression in version 4.2 where you only had to provide the model name in the model argument, like `--model mypilot.h5`. This got resolved in version 4.2.1. Please update to that version.
 * Uses the model type `--type`
