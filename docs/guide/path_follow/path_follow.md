@@ -151,7 +151,7 @@ The PID coefficients are the most important (and time consuming) parameters to c
 - `PID_D` is the differential coefficient; it is multiplied with the change in the cross-track error.  This parameter can be useful in reducing oscillations and overshoot.
 - `PID_I` is the integral coefficient; it is multiplied with the total accumulated cross-track error.  This may be useful in reducing offsets caused by accumulated error; such as if one wheel is slightly smaller in diameter than another.
 
-As descibed in the [Configuring Path Follow Parameters](#configuring-path-follow-parameters) section above, you can also assign functions like `INC_PID_P_BTN` or `DEC_PID_P_BTN` to the game controller or web ui buttons to modify the PID parameters 'on the fly'.  This helps when you are figuring out the best coefficients.  The button functions allow you to change values without having to stop the car, edit myconfig.py and restart the car.
+As descibed in the [Configuring Button Actions](#configure-button-actions) section above, you can also assign functions like `INC_PID_P_BTN` or `DEC_PID_P_BTN` to the game controller or web ui buttons to modify the PID parameters 'on the fly'.  This helps when you are figuring out the best coefficients.  The button functions allow you to change values without having to stop the car, edit myconfig.py and restart the car.
 
 Determining PID Coefficients can be difficult.  One approach is:
 
