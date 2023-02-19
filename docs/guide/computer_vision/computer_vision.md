@@ -78,7 +78,7 @@ TODO
 ## The PID Controller
 It is very common to use a Proportional Integral Derivative (PID) controller to control throttle and/or steering in a wheeled robot.  The path follow autopilot uses a PID algorithm to modify steering based on how far away from the desired path the robot is.  The built-in Line Follower algorithm uses a PID in a similar way; the line follow algorithm outputs a value that is proportional to how far the car is from the center line and whose sign indicates which side of the line it is on.  The PID controller uses the magnitude and sign of the distance from the center line to calculate a steering value that will move the car towards the center line.  
 
->> The path_follow autopilot also uses a PID controller.  There is a good description of how to tune a controller for driving at [Determining PID Coefficients](/guide/path_follow/path_follow/#determining-pid-coefficients)
+>> The path_follow autopilot also uses a PID controller.  There is a good description of how to tune a controller for driving at [Determining PID Coefficients](/guide/path_follow/path_follow.md/#determining-pid-coefficients)
 
 
 ## Writing a Computer Vision Autopilot
