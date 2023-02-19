@@ -47,11 +47,10 @@ You need to flash a micro SD image with an operating system.
 > bindings. The underlying camera system has changed. Please follow steps
 > below for installing the latest version from the `main` branch.
 
-1.
-Download [Raspian Legacy (Buster)](https://downloads.raspberrypi.org/raspios_oldstable_lite_armhf/images/raspios_oldstable_lite_armhf-2021-12-02/2021-12-02-raspios-buster-armhf-lite.zip).
-2. Follow OS specific
-   guides [here](https://www.raspberrypi.org/documentation/installation/installing-images/).
+1. Download [Raspian Legacy (Buster)](https://downloads.raspberrypi.org/raspios_oldstable_lite_armhf/images/raspios_oldstable_lite_armhf-2021-12-02/2021-12-02-raspios-buster-armhf-lite.zip).
+2. Follow OS specific guides [here](https://www.raspberrypi.org/documentation/installation/installing-images/).
 3. Leave micro SD card in your machine and edit/create some files as below:
+
 
 ### Step 2: Setup the WiFi for first boot
 
@@ -106,6 +105,7 @@ once you've gotten the pi to boot and log-in.
   filename `wpa_supplicant.conf`. On first boot, this file will be moved
   to `/etc/wpa_supplicant/wpa_supplicant.conf` where it may be edited later. If
   you are using Notepad on Windows, make sure it doesn't have a .txt at the end.
+
 
 ### Step 3: Setup Pi's Hostname
 
@@ -220,6 +220,7 @@ or via Putty.
 * Password: `raspberry`
 * Hostname: `<your pi IP address>`
 
+
 ### Step 6: Update and Upgrade
 
 ```bash
@@ -272,7 +273,7 @@ source ~/.bashrc
 Modifying your `.bashrc` in this way will automatically enable this environment
 each time you login. To return to the system python you can type `deactivate`.
 
-## Step 11: Install Donkeycar Python Code
+### Step 11: Install Donkeycar Python Code
 
 * Create and change to a directory you would like to use as the head of your
   projects.
@@ -344,6 +345,7 @@ This installation is using Raspberry Pi OS Bullseye (64 bit).
 * [Step 5: Install Donkeycar Python Code](#step-5-install-donkeycar-python-code)
 * Then [Create your Donkeycar Application](/guide/create_application/)
 
+
 ### Step 1: Install Raspberry Pi OS
 
 Raspberry Pi OS can now be installed with the graphical installer _Raspberry Pi
@@ -376,12 +378,14 @@ If you want to connect to the desktop on the Pi, you need to install VNC
 Viewer on your host PC
 from [Real VNC](https://www.realvnc.com/en/connect/download/viewer/).
 
+
 ### Step 2: Update and Upgrade
 
 ```bash
 sudo apt-get update --allow-releaseinfo-change
 sudo apt-get upgrade
 ```
+
 
 ### Step 3: Raspi-config
 
@@ -404,6 +408,7 @@ Alternatively if you connect to the full desktop using VNC and are running
 the desktop, go to 'Raspberry -> Preferences -> Raspberry Pi Configuration'
 and apply the settings there.
 
+
 ### Step 4: Setup Virtual Env
 
 This needs to be done only once:
@@ -417,7 +422,8 @@ source ~/.bashrc
 Modifying your `.bashrc` in this way will automatically enable this environment
 each time you login. To return to the system python you can type `deactivate`.
 
-## Step 5: Install Donkeycar Python Code
+
+### Step 5: Install Donkeycar Python Code
 
 * Create and change to a directory you would like to use as the head of your
   projects.
