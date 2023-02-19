@@ -1,6 +1,6 @@
 # Train an Autopilot
 
-Donkey supports two kinds of autopilots; a deep-learning autopilot and a path follow autopilot.  
+Donkey supports three kinds of autopilots; a deep-learning autopilot, a path follow autopilot and a computer vision autopilot.  
 
 If you followed along with the [Create Donkeycar App](/guide/create_application) section, then you know that you choose which template to use when you create your **mycar** application folder using the **createcar** command.
 
@@ -32,3 +32,12 @@ There is a lot more detail on this in the next section.
 
 [Train a path follow autopilot](./path_follow/path_follow.md)
 
+## Computer Vision Autopilot
+The computer vision autopilot uses traditional computer vision techniques, such as color space conversion and edge detection algorithms, to identify features in the camera image and turn those into steering and throttle values.  This autopilot has an advantage over the other autopilots in that it does not require manual driving to gather data.  Instead you will choose or write a computer vision algorithm and modify the algorithm parameters to suit the track.  This autopilot is specifically designed to make it easy to write your own algorithm.
+
+- A **human** places the car on the track or alternatively uses the car to take one or more pictures of the track.  The driver then chooses or the algorithm to apply to the camera image or alternatively writes their own algorithm using the OpenCV library and the many Donkeycar-provided primitives.  Once a algorithm is chosen the algorithm's parameters are modified until it delivers accurate and reliable steering and throttle values.  
+- When in autopilot mode, an from the camera is passed to the algorithm which interprets it and outputs steering and throttle values.  It does this 20 times per second and now we are driving!
+
+There is a lot more detail in the next section about the build-in algorithm and how to write your own algorithm.
+
+[Computer Vision Autopilot](./computer_vision/computer_vision.md)
