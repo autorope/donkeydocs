@@ -8,7 +8,8 @@ What if your track does not have a center line; what if it just has a left and r
 
 ## The Line Follower
 
-The built-in algorithm can follow a line using the camera.  By default it is tuned for a yellow line, but the color that it tracks can be configured.  Many other aspects of the algorithm can be tuned.  Below is as description of the algorithm and how it used the configuraton values.  The values themselves are listed and described afterwards.
+The built-in algorithm can follow a line using the camera.  By default it is tuned for a yellow line, but the color that it tracks can be configured.  Many other aspects of the algorithm can be tuned.  Below is as description of the algorithm and how it uses the configuraton values.  The values themselves are listed and described afterwards.
+
 
 0. If TARGET_PIXEL is None, then use steps 1 to 5 to estimate the target (expected) position of the line.
 1. Get copy of the image rows at `SCAN_Y` and `SCAN_HEIGHT` pixels height.  So the result is a block of pixels as wide as the image and `SCAN_HEIGHT` high.
@@ -70,11 +71,14 @@ OVERLAY_IMAGE = True  # True to draw computer vision overlay on camera image in 
 ```
 
 
-## Writing a Computer Vision Autopilot
-
-
-## Choosing Parameters
+### Choosing Parameters for the LineFollower
+TODO
 
 
 ## The PID Controller
-It is very common to use a Proportional Integral Derivative (PID) controller to control throttle and/or steering in a wheeled robot.  The path follow autopilot uses a PID algorithm to modify steering based on how far away from the desired path the robot is.  The built-in Line Follower algorithm uses a PID in a similar way; the line follow algorithm outputs a value that is proportional to how far the car is from the center line and whose sign indicates which side of the line it is on.  The PID controller uses the magnitude and sign of the distance from the center line to calculate a steering value that will move the car towards the center line.
+It is very common to use a Proportional Integral Derivative (PID) controller to control throttle and/or steering in a wheeled robot.  The path follow autopilot uses a PID algorithm to modify steering based on how far away from the desired path the robot is.  The built-in Line Follower algorithm uses a PID in a similar way; the line follow algorithm outputs a value that is proportional to how far the car is from the center line and whose sign indicates which side of the line it is on.  The PID controller uses the magnitude and sign of the distance from the center line to calculate a steering value that will move the car towards the center line.  
+
+>> The path_follow autopilot also uses a PID controller.  There is a good description of how to tune a controller for driving at [Determining PID Coefficients](/guide/path_follow/path_follow/#determining-pid-coefficients)
+
+
+## Writing a Computer Vision Autopilot
