@@ -2,6 +2,24 @@
 
 ![donkey](/assets/logos/rpi_logo.png)
 
+Please read this carefully as Donkey Car is now installed differently
+depending on the version. Versions <= 4.4 which is currently the latest
+stable release are using Raspberry Pi OS Buster (32 bit) and tensorflow 2.2.
+The `main` branch has already advanced to Raspberry Pi OS Bulleseye (64 bit)
+and uses tensorflow 2.9.
+
+Tub data, car templates, etc are compatible between the two versions as well
+as models in keras format `.h5`. However, Tensorflow Lite models `.tflite`
+are not and need to be regenerated.
+
+If you want to stick with the last stable version, please follow the next
+section. If you want to work with the latest version, please follow
+this [section](#installation-for-donkey-car-main-using-raspberry-pi-os-bullseye).
+
+## Installation for Donkeycar <= 4.4 using Raspberry Pi OS Buster
+
+This installation is using Raspberry Pi OS Buster (32 bit).
+
 * [Step 1: Flash Operating System](#step-1-flash-operating-system)
 * [Step 2: Setup the WiFi for First Boot](#step-2-setup-the-wifi-for-first-boot)
 * [Step 3: Setup Pi's Hostname](#step-3-setup-pis-hostname)
@@ -17,33 +35,48 @@
 * [Step 13: (Optional) Install Mobile App](#step-13-optional-install-mobile-app)
 * Then [Create your Donkeycar Application](/guide/create_application/)
 
-## Step 1: Flash Operating System
+### Step 1: Flash Operating System
 
-> Note:  If you plan to use the mobile app, consider using the pre-built image. Refer to the [mobile app user guide](../deep_learning/mobile_app.md) for details. 
+> Note:  If you plan to use the mobile app, consider using the pre-built image.
+> Refer to the [mobile app user guide](../deep_learning/mobile_app.md) for
+> details.
 
 You need to flash a micro SD image with an operating system.
 
-> Note: Raspbian Latest (bullseye) is not compatible with the Python camera bindings.  The underlying camera system has changed and it has broken any software that uses the Python camera bindings.
+> Note: Raspbian Latest (bullseye) is not compatible with the Python camera
+> bindings. The underlying camera system has changed. Please follow steps
+> below for installing the latest version from the `main` branch.
 
-1. Download [Raspian Legacy (Buster)](https://downloads.raspberrypi.org/raspios_oldstable_lite_armhf/images/raspios_oldstable_lite_armhf-2021-12-02/2021-12-02-raspios-buster-armhf-lite.zip). 
-2. Follow OS specific guides [here](https://www.raspberrypi.org/documentation/installation/installing-images/).
+1.
+Download [Raspian Legacy (Buster)](https://downloads.raspberrypi.org/raspios_oldstable_lite_armhf/images/raspios_oldstable_lite_armhf-2021-12-02/2021-12-02-raspios-buster-armhf-lite.zip).
+2. Follow OS specific
+   guides [here](https://www.raspberrypi.org/documentation/installation/installing-images/).
 3. Leave micro SD card in your machine and edit/create some files as below:
 
-## Step 2: Setup the WiFi for first boot
+### Step 2: Setup the WiFi for first boot
 
-We can create a special file which will be used to login to wifi on first boot. More reading [here](https://raspberrypi.stackexchange.com/questions/10251/prepare-sd-card-for-wifi-on-headless-pi), but we will walk you through it. 
+We can create a special file which will be used to login to wifi on first boot.
+More
+reading [here](https://raspberrypi.stackexchange.com/questions/10251/prepare-sd-card-for-wifi-on-headless-pi),
+but we will walk you through it.
 
-On Windows, with your memory card image burned and memory disc still inserted, you should see two drives, which are actually two partitions on the mem disc.
-One is labeled __boot__. On Mac and Linux, you should also have access to the __boot__ partition of the mem disc.
-This is formatted with the common FAT type and is where we will edit some files to help it find and log-on to your wifi on its first boot. 
+On Windows, with your memory card image burned and memory disc still inserted,
+you should see two drives, which are actually two partitions on the mem disc.
+One is labeled __boot__. On Mac and Linux, you should also have access to the _
+_boot__ partition of the mem disc.
+This is formatted with the common FAT type and is where we will edit some files
+to help it find and log-on to your wifi on its first boot.
 
-> Note: If __boot__ is not visible right away, try unplugging and re-inserting the memory card reader.
+> Note: If __boot__ is not visible right away, try unplugging and re-inserting
+> the memory card reader.
 
 * Start a text editor
-    * `gedit` on Linux. 
-    * Notepad++ on Windows. 
-    * VI on Mac (type `vi /Volumes/boot/wpa_supplicant.conf` where `boot` is the name of the SD Card). 
-* Possible `country` codes to use can be found [here](https://www.thinkpenguin.com/gnu-linux/country-code-list)
+    * `gedit` on Linux.
+    * Notepad++ on Windows.
+    * VI on Mac (type `vi /Volumes/boot/wpa_supplicant.conf` where `boot` is the
+      name of the SD Card).
+* Possible `country` codes to use can be
+  found [here](https://www.thinkpenguin.com/gnu-linux/country-code-list)
 * Paste and edit this contents to match your wifi, adjust as needed:
 
 ```text
@@ -58,62 +91,83 @@ network={
 
 ```
 
-Note - `country` defines allowed wifi channels, ensure to set it properly to your location and hardware.
+Note - `country` defines allowed wifi channels, ensure to set it properly to
+your location and hardware.
 
-Replace `<your network name>` with the ID of your network. Leave the quotes. I've seen problems when the network name contained an apostrophe, like "Joe's iPhone".
-Replace `<your password>` with your password, leaving it surrounded by quotes. 
-If it bothers you to leave your password unencrypted, you may change the [contents later](https://unix.stackexchange.com/questions/278946/hiding-passwords-in-wpa-supplicant-conf-with-wpa-eap-and-mschap-v2) once you've gotten the pi to boot and log-in.
+Replace `<your network name>` with the ID of your network. Leave the quotes.
+I've seen problems when the network name contained an apostrophe, like "Joe's
+iPhone".
+Replace `<your password>` with your password, leaving it surrounded by quotes.
+If it bothers you to leave your password unencrypted, you may change
+the [contents later](https://unix.stackexchange.com/questions/278946/hiding-passwords-in-wpa-supplicant-conf-with-wpa-eap-and-mschap-v2)
+once you've gotten the pi to boot and log-in.
 
-* Save this file to the root of __boot__ partition with the filename `wpa_supplicant.conf`. On first boot, this file will be moved to `/etc/wpa_supplicant/wpa_supplicant.conf` where it may be edited later. If you are using Notepad on Windows, make sure it doesn't have a .txt at the end.
+* Save this file to the root of __boot__ partition with the
+  filename `wpa_supplicant.conf`. On first boot, this file will be moved
+  to `/etc/wpa_supplicant/wpa_supplicant.conf` where it may be edited later. If
+  you are using Notepad on Windows, make sure it doesn't have a .txt at the end.
 
-## Step 3: Setup Pi's Hostname
+### Step 3: Setup Pi's Hostname
 
-> Note: This step only possible on a Linux host pc. Otherwise you can set it up later in `raspi-config` after logging in to your pi.
+> Note: This step only possible on a Linux host pc. Otherwise you can set it up
+> later in `raspi-config` after logging in to your pi.
 
-We can also setup the hostname so that your Pi easier to find once on the network. If yours is the only Pi on the network, then you can find it with 
+We can also setup the hostname so that your Pi easier to find once on the
+network. If yours is the only Pi on the network, then you can find it with
 
 ```bash
 ping raspberrypi.local
 ```
 
-once it's booted. If there are many other Pi's on the network, then this will have problems.
-If you are on a Linux machine, or are able to edit the UUID partition, then you can edit the `/etc/hostname` and `/etc/hosts` files now to make finding your pi on the network easier after boot.
+once it's booted. If there are many other Pi's on the network, then this will
+have problems.
+If you are on a Linux machine, or are able to edit the UUID partition, then you
+can edit the `/etc/hostname` and `/etc/hosts` files now to make finding your pi
+on the network easier after boot.
 Edit those to replace `raspberrypi` with a name of your choosing.
-Use all lower case, no special characters, no hyphens, yes underscores `_`. 
-Good idea is to use something like `pi-<MAC_ADDRESS>` such as `pi-deadbeef` especially if you have more pi devices in the same network.
+Use all lower case, no special characters, no hyphens, yes underscores `_`.
+Good idea is to use something like `pi-<MAC_ADDRESS>` such as `pi-deadbeef`
+especially if you have more pi devices in the same network.
 
 ```bash
 sudo vi /media/userID/UUID/etc/hostname
 sudo vi /media/userID/UUID/etc/hosts
 ```
 
-## Step 4: Enable SSH on Boot
+### Step 4: Enable SSH on Boot
 
-Put a file named __ssh__ in the root of your __boot__ partition.  On Mac or Linux this can be done using the `touch` command.  For example, on the Mac, `touch /Volumes/boot/ssh` where `boot` is the name of the SD card.
+Put a file named __ssh__ in the root of your __boot__ partition. On Mac or Linux
+this can be done using the `touch` command. For example, on the
+Mac, `touch /Volumes/boot/ssh` where `boot` is the name of the SD card.
 
-Now your SD card is ready. Eject it from your computer - wait until system shows the writing is done
-and it is safe to remove card. Ensure Pi is turned off, put the card in the Pi and power on the Pi.
+Now your SD card is ready. Eject it from your computer - wait until system shows
+the writing is done
+and it is safe to remove card. Ensure Pi is turned off, put the card in the Pi
+and power on the Pi.
 
-## Step 5: Connecting to the Pi
+### Step 5: Connecting to the Pi
 
 If you followed the above instructions to add wifi access, your Pi should
 now be connected to your wifi network. Now you need to find its IP address
-so you can connect to it via SSH. 
+so you can connect to it via SSH.
 
 The easiest way (on Ubuntu) is to use the `findcar` donkey command.
-You can try `ping raspberrypi.local`. If you've modified the hostname, then you should try:
+You can try `ping raspberrypi.local`. If you've modified the hostname, then you
+should try:
 
 ```bash
 ping <your hostname>.local
 ```
 
-This will fail on a windows machine. Windows users will need the full IP address (unless using cygwin). 
+This will fail on a windows machine. Windows users will need the full IP
+address (unless using cygwin).
 
-If you are having troubles locating your Pi on the network, you will want to plug in an HDMI monitor and USB keyboard into the Pi. Boot it. Login with:
+If you are having troubles locating your Pi on the network, you will want to
+plug in an HDMI monitor and USB keyboard into the Pi. Boot it. Login with:
 
 * Username: `pi`
 * Password: `raspberry`
- 
+
 Then try the command:
 
 ```bash
@@ -126,21 +180,27 @@ or just all Ip addresses assigned to the pi (wifi or cable):
 ip -br a
 ```
 
-If this has a valid IPv4 address, 4 groups of numbers separated by dots, then you can try that with your SSH command. If you don't see anything like that, then your wifi config might have a mistake. You can try to fix with
+If this has a valid IPv4 address, 4 groups of numbers separated by dots, then
+you can try that with your SSH command. If you don't see anything like that,
+then your wifi config might have a mistake. You can try to fix with
 
 ```bash
 sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
-If you don't have a HDMI monitor and keyboard, you can plug-in the Pi with a CAT5 cable to a router with DHCP.
+If you don't have a HDMI monitor and keyboard, you can plug-in the Pi with a
+CAT5 cable to a router with DHCP.
 If that router is on the same network as your PC, you can try:
 
 ```bash
 ping raspberrypi.local
 ```
 
-Hopefully, one of those methods worked and you are now ready to SSH into your Pi. On Mac and Linux, you can open Terminal.
-On Windows you can install [Putty](http://www.putty.org/), [one of the alternatives](https://www.htpcbeginner.com/best-ssh-clients-windows-putty-alternatives/2/), or on Windows 10 you may have ssh via the command prompt.
+Hopefully, one of those methods worked and you are now ready to SSH into your
+Pi. On Mac and Linux, you can open Terminal.
+On Windows you can
+install [Putty](http://www.putty.org/), [one of the alternatives](https://www.htpcbeginner.com/best-ssh-clients-windows-putty-alternatives/2/),
+or on Windows 10 you may have ssh via the command prompt.
 
 If you have a command prompt, you can try:
 
@@ -160,14 +220,14 @@ or via Putty.
 * Password: `raspberry`
 * Hostname: `<your pi IP address>`
 
-## Step 6: Update and Upgrade
+### Step 6: Update and Upgrade
 
 ```bash
 sudo apt-get update --allow-releaseinfo-change
 sudo apt-get upgrade
 ```
 
-## Step 7: Raspi-config
+### Step 7: Raspi-config
 
 ```bash
 sudo raspi-config
@@ -177,27 +237,29 @@ sudo raspi-config
 * change hostname
 * enable `Interfacing Options` - `I2C`
 * enable `Interfacing Options` - `Camera`
-* select `Advanced Options` - `Expand Filesystem` so you can use your whole sd-card storage
+* select `Advanced Options` - `Expand Filesystem` so you can use your whole
+  sd-card storage
 
 Choose `<Finish>` and hit enter.
 
 > Note: Reboot after changing these settings. Should happen if you select `yes`.
 
-## Step 8: Install Dependencies
+### Step 8: Install Dependencies
 
 ```bash
 sudo apt-get install build-essential python3 python3-dev python3-pip python3-virtualenv python3-numpy python3-picamera python3-pandas python3-rpi.gpio i2c-tools avahi-utils joystick libopenjp2-7-dev libtiff5-dev gfortran libatlas-base-dev libopenblas-dev libhdf5-serial-dev libgeos-dev git ntp
 ```
 
-## Step 9: (Optional) Install OpenCV Dependencies
+### Step 9: (Optional) Install OpenCV Dependencies
 
-If you are going for a minimal install, you can get by without these. But it can be handy to have OpenCV.
+If you are going for a minimal install, you can get by without these. But it can
+be handy to have OpenCV.
 
 ```bash
 sudo apt-get install libilmbase-dev libopenexr-dev libgstreamer1.0-dev libjasper-dev libwebp-dev libatlas-base-dev libavcodec-dev libavformat-dev libswscale-dev libqtgui4 libqt4-test
 ```
 
-##  Step 10: Setup Virtual Env
+### Step 10: Setup Virtual Env
 
 This needs to be done only once:
 
@@ -207,28 +269,20 @@ echo "source ~/env/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Modifying your `.bashrc` in this way will automatically enable this environment each time you login. To return to the system python you can type `deactivate`.
+Modifying your `.bashrc` in this way will automatically enable this environment
+each time you login. To return to the system python you can type `deactivate`.
 
-##  Step 11: Install Donkeycar Python Code
+## Step 11: Install Donkeycar Python Code
 
-* Create and change to a directory you would like to use as the head of your projects.
+* Create and change to a directory you would like to use as the head of your
+  projects.
 
 ```bash
 mkdir projects
 cd projects
 ```
 
-* Get the latest donkeycar from Github.
-> Note: There are currently version changes happening on the main branch, so you rather want to checkout a stable release as explained below.
-
-```bash
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git checkout main
-pip install -e .[pi]
-pip install https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.2.0/tensorflow-2.2.0-cp37-none-linux_armv7l.whl
-```
-* Alternatively, to get the latest stable release
+* Get the latest stable release (which will be a 4.4 version)
 
 ```bash
 git clone https://github.com/autorope/donkeycar
@@ -240,16 +294,16 @@ pip install -e .[pi]
 pip install https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.2.0/tensorflow-2.2.0-cp37-none-linux_armv7l.whl
 ```
 
-
 You can validate your tensorflow install with
 
 ```bash
 python -c "import tensorflow; print(tensorflow.__version__)"
 ```
 
-##  Step 12: (Optional) Install OpenCV
+### Step 12: (Optional) Install OpenCV
 
-If you've opted to install the OpenCV dependencies earlier, you can install Python OpenCV bindings now with command:
+If you've opted to install the OpenCV dependencies earlier, you can install
+Python OpenCV bindings now with command:
 
 ```bash
 sudo apt install python3-opencv
@@ -269,11 +323,129 @@ python -c "import cv2"
 
 And if no errors, you have OpenCV installed!
 
-## Step 13: (Optional) Install Mobile App
-There is a mobile application available on the iPhone and Android that provides an alternative user experience.  It can be installed manually or by downloading an SD card image.  Follow these [instructions](/guide/deep_learning/mobile_app/#optional-manual-installation) to install manually.
+### Step 13: (Optional) Install Mobile App
+
+There is a mobile application available on the iPhone and Android that provides
+an alternative user experience. It can be installed manually or by downloading
+an SD card image. Follow
+these [instructions](/guide/deep_learning/mobile_app/#optional-manual-installation)
+to install manually.
 
 > -**Note**- The server component currently supports **RaspberryPi 4B only**.
 
+## Installation for Donkey Car main using Raspberry Pi OS Bullseye
+
+This installation is using Raspberry Pi OS Bullseye (64 bit).
+
+* [Step 1: Install Operating System](#step-1-install-raspberry-pi-os)
+* [Step 2: Update and Upgrade](#step-2-update-and-upgrade)
+* [Step 3: Raspi-config](#step-3-raspi-config)
+* [Step 4: Setup Virtual Env](#step-4-setup-virtual-env)
+* [Step 5: Install Donkeycar Python Code](#step-5-install-donkeycar-python-code)
+* Then [Create your Donkeycar Application](/guide/create_application/)
+
+### Step 1: Install Raspberry Pi OS
+
+Raspberry Pi OS can now be installed with the graphical installer _Raspberry Pi
+Imager_ which can be downloaded
+from [here](https://www.raspberrypi.com/software/).
+Please download and start the application.
+
+In the drop-down menu 'Operating System' go to 'Raspberry Pi OS (other)' and
+then select either of 'Raspberry Pi OS (64 bit)' or 'Raspberry Pi OS Lite
+(64 bit)'. Note, that both OS will work, but if your Pi is old, has only
+little ram or only a small SD card, then you might be better off using the
+headless Lite version.
+
+We have found that running the full desktop version of the OS on the Pi doesn't
+show any measurable performance impacts on an RPi 4 with 4GB and having
+access to a desktop can be beneficial. You can always switch to booting
+into headless later on, if you prefer to.
+
+Click the little cog in the lower right corner or press 'Ctrl-Shift-X' to
+enter the advanced settings. Please set the hostname (here chosen to be
+'donkeypi'), your wifi, region, local settings, etc. It should look like here:
+![imager_advanced_dialog](/assets/rpi_imager.png)
+
+Plug an SD card into your card reader, selected it as the medium, and
+press 'Write' to burn the OS onto the card. You should be able to ssh into
+the Pi through your network using the hostname 'donkeypi.local' (or whatever
+you chose in the menu).
+
+If you want to connect to the desktop on the Pi, you need to install VNC
+Viewer on your host PC
+from [Real VNC](https://www.realvnc.com/en/connect/download/viewer/).
+
+### Step 2: Update and Upgrade
+
+```bash
+sudo apt-get update --allow-releaseinfo-change
+sudo apt-get upgrade
+```
+
+### Step 3: Raspi-config
+
+Doing it in the shell through:
+
+```bash
+sudo raspi-config
+```
+
+* enable `Interfacing Options` - `I2C`
+* enable `Interfacing Options` - `Camera`
+* select `Advanced Options` - `Expand Filesystem` so you can use your whole
+  sd-card storage
+
+Choose `<Finish>` and hit enter.
+
+> Note: Reboot after changing these settings. Should happen if you select `yes`.
+
+Alternatively if you connect to the full desktop using VNC and are running
+the desktop, go to 'Raspberry -> Preferences -> Raspberry Pi Configuration'
+and apply the settings there.
+
+### Step 4: Setup Virtual Env
+
+This needs to be done only once:
+
+```bash
+python3 -m virtualenv -p python3 env --system-site-packages
+echo "source ~/env/bin/activate" >> ~/.bashrc
+source ~/.bashrc
+```
+
+Modifying your `.bashrc` in this way will automatically enable this environment
+each time you login. To return to the system python you can type `deactivate`.
+
+## Step 5: Install Donkeycar Python Code
+
+* Create and change to a directory you would like to use as the head of your
+  projects.
+
+```bash
+mkdir projects
+cd projects
+```
+
+* Get the latest donkeycar from Github.
+
+> Note: Only the main branch currently works on bullseye.
+
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git checkout main
+pip install -e .[pi]
+```
+
+You can validate your tensorflow install with
+
+```bash
+python -c "import tensorflow; print(tensorflow.__version__)"
+```
+
+##  
+
 ----
 
-### Next, [create your Donkeycar application](/guide/create_application/).
+## Next, [create your Donkeycar application](/guide/create_application/).
