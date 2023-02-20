@@ -6,19 +6,20 @@
 * [Step 2: Free up the serial port](#step-2-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
 * [Step 3: Install Dependencies](#step-3-install-system-wide-dependencies)
 * [Step 4: Setup Python Environment](#step-4-setup-python-environment)
-* [Step 4: Install Donkeycar Python Code](#step-4-install-donkeycar-python-code)
-* [Step 5: (Optional) Install RPi.GPIO](#step-5-optional-install-rpigpio)
-* [Step 6: (Optional) Fix for pink tint on CSIC cameras](#step-6-optional-fix-for-pink-tint-on-csic-cameras)
-* [Step 7: (Optional) Install PyGame for USB camera](#step-7-optional-install-pygame-for-usb-camera)
+* [Step 5: (Optional) Fix for pink tint on CSIC cameras](#step-5-optional-fix-for-pink-tint-on-csic-cameras)
+* [Step 6: (Optional) Install PyGame for USB camera](#step-6-optional-install-pygame-for-usb-camera)
 * Then [Create your Donkeycar Application](/guide/create_application/)
-
-
-
 
 ## Step 1: Flash Operating System
 
+We recommend to use 4GB version of the Jetson Nano or the Jetson Xavier to
+run the software without issues. It's also recommended using a 128GB
+microSD card with U3 speed, like for example 
+[this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
+
 These instructions work for Jetpack 4.5.1. They are known to *NOT* work on
-Jetpack 4.6 or 4.6.1.
+Jetpack 4.6 or 4.6.1. For Jetson Xavier you should install JP 5.0.X rather 
+than the versions below.
 
 * If you have a 4gb Jetson Nano then download Jetpack 4.5.1 from Nvidia
   here; [jetson-nano-jp451-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/jeston_nano/jetson-nano-jp451-sd-card-image.zip)
@@ -37,9 +38,26 @@ Work through the __Prepare for Setup__, __Writing Image to the microSD Card__,
 and __Setup and First Boot__ instructions, then return here.
 
 Once you're done with the setup, ssh into your vehicle. Use the the terminal for
-Ubuntu or
-Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) for
-windows.
+Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) 
+for windows.
+
+Remove Libre Office:
+
+```bash
+sudo apt-get remove --purge libreoffice*
+sudo apt-get clean
+sudo apt-get autoremove
+```
+
+And add a 6GB swap file:
+
+```bash
+git clone https://github.com/JetsonHacksNano/installSwapfile
+cd installSwapfile
+./installSwapfile.sh
+reboot 
+```
+
 
 ## Step 2: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
 
@@ -64,11 +82,10 @@ sudo apt-get install -y openmpi-doc openmpi-bin libopenmpi-dev libopenblas-dev
 
 ## Step 4: Setup Python Environment.
 
-We have now a different approaches to the python environment setup. For 
-Donkey Car <= 4.4.X we are using a virtual environment. For the latest 
-Donkey Car from the `main` branch, we are using mini-forge, an equivalent of 
-miniconda for aarm architectures. 
-
+We have now a different approaches to the python environment setup. For
+Donkey Car <= 4.4.X we are using a virtual environment. For the latest
+Donkey Car from the `main` branch, we are using mini-forge, an equivalent of
+miniconda for aarm architectures.
 
 ### Setup the Python Environment for Donkey Car <= 4.4:
 
@@ -97,26 +114,10 @@ pip3 install -U gdown
 pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v45 tensorflow==2.3.1
 ```
 
-#### Pytorch
- 
-Finally, you can install PyTorch:
-
-```bash
-wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl
-cp p57jwntv436lfrd78inwl7iml6p13fzh.whl torch-1.8.0-cp36-cp36m-linux_aarch64.whl
-pip3 install torch-1.8.0-cp36-cp36m-linux_aarch64.whl
-sudo apt-get install libjpeg-dev zlib1g-dev libpython3-dev libavcodec-dev libavformat-dev libswscale-dev
-mkdir -p ~/projects; cd ~/projects
-git clone -b v0.9.0 https://github.com/pytorch/vision torchvision
-cd torchvision 
-python setup.py install
-cd ../
-```
-
 #### Install Donkeycar Python Code
 
 Change to a dir you would like to use as the head of your projects. Assuming
-you've already made the `projects` directory above, you can use that. Get 
+you've already made the `projects` directory above, you can use that. Get
 the lates 4.4.X release and install that into the venv.
 
 ```bash
@@ -130,13 +131,11 @@ pip install -e .[nano]
 
 ```
 
-
 ### Setup the Python Environment for Donkey Car main
 
-The installation on JP 4.6.X is more tricky, because we need to use a newer 
-version of tensorflow than what is packaged by NVidia for this OS version. 
+The installation on JP 4.6.X is more tricky, because we need to use a newer
+version of tensorflow than what is packaged by NVidia for this OS version.
 Also, we need a compatible OpenCV version which needs to be built on the nano.
-
 
 #### Installation on  JP 4.6.X
 
@@ -195,12 +194,12 @@ python
 
 * Step 6: Install OpenCV
 
-OpenCV with GStreamer support is required for the Nano camera. However, the 
-OpenCV binaries on PYPI don't have that enabled. Hence, we need to build these 
+OpenCV with GStreamer support is required for the Nano camera. However, the
+OpenCV binaries on PYPI don't have that enabled. Hence, we need to build these
 ourselves.
 
 Install opencv 4.6 + Gstreamer following the Q-Engineering Opencv manual install
-[tutorial](https://qengineering.eu/install-opencv-4.5-on-jetson-nano.html). 
+[tutorial](https://qengineering.eu/install-opencv-4.5-on-jetson-nano.html).
 
 Note, the `CMake` command should be executed with the following flags:
 
@@ -246,7 +245,8 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 
 * Step 7: Check that OpenCV has been installed properly
 
-Run python and verify that opencv is version 4.6 and Gstreamer is version 1.19 by:
+Run python and verify that opencv is version 4.6 and Gstreamer is version 1.19
+by:
 
 ```bash
 python
@@ -284,17 +284,16 @@ pip install -e .[nano]
 
 * Step 3: Check the TF installation
 
-Run python and verify that tensorflow is version 2.9 and trt is version 8.2.1. 
-To get the tensorrt shared libraries to load correctly we must set the 
-environment variable `LD_PRELOAD` as: 
+Run python and verify that tensorflow is version 2.9 and trt is version 8.2.1.
+To get the tensorrt shared libraries to load correctly we must set the
+environment variable `LD_PRELOAD` as:
 
 ```bash
 export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libnvinfer.so.8
 ```
 
-Note, this has to be either every time you run donkeycar or tensorflow, or 
-you put the above line into your `.bashrc`. 
-
+Note, this has to be either every time you run donkeycar or tensorflow, or
+you put the above line into your `.bashrc`.
 
 ```bash
 python
@@ -305,14 +304,7 @@ python
 ```
 
 
-## Step 5: (Optional) Install RPi.GPIO
-
-Optionally, you can install the RPi.GPIO clone for Jetson Nano
-from [here](https://github.com/NVIDIA/jetson-gpio). This is not required for
-default setup, but can be useful if using LED or other GPIO driven devices.
-
-
-## Step 6: (Optional) Fix for pink tint on CSIC cameras
+## Step 5: (Optional) Fix for pink tint on CSIC cameras
 
 If you're using a CSIC camera you may have a pink tint on the images. As
 described [here](https://jonathantse.medium.com/fix-pink-tint-on-jetson-nano-wide-angle-camera-a8ce5fbd797f),
@@ -325,7 +317,7 @@ sudo chmod 664 /var/nvidia/nvcam/settings/camera_overrides.isp
 sudo chown root:root /var/nvidia/nvcam/settings/camera_overrides.isp
 ```
 
-## Step 7: (Optional) Install PyGame for USB camera
+## Step 5: (Optional) Install PyGame for USB camera
 
 If you plan to use a USB camera, you will also want to setup pygame:
 
