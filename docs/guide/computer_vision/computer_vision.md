@@ -35,8 +35,8 @@ CV_CONTROLLER_CONDITION = "run_pilot"
 # LineFollower - line color and detection area
 SCAN_Y = 120          # num pixels from the top to start horiz scan
 SCAN_HEIGHT = 20      # num pixels high to grab from horiz scan
-COLOR_THRESHOLD_LOW  = (0, 50, 50)    # hsv dark yellow
-COLOR_THRESHOLD_HIGH = (50, 255, 255) # hsv light yellow
+COLOR_THRESHOLD_LOW  = (0, 50, 50)    # HSV dark yellow (opencv HSV hue value is 0..179, saturation and value are both 0..255)
+COLOR_THRESHOLD_HIGH = (50, 255, 255) # HSV light yellow (opencv HSV hue value is 0..179, saturation and value are both 0..255)
 
 # LineFollower - target (expected) line position and detection thresholds
 TARGET_PIXEL = None   # In not None, then this is the expected horizontal position in pixels of the yellow line.
