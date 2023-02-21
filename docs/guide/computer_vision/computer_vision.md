@@ -74,6 +74,8 @@ OVERLAY_IMAGE = True  # True to draw computer vision overlay on camera image in 
 The computer vision template is a little different than than the deep learning and path follow templates; there is no data recording.  After setting your configuration parameters you just put your car on the track that has the line that you want to follow and then chage from user mode to one of the auto-pilot modes; full-auto or auto-steering.
 
 TARGET_PIXEL
+The TARGET_PIXEL value is the horizontal position of the line to follow in the image.  The line follow algorithm will adjust steering to try to keep the line at that position in the image.  More specifically, the difference between the TARGET_PIXEL value and where the line follow algorithm detects that actual line is in the image is used by a PID controller to adjust steering (see [The PID Controller](#the-pid-controller)) below.
+
 If you are the only car on the course, then you probably want to the car to drive directly on the line to follow.  In this case setting TARGET_PIXEL to (IMAGE_2 / 2) means the auto-pilot assumes the line to follow should be directly in the middle of the image and so the car will try to stay in the middle.  So if your car actually starts to the left or right of that line, it will quickly move the the line and stay on it.
 
 However, if you are on a course where two cars drive at the same time (there are two lanes separated by a line), then you probably want your car to stay in it's lane.  In that case you would set TARGET_PIXEL to None, which will cause the car to detect the location of the line at startup.  The auto-pilot will then assume the line should stay at that position in the image, and so it will the try to keep the car it it's lane to make that true.
