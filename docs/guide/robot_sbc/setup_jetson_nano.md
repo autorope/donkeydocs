@@ -2,24 +2,58 @@
 
 ![donkey](/assets/logos/nvidia_logo.png)
 
-* [Step 1: Flash Operating System](#step-1-flash-operating-system)
-* [Step 2: Free up the serial port](#step-2-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
-* [Step 3: Install Dependencies](#step-3-install-system-wide-dependencies)
-* [Step 4: Setup Python Environment](#step-4-setup-python-environment)
-* [Step 5: (Optional) Fix for pink tint on CSIC cameras](#step-5-optional-fix-for-pink-tint-on-csic-cameras)
-* [Step 6: (Optional) Install PyGame for USB camera](#step-6-optional-install-pygame-for-usb-camera)
-* Then [Create your Donkeycar Application](/guide/create_application/)
+We have a different approaches to installing the software depending on the
+version of Donkey Car. For Donkey Car <= 4.4.X we are using Jetpack 4.5.X
+which comes with Tensorflow 2.3.1. The python installation is using virtual
+env, i.e. it is based on the system python with version 3.6.
 
-## Step 1: Flash Operating System
+For the `main` branch we have updated Tensorflow to 2.9 and python to 3.8 or
+3.9. This is running on a newer version of Jetpack. If you have a Jetson Nano
+the required Jetpack version is 4.6.2. For a Jetson Xavier or any of the newer
+Jetson boards you will use Jetpack 5.0.2. To decouple the python installation
+from the system python we are using Miniforge which is a mamba based version of
+Miniconda that works on the aarm architecture.
+
+For Donkey Car <= 4.4.X please go to the next section. For the latest
+version on the `main` branch please jump
+to [this section](#installation-for-donkey-car-main).
 
 We recommend to use 4GB version of the Jetson Nano or the Jetson Xavier to
 run the software without issues. It's also recommended using a 128GB
-microSD card with U3 speed, like for example 
+microSD card with U3 speed, like for example
 [this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
 
-These instructions work for Jetpack 4.5.1. They are known to *NOT* work on
-Jetpack 4.6 or 4.6.1. For Jetson Xavier you should install JP 5.0.X rather 
-than the versions below.
+
+Here is a simple chart:
+
+``` mermaid
+graph TD;
+    A[Donkey Version]-->B[<= 4.4.X];
+    A[Donkey Version]-->C[>= 4.4.X, i.e. main]
+    B-->D[<b>Jetson Nano</b> <br> Jetpack 4.5.2 <br> Python 3.6 <br> Tensorflow 2.3.1];
+    B-->E[<b>Jetson Xavier</b> <br> Not supported];
+    C-->F[<b>Jetson Nano</b> <br> Jetpack 4.6.2 <br> Python 3.9 <br> Tensorflow 2.9]
+    C-->G[<b>Jetson Xavier</b> <br> Jetpack 5.0.2 <br> Python 3.8 <br> Tensorflow 2.9]
+```
+
+Then [Create your Donkeycar Application](/guide/create_application/)
+
+
+## Installation for Donkey Car <= 4.4.X
+
+Instructions for the latest stable release 4.4.X.
+
+* [Step 1a: Flash Operating System](#step-1a-flash-operating-system)
+* [Step 2a: Free up the serial port](#step-2a-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
+* [Step 3a: Install Dependencies](#step-3a-install-system-wide-dependencies)
+* [Step 4a: Setup Python Environment](#step-4a-setup-python-environment)
+* [Step 5a: (Optional) Install PyGame for USB camera](#step-5a-optional-install-pygame-for-usb-camera)
+
+
+### Step 1a: Flash Operating System
+
+
+These instructions work for Jetpack 4.5.1. 
 
 * If you have a 4gb Jetson Nano then download Jetpack 4.5.1 from Nvidia
   here; [jetson-nano-jp451-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/jeston_nano/jetson-nano-jp451-sd-card-image.zip)
@@ -31,14 +65,13 @@ using the same version of Tensorflow on your host PC if you are using one. Using
 a different version of Tensorflow to train your network may result in errors
 when you attempt to use it as an autopilot.
 
-Visit the
-official [Nvidia Jetson Nano Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#prepare)
+Visit the official [Nvidia Jetson Nano Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#prepare)
 or [Nvidia Xavier NX Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit).
 Work through the __Prepare for Setup__, __Writing Image to the microSD Card__,
 and __Setup and First Boot__ instructions, then return here.
 
-Once you're done with the setup, ssh into your vehicle. Use the the terminal for
-Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) 
+Once you're done with the setup, ssh into your vehicle. Use the terminal for
+Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 for windows.
 
 Remove Libre Office:
@@ -58,15 +91,14 @@ cd installSwapfile
 reboot 
 ```
 
+### Step 2a: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
 
-## Step 2: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
-
-```
+```bash
 sudo usermod -aG dialout <your username>
 sudo systemctl disable nvgetty
 ```
 
-## Step 3: Install System-Wide Dependencies
+### Step 3a: Install System-Wide Dependencies
 
 First install some packages with `apt-get`.
 
@@ -80,14 +112,7 @@ sudo apt-get install -y git nano
 sudo apt-get install -y openmpi-doc openmpi-bin libopenmpi-dev libopenblas-dev
 ```
 
-## Step 4: Setup Python Environment.
-
-We have now a different approaches to the python environment setup. For
-Donkey Car <= 4.4.X we are using a virtual environment. For the latest
-Donkey Car from the `main` branch, we are using mini-forge, an equivalent of
-miniconda for aarm architectures.
-
-### Setup the Python Environment for Donkey Car <= 4.4:
+### Step 4a: Setup Python Environment.
 
 #### Setup Virtual Environment
 
@@ -118,9 +143,10 @@ pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compu
 
 Change to a dir you would like to use as the head of your projects. Assuming
 you've already made the `projects` directory above, you can use that. Get
-the lates 4.4.X release and install that into the venv.
+the latest 4.4.X release and install that into the venv.
 
 ```bash
+mkdir projects
 cd ~/projects
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
@@ -131,13 +157,85 @@ pip install -e .[nano]
 
 ```
 
-### Setup the Python Environment for Donkey Car main
+### Step 5a: (Optional) Install PyGame for USB camera
+
+If you plan to use a USB camera, you will also want to setup pygame:
+
+```bash
+sudo apt-get install python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev
+pip install pygame
+```
+
+Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
+
+
+
+## Installation for Donkey Car main
+
+Instructions for the latest code from the `main` branch. Note the 
+installation differs between the two available OSs. On Jetson Nano you will 
+need to install Jetpack 4.6.2. If you have newer Jetson board or a Jetson 
+Xavier you need to install Jetpack 5.0.2.
+
+
+### Installation on Jetson Nano
+
+
+* [Step 1b: Flash Operating System](#step-1b-flash-operating-system)
+* [Step 2b: Free up the serial port](#step-2b-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
+* [Step 3b: Setup Python Environment](#step-3b-setup-python-environment)
+* [Step 4b: (Optional) Install PyGame for USB camera](#step-4b-optional-install-pygame-for-usb-camera)
+
+
+#### Step 1b: Flash Operating System
+
+These instructions work for Jetpack 4.6.1. 
+
+* If you have a 4gb Jetson Nano then download Jetpack 4.6.1 from Nvidia
+  here: [jetson-nano-jp461-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v7.1/jp_4.6.1_b110_sd_card/jeston_nano/jetson-nano-jp461-sd-card-image.zip)
+* If you have a 2gb Jetson Nano the download Jetpack 4.5.1from Nvidia
+  here: [jetson-nano-2gb-jp461-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v7.1/jp_4.6.1_b110_sd_card/jetson_nano_2gb/jetson-nano-2gb-jp461-sd-card-image.zip)
+
+
+Visit the official [Nvidia Jetson Nano Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#prepare)
+or [Nvidia Xavier NX Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit).
+Work through the __Prepare for Setup__, __Writing Image to the microSD Card__,
+and __Setup and First Boot__ instructions, then return here.
+
+Once you're done with the setup, ssh into your vehicle. Use the terminal for
+Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+for windows.
+
+Remove Libre Office:
+
+```bash
+sudo apt-get remove --purge libreoffice*
+sudo apt-get clean
+sudo apt-get autoremove
+```
+
+And add a 6GB swap file:
+
+```bash
+git clone https://github.com/JetsonHacksNano/installSwapfile
+cd installSwapfile
+./installSwapfile.sh
+reboot 
+```
+
+#### Step 2b: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
+
+```bash
+sudo usermod -aG dialout <your username>
+sudo systemctl disable nvgetty
+```
+
+
+#### Step 3b: Setup Python Environment
 
 The installation on JP 4.6.X is more tricky, because we need to use a newer
 version of tensorflow than what is packaged by NVidia for this OS version.
 Also, we need a compatible OpenCV version which needs to be built on the nano.
-
-#### Installation on  JP 4.6.X
 
 * Step 1: Install mamba-forge
 
@@ -254,7 +352,64 @@ python
 >>> print(cv2.getBuildInformation()) 
 ```
 
-#### Installation on JP 5.0.X
+#### Step 4b: (Optional) Install PyGame for USB camera
+
+If you plan to use a USB camera, you will also want to setup pygame:
+
+```bash
+pip install pygame
+```
+Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
+
+
+### Installation on Jetson Xavier (or newer Jetson boards)
+
+* [Step 1c: Flash Operating System](#step-1c-flash-operating-system)
+* [Step 2c: Free up the serial port](#step-2c-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
+* [Step 3c: Setup Python Environment](#step-3c-setup-python-environment)
+* [Step 4c: (Optional) Install PyGame for USB camera](#step-4c-optional-install-pygame-for-usb-camera)
+
+
+#### Step 1c: Flash Operating System
+
+These instructions work for Jetpack 5.0.2.
+
+Please install the Jetpack image from [jetson-nx-developer-kit-sd-card-image.zip](https://developer.nvidia.com/jetson-nx-developer-kit-sd-card-image).
+
+
+Visit the official [Nvidia Xavier NX Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit).
+Work through the __Prepare for Setup__, __Writing Image to the microSD Card__,
+and __Setup and First Boot__ instructions, then return here.
+
+Once you're done with the setup, ssh into your vehicle. Use the terminal for
+Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
+for windows.
+
+Remove Libre Office:
+
+```bash
+sudo apt-get remove --purge libreoffice*
+sudo apt-get clean
+sudo apt-get autoremove
+```
+
+And add a 6GB swap file:
+
+```bash
+git clone https://github.com/JetsonHacksNano/installSwapfile
+cd installSwapfile
+./installSwapfile.sh
+reboot 
+```
+
+#### Step 2c: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
+
+```bash
+sudo usermod -aG dialout <your username>
+sudo systemctl disable nvgetty
+```
+
+#### Step 3c: Setup python environment
 
 * Step 1: Install mamba-forge
 
@@ -303,9 +458,19 @@ python
 >>> trt._check_trt_version_compatibility()
 ```
 
+#### Step 4c: (Optional) Install PyGame for USB camera
 
-## Step 5: (Optional) Fix for pink tint on CSIC cameras
+If you plan to use a USB camera, you will also want to setup pygame:
 
+```bash
+pip install pygame
+```
+Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
+
+
+## (Optional) Fix for pink tint on CSIC cameras
+
+This applies to any installation you did above, either JP 4.6.X or 5.0.X.
 If you're using a CSIC camera you may have a pink tint on the images. As
 described [here](https://jonathantse.medium.com/fix-pink-tint-on-jetson-nano-wide-angle-camera-a8ce5fbd797f),
 this fix will remove it.
@@ -317,17 +482,7 @@ sudo chmod 664 /var/nvidia/nvcam/settings/camera_overrides.isp
 sudo chown root:root /var/nvidia/nvcam/settings/camera_overrides.isp
 ```
 
-## Step 5: (Optional) Install PyGame for USB camera
-
-If you plan to use a USB camera, you will also want to setup pygame:
-
-```bash
-sudo apt-get install python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev
-pip install pygame
-```
-
-Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
 
 ----
 
-### Next, [create your Donkeycar application](/guide/create_application).
+## Next, [create your Donkeycar application](/guide/create_application).
