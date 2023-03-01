@@ -138,7 +138,7 @@ It is very common to use a Proportional Integral Derivative (PID) controller to 
 
 
 ## Writing a Computer Vision Autopilot
-You can use the `CV_CONTROLLER_*` configuration values to point to a python file and class the implements you computer vision autopilot part; it must conform to the [donkeycar part](/parts/about) standard.  You can also determine the name of the input values, output values and run_condition.  By default these point the the included LineFollower part.  It takes the camera image as an input and outputs the autopilot's throttle and steering values as well as an image with data that can be shown in the web ui.
+You can use the `CV_CONTROLLER_*` configuration values to point to a python file and class the implements you computer vision autopilot part; it must conform to the [donkeycar part](/parts/about/#parts) standard.  You can also determine the name of the input values, output values and run_condition.  By default these point the the included LineFollower part.  It takes the camera image as an input and outputs the autopilot's throttle and steering values as well as an image with data that can be shown in the web ui.
 
 It is worth studying the implementation of the LineFollower part to illustrate how a computer vision part is designed.  The python file is located at https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/line_follower.py and is copied below.
 
