@@ -13,17 +13,17 @@ What if your track does not have a center line; what if it just has a left and r
 The built-in algorithm can follow a line using the camera.  By default it is tuned for a yellow line, but the color that it tracks can be configured.  Many other aspects of the algorithm can be tuned.  Below is as description of the algorithm and how it uses the configuraton values.  The values themselves are listed and described afterwards.
 
 
-0. If TARGET_PIXEL is None, then use steps 1 to 5 to estimate the target (expected) position of the line.
+0. If `TARGET_PIXEL` is None, then use steps 1 to 5 to estimate the target (expected) position of the line.
 1. Get copy of the image rows at `SCAN_Y` and `SCAN_HEIGHT` pixels height.  So the result is a block of pixels as wide as the image and `SCAN_HEIGHT` high.
 2. Convert the pixels from `RBG` red-gree-blue color space to `HSV` hue-saturation-value color space.  
 
 >> This [pyimagesearch article](https://pyimagesearch.com/2021/04/28/opencv-color-spaces-cv2-cvtcolor/) and accompanying video describe the various color spaces and their characteristics.  
 
-3. The algorithm then identifies all the pixels in the block that have an HSV color between COLOR_THRESHOLD_LOW and COLOR_THRESHOLD_HIGH.
-4. Once the pixels with our color target are isolated then a histogram is created that creates counts of yellow pixels from left to right for each 1 pixel wide by SCAN_HEIGHT pixel high slice.
+3. The algorithm then identifies all the pixels in the block that have an HSV color between `COLOR_THRESHOLD_LOW` and `COLOR_THRESHOLD_HIGH`.
+4. Once the pixels with our color target are isolated then a histogram is created that creates counts of yellow pixels from left to right for each 1 pixel wide by `SCAN_HEIGHT` pixel high slice.
 5. The x value (horizontal offset) of the slice with the most yellow pixels is chosen.  This is where we think the yellow line is.
-6. The difference between this x-value and the TARGET_PIXEL value is used as the value the PID algorithm uses to calculate a new steering.  If the value is to the left of the TARGET_PIXEL more than TARGET_THRESHOLD pixels then the car steers right; if hte value is to the right of TARGET_PIXEL more than TARGET_THRESHOLD pixels the the car steers left.  If the value is withing TARGET_THRESHOLD pixels of TARGET_PIXEL then steering is not changed.
-7. The steering value is used to decide if the car should speed up or slow down.  If steering is not changed then the throttle is increased by THROTTLE_STEP, but not over THROTTLE_MAX.  If steering is changed then throttle is decreased by THROTTLE_STEP, but not below THROTTLE_MIN.
+6. The difference between this x-value and the `TARGET_PIXEL` value is used as the value the PID algorithm uses to calculate a new steering.  If the value is to the left of the `TARGET_PIXEL` more than `TARGET_THRESHOLD` pixels then the car steers right; if hte value is to the right of `TARGET_PIXEL` more than `TARGET_THRESHOLD` pixels the the car steers left.  If the value is withing `TARGET_THRESHOLD` pixels of `TARGET_PIXEL` then steering is not changed.
+7. The steering value is used to decide if the car should speed up or slow down.  If steering is not changed then the throttle is increased by `THROTTLE_STEP`, but not over `THROTTLE_MAX`.  If steering is changed then throttle is decreased by `THROTTLE_STEP`, but not below `THROTTLE_MIN`.
 
 
 ```
@@ -75,11 +75,11 @@ OVERLAY_IMAGE = True  # True to draw computer vision overlay on camera image in 
 ### Choosing Parameters for the LineFollower
 The computer vision template is a little different than than the deep learning and path follow templates; there is no data recording.  After setting your configuration parameters you just put your car on the track that has the line that you want to follow and then chage from user mode to one of the auto-pilot modes; full-auto or auto-steering.
 
-**SCAN_Y and SCAN_HEIGHT**
-The rectangular area that will be scanned for the line is determined with the SCAN_Y and SCAN_HEIGHT.
+#### SCAN_Y and SCAN_HEIGHT
+The rectangular area that will be scanned for the line is determined with the `SCAN_Y` and `SCAN_HEIGHT`.
 
-**COLOR_THRESHOLD_LOW, COLOR_THRESHOLD_HIGH**
-The color threshold values represent the range of colors used to detect the line; they should be chosen to include the colors in the line in the area that it passes through the detection bar and ideally they should not include any other colors.  The color threshold values are in HSV (Hue, Saturation, Color) format, not RGB format.  `RGB` color space is how a computer shows colors.  `HSV` color space is closer to how human's perceive color.  For our purposes the 'hue' part is the 'pure' color without regard for shadows or lighting.  This makes it easier to find a color because it is one number, rather than combination of 3 numbers.  
+#### COLOR_THRESHOLD_LOW, COLOR_THRESHOLD_HIGH
+The color threshold values represent the range of colors used to detect the line; they should be chosen to include the colors in the line in the area that it passes through the detection bar and ideally they should not include any other colors.  The color threshold values are in HSV (Hue, Saturation, Color) format, not RGB format.  RGB color space is how a computer shows colors.  HSV color space is closer to how human's perceive color.  For our purposes the 'hue' part is the 'pure' color without regard for shadows or lighting.  This makes it easier to find a color because it is one number, rather than combination of 3 numbers.  
 
 >> There are many online converters between RGB and HSV.  This one was used when creating this documentation; https://www.peko-step.com/en/tool/hsvrgb_en.html  I like that tool because it will allow the Saturation and Value to be output in the range of 0.255, which is what we need.  IMPORTANT: The online tools use the standard way of representing HSV, which is a Hue value of 0 to 359 degrees, Saturation of 0 to 100%, Value of 0 to 100%.  OpenCV, which our code is based on, use a Hue value of 0 to 179, Saturation of 0 to 255 and value of 0 to 255; so be aware.
 
@@ -91,9 +91,11 @@ python scripts/hsv_picker.sh --file=<path-to-image>
 ```
 
 To view the camera stream, again with donkey python environment activated, run the script from the root of your donkeycar repo folder;
+
 ```
 python scripts/hsv_picker.sh
 ```
+
 If you have more than one camera and it is not showing the correct one, you can choose the camera index and/or set the image size
 
 ```
@@ -113,6 +115,7 @@ The image below shows the mask that was created by selecting a rectangular area 
 
 ![A masked screenshot in the hsv_picker.sh script](/assets/hsv_picker_mask.png)
 
+Features of hsx_picker.sh
 - change the low and high mask values using the taskbars at the bottom of the screen.
 - set the low and high mask values by selecting a rectangular area on the image using click-drag-release.
 - select the Escape key on the keyboard to clear the mast.
@@ -120,12 +123,12 @@ The image below shows the mask that was created by selecting a rectangular area 
 - select the 'q' key to print the final mask values and quit.
 
 
-**TARGET_PIXEL**
-The TARGET_PIXEL value is the horizontal position of the line to follow in the image.  The line follow algorithm will adjust steering to try to keep the line at that position in the image.  More specifically, the difference between the TARGET_PIXEL value and where the line follow algorithm detects that actual line is in the image is used by a PID controller to adjust steering (see [The PID Controller](#the-pid-controller)) below.
+#### TARGET_PIXEL
+The `TARGET_PIXEL` value is the horizontal position of the line to follow in the image.  The line follow algorithm will adjust steering to try to keep the line at that position in the image.  More specifically, the difference between the `TARGET_PIXEL` value and where the line follow algorithm detects that actual line is in the image is used by a PID controller to adjust steering (see [The PID Controller](#the-pid-controller)) below.
 
-If you are the only car on the course, then you probably want to the car to drive directly on the line to follow.  In this case setting TARGET_PIXEL to (IMAGE_2 / 2) means the auto-pilot assumes the line to follow should be directly in the middle of the image and so the car will try to stay in the middle.  So if your car actually starts to the left or right of that line, it will quickly move the the line and stay on it.
+If you are the only car on the course, then you probably want to the car to drive directly on the line to follow.  In this case setting `TARGET_PIXEL` to (IMAGE_2 / 2) means the auto-pilot assumes the line to follow should be directly in the middle of the image and so the car will try to stay in the middle.  So if your car actually starts to the left or right of that line, it will quickly move the the line and stay on it.
 
-However, if you are on a course where two cars drive at the same time (there are two lanes separated by a line), then you probably want your car to stay in it's lane.  In that case you would set TARGET_PIXEL to None, which will cause the car to detect the location of the line at startup.  The auto-pilot will then assume the line should stay at that position in the image, and so it will the try to keep the car it it's lane to make that true.
+However, if you are on a course where two cars drive at the same time (there are two lanes separated by a line), then you probably want your car to stay in it's lane.  In that case you would set `TARGET_PIXEL` to None, which will cause the car to detect the location of the line at startup.  The auto-pilot will then assume the line should stay at that position in the image, and so it will the try to keep the car it it's lane to make that true.
 
 
 ## The PID Controller
