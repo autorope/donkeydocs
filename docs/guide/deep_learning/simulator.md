@@ -24,7 +24,7 @@ There are many ways to use the simulator, depending on your goals. You can use t
 
 * Download and unzip the simulator for your host pc platform from [Donkey Gym Release](https://github.com/tawnkramer/gym-donkeycar/releases).
 * Place the simulator where you like. For this example it will be ~/projects/DonkeySimLinux. Your dir will have a different name depending on platform. 
-* Complete all the steps to [install Donkey on your host pc]([/docs/guide/install_software.md].
+* Complete all the steps to [install Donkey on your host pc](https://docs.donkeycar.com/guide/install_software/#step-1-install-software-on-host-pc).
 * Setup DonkeyGym:
 
 ```bash
