@@ -33,7 +33,13 @@ The complete source code is provided and discussed in the [LineFollower class](#
 The computer vision template is a little different than than the deep learning and path follow templates; there is no data recording.  After setting your configuration parameters you just put your car on the track that has the line that you want to follow and then chage from user mode to one of the auto-pilot modes; full-auto or auto-steering.  The complete set of configuration parameters can be found in the [LineFollower Configuration](#linefollower-configuration) section below; we will discuss the most important configuration in more detail in this section.
 
 #### SCAN_Y and SCAN_HEIGHT
-The rectangular area that will be scanned for the line is determined with the `SCAN_Y` and `SCAN_HEIGHT`.
+The rectangular area that will be scanned for the line is determined with the `SCAN_Y` and `SCAN_HEIGHT`; called the detection area.
+
+When in autopilot mode, the `LineFollower` shows the detection area as a horizontal black bar.  Pixels that fall with the color threshold range (see next sectino) are drawn as white pixels. Ideally only the pixels in the line that are in the detection bar will show as white; any white pixels that are NOT part of the line you want to follow are considered false positives.  If the false positives are relatively disperse then they should not interfere with detecting the line.  However, if there are big areas of white then they might trick the algorithm.  See the next section of how to adjust the color threshold range to minimize false positives.
+
+The image below shows the detection area and the detected line.
+
+![The Detection Area](/assets/cv_track_telemetry.png)
 
 #### COLOR_THRESHOLD_LOW, COLOR_THRESHOLD_HIGH
 The color threshold values represent the range of colors used to detect the line; they should be chosen to include the colors in the line in the area that it passes through the detection bar and ideally they should not include any other colors.  The color threshold values are in HSV (Hue, Saturation, Color) format, not RGB format.  RGB color space is how a computer shows colors.  HSV color space is closer to how human's perceive color.  For our purposes the 'hue' part is the 'pure' color without regard for shadows or lighting.  This makes it easier to find a color because it is one number, rather than combination of 3 numbers.  
@@ -61,7 +67,7 @@ python scripts/hsv_picker.sh --camera=2  --width=320 --height=240
 
 ![A screenshot in hsv_script.sh](/assets/hsv_picker_no_mask.png)
 
-The image above shows the `hsv_script.sh` with a web ui screenshot loaded.  The blue line in the center of the image is the line that we want to follow.  
+The image above shows the `hsv_script.sh` with a web ui screenshot loaded.  The blue line in the center of the image is the line that we want to follow.  The horizontal black bar in the camera image is the detection bar; this is defined by `SCAN_Y` and `SCAN_HEIGHT` and is the area where the mask is applied to try to isolate the pixels in the line.  When pixels are detected they will be draw in white in the detection area.
 
 
 The bottom of the screen has 6 trackbars to select the 3 parts of the low HSV value and the 3 parts of the high HSV value that are used to create a mask to pull out the pixels in the line.  You can move those scrollbars manually to try to find the right range to pick out the line.  As you change them the resulting mask will be applied to the image and you will see pixels start to turn back.  The Hue value is typically the most important value to get the range correct on.  You can reset the trackbars and clear the mask anytime by selecting the Escape key on the keyboard.
