@@ -18,13 +18,13 @@ https://youtu.be/wqQMmHVT8qw
 
 There are many ways to use the simulator, depending on your goals. You can use the simulator to get to know and use the standard Donkeycar drive/train/test cycle by treating it as virtual hardware. You will collect data, drive, and train using the __same commands__ as if you were using a real robot. We will walk through that use-case first.
 
-![sim_screen_shot](/docs/assets/sim_screen_shot.png)
+![sim_screen_shot](https://github.com/autorope/donkeydocs/blob/master/docs/assets/sim_screen_shot.png) 
 
 ## Install
 
 * Download and unzip the simulator for your host pc platform from [Donkey Gym Release](https://github.com/tawnkramer/gym-donkeycar/releases).
 * Place the simulator where you like. For this example it will be ~/projects/DonkeySimLinux. Your dir will have a different name depending on platform. 
-* Complete all the steps to [install Donkey on your host pc](/docs/guide/install_software.md#step-1-install-software-on-host-pc).
+* Complete all the steps to [install Donkey on your host pc]([/docs/guide/install_software.md].
 * Setup DonkeyGym:
 
 ```bash
