@@ -7,9 +7,9 @@ The computer vision autopilot, like the deep learning autopilot, interprets came
 The built-in algorithm is a line following algorithm; it expects the track to have a center line, preferably solid, that it can detect.  The expected color of the line can be tuned with configuration, but by default it expects a yellow line.  The algorithm calculates the distance of the line from the center of hte image and a PID controller uses that value to calculate a steering value.  If the car is to the left of the line then it will turn right.  If the car is to the right of the line then it will turn left.  The chosen steering angle is proportional to the distance from the line.  The chosen throttle is inversely proportional to the steering angle so that the car will go faster on a straight path and slow down for turns.  More details on the algorithm and the configuration parameters are discussed below.
 
 <div class="video-container" align="center">
-    <iframe class="video" width="560" height="315" src="https://youtu.be/bN4xvfQ5iKY" allowfullscreen></iframe>
+    <iframe class="video" width="560" height="315" src="https://www.youtube.com/watch?v=bN4xvfQ5iKY" allowfullscreen></iframe>
 <p>Computer Vision Autopilot in Action</p>
-  </div><br/>
+</div><br/>
 
 What if your track does not have a center line; what if it just has a left and right lane boundary lines; you don't want to have to drive on a boundary.  What if it is a sidewalk?  What if you simply want to make your own algorithm?  The computer vision template is designed to make the pretty easy.  You can write you own part in Python to use as the autopilot and simply change the configuration in your myconfig.py to point to it.  Your part can utilize computer vision parts in [cv.py](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/cv.py) or you can call OpenCV's python api directly.  We present a simplified example below.
 
