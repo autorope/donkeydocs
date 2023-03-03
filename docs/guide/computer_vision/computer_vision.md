@@ -9,6 +9,7 @@ The built-in algorithm is a line following algorithm; it expects the track to ha
 
 <div class="video-container" align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bN4xvfQ5iKY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div>Computer Vision Autopilot with camera point at horizon</div>
 </div><p><br/></p>
 
 
@@ -34,6 +35,21 @@ The built-in algorithm can follow a line using the camera.  By default it is tun
 
 
 The complete source code is provided and discussed in the [LineFollower class](#linefollower-class) section near the end of this page.
+
+
+### Camera Setup
+The first video above shows the camera setup approximately how it would be using the standard Donkeycar cage.  It is setup to see to the horizon so that it can see turns from far away.  This is good when going very fast.  However you can also see in the video that the detected line is quite thin and there are some false positives around it.  This could lead to false positives that cause the vehicle to move off the line.
+
+If you are not going fast and you want to be as accurate as possible then pointing the camera down at the line is a good idea.  See this video which shows the car following the line with the camera pointed straigh down at the line.
+
+
+<div class="video-container" align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aVLZ7fiprvE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div>Computer Vision Autopilot with camera point straight down</div>
+</div><p><br/></p>
+
+
+So of you camera can be adjusted then you can make trade-offs betwen accuracy (point it down) and speed (point to to the horizon).
 
 ### Choosing Parameters for the LineFollower
 The computer vision template is a little different than than the deep learning and path follow templates; there is no data recording.  After setting your configuration parameters you just put your car on the track that has the line that you want to follow and then chage from user mode to one of the auto-pilot modes; full-auto or auto-steering.  The complete set of configuration parameters can be found in the [LineFollower Configuration](#linefollower-configuration) section below; we will discuss the most important configuration in more detail in this section.
