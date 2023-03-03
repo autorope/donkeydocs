@@ -9,7 +9,7 @@ The built-in algorithm is a line following algorithm; it expects the track to ha
 
 <div class="video-container" align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bN4xvfQ5iKY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<div>Computer Vision Autopilot with camera point at horizon</div>
+<div>Computer Vision Autopilot with camera pointed at horizon</div>
 </div><p><br/></p>
 
 
@@ -45,7 +45,15 @@ If you are not going fast and you want to be as accurate as possible then pointi
 
 <div class="video-container" align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aVLZ7fiprvE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<div>Computer Vision Autopilot with camera point straight down</div>
+<div>Computer Vision Autopilot with camera pointed straight down</div>
+</div><p><br/></p>
+
+Here is a video of the vehicle following a turn, using a setup where the camera is pointed straight down.
+
+
+<div class="video-container" align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3RN81fRefjY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div>Computer Vision Autopilot following a curve with camera pointed straight down</div>
 </div><p><br/></p>
 
 
