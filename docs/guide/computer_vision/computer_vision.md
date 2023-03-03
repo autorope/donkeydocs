@@ -370,6 +370,26 @@ CV_CONTROLLER_CONDITION = "run_pilot"
 
 Now that you understand the structure of an autopilot part, it is worth reviewing the pseudocode in [The Line Follower](#the-line-follower) section above and compare that to the actual implementation.  The python file is located at https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/line_follower.py and is copied below.  In particular:
 
+- get_i_color() uses SCAN_Y and SCAN_HEIGHT to copy a section of the camera image, convert it to HSV and apply the mask created by the low and high HSV mask values.  Then it finds the x (horizontal) index in the area that has the highest amount of the positive pixels; that is where the autopilot thinks the line is.
+```
+    def get_i_color(self, cam_img):
+        # take a horizontal slice of the image
+        iSlice = self.scan_y
+        scan_line = cam_img[iSlice : iSlice + self.scan_height, :, :]
+
+        # convert to HSV color space
+        img_hsv = cv2.cvtColor(scan_line, cv2.COLOR_RGB2HSV)
+
+        # make a mask of the colors in our range we are looking for
+        mask = cv2.inRange(img_hsv, self.color_thr_low, self.color_thr_hi)
+
+        # which index of the range has the highest amount of yellow?
+        hist = np.sum(mask, axis=0)
+        max_yellow = np.argmax(hist)
+
+        return max_yellow, hist[max_yellow], mask
+```
+
 - Note how target value is initialized by reading the image if it is not already initialized in the configuration:
 ```
         max_yellow, confidence, mask = self.get_i_color(cam_img)
