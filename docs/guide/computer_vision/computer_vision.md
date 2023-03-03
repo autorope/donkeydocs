@@ -57,7 +57,7 @@ Here is a video of the vehicle following a turn, using a setup where the camera 
 </div><p><br/></p>
 
 
-So of you camera can be adjusted then you can make trade-offs betwen accuracy (point it down) and speed (point to to the horizon).
+So if your camera can be adjusted then you can make trade-offs between accuracy (point it down) and speed (point to to the horizon).
 
 ### Choosing Parameters for the LineFollower
 The computer vision template is a little different than than the deep learning and path follow templates; there is no data recording.  After setting your configuration parameters you just put your car on the track that has the line that you want to follow and then chage from user mode to one of the auto-pilot modes; full-auto or auto-steering.  The complete set of configuration parameters can be found in the [LineFollower Configuration](#linefollower-configuration) section below; we will discuss the most important configuration in more detail in this section.
