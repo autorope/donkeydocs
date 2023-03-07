@@ -244,7 +244,7 @@ Download and install mambaforge
 ```bash
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-aarch64.sh
 chmod u+x Mambaforge-Linux-aarch64.sh
-sudo Mambaforge-Linux-aarch64.sh
+Mambaforge-Linux-aarch64.sh
 ```
 
 * Step 2: Install git lfs
@@ -274,6 +274,7 @@ Also install tensorflow in the last step
 cd donkeycar
 mamba env create -f install/envs/jetson46.yml
 conda activate donkey
+conda install pip
 pip install -e .[nano]
 pip install ../jetson/tensorflow-2.9.3-cp39-cp39-linux_aarch64.whl
 ```
@@ -303,42 +304,43 @@ Note, the `CMake` command should be executed with the following flags:
 
 ```bash
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
--D CMAKE_INSTALL_PREFIX=$(python3 -c \“import sys\”) \
--D CMAKE_PREFIX_PATH=$/mambaforge/envs/donkey/bin/python3.9 \
--D python=ON \
--D BUILD_opencv_python2=OFF \
--D BUILD_opencv_python3=ON \
--D CMAKE_INSTALL_PREFIX=/home/thomas/mambaforge \
--D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
--D EIGEN_INCLUDE_PATH=/usr/include/eigen3 \
--D WITH_OPENCL=OFF \
--D WITH_CUDA=ON \
--D CUDA_ARCH_BIN=5.3 \
--D CUDA_ARCH_PTX="" \
--D WITH_CUDNN=ON \
--D WITH_CUBLAS=ON \
--D ENABLE_FAST_MATH=ON \
--D CUDA_FAST_MATH=ON \
--D OPENCV_DNN_CUDA=ON \
--D ENABLE_NEON=ON \
--D WITH_QT=OFF \
--D WITH_OPENMP=ON \
--D BUILD_TIFF=ON \
--D WITH_FFMPEG=ON \
--D WITH_GSTREAMER=ON \
--D WITH_TBB=ON \
--D BUILD_TBB=ON \
--D BUILD_TESTS=OFF \
--D WITH_EIGEN=ON \
--D WITH_V4L=ON \
--D WITH_LIBV4L=ON \
--D OPENCV_ENABLE_NONFREE=ON \
--D INSTALL_C_EXAMPLES=OFF \
--D INSTALL_PYTHON_EXAMPLES=OFF \
--D PYTHON3_PACKAGES_PATH=/home/thomas/mambaforge/envs/donkey/lib/python3.9/site-packages \
--D PYTHON3_LIBRARIES_PATH=/home/thomas/mambaforge/envs/donkey/lib \
--D OPENCV_GENERATE_PKGCONFIG=ON \
--D BUILD_EXAMPLES=OFF
+      -D CMAKE_PREFIX_PATH=$/home/<user name>/mambaforge/envs/donkey/bin/python3.9 \
+      -D python=ON \
+      -D BUILD_opencv_python2=OFF \
+      -D BUILD_opencv_python3=ON \
+      -D CMAKE_INSTALL_PREFIX=/home/<user name>/mambaforge/envs/donkey \
+      -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+      -D EIGEN_INCLUDE_PATH=/usr/include/eigen3 \
+      -D WITH_OPENCL=OFF \
+      -D WITH_CUDA=ON \
+      -D CUDA_ARCH_BIN=5.3 \
+      -D CUDA_ARCH_PTX="" \
+      -D WITH_CUDNN=ON \
+      -D WITH_CUBLAS=ON \
+      -D ENABLE_FAST_MATH=ON \
+      -D CUDA_FAST_MATH=ON \
+      -D OPENCV_DNN_CUDA=ON \
+      -D ENABLE_NEON=ON \
+      -D WITH_QT=OFF \
+      -D WITH_OPENMP=ON \
+      -D BUILD_TIFF=ON \
+      -D WITH_FFMPEG=ON \
+      -D WITH_GSTREAMER=ON \
+      -D WITH_TBB=ON \
+      -D BUILD_TBB=ON \
+      -D BUILD_TESTS=OFF \
+      -D WITH_EIGEN=ON \
+      -D WITH_V4L=ON \
+      -D WITH_LIBV4L=ON \
+      -D OPENCV_ENABLE_NONFREE=ON \
+      -D INSTALL_C_EXAMPLES=OFF \
+      -D INSTALL_PYTHON_EXAMPLES=OFF \
+      -D PYTHON3_PACKAGES_PATH=/home/<user name>/mambaforge/envs/donkey/lib/python3.9/site-packages \
+      -D PYTHON3_LIBRARIES_PATH=/home/<user name>/mambaforge/envs/donkey/lib \
+      -D OPENCV_GENERATE_PKGCONFIG=ON \
+      -D BUILD_EXAMPLES=OFF ..
+
+
 ```
 
 * Step 7: Check that OpenCV has been installed properly
