@@ -206,6 +206,7 @@ Once you're done with the setup, ssh into your vehicle. Use the terminal for
 Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 for windows.
 
+
 Remove Libre Office:
 
 ```bash
@@ -271,10 +272,9 @@ git checkout main
 Also install tensorflow in the last step
 
 ```bash
-cd donkeycar
 mamba env create -f install/envs/jetson46.yml
 conda activate donkey
-conda install pip
+conda update pip
 pip install -e .[nano]
 pip install ../jetson/tensorflow-2.9.3-cp39-cp39-linux_aarch64.whl
 ```
@@ -287,7 +287,7 @@ Run python and verify that tensorflow is version 2.9 and trt is version 8.2.1:
 python
 >>> import tensorflow as tf
 >>> tf.version
->>> from tensorflow.python.compiler.tensorrt import trt_convert as trtf
+>>> from tensorflow.python.compiler.tensorrt import trt_convert as trt
 >>> trt._check_trt_version_compatibility()
 ```
 
@@ -340,6 +340,13 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
       -D OPENCV_GENERATE_PKGCONFIG=ON \
       -D BUILD_EXAMPLES=OFF ..
 
+sudo rm -r /usr/include/opencv4/opencv2
+$ sudo make install
+$ sudo ldconfig
+
+# cleaning (frees 300 MB)
+$ make clean
+$ sudo apt-get update
 
 ```
 
@@ -456,7 +463,7 @@ you put the above line into your `.bashrc`.
 python
 >>> import tensorflow as tf
 >>> tf.version
->>> from tensorflow.python.compiler.tensorrt import trt_convert as trtf
+>>> from tensorflow.python.compiler.tensorrt import trt_convert as trt
 >>> trt._check_trt_version_compatibility()
 ```
 
