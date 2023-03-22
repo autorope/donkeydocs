@@ -55,9 +55,6 @@ You may specify more than one tub using a comma separated list `--tub=foo/data,b
 
 * **Image Transformation** With version >= 4.3.0 you also have access to image transformations like cropping or trapezoidal masking.  **Cropping and masking** are similar; both 'erase' pixels on the image.  This is done to **remove pixels that are not important** and that may add unwanted detail that can make the model perform poorly under conditions where that unwanted detail is different.  Cropping can erase pixels on the top, bottom, left and/or right of the image.  Trapezoidal masking is a little more flexible in that it can mask pixels using a trapezoidal mask that can account for perspective in the image.  To crop the image or apply a trapezoidal mask you can provide `TRANSFORMATIONS = ['CROP']` or `TRANSFORMATIONS = ['TRAPEZE']`. Generally you will use either cropping or trapezoidal masking but not both.  **Transformations must be applied in the same way in training and when driving on autopilot**; make sure the transformation configuration is the same on your training machine and on your Donkey Car. 
 
-> _**Note**_ The library used for image augmentations and transformations has an incompatibility on the Jetson Nano.  We are working on an alternative, but currently image augmentation and transformation will not work on the Jetson Nano. 
-
-
 ## Copy model back to car
 
 * In previous step we managed to get a model trained on the data. Now is time to move the model back to Rasberry Pi, so we can use it for testing it if it will drive itself.
