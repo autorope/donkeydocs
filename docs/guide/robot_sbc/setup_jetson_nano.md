@@ -29,7 +29,7 @@ Here is a simple chart:
 ``` mermaid
 graph TD;
     A[Donkey Version]-->B[<= 4.4.X];
-    A[Donkey Version]-->C[>= 4.4.X, i.e. main]
+    A[Donkey Version]-->C[> 4.4.X, i.e. main]
     B-->D[<b>Jetson Nano</b> <br> Jetpack 4.5.2 <br> Python 3.6 <br> Tensorflow 2.3.1];
     B-->E[<b>Jetson Xavier</b> <br> Not supported];
     C-->F[<b>Jetson Nano</b> <br> Jetpack 4.6.2 <br> Python 3.9 <br> Tensorflow 2.9]
@@ -262,7 +262,7 @@ Downloading Donkey Car and the Tensorflow wheel for jp46 and tf29
 mkdir projects
 cd projects
 git clone https://github.com/autorope/donkeycar
-git clone https://github.com/autorope/jetson
+git-lfs clone https://github.com/autorope/jetson
 cd donkeycar
 git checkout main
 ```
@@ -276,6 +276,7 @@ mamba env create -f install/envs/jetson46.yml
 conda activate donkey
 conda update pip
 pip install -e .[nano]
+pip install git+https://github.com/autorope/keras-vis.git
 pip install ../jetson/tensorflow-2.9.3-cp39-cp39-linux_aarch64.whl
 ```
 
