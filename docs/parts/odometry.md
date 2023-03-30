@@ -126,14 +126,14 @@ In a dual encoder setup the second encoder values as separated from the first by
 
 ```{ticks},{ticksMs};{ticks},{ticksMs}```
 
-The [`tachometer.py`](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/tachometer.py) file that implements the encoder parts also has an [`__main__`](https://github.com/autorope/donkeycar/blob/5e234c3101cc5f54935c240819e3840596c753a3/donkeycar/parts/tachometer.py#L597) so it can be run directly.  After activating the `donkey` python environment the file can be run to check your hookup and to determine configuration parameters.  Run this to get the available arguments:
+The [`tachometer.py`](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/tachometer.py) file that implements the encoder parts also has a [`__main__`](https://github.com/autorope/donkeycar/blob/5e234c3101cc5f54935c240819e3840596c753a3/donkeycar/parts/tachometer.py#L597) function, so it can be run directly.  After activating the `donkey` python environment the file can be run to check your hookup and to determine configuration parameters.  Run this to get the available arguments:
 
 ```
 python donkeycar/parts/tachometer.py 
 ```
 
 ## Odometer and Kinematics for Pose Estimation and Path Following
-An encoder setup can be used to estimate not only the vehicles speed, but it's position.  This requires a few more configurations; basically measurements of the wheel diameter, the length of the wheel base and the length of the axle.  This then allows encoders to be used with the [Path Follow](/guide/path_follow/path_follow.md) template in place of GPS, so it can be used indoors.
+An encoder setup can be used to estimate not only the vehicle's speed, but its position.  This requires a few configurations to be set in the `myconfig.py`; basically measurements of the wheel diameter, the length of the wheel base and the length of the axle.  This then allows encoders to be used with the [Path Follow](/guide/path_follow/path_follow.md) template in place of GPS, so it can be used indoors.
 
 ```
 #
