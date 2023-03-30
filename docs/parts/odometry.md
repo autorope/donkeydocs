@@ -126,13 +126,27 @@ In a dual encoder setup the second encoder values as separated from the first by
 
 ```{ticks},{ticksMs};{ticks},{ticksMs}```
 
-The [`tachometer.py`](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/tachometer.py) file that implements the encoder parts also has an [`__main__`](https://github.com/autorope/donkeycar/blob/5e234c3101cc5f54935c240819e3840596c753a3/donkeycar/parts/tachometer.py#L597).  After activating the `donkey` python environment the file can be run directly to check your hookup and to determine configuration parameters.  Run this to get the available arguments:
+The [`tachometer.py`](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/tachometer.py) file that implements the encoder parts also has an [`__main__`](https://github.com/autorope/donkeycar/blob/5e234c3101cc5f54935c240819e3840596c753a3/donkeycar/parts/tachometer.py#L597) so it can be run directly.  After activating the `donkey` python environment the file can be run to check your hookup and to determine configuration parameters.  Run this to get the available arguments:
 
 ```
 python donkeycar/parts/tachometer.py 
 ```
 
+## Odometer and Kinematics for Pose Estimation and Path Following
+An encoder setup can be used to estimate not only the vehicles speed, but it's position.  This requires a few more configurations; basically measurements of the wheel diameter, the length of the wheel base and the length of the axle.  This then allows encoders to be used with the [Path Follow](/guide/path_follow/path_follow.md) template in place of GPS, so it can be used indoors.
 
+```
+#
+# MEASURED ROBOT PROPERTIES
+#
+AXLE_LENGTH = 0.03     # length of axle; distance between left and right wheels in meters
+WHEEL_BASE = 0.1       # distance between front and back wheels in meters
+WHEEL_RADIUS = 0.0315  # radius of wheel in meters
+MIN_SPEED = 0.1        # minimum speed in meters per second; speed below which car stalls
+MAX_SPEED = 3.0        # maximum speed in meters per second; speed at maximum throttle (1.0)
+MIN_THROTTLE = 0.1     # throttle (0 to 1.0) that corresponds to MIN_SPEED, throttle below which car stalls
+MAX_STEERING_ANGLE = 3.141592653589793 / 4  # for car-like robot; maximum steering angle in radians (corresponding to tire angle at steering == -1)
+```
 
 
 
