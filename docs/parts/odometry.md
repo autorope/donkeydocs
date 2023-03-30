@@ -133,7 +133,7 @@ python donkeycar/parts/tachometer.py
 ```
 
 ## Odometer and Kinematics for Pose Estimation and Path Following
-An encoder setup can be used to estimate not only the vehicle's speed, but its position.  This requires a few configurations to be set in the `myconfig.py`; basically measurements of the wheel diameter, the length of the wheel base and the length of the axle.  This then allows encoders to be used with the [Path Follow](/guide/path_follow/path_follow.md) template in place of GPS, so it can be used indoors.
+An encoder setup can be used to estimate not only the vehicle's speed, but its position.  This requires a few configurations to be set in the `myconfig.py`; basically measurements of the wheel diameter, the length of the wheel base and the length of the axle.  This then allows encoders to be used with the [Path Follow](/guide/path_follow/path_follow) template in place of GPS, so it can be used indoors.
 
 ```
 #
