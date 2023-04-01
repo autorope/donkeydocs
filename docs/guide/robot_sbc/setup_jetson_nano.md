@@ -244,8 +244,8 @@ Download and install mambaforge
 
 ```bash
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-aarch64.sh
-chmod u+x Mambaforge-Linux-aarch64.sh
-Mambaforge-Linux-aarch64.sh
+chmod u+x ./Mambaforge-Linux-aarch64.sh
+bash ./Mambaforge-Linux-aarch64.sh
 ```
 
 * Step 2: Install git lfs
@@ -287,7 +287,7 @@ Run python and verify that tensorflow is version 2.9 and trt is version 8.2.1:
 ```bash
 python
 >>> import tensorflow as tf
->>> tf.version
+>>> tf.__version__
 >>> from tensorflow.python.compiler.tensorrt import trt_convert as trt
 >>> trt._check_trt_version_compatibility()
 ```
@@ -428,7 +428,7 @@ Download and install mambaforge
 ```bash
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-aarch64.sh
 chmod u+x Mambaforge-Linux-aarch64.sh
-sudo Mambaforge-Linux-aarch64.sh
+bash ./Mambaforge-Linux-aarch64.sh
 ```
 
 * Step 2: Download and install Donkey Car
@@ -463,7 +463,7 @@ you put the above line into your `.bashrc`.
 ```bash
 python
 >>> import tensorflow as tf
->>> tf.version
+>>> tf.__version__
 >>> from tensorflow.python.compiler.tensorrt import trt_convert as trt
 >>> trt._check_trt_version_compatibility()
 ```
