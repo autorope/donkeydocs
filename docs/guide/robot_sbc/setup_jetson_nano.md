@@ -408,7 +408,7 @@ And add a 6GB swap file:
 ```bash
 git clone https://github.com/JetsonHacksNano/installSwapfile
 cd installSwapfile
-./installSwapfile.sh
+./installSwapfile.sh -s8
 reboot 
 ```
 
@@ -454,7 +454,7 @@ To get the tensorrt shared libraries to load correctly we must set the
 environment variable `LD_PRELOAD` as:
 
 ```bash
-export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libnvinfer.so.8
+export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libnvinfer.so.8:/usr/lib/aarch64-linux-gnu/libgomp.so.1
 ```
 
 Note, this has to be either every time you run donkeycar or tensorflow, or
