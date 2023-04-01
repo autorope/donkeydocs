@@ -457,7 +457,7 @@ environment variable `LD_PRELOAD` as:
 export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libnvinfer.so.8:/usr/lib/aarch64-linux-gnu/libgomp.so.1
 ```
 
-Note, this has to be either every time you run donkeycar or tensorflow, or
+Note, this has to be done either every time you run donkeycar or tensorflow, or
 you put the above line into your `.bashrc`.
 
 ```bash
