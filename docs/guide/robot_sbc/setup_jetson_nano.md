@@ -3,7 +3,7 @@
 ![donkey](/assets/logos/nvidia_logo.png)
 
 We have a different approaches to installing the software depending on the
-version of Donkey Car. For Donkey Car <= 4.4.X we are using Jetpack 4.5.X
+version of Donkey Car. For Donkey Car <= 4.5.X we are using Jetpack 4.5.X
 which comes with Tensorflow 2.3.1. The python installation is using virtual
 env, i.e. it is based on the system python with version 3.6.
 
@@ -14,7 +14,7 @@ Jetson boards you will use Jetpack 5.0.2. To decouple the python installation
 from the system python we are using Miniforge which is a mamba based version of
 Miniconda that works on the aarm architecture.
 
-For Donkey Car <= 4.4.X please go to the next section. For the latest
+For Donkey Car <= 4.5.X please go to the next section. For the latest
 version on the `main` branch please jump
 to [this section](#installation-for-donkey-car-main).
 
@@ -28,8 +28,8 @@ Here is a simple chart:
 
 ``` mermaid
 graph TD;
-    A[Donkey Version]-->B[<= 4.4.X];
-    A[Donkey Version]-->C[> 4.4.X, i.e. main]
+    A[Donkey Version]-->B[<= 4.5.X];
+    A[Donkey Version]-->C[>= 5.X, i.e. main]
     B-->D[<b>Jetson Nano</b> <br> Jetpack 4.5.2 <br> Python 3.6 <br> Tensorflow 2.3.1];
     B-->E[<b>Jetson Xavier</b> <br> Not supported];
     C-->F[<b>Jetson Nano</b> <br> Jetpack 4.6.2 <br> Python 3.9 <br> Tensorflow 2.9]
@@ -39,9 +39,9 @@ graph TD;
 Then [Create your Donkeycar Application](/guide/create_application/)
 
 
-## Installation for Donkey Car <= 4.4.X
+## Installation for Donkey Car <= 4.5.X
 
-Instructions for the latest stable release 4.4.X.
+Instructions for the latest stable release 4.5.X.
 
 * [Step 1a: Flash Operating System](#step-1a-flash-operating-system)
 * [Step 2a: Free up the serial port](#step-2a-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
