@@ -403,7 +403,7 @@ sudo apt-get clean
 sudo apt-get autoremove
 ```
 
-And add a 6GB swap file:
+And add a 6GB swap file. Note, if you intend to run from an SSD, perform the swap file setup only after booting from the SSD:
 
 ```bash
 git clone https://github.com/JetsonHacksNano/installSwapfile
