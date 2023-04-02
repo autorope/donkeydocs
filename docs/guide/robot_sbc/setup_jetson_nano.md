@@ -446,7 +446,7 @@ pip install -e .[nano]
 
 ```
 
-* Step 3: Check the TF installation
+* Step 3: Check the TF and OpenCV installation
 
 Run python and verify that tensorflow is version 2.9 and trt is version 8.2.1.
 To get the tensorrt shared libraries to load correctly we must set the
@@ -465,6 +465,8 @@ python
 >>> tf.__version__
 >>> from tensorflow.python.compiler.tensorrt import trt_convert as trt
 >>> trt._check_trt_version_compatibility()
+>>> import cv2
+>>> print(cv2.getBuildInformation())
 ```
 
 #### Step 4c: (Optional) Install PyGame for USB camera
