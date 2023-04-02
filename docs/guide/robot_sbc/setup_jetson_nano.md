@@ -24,17 +24,14 @@ microSD card with U3 speed, like for example
 [this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
 
 
-Here is a simple chart:
+These are the supported versions:
 
-``` mermaid
-graph TD;
-    A[Donkey Version]-->B[<= 4.5.X];
-    A[Donkey Version]-->C[>= 5.X, i.e. main]
-    B-->D[<b>Jetson Nano</b> <br> Jetpack 4.5.2 <br> Python 3.6 <br> Tensorflow 2.3.1];
-    B-->E[<b>Jetson Xavier</b> <br> Not supported];
-    C-->F[<b>Jetson Nano</b> <br> Jetpack 4.6.2 <br> Python 3.9 <br> Tensorflow 2.9]
-    C-->G[<b>Jetson Xavier</b> <br> Jetpack 5.0.2 <br> Python 3.8 <br> Tensorflow 2.9]
-```
+| Jetson      | Jetpack | Python | Donkey   | Tensorflow |
+|-------------|---------|--------|----------|------------|
+| Nano        | 4.5.2   | 3.6    | <= 4.5.X | 2.3.1      |   
+| Nano        | 4.6.2   | 3.9    | >= 5.X   | 2.9        |
+| Xavier/Orin | 4.6.2   | 3.8    | >= 5.X   | 2.9        | 
+
 
 Then [Create your Donkeycar Application](/guide/create_application/)
 
@@ -423,11 +420,11 @@ sudo systemctl disable nvgetty
 
 * Step 1: Install mamba-forge
 
-Download and install mambaforge
+Download and install Miniconda
 
 ```bash
-wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-aarch64.sh
-chmod u+x Mambaforge-Linux-aarch64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
+chmod u+x ./Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
 bash ./Mambaforge-Linux-aarch64.sh
 ```
 
