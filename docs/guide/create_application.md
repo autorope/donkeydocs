@@ -16,6 +16,14 @@ That creates a car using the default deep learning template.  You can also creat
 donkey createcar --template=path_follow --path ~/mycar
 ```
 
+You can also create a car the uses the computer vision template;
+
+```bash
+donkey createcar --template=cv_control --path ~/mycar
+```
+
+>> `mycar` is not a special name; you can name your car folder anything you want.
+
 See also more information on [createcar.](/utility/donkey/#create-car)
 
 ## Configure Options

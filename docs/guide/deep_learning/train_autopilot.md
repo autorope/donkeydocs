@@ -5,14 +5,20 @@ neural network to drive like you. Here are the steps.
 
 ## Collect Data
 
- Make sure you collect good data.
+ Make sure you collect good, clean data.  The neural network will learn what is in the data that it is train upon, so bad data results in a bad model.  If your data has segments where you drive off the track, then there will be as aspect of the trained model that will reflect that.  Ideally you would drive perfectly and no bad data would be recorded.  However, that is not realistic, but there are ways to easily remove errors as they happen.
+
+ A technique that is useful to avoid collecting bad data is to use the erase-records button on the controller when you make a mistake.  So if you crash then immediately toggle recording to off and select the erase-records button to delete the last 100 records.  It get's even easier if you use set `AUTO_RECORD_ON_THROTTLE = True` in your `myconfig.py` file; in that case recording will turn on when you apply throttle and will turn off when you stop applying throttle.  So between that and the erase-records button you can record tens-of-thousands of records without having to go back and clean data with the `donkey tubclean` command.
+
+ Beyond actual mistakes, the consistency in the data you record matters.  The more variation there is in the data, the more data you will need to get a good model.  The more consistent you are when you drive, then the more uniform the data will be and so the neural network will be able to correllate the inputs to the outputs more effectively.  Consistency is particularly hard to get for throttle; it is very hard to replicate throttle exactly at each place on the track.  One strategy (a strategy I use) is to find the maximum throttle you can maintain around the entire track or at least most of the track, then just use that; set `JOYSTICK_MAX_THROTTLE` in your `myconfig.py` file to that throttle, then you can put the pedal to the metal around most of the course when you are collecting data.   
+
 
 1. Practice driving around the track a couple times.
-2. When you're confident you can drive 10 laps without mistake, restart the python mange.py process to create a new data recording session. Press `Start Recording` if using web controller. The joystick will auto record with any non-zero throttle.
-3. If you crash or run off the track press Stop Car immediately to stop recording. If you are using a joystick tap the Triangle button to erase the last 5 seconds of records.
+2. When you're confident you can drive 10 laps with few mistakes, restart the python mange.py process to create a new data recording session. Press `Start Recording` if using web controller or use `AUTO_RECORD_ON_THROTTLE = True` as described above so the joystick will auto record with any non-zero throttle.
+3. If you crash or run off the track press Stop Car immediately and stop recording. If you are using a joystick tap the button that erases the last 100 records (5 seconds at 20 hz drive loop).
 4. After you've collected 10-20 laps of good data (5-20k images) you can stop
 your car with `Ctrl-c` in the ssh session for your car.
 5. The data you've collected is in the mycar data folder.
+6. If you recorded mistakes then you can use the `donkey tubclean` to edit your data and remove the mistakes.
 
 ## Transfer data from your car to your computer
 
@@ -54,9 +60,6 @@ You may specify more than one tub using a comma separated list `--tub=foo/data,b
 * **Image Augmentation** With version >= 4.3.0 you also have access to image augmentations for training. Image augmentation is a technique where data, in this case images, is changed (augmented) to create variation in the data.  The purpose is two-fold.  First it can help extend your data when you don't have a lot of data.  Second it can create a model that is more resilient to variations in the data at inference time.  In our case, we want to handle various lighting conditions.  Currently supported are `AUGMENTATIONS = ['MULTIPLY', 'BLUR']` in the settings which generate brightness modifications and apply a Gaussian blur. These can be used individually or together. Augmentations are only applied during training; they are not applied when driving on autopilot.
 
 * **Image Transformation** With version >= 4.3.0 you also have access to image transformations like cropping or trapezoidal masking.  **Cropping and masking** are similar; both 'erase' pixels on the image.  This is done to **remove pixels that are not important** and that may add unwanted detail that can make the model perform poorly under conditions where that unwanted detail is different.  Cropping can erase pixels on the top, bottom, left and/or right of the image.  Trapezoidal masking is a little more flexible in that it can mask pixels using a trapezoidal mask that can account for perspective in the image.  To crop the image or apply a trapezoidal mask you can provide `TRANSFORMATIONS = ['CROP']` or `TRANSFORMATIONS = ['TRAPEZE']`. Generally you will use either cropping or trapezoidal masking but not both.  **Transformations must be applied in the same way in training and when driving on autopilot**; make sure the transformation configuration is the same on your training machine and on your Donkey Car. 
-
-> _**Note**_ The library used for image augmentations and transformations has an incompatibility on the Jetson Nano.  We are working on an alternative, but currently image augmentation and transformation will not work on the Jetson Nano. 
-
 
 ## Copy model back to car
 

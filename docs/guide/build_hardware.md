@@ -20,9 +20,10 @@ The latest version of the software installation instructions are maintained in t
 
 ## Choosing a Car
 
-There are 4 fully supported chassis all made under the "Exceed" Brand, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html)
+There are 4 fully supported chassis all made under the "Exceed" Brand, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html)  The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress.
 
 *  Exceed Magnet [Blue](https://amzn.to/2BkBRka), [Red](https://amzn.to/3qKksIC)
+*  HSP-94186 [1/16 electric Truck](https://www.aliexpress.us/item/2255799890095973.html)
 *  Exceed Desert Monster [Green](https://amzn.to/2MhOfn6)
 *  Exceed Short Course Truck  [Green](https://amzn.to/2Bek0ew),  [Red](https://amzn.to/3cmCNkE)
 *  Exceed Blaze [Blue](https://amzn.to/3cnP9ci), [Yellow](https://amzn.to/2zOGthR), [Wild Blue](https://amzn.to/3dkI4uD), [Max Red](https://amzn.to/2TWOxE8)

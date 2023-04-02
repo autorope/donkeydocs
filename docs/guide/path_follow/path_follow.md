@@ -61,6 +61,9 @@ Note that both the RPi and Jetson Nano may be using the default gpio serial port
 
 Those two settings are the only ones related to the GPS receiver that need to be set in **myconfig.py**.  Most GPS Receivers can also be directly configured to change things like the baudrate of the serial ports or how fast position estimates are sent to the computer.  Ideally the rate of position estimates should be as fast as possible, but different receivers have different upper limits and there is some tradeoff between the rate of updates and how accurate they are.  U-Blox based GPS receivers can be configured with [U-Blox U-Center](https://www.u-blox.com/en/product/u-center) software; see the U-Center section of  [Donkeycar Meets RTK GPS](https://ezward.github.io/gps/#u-center) for some details.  Other chipset manufacturers have their own software; you will have to check your GPS receiver to determine the manufacturer.  If you are using RTK high resolution GPS then you need to do a lot more configuration and wiring outside of Donkeycar.  See [Donkeycar meets RTK GPS](https://ezward.github.io/gps/#donkeycar-meets-rtk-gps) for a detailed discussion of one way to setup an RTK GPS receiver for use with Donkeycar.  Here is a related [video](https://youtu.be/q4T7kTaExTs?t=970) that goes over the same information.
 
+### Configuring Encoders and Kinematics
+An encoder setup can be used to estimate not only the vehicles' speed, but its position.  This requires a few configurations to be set in the `myconfig.py`; basically measurements of the wheel diameter, the length of the wheel base and the length of the axle.  This then allows encoders to be used with the [Path Follow](/guide/path_follow/path_follow) template in place of GPS, so it can be used indoors. See [Odometer Software Setup](/parts/odometry#software-setup) for details.
+
 ### Configure button actions
 
 You can use either the [web controller](/guide/get_driving/#driving-with-web-controller) or a [game controller](/guide/get_driving/#driving-with-physical-joystick-controller).  You can assign a game pad button OR web ui button to an action by editing the button assignments in **myconfig.py**.  The name of the game pad buttons depend on the game controller you have configured (NOTE: one button is reserved for the emergency stop; you can see which one is assigned by looking at the console output when you start that car using the `python manage.py drive` command).  The 5 available web ui buttons are named `web/w1` to `web/w5`. If you assign `None` action to a button then it is ignored.
@@ -90,7 +93,28 @@ The workflow for recording a path is as follows:
 - Toggle recording off.
 - If desired, save the path.
 
-Since the path is saved in a simple csv file it can be visualized in many tools.  A simple one to visualize your path is [CSV Plot](https://csvplot.com).  Use the button in the upper-right (just to the left of the home button) to make the axis scale square.  Here is an example path (rotated to fit a little better);
+The path is saved as a comma-separated-values (.csv) file.  Each line in the file contains 3 numbers separated by commas; x-position, y-position, throttle.  The x and y positions are where the car was when the position was read and the throttle is the throttle value that was in effect at that time.  Here is a section from a path file for illustration;
+```
+0.0033510593930259347, 7.996719985734671, 0.14
+0.11206169077195227, 9.325505392625928, 0.16
+0.20344207028392702, 10.525161047000438, 0.18
+0.311049185693264, 11.724678185302764, 0.14
+0.23874327179510146, 12.75951695209369, 0.13
+0.26568955020047724, 14.015127370599657, 0.15
+0.35580877534812316, 15.06704786233604, 0.18
+0.4303318051388487, 16.192974457982928, 0.15
+0.2126157897291705, 17.302927474025637, 0.17
+-0.37973403913201764, 18.24986434960738, 0.17
+-1.2822835729457438, 18.97783037694171, 0.17
+-2.4313870034529828, 19.338536370545626, 0.17
+-3.633584696042817, 19.182584955357015, 0.17
+-4.694471199880354, 18.471380048431456, 0.25
+-5.2241318183369, 17.256997687276453, 0.25
+-5.462499356712215, 15.947787401732057, 0.25
+-5.5869644057238474, 14.674541235901415, 0.25
+```
+
+Since the path is saved in a simple .csv file it can be visualized in many tools.  A simple one to visualize your path is [CSV Plot](https://csvplot.com).  Use the button in the upper-right (just to the left of the home button) to make the axis scale square.  Here is an example path (rotated to fit a little better);
 
 ![A CSV Path plotted in https://csvplot.com](../../assets/path_8_rotate.png)
 
@@ -120,6 +144,7 @@ The algorithm we use for following the path is extremely simple; it's the Hello 
 - Use the cross-track error as the error input into the PID controller that controls steering.  
 - The PID controller outputs a new steering value.
 
+In addition to steering, the path follow controller will set the throttle to the throttle saved with the closest point on the path scaled by the `PID_THROTTLE` value in the `myconfig.py` file.  That can be overridden if `USE_CONSTANT_THROTTLE = True` in the `myconfig.py`, in which case it will use `PID_THROTTLE` as the constant throttle.
 
 ### Configuring Path Follow Parameters
 
