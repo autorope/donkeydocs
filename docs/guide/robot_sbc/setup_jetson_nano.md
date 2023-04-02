@@ -400,12 +400,13 @@ sudo apt-get clean
 sudo apt-get autoremove
 ```
 
-And add a 6GB swap file. Note, if you intend to run from an SSD, perform the swap file setup only after booting from the SSD:
+And add a 8GB swap file. Note, if you intend to run from an SSD, perform the 
+swap file setup only after booting from the SSD:
 
 ```bash
 git clone https://github.com/JetsonHacksNano/installSwapfile
 cd installSwapfile
-./installSwapfile.sh -s8
+./installSwapfile.sh -s 8
 reboot 
 ```
 
@@ -420,12 +421,13 @@ sudo systemctl disable nvgetty
 
 * Step 1: Install mamba-forge
 
-Download and install Miniconda
+Download and install Miniconda and install `mamba`.
 
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
 chmod u+x ./Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
-bash ./Mambaforge-Linux-aarch64.sh
+bash ./Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
+conda install mamba -n base -c conda-forge
 ```
 
 * Step 2: Download and install Donkey Car
