@@ -442,7 +442,7 @@ cd donkeycar
 git checkout main
 mamba env create -f install/envs/jetson.yml
 conda activate donkey
-pip install -e .[nano]
+pip install -e .[xavier]
 
 ```
 
