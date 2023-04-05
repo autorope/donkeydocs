@@ -21,7 +21,7 @@ microSD card with U3 speed, like for example
 [this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
 
 
-## Installation for Donkeycar <= 4.4 using Raspberry Pi OS Buster
+## Installation for Donkeycar <= 4.5 using Raspberry Pi OS Buster
 
 This installation is using Raspberry Pi OS Buster (32 bit).
 
@@ -339,7 +339,8 @@ to install manually.
 
 > -**Note**- The server component currently supports **RaspberryPi 4B only**.
 
-## Installation for Donkey Car main using Raspberry Pi OS Bullseye
+
+## Installation for Donkey Car main (>= 5.0) using Raspberry Pi OS Bullseye
 
 This installation is using Raspberry Pi OS Bullseye (64 bit).
 
