@@ -150,7 +150,7 @@ cd donkeycar
 git fetch --all --tags -f
 latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
 git checkout $latestTag
-pip install -e .[nano]
+pip install -e .[nano45]
 
 ```
 
@@ -442,7 +442,7 @@ cd donkeycar
 git checkout main
 mamba env create -f install/envs/jetson.yml
 conda activate donkey
-pip install -e .[xavier]
+pip install -e .[nano]
 
 ```
 
