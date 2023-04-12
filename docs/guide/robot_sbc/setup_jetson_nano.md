@@ -140,7 +140,7 @@ pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compu
 
 Change to a dir you would like to use as the head of your projects. Assuming
 you've already made the `projects` directory above, you can use that. Get
-the latest 4.4.X release and install that into the venv.
+the latest 4.5.X release and install that into the venv.
 
 ```bash
 mkdir projects
@@ -305,62 +305,69 @@ OpenCV with GStreamer support is required for the Nano camera. However, the
 OpenCV binaries on PYPI don't have that enabled. Hence, we need to build these
 ourselves.
 
-Install opencv 4.6 + Gstreamer following the Q-Engineering Opencv manual install
+Install opencv 4.6 + Gstreamer following the Q-Engineering OpenCv 
+installation. There are two options to do this and different users have 
+success with different approaches so we show both alternatives:
+
+1) Manual install
 [tutorial](https://qengineering.eu/install-opencv-4.5-on-jetson-nano.html). 
 Do not use the Installation script. Skip to the following section beginning with 
 "Not using the script? Here's the full guide." The Enlarge memory swap step 
 of the Q-engineering instructions should be skipped due to our "And add a 
-8GB swap file" step above. 
+8GB swap file" step above. The `CMake` command should be executed with the 
+following flags:
 
-Note, the `CMake` command should be executed with the following flags:
+  ```bash
+  cmake -D CMAKE_BUILD_TYPE=RELEASE \
+        -D CMAKE_PREFIX_PATH="${HOME}/mambaforge/envs/donkey/bin/python3.9" \
+        -D python=ON \
+        -D BUILD_opencv_python2=OFF \
+        -D BUILD_opencv_python3=ON \
+        -D CMAKE_INSTALL_PREFIX="${HOME}/mambaforge/envs/donkey" \
+        -D OPENCV_EXTRA_MODULES_PATH="${HOME}/opencv_contrib/modules" \
+        -D EIGEN_INCLUDE_PATH=/usr/include/eigen3 \
+        -D WITH_OPENCL=OFF \
+        -D WITH_CUDA=ON \
+        -D CUDA_ARCH_BIN=5.3 \
+        -D CUDA_ARCH_PTX="" \
+        -D WITH_CUDNN=ON \
+        -D WITH_CUBLAS=ON \
+        -D ENABLE_FAST_MATH=ON \
+        -D CUDA_FAST_MATH=ON \
+        -D OPENCV_DNN_CUDA=ON \
+        -D ENABLE_NEON=ON \
+        -D WITH_QT=OFF \
+        -D WITH_OPENMP=ON \
+        -D BUILD_TIFF=ON \
+        -D WITH_FFMPEG=ON \
+        -D WITH_GSTREAMER=ON \
+        -D WITH_TBB=ON \
+        -D BUILD_TBB=ON \
+        -D BUILD_TESTS=OFF \
+        -D WITH_EIGEN=ON \
+        -D WITH_V4L=ON \
+        -D WITH_LIBV4L=ON \
+        -D OPENCV_ENABLE_NONFREE=ON \
+        -D INSTALL_C_EXAMPLES=OFF \
+        -D INSTALL_PYTHON_EXAMPLES=OFF \
+        -D PYTHON3_PACKAGES_PATH="${HOME}/mambaforge/envs/donkey/lib/python3.9/site-packages" \
+        -D PYTHON3_LIBRARIES_PATH="${HOME}/mambaforge/envs/donkey/lib" \
+        -D OPENCV_GENERATE_PKGCONFIG=ON \
+        -D BUILD_EXAMPLES=OFF ..
+  
+  sudo rm -r /usr/include/opencv4/opencv2
+  $ sudo make install
+  $ sudo ldconfig
+  
+  # cleaning (frees 300 MB)
+  $ make clean
+  $ sudo apt-get update
+  ```
+2) Use the installation script. This can be donwloaded from [here](
+https://github.com/Qengineering/Install-OpenCV-Jetson-Nano/blob/main/OpenCV-4-6-0.sh).
+Open the script in a text editor and make the above changes to the cmake 
+configuration.
 
-```bash
-cmake -D CMAKE_BUILD_TYPE=RELEASE \
-      -D CMAKE_PREFIX_PATH="${HOME}/mambaforge/envs/donkey/bin/python3.9" \
-      -D python=ON \
-      -D BUILD_opencv_python2=OFF \
-      -D BUILD_opencv_python3=ON \
-      -D CMAKE_INSTALL_PREFIX="${HOME}/mambaforge/envs/donkey" \
-      -D OPENCV_EXTRA_MODULES_PATH="${HOME}/opencv_contrib/modules" \
-      -D EIGEN_INCLUDE_PATH=/usr/include/eigen3 \
-      -D WITH_OPENCL=OFF \
-      -D WITH_CUDA=ON \
-      -D CUDA_ARCH_BIN=5.3 \
-      -D CUDA_ARCH_PTX="" \
-      -D WITH_CUDNN=ON \
-      -D WITH_CUBLAS=ON \
-      -D ENABLE_FAST_MATH=ON \
-      -D CUDA_FAST_MATH=ON \
-      -D OPENCV_DNN_CUDA=ON \
-      -D ENABLE_NEON=ON \
-      -D WITH_QT=OFF \
-      -D WITH_OPENMP=ON \
-      -D BUILD_TIFF=ON \
-      -D WITH_FFMPEG=ON \
-      -D WITH_GSTREAMER=ON \
-      -D WITH_TBB=ON \
-      -D BUILD_TBB=ON \
-      -D BUILD_TESTS=OFF \
-      -D WITH_EIGEN=ON \
-      -D WITH_V4L=ON \
-      -D WITH_LIBV4L=ON \
-      -D OPENCV_ENABLE_NONFREE=ON \
-      -D INSTALL_C_EXAMPLES=OFF \
-      -D INSTALL_PYTHON_EXAMPLES=OFF \
-      -D PYTHON3_PACKAGES_PATH="${HOME}/mambaforge/envs/donkey/lib/python3.9/site-packages" \
-      -D PYTHON3_LIBRARIES_PATH="${HOME}/mambaforge/envs/donkey/lib" \
-      -D OPENCV_GENERATE_PKGCONFIG=ON \
-      -D BUILD_EXAMPLES=OFF ..
-
-sudo rm -r /usr/include/opencv4/opencv2
-$ sudo make install
-$ sudo ldconfig
-
-# cleaning (frees 300 MB)
-$ make clean
-$ sudo apt-get update
-
-```
 
 * Step 7: Check that OpenCV has been installed properly
 
