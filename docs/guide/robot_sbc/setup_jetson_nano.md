@@ -286,6 +286,9 @@ pip install -e .[nano]
 pip install git+https://github.com/autorope/keras-vis.git
 pip install ../jetson/tensorflow-2.9.3-cp39-cp39-linux_aarch64.whl
 ```
+make sure the current user can access gpio
+
+```sudo chmod 666 /dev/gpiochip*```
 
 * Step 5: Check the TF installation
 
