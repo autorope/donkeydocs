@@ -276,7 +276,7 @@ git checkout main
 
 * Step 4: Create the python env and install donkey
 
-Also install tensorflow in the last step
+Also install tensorflow in the last step and set access rights to the GPIO
 
 ```bash
 mamba env create -f install/envs/jetson46.yml
@@ -285,6 +285,7 @@ conda update pip
 pip install -e .[nano]
 pip install git+https://github.com/autorope/keras-vis.git
 pip install ../jetson/tensorflow-2.9.3-cp39-cp39-linux_aarch64.whl
+sudo chmod 666 /dev/gpiochip*
 ```
 
 * Step 5: Check the TF installation
