@@ -79,13 +79,13 @@ sudo apt-get clean
 sudo apt-get autoremove
 ```
 
-And add a 6GB swap file:
+And add a 8GB swap file:
 
 ```bash
 git clone https://github.com/JetsonHacksNano/installSwapfile
 cd installSwapfile
 ./installSwapfile.sh
-reboot 
+sudo reboot now 
 ```
 
 ### Step 2a: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
@@ -140,7 +140,7 @@ pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compu
 
 Change to a dir you would like to use as the head of your projects. Assuming
 you've already made the `projects` directory above, you can use that. Get
-the latest 4.4.X release and install that into the venv.
+the latest 4.5.X release and install that into the venv.
 
 ```bash
 mkdir projects
@@ -186,13 +186,21 @@ Xavier you need to install Jetpack 5.0.2.
 
 #### Step 1b: Flash Operating System
 
-These instructions work for Jetpack 4.6.1. 
+These instructions work for Jetpack 4.6.2 on 4GB Nano and 2GB Nano using 
+different disk images.
 
-* If you have a 4gb Jetson Nano then download Jetpack 4.6.1 from Nvidia
+* If you have a 4gb Jetson Nano then download Jetpack 4.6.2 from Nvidia
   here: [jetson-nano-jp461-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v7.1/jp_4.6.1_b110_sd_card/jeston_nano/jetson-nano-jp461-sd-card-image.zip)
-* If you have a 2gb Jetson Nano the download Jetpack 4.5.1from Nvidia
+
+* If you have a 2gb Jetson Nano the download Jetpack 4.6.2 from Nvidia
   here: [jetson-nano-2gb-jp461-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v7.1/jp_4.6.1_b110_sd_card/jetson_nano_2gb/jetson-nano-2gb-jp461-sd-card-image.zip)
 
+If you are on a previous version like 4.6.1 you can upgrade with:
+
+```commandline
+sudo apt update
+sudo apt upgrade
+```
 
 Visit the official [Nvidia Jetson Nano Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#prepare)
 or [Nvidia Xavier NX Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit).
@@ -212,7 +220,7 @@ sudo apt-get clean
 sudo apt-get autoremove
 ```
 
-And add a 6GB swap file:
+And add a 8GB swap file:
 
 ```bash
 git clone https://github.com/JetsonHacksNano/installSwapfile
@@ -237,12 +245,14 @@ Also, we need a compatible OpenCV version which needs to be built on the nano.
 
 * Step 1: Install mamba-forge
 
-Download and install mambaforge
+Download and install mambaforge. When you are asked to run `conda init` in 
+the script, type `yes`. 
 
 ```bash
 wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-aarch64.sh
 chmod u+x ./Mambaforge-Linux-aarch64.sh
 bash ./Mambaforge-Linux-aarch64.sh
+source ~/.bashrc
 ```
 
 * Step 2: Install git lfs
@@ -266,15 +276,17 @@ git checkout main
 
 * Step 4: Create the python env and install donkey
 
-Also install tensorflow in the last step
+Also install tensorflow in the last step and set access rights to the GPIO
 
 ```bash
 mamba env create -f install/envs/jetson46.yml
 conda activate donkey
 conda update pip
 pip install -e .[nano]
+pip install -U albumentations --no-binary qudida,albumentations
 pip install git+https://github.com/autorope/keras-vis.git
 pip install ../jetson/tensorflow-2.9.3-cp39-cp39-linux_aarch64.whl
+sudo chmod 666 /dev/gpiochip*
 ```
 
 * Step 5: Check the TF installation
@@ -295,58 +307,69 @@ OpenCV with GStreamer support is required for the Nano camera. However, the
 OpenCV binaries on PYPI don't have that enabled. Hence, we need to build these
 ourselves.
 
-Install opencv 4.6 + Gstreamer following the Q-Engineering Opencv manual install
-[tutorial](https://qengineering.eu/install-opencv-4.5-on-jetson-nano.html).
+Install opencv 4.6 + Gstreamer following the Q-Engineering OpenCv 
+installation. There are two options to do this and different users have 
+success with different approaches so we show both alternatives:
 
-Note, the `CMake` command should be executed with the following flags:
+1) Manual install
+[tutorial](https://qengineering.eu/install-opencv-4.5-on-jetson-nano.html). 
+Do not use the Installation script. Skip to the following section beginning with 
+"Not using the script? Here's the full guide." The Enlarge memory swap step 
+of the Q-engineering instructions should be skipped due to our "And add a 
+8GB swap file" step above. The `CMake` command should be executed with the 
+following flags:
 
-```bash
-cmake -D CMAKE_BUILD_TYPE=RELEASE \
-      -D CMAKE_PREFIX_PATH=$/home/<user name>/mambaforge/envs/donkey/bin/python3.9 \
-      -D python=ON \
-      -D BUILD_opencv_python2=OFF \
-      -D BUILD_opencv_python3=ON \
-      -D CMAKE_INSTALL_PREFIX=/home/<user name>/mambaforge/envs/donkey \
-      -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
-      -D EIGEN_INCLUDE_PATH=/usr/include/eigen3 \
-      -D WITH_OPENCL=OFF \
-      -D WITH_CUDA=ON \
-      -D CUDA_ARCH_BIN=5.3 \
-      -D CUDA_ARCH_PTX="" \
-      -D WITH_CUDNN=ON \
-      -D WITH_CUBLAS=ON \
-      -D ENABLE_FAST_MATH=ON \
-      -D CUDA_FAST_MATH=ON \
-      -D OPENCV_DNN_CUDA=ON \
-      -D ENABLE_NEON=ON \
-      -D WITH_QT=OFF \
-      -D WITH_OPENMP=ON \
-      -D BUILD_TIFF=ON \
-      -D WITH_FFMPEG=ON \
-      -D WITH_GSTREAMER=ON \
-      -D WITH_TBB=ON \
-      -D BUILD_TBB=ON \
-      -D BUILD_TESTS=OFF \
-      -D WITH_EIGEN=ON \
-      -D WITH_V4L=ON \
-      -D WITH_LIBV4L=ON \
-      -D OPENCV_ENABLE_NONFREE=ON \
-      -D INSTALL_C_EXAMPLES=OFF \
-      -D INSTALL_PYTHON_EXAMPLES=OFF \
-      -D PYTHON3_PACKAGES_PATH=/home/<user name>/mambaforge/envs/donkey/lib/python3.9/site-packages \
-      -D PYTHON3_LIBRARIES_PATH=/home/<user name>/mambaforge/envs/donkey/lib \
-      -D OPENCV_GENERATE_PKGCONFIG=ON \
-      -D BUILD_EXAMPLES=OFF ..
+  ```bash
+  cmake -D CMAKE_BUILD_TYPE=RELEASE \
+        -D CMAKE_PREFIX_PATH="${HOME}/mambaforge/envs/donkey/bin/python3.9" \
+        -D python=ON \
+        -D BUILD_opencv_python2=OFF \
+        -D BUILD_opencv_python3=ON \
+        -D CMAKE_INSTALL_PREFIX="${HOME}/mambaforge/envs/donkey" \
+        -D OPENCV_EXTRA_MODULES_PATH="${HOME}/opencv_contrib/modules" \
+        -D EIGEN_INCLUDE_PATH=/usr/include/eigen3 \
+        -D WITH_OPENCL=OFF \
+        -D WITH_CUDA=ON \
+        -D CUDA_ARCH_BIN=5.3 \
+        -D CUDA_ARCH_PTX="" \
+        -D WITH_CUDNN=ON \
+        -D WITH_CUBLAS=ON \
+        -D ENABLE_FAST_MATH=ON \
+        -D CUDA_FAST_MATH=ON \
+        -D OPENCV_DNN_CUDA=ON \
+        -D ENABLE_NEON=ON \
+        -D WITH_QT=OFF \
+        -D WITH_OPENMP=ON \
+        -D BUILD_TIFF=ON \
+        -D WITH_FFMPEG=ON \
+        -D WITH_GSTREAMER=ON \
+        -D WITH_TBB=ON \
+        -D BUILD_TBB=ON \
+        -D BUILD_TESTS=OFF \
+        -D WITH_EIGEN=ON \
+        -D WITH_V4L=ON \
+        -D WITH_LIBV4L=ON \
+        -D OPENCV_ENABLE_NONFREE=ON \
+        -D INSTALL_C_EXAMPLES=OFF \
+        -D INSTALL_PYTHON_EXAMPLES=OFF \
+        -D PYTHON3_PACKAGES_PATH="${HOME}/mambaforge/envs/donkey/lib/python3.9/site-packages" \
+        -D PYTHON3_LIBRARIES_PATH="${HOME}/mambaforge/envs/donkey/lib" \
+        -D OPENCV_GENERATE_PKGCONFIG=ON \
+        -D BUILD_EXAMPLES=OFF ..
+  
+  sudo rm -r /usr/include/opencv4/opencv2
+  $ sudo make install
+  $ sudo ldconfig
+  
+  # cleaning (frees 300 MB)
+  $ make clean
+  $ sudo apt-get update
+  ```
+2) Use the installation script. This can be donwloaded from [here](
+https://github.com/Qengineering/Install-OpenCV-Jetson-Nano/blob/main/OpenCV-4-6-0.sh).
+Open the script in a text editor and make the above changes to the cmake 
+configuration.
 
-sudo rm -r /usr/include/opencv4/opencv2
-$ sudo make install
-$ sudo ldconfig
-
-# cleaning (frees 300 MB)
-$ make clean
-$ sudo apt-get update
-
-```
 
 * Step 7: Check that OpenCV has been installed properly
 

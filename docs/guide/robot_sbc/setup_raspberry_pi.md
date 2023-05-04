@@ -413,6 +413,11 @@ Alternatively if you connect to the full desktop using VNC and are running
 the desktop, go to 'Raspberry -> Preferences -> Raspberry Pi Configuration'
 and apply the settings there.
 
+> Note: If you prefer to install the headless version of Raspberry Pi OS, 
+> please follow the steps [here](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi).
+> You will need to run `sudo apt -y install pi git; pip install virutalenv` 
+> afterwards.
+
 
 ### Step 4: Setup Virtual Env
 
