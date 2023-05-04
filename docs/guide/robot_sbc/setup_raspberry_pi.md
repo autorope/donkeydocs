@@ -402,7 +402,6 @@ sudo raspi-config
 ```
 
 * enable `Interfacing Options` - `I2C`
-* enable `Interfacing Options` - `Camera`
 * select `Advanced Options` - `Expand Filesystem` so you can use your whole
   sd-card storage
 
