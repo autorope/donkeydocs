@@ -175,15 +175,15 @@ The PCA9685 Servo controller can control up to 16 PWM devices like servos, motor
     *   SDA and SCL may be through a shared bus rather than a direct connection between nano and PCA9685 if other devices are using the I2C bus (like an OLED display)
     *   3.3v VCC power may be provided by a 3.3v pin on the GPIO bus (typically board pin 01).
     *   5v VIN should NOT be provided by the GPIO bus because motors/servos may draw too much power.  Most Electronic Speed Controllers actually provide the necessary power via the 3 pin cables that get plugged into the PCA9685, so it is generally not necessary to provide power directly to VIN.
-    *   All GND must be common ground.  On the GPIO it is usually easiest to use GPIO board pin 06 for ground.  Once again the 3 pin cables from the ESC carry ground and the PCA9685 connects this to the GPIO via the GND pin.
+    *   All GND must be common ground.  On the GPIO it is usually easiest to use GPIO board pin 09 for ground.  Once again the 3 pin cables from the ESC carry ground and the PCA9685 connects this to the GPIO via the GND pin.
 
 ```
 ---
     GPIO   ... PCA9685  ... 5v ... ESC ... Servo
+    3v3-01 <---> VCC
     pin-03 <---> SDA
     pin-05 <---> SCL
-    GND-06 <---> GND 
-    3v3-01 <---> VCC
+    GND-09 <---> GND 
                  VIN  <---> 5v   optional, see above
                  GND  <---> GND
                  CH-0 <---------> ESC
