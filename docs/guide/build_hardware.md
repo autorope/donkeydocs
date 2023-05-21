@@ -20,7 +20,7 @@ The latest version of the software installation instructions are maintained in t
 
 ## Choosing a Car
 
-There are 4 fully supported chassis all made under the "Exceed" Brand, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html)  The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress.
+There are 4 fully supported chassis all made under the "Exceed" Brand, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html).   The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress but takes about a month to get to the US, there are local options that charge a premium.
 
 *  Exceed Magnet [Blue](https://amzn.to/2BkBRka), [Red](https://amzn.to/3qKksIC)
 *  HSP-94186 [1/16 electric Truck](https://www.aliexpress.us/item/2255799890095973.html)
@@ -32,9 +32,8 @@ These cars are electrically identical but have different tires, mounting and oth
 
 Here is a [video](https://youtu.be/UucnCmCAGTI) overview of the different cars and how to assemble them.
 
-For advanced users there 3 more cars supported under the "Donkey Pro" name.  These are 1/10 scale cars which means that they are bigger, perform a little better and are slightly more expensive.  They can be found here:
+For advanced users there are 2 more cars supported under the "Donkey Pro" name.  These are 1/10 scale cars which means that they are bigger, perform a little better and are slightly more expensive.  They can be found here:
 
-*  HobbyKing Trooper (not pro version) [found here](https://hobbyking.com/en_us/turnigy-trooper-sct-4x4-1-10-brushless-short-course-truck-arr.html?affiliate_code=XFPFGDFDZOPWEHF&_asc=9928905034)
 *  HobbyKing Mission-D [found here](https://hobbyking.com/en_us/1-10-hobbykingr-mission-d-4wd-gtr-drift-car-arr.html?affiliate_code=XFPFGDFDZOPWEHF&_asc=337569952)
 *  Tamaya TT01 or Clone [commonly used knockoff found here](https://amzn.to/2MdNLhZ) - found worldwide but usually has to be built as a kits.  The other two cars are ready to be donkified, this one, however is harder to assemble.  
 
@@ -69,7 +68,7 @@ If you are in Asia, the DIYRobocars community in Hong Kong also sells car kits a
 | Part Description                                                                    | Link                                                                                  | Approximate Cost |
 |-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|------------------|
 | Exceed Magnet, Desert Monster, Blaze, or Short Course Truck                                                                       | See links above                                     | ~$90              |
-| USB Battery with microUSB cable (any battery capable of 2A 5V output is sufficient) | [Anker 6700 mAh](https://amzn.to/2AlMQJz) or [Anker Powercore II](https://amzn.to/3hPPHeX)                                           | $22              |
+| USB Battery with microUSB cable (any battery capable of 2A 5V output is sufficient) | [Anker 10,000 mAh](https://amzn.to/3BOqqND)                                          | $39              |
 | Raspberry Pi 3b+                                                                      | [Pi 3b+](https://amzn.to/3gCUcZL)                                          | $42              |
 | MicroSD Card (many will work, we strongly recommend this one)             | 64GB [https://amzn.to/2XP7UAa](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X?tag=donkeycar-20)                            | $11.99           |
 | Donkey Partial Kit                                                      | [KIT](https://store.donkeycar.com/collections/frontpage)                                        | $82 to $125              |
@@ -83,7 +82,7 @@ If you want to buy the parts yourself, want to customize your donkey or live out
 | Magnet Car or alternative                                                                        | see cars above under 'choosing a car'                                         | $92              |
 | M2x6 screws (8)                                                                     | [Amazon](https://amzn.to/2ZSKa0D) or [Donkey Store](https://store.donkeycar.com/collections/accessories/products/plastic-thread-forming-screw-kit)                                          | $4.89 &ast;          |
 | M3x10 screws (3)                                                                  | [Amazon](https://amzn.to/3gBQuzE)  or [Donkey Store](https://store.donkeycar.com/collections/accessories/products/plastic-thread-forming-screw-kit)                                                    | $7.89 &ast;          |
-| USB Battery with microUSB cable (any battery capable of 2A 5V output is sufficient) | [Anker 6700 mAh](https://amzn.to/2AlMQJz)                                           | $22              |
+| USB Battery with microUSB cable (any battery capable of 2A 5V output is sufficient) | [Anker 10,000 maH](https://amzn.to/3BOqqND)                                           | $39              |
 | Raspberry Pi 3b+                                                                      | [Pi 3B+](https://amzn.to/3gCUcZL)                                          | $38              |
 | MicroSD Card (many will work, I like this one because it boots quickly)             | [64GB](https://amzn.to/2XP7UAa)                                         | $18.99           |
 | Wide Angle Raspberry Pi Camera                                                      | [Amazon](https://amzn.to/2TYCo1s) or [Donkey Store](https://store.donkeycar.com/collections/accessories/products/wide-angle-raspberry-pi-camera-for-donkey)                                       | $25              |
