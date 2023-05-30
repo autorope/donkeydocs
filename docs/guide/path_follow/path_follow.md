@@ -183,6 +183,13 @@ Determining PID Coefficients can be difficult.  One approach is:
 - First determine the P coefficient.
     - zero out the D and the I coefficients.
     - Use a kind of 'binary' search to find a value where the vehicle will roughly follow a recorded straight line; probably oscillating around it.  It will be weaving like it is under the influence.
+    - To do this, record a short straight line, maybe 6 meters.  You can do this by putting the car into recording mode and walking with the car (so you can keep the throttle at zero).  Once the short line is recorded put the car in autopilot mode and stand in the middle of the line holding the car parallel to the line; the car's front wheels should stay stable and straight.  Now slowly move the car off the line, keeping the car parallel to the line; the car should start to turn back towards the line.  The more off the line you move the more that car should turn.  Try both sides of the line.
+        - If the car turns away from the line rather than towards the line then change the sign of the P value.  
+        - If the car turns very little then increase the P value.
+        - If the car turns very abruptly when off the line then reduce the P value.
+        - Play with the P value until you get the car to turn back to the line smoothly and proportional to how far from the line it is held.
+        - Now try actually driving the line in autopilot mode. The car may oscillate around the line; it if oscillates a lot then reduce the P value. Adjust the P value so it can actually drive that line from one end to the other.  It will likely go out of control at the end of the line; that is normal because the path is not closed.
+        - Once you can drive a short straight line then drive the car in autopilot on a full closed path with only the P value set.  Make sure there is a fairly tight turn in the path.  Adjust the P value until you get acceptable performance.  Once you get that working then you can refine things with the D value.
 - Next find a D coefficient that reduces the weaving (oscillations) on a straight line.  Then record a path with a tight turn.  Find a D coefficient that reduces the overshoot when turning.
 - You may not even need the I value.  If the car becomes unstable after driving for a while then you may want to start to set this value.  It will likely be much smaller than the other values.
 
