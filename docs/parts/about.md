@@ -32,7 +32,7 @@ V = dk.Vehicle()
 V.mem['var'] = 4
 
 # add the part to read and write to the same value.
-V.add(RandPercent, inputs=['var'], outputs=['var'])
+V.add(RandPercent(), inputs=['var'], outputs=['var'])
 
 # start the vehicle loop running; quit after 5 loops
 V.start(max_loops=5)
