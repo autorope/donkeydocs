@@ -284,6 +284,7 @@ conda activate donkey
 conda update pip
 pip install -e .[nano]
 pip install -U albumentations --no-binary qudida,albumentations
+pip uninstall opencv-python-headless
 pip install git+https://github.com/autorope/keras-vis.git
 pip install ../jetson/tensorflow-2.9.3-cp39-cp39-linux_aarch64.whl
 sudo chmod 666 /dev/gpiochip*
