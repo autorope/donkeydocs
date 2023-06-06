@@ -280,6 +280,7 @@ Also install tensorflow in the last step and set access rights to the GPIO
 
 ```bash
 mamba env create -f install/envs/jetson46.yml
+echo >> ~/.bashrc conda activate donkey
 conda activate donkey
 conda update pip
 pip install -e .[nano]
