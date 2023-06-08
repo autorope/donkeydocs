@@ -99,3 +99,4 @@ nano myconfig.py
 ### Next let's train an autopilot.
 - [Train a deep-learning autopilot](/guide/deep_learning/train_autopilot)
 - [Train a gps path-follow autopilot](/guide/path_follow/path_follow)
+- [Build a computer vision autopilot](/guide/computer_vision/computer_vision/)
