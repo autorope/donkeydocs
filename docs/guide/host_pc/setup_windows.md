@@ -220,7 +220,7 @@ pip3 install tensorflow
 * Create your local working dir:
 
 ```bash
-donkey createcar --path ./projects/mycar --template complete
+donkey createcar --path ./mycar --template complete
 ```
 
 > **Templates**
