@@ -12,7 +12,7 @@ If you are unfamiliar or concerned about the way that you install Donkey Car, pl
 
 ![donkey](/assets/logos/windows_logo.png)
 
-* Install [miniconda Python 3.7 64 bit](https://conda.io/miniconda.html).
+* Install [miniconda Python 3.9 64 bit]([[https://conda.io/miniconda.html]).
 
 * Open the Anaconda prompt window via Start Menu | Anaconda 64bit | Anaconda Prompt
 
