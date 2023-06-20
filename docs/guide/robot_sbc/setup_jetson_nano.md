@@ -5,14 +5,14 @@
 We have a different approaches to installing the software depending on the
 version of Donkey Car. For Donkey Car <= 4.5.X we are using Jetpack 4.5.X
 which comes with Tensorflow 2.3.1. The python installation is using virtual
-env, i.e. it is based on the system python with version 3.6.
+env, i.e. it is based on the system python with version 3.6. This is the 
+only version that is working on the old Jetson Nano.
 
 For the `main` branch we have updated Tensorflow to 2.9 and python to 3.8 or
-3.9. This is running on a newer version of Jetpack. If you have a Jetson Nano
-the required Jetpack version is 4.6.2. For a Jetson Xavier or any of the newer
-Jetson boards you will use Jetpack 5.0.2. To decouple the python installation
-from the system python we are using Miniforge which is a mamba based version of
-Miniconda that works on the aarm architecture.
+3.9. This is running on a newer version of Jetpack. You will need a Jetson 
+Xavier or any of the newer Jetsons like the Orin, to use Jetpack 5.0.2. To 
+decouple the python installation from the system python we are using Miniforge 
+which is a mamba based version of Miniconda that works on the aarm architecture.
 
 For Donkey Car <= 4.5.X please go to the next section. For the latest
 version on the `main` branch please jump
@@ -28,8 +28,7 @@ These are the supported versions:
 
 | Jetson      | Jetpack | Python | Donkey   | Tensorflow |
 |-------------|---------|--------|----------|------------|
-| Nano        | 4.5.2   | 3.6    | <= 4.5.X | 2.3.1      |   
-| Nano        | 4.6.2   | 3.9    | >= 5.X   | 2.9        |
+| Nano        | 4.5.2   | 3.6    | <= 4.5.X | 2.3.1      |    
 | Xavier/Orin | 4.6.2   | 3.8    | >= 5.X   | 2.9        | 
 
 
@@ -170,224 +169,8 @@ Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
 ## Installation for Donkey Car main
 
 Instructions for the latest code from the `main` branch. Note the 
-installation differs between the two available OSs. On Jetson Nano you will 
-need to install Jetpack 4.6.2. If you have newer Jetson board or a Jetson 
-Xavier you need to install Jetpack 5.0.2.
-
-
-### Installation on Jetson Nano
-
-
-* [Step 1b: Flash Operating System](#step-1b-flash-operating-system)
-* [Step 2b: Free up the serial port](#step-2b-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
-* [Step 3b: Setup Python Environment](#step-3b-setup-python-environment)
-* [Step 4b: (Optional) Install PyGame for USB camera](#step-4b-optional-install-pygame-for-usb-camera)
-
-
-#### Step 1b: Flash Operating System
-
-These instructions work for Jetpack 4.6.2 on 4GB Nano and 2GB Nano using 
-different disk images.
-
-* If you have a 4gb Jetson Nano then download Jetpack 4.6.2 from Nvidia
-  here: [jetson-nano-jp461-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v7.1/jp_4.6.1_b110_sd_card/jeston_nano/jetson-nano-jp461-sd-card-image.zip)
-
-* If you have a 2gb Jetson Nano the download Jetpack 4.6.2 from Nvidia
-  here: [jetson-nano-2gb-jp461-sd-card-image.zip](https://developer.nvidia.com/embedded/l4t/r32_release_v7.1/jp_4.6.1_b110_sd_card/jetson_nano_2gb/jetson-nano-2gb-jp461-sd-card-image.zip)
-
-If you are on a previous version like 4.6.1 you can upgrade with:
-
-```commandline
-sudo apt update
-sudo apt upgrade
-```
-
-Visit the official [Nvidia Jetson Nano Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#prepare)
-or [Nvidia Xavier NX Getting Started Guide](https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit).
-Work through the __Prepare for Setup__, __Writing Image to the microSD Card__,
-and __Setup and First Boot__ instructions, then return here.
-
-Once you're done with the setup, ssh into your vehicle. Use the terminal for
-Ubuntu or Mac. [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
-for windows.
-
-
-Remove Libre Office:
-
-```bash
-sudo apt-get remove --purge libreoffice*
-sudo apt-get clean
-sudo apt-get autoremove
-```
-
-And add a 8GB swap file:
-
-```bash
-git clone https://github.com/JetsonHacksNano/installSwapfile
-cd installSwapfile
-./installSwapfile.sh
-reboot 
-```
-
-#### Step 2b: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
-
-```bash
-sudo usermod -aG dialout <your username>
-sudo systemctl disable nvgetty
-```
-
-
-#### Step 3b: Setup Python Environment
-
-The installation on JP 4.6.X is more tricky, because we need to use a newer
-version of tensorflow than what is packaged by NVidia for this OS version.
-Also, we need a compatible OpenCV version which needs to be built on the nano.
-
-* Step 1: Install mamba-forge
-
-Download and install mambaforge. When you are asked to run `conda init` in 
-the script, type `yes`. 
-
-```bash
-wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-aarch64.sh
-chmod u+x ./Mambaforge-Linux-aarch64.sh
-bash ./Mambaforge-Linux-aarch64.sh
-source ~/.bashrc
-```
-
-* Step 2: Install git lfs
-
-```bash
-sudo apt-get install git-lfs
-```
-
-* Step 3: Download Donkey Car
-
-Downloading Donkey Car and the Tensorflow wheel for jp46 and tf29
-
-```bash
-mkdir projects
-cd projects
-git clone https://github.com/autorope/donkeycar
-git-lfs clone https://github.com/autorope/jetson
-cd donkeycar
-git checkout main
-```
-
-* Step 4: Create the python env and install donkey
-
-Also install tensorflow in the last step
-
-```bash
-mamba env create -f install/envs/jetson46.yml
-conda activate donkey
-conda update pip
-pip install -e .[nano]
-pip install git+https://github.com/autorope/keras-vis.git
-pip install ../jetson/tensorflow-2.9.3-cp39-cp39-linux_aarch64.whl
-```
-
-* Step 5: Check the TF installation
-
-Run python and verify that tensorflow is version 2.9 and trt is version 8.2.1:
-
-```bash
-python
->>> import tensorflow as tf
->>> tf.__version__
->>> from tensorflow.python.compiler.tensorrt import trt_convert as trt
->>> trt._check_trt_version_compatibility()
-```
-
-* Step 6: Install OpenCV
-
-OpenCV with GStreamer support is required for the Nano camera. However, the
-OpenCV binaries on PYPI don't have that enabled. Hence, we need to build these
-ourselves.
-
-Install opencv 4.6 + Gstreamer following the Q-Engineering OpenCv 
-installation. There are two options to do this and different users have 
-success with different approaches so we show both alternatives:
-
-1) Manual install
-[tutorial](https://qengineering.eu/install-opencv-4.5-on-jetson-nano.html). 
-Do not use the Installation script. Skip to the following section beginning with 
-"Not using the script? Here's the full guide." The Enlarge memory swap step 
-of the Q-engineering instructions should be skipped due to our "And add a 
-8GB swap file" step above. The `CMake` command should be executed with the 
-following flags:
-
-  ```bash
-  cmake -D CMAKE_BUILD_TYPE=RELEASE \
-        -D CMAKE_PREFIX_PATH="${HOME}/mambaforge/envs/donkey/bin/python3.9" \
-        -D python=ON \
-        -D BUILD_opencv_python2=OFF \
-        -D BUILD_opencv_python3=ON \
-        -D CMAKE_INSTALL_PREFIX="${HOME}/mambaforge/envs/donkey" \
-        -D OPENCV_EXTRA_MODULES_PATH="${HOME}/opencv_contrib/modules" \
-        -D EIGEN_INCLUDE_PATH=/usr/include/eigen3 \
-        -D WITH_OPENCL=OFF \
-        -D WITH_CUDA=ON \
-        -D CUDA_ARCH_BIN=5.3 \
-        -D CUDA_ARCH_PTX="" \
-        -D WITH_CUDNN=ON \
-        -D WITH_CUBLAS=ON \
-        -D ENABLE_FAST_MATH=ON \
-        -D CUDA_FAST_MATH=ON \
-        -D OPENCV_DNN_CUDA=ON \
-        -D ENABLE_NEON=ON \
-        -D WITH_QT=OFF \
-        -D WITH_OPENMP=ON \
-        -D BUILD_TIFF=ON \
-        -D WITH_FFMPEG=ON \
-        -D WITH_GSTREAMER=ON \
-        -D WITH_TBB=ON \
-        -D BUILD_TBB=ON \
-        -D BUILD_TESTS=OFF \
-        -D WITH_EIGEN=ON \
-        -D WITH_V4L=ON \
-        -D WITH_LIBV4L=ON \
-        -D OPENCV_ENABLE_NONFREE=ON \
-        -D INSTALL_C_EXAMPLES=OFF \
-        -D INSTALL_PYTHON_EXAMPLES=OFF \
-        -D PYTHON3_PACKAGES_PATH="${HOME}/mambaforge/envs/donkey/lib/python3.9/site-packages" \
-        -D PYTHON3_LIBRARIES_PATH="${HOME}/mambaforge/envs/donkey/lib" \
-        -D OPENCV_GENERATE_PKGCONFIG=ON \
-        -D BUILD_EXAMPLES=OFF ..
-  
-  sudo rm -r /usr/include/opencv4/opencv2
-  $ sudo make install
-  $ sudo ldconfig
-  
-  # cleaning (frees 300 MB)
-  $ make clean
-  $ sudo apt-get update
-  ```
-2) Use the installation script. This can be donwloaded from [here](
-https://github.com/Qengineering/Install-OpenCV-Jetson-Nano/blob/main/OpenCV-4-6-0.sh).
-Open the script in a text editor and make the above changes to the cmake 
-configuration.
-
-
-* Step 7: Check that OpenCV has been installed properly
-
-Run python and verify that opencv is version 4.6 and Gstreamer is version 1.19
-by:
-
-```bash
-python
->>> import cv2
->>> print(cv2.getBuildInformation()) 
-```
-
-#### Step 4b: (Optional) Install PyGame for USB camera
-
-If you plan to use a USB camera, you will also want to setup pygame:
-
-```bash
-pip install pygame
-```
-Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
+installation differs between the two available OSs. On Jetson you need to 
+install Jetpack 5.0.2.
 
 
 ### Installation on Jetson Xavier (or newer Jetson boards)
