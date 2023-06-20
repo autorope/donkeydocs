@@ -2,17 +2,23 @@
 
 ----
 
-* **Note** This guide assumes that you are using Ubuntu `18.04`. If you are using Windows refer to [these](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html) instructions on how to setup your computer to use TensorRT.
+* **Note** This guide assumes that you are using Ubuntu `18.04`. If you are
+  using Windows refer to 
+  [these](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html)
+  instructions on how to setup your computer to use TensorRT.
 
 ----
 
 ## Step 1: Setup TensorRT on Ubuntu Machine
 
-Follow the instructions [here](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html#installing-tar). Make sure you use the `tar` file instructions unless you have previously installed CUDA using `.deb` files.
+Follow the instructions [here](https://docs.nvidia.com/deeplearning/sdk/tensorrt-install-guide/index.html#installing-tar).
+Make sure you use the `tar` file instructions unless you have previously
+installed CUDA using `.deb` files.
 
 ## Step 2: Setup TensorRT on your Jetson Nano
 
-* Setup some environment variables so `nvcc` is on `$PATH`. Add the following lines to your `~/.bashrc` file.
+* Setup some environment variables so `nvcc` is on `$PATH`. Add the following
+  lines to your `~/.bashrc` file.
 
 ```bash
 # Add this to your .bashrc file
@@ -46,7 +52,11 @@ Cuda compilation tools, release 10.0, Vxxxxx
 pip install pycuda
 ```
 
-* After this you will also need to setup `PYTHONPATH` such that your `dist-packages` are included as part of your `virtualenv`. Add this to your `.bashrc`. This needs to be done because the python bindings to `tensorrt` are available in `dist-packages` and this folder is usually not visible to your virtualenv. To make them visible we add it to `PYTHONPATH`.
+* After this you will also need to setup `PYTHONPATH` such that
+  your `dist-packages` are included as part of your `virtualenv`. Add this to
+  your `.bashrc`. This needs to be done because the python bindings
+  to `tensorrt` are available in `dist-packages` and this folder is usually not
+  visible to your virtualenv. To make them visible we add it to `PYTHONPATH`.
 
 ```bash
 export PYTHONPATH=/usr/lib/python3.6/dist-packages:$PYTHONPATH
@@ -56,12 +66,13 @@ export PYTHONPATH=/usr/lib/python3.6/dist-packages:$PYTHONPATH
 
 ```python
 > import tensorrt as trt
-> # This import should succeed
+>  # This import should succeed
 ```
 
 ## Step 3: Train, Freeze and Export your model to TensorRT format (`uff`)
 
-After you train the `linear` model you end up with a file with a `.h5` extension.
+After you train the `linear` model you end up with a file with a `.h5`
+extension.
 
 ```bash
 # You end up with a Linear.h5 in the models folder

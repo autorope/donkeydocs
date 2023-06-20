@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: conda-incubator/setup-miniconda@v2.1.1
         with:
-          python-version: 3.7
+          python-version: 3.x
           auto-activate-base: true
           channels: defaults, conda-forge
       - run: |
@@ -24,5 +24,6 @@ jobs:
           conda list
           conda install mkdocs
           pip install mkdocs-redirects
+          pip install mkdocs-material
           mkdocs gh-deploy --force -v
           echo Docs were made and pushed to docs.donkeycar.com
