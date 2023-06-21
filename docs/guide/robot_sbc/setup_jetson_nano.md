@@ -37,7 +37,9 @@ Then [Create your Donkeycar Application](/guide/create_application/)
 
 ## Installation for Donkey Car <= 4.5.X
 
-Instructions for the latest stable release 4.5.X.
+> Note: These instructions are working for DC 4.3.6 and DC 4.4.0 only at the 
+> moment. We are working on a patch to have support for 4.5.X too. 
+
 
 * [Step 1a: Flash Operating System](#step-1a-flash-operating-system)
 * [Step 2a: Free up the serial port](#step-2a-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
