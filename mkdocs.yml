@@ -1,13 +1,6 @@
 ---
 site_name: Donkey Car
-theme: material
-
-markdown_extensions:
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+theme: readthedocs
 
 repo_url: https://github.com/autorope/donkeydocs/
 edit_uri: edit/master/docs
