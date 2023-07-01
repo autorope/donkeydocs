@@ -28,8 +28,8 @@ These are the supported versions:
 
 | Jetson      | Jetpack | Python | Donkey   | Tensorflow |
 |-------------|---------|--------|----------|------------|
-| Nano        | 4.5.2   | 3.6    | <= 4.5.X | 2.3.1      |    
-| Xavier/Orin | 4.6.2   | 3.8    | >= 5.X   | 2.9        | 
+| Nano        | 4.5.1   | 3.6    | <= 4.5.X | 2.3.1      |    
+| Xavier/Orin | 5.0.2   | 3.8    | >= 5.X   | 2.9        | 
 
 
 Then [Create your Donkeycar Application](/guide/create_application/)
