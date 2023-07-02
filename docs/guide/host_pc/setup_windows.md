@@ -98,7 +98,7 @@ donkey createcar --path ~/mycar
 
 ![donkey](/assets/logos/windows_logo.png)
 
-* Install [Python 3.6 (or later)](https://www.python.org/downloads/)
+* Install [Python 3.9](https://www.python.org/downloads/)
 
 * Install [Git Bash](https://gitforwindows.org/).  During install make sure you check Git to run 'from command line and also from 3rd-party software'.
 
