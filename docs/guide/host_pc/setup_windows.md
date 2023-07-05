@@ -63,7 +63,7 @@ Note: if you are using ZSH (you'll know if you are), you won't be able to run `p
 
 * Optionally Install Tensorflow GPU - only for NVidia Graphics cards
 
-If you have an NVidia card, you should update to the latest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
+If you have an NVidia card, you should update to the latest drivers and [install Cuda 11](https://developer.nvidia.com/cuda-11.0-download-archive). 
 
 ```bash
 pip install tensorflow-gpu==2.9
