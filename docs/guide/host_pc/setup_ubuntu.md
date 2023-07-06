@@ -5,11 +5,11 @@
 
 * Open the Terminal application.
 
-* Install [miniconda Python 3.7 64 bit](https://conda.io/miniconda.html). 
+* Install miniconda Python 3.9 64 bit. 
 
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash ./Miniconda3-latest-Linux-x86_64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-py39_23.3.1-0-Linux-x86_64.sh
+bash ./Miniconda3-py39_23.3.1-0-Linux-x86_64.sh
 ```
 
 * Change to a dir you would like to use as the head of your projects.
