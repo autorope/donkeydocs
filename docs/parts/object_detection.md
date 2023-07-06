@@ -63,6 +63,18 @@ The detection algorithm requires python module tflite\_support.
 ```
 pip install tflite_support
 ```
+Download a Tensorflow Lite model as needed into the directory donkeycar/donkeycar/parts/object\_detector
+
+>#### Download Google Coco model to recognize Stop Signs
+>[efficientdet\_lite0.tflite](https://drive.google.com/file/d/1exLAjDTkZOcQsrItflHRaf49eHSm5YWf/view?usp=sharing)
+
+>[efficientdet\_lite0\_edgetpu.tflite](https://drive.google.com/file/d/1G2NgKx-MlEyArtS6RsXQGkV9dWm3dKHM/view?usp=sharing)
+
+>#### Download a custom model to recognize traffic cones
+>[conemodel.tflite](https://drive.google.com/file/d/1ETdqEfbe3f90wI5FPYh7jh5_67DrDJgF/view?usp=sharing)
+
+>[conemodel\_edgetpu.tflite](https://drive.google.com/file/d/1yiW63i2mVKnWs1suh5uPjEp0sONW8_05/view?usp=sharing)
+
 
 ## Configuration
 The following are the default settings from config.py.  Your myconfig.py must include the setting to enable one of the protocols.
