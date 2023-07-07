@@ -73,10 +73,10 @@ then you can install with `mamba` instead. This should take < 5 min.
 
 * Optional Install Tensorflow GPU - only for NVidia Graphics cards
 
-You should have an NVidia GPU with the latest drivers. Conda will handle installing the correct cuda and cuddn libraries for the version of tensorflow you are using.
+You should have an NVidia GPU with the latest drivers. Conda will handle installing the correct cuda and cuddn libraries for the version of tensorflow you are using. Note that this can take a long time (as much as an hour).
 
 ```bash
-conda install tensorflow-gpu==2.2.0
+conda install tensorflow
 ```
 
 * Optional Install Coral edge tpu compiler
@@ -88,7 +88,7 @@ If you have a Google Coral edge tpu, you may wish to compile models. You will ne
 If you have an NVidia card, you should update to the latest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
 
 ```bash
-conda install cudatoolkit=<CUDA Version> -c pytorch
+conda install cudatoolkit=11 -c pytorch
 ```
 
 You should replace `<CUDA Version>` with your CUDA version. Any version above 10.0 should work. You can find out your CUDA version by running `nvcc --version` or `nvidia-smi`. (if those commands don't work, it means you don't already have them installed. Follow the directions given by that error to install them.) If the version given by these two commands don't match, go with the version given by `nvidia-smi`.
