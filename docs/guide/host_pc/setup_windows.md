@@ -175,58 +175,7 @@ The Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environmen
 
 * Install the following two libraries for the UI to work: `sudo apt-get install libmtdev1 xclip`
 
-* Change to a directory that you would like to use as the head of all your projects.
-
-```bash
-mkdir projects
-cd projects
-```
-
-* Get the latest donkey from Github.
-
-```bash
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git checkout main
-```
-
-> NOTE:  The `main` branch has the latest (unstable) version of donkeycar with experimental features.
-
-* Get a stable release from Github:
-
-```bash
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git fetch --all --tags
-git checkout tags/4.4.0
-```
-
-* Install Donkeycar into Python
-
-```
-pip3 install -e .[pc]
-```
-
-Once you're done with this, close the Ubuntu terminal and then reopen it so the path changes take effect.
-
-* Experimental Support - GPU Users: Install Tensorflow GPU - only for NVIDIA Graphics cards
-
-If you have an NVIDIA card, you should update to the lastest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
-
-```bash
-pip3 install tensorflow
-```
-
-* Create your local working dir:
-
-```bash
-donkey createcar --path ./mycar --template complete
-```
-
-> **Templates**
->  There are a number of different templates to choose from in Donkey Car.
->  basic | complete
->  You can find all the templates in the [donkeycar/donkeycar/templates](https://github.com/autorope/donkeycar/tree/dev/donkeycar/templates) folder
+* At this point switch to the [Ubuntu instructions)(http://docs.donkeycar.com/guide/host_pc/setup_ubuntu/) and continue the setup there.
 
 * Possible problems when running the UI
 
