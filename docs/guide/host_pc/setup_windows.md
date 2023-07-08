@@ -171,15 +171,13 @@ The Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environmen
 
 * Open the Ubuntu App to get a prompt window via Start Menu | Ubuntu
 
-* Refresh list of packages:
+* Refresh list of packages and install pip and xclip:
 
 ```bash
 sudo apt-get update
+sudo apt install python3-pip
+sudo apt-get install libmtdev1 xclip
 ```
-
-* Install `pip` using `sudo apt install python3-pip`
-
-* Install the following two libraries for the UI to work: `sudo apt-get install libmtdev1 xclip`
 
 At this point switch to the [Ubuntu instructions](http://docs.donkeycar.com/guide/host_pc/setup_ubuntu/) and continue the setup there.
 
