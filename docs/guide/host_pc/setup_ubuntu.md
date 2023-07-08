@@ -69,15 +69,9 @@ pip install -e .[pc]
 We have observed that the `conda` installation can be very slow. If the install looks like it's hanging
 then you can install with `mamba` instead. This should take < 5 min. 
 
-
-
 * Optional Install Tensorflow GPU - only for NVidia Graphics cards
 
-You should have an NVidia GPU with the latest drivers. Conda will handle installing the correct cuda and cuddn libraries for the version of tensorflow you are using. Note that this can take a long time (as much as an hour).
-
-```bash
-conda install tensorflow
-```
+The newer version of Tensorflow is already built with GPU support. You need to install Cuda 11 following instructions on Nivida's page [here](https://developer.nvidia.com/cuda-11.0-download-archive)
 
 * Optional Install Coral edge tpu compiler
 
