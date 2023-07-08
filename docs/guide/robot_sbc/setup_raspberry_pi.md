@@ -262,7 +262,7 @@ If you are going for a minimal install, you can get by without these. But it can
 be handy to have OpenCV.
 
 ```bash
-sudo apt-get install libilmbase-dev libopenexr-dev libgstreamer1.0-dev libjasper-dev libwebp-dev libatlas-base-dev libavcodec-dev libavformat-dev libswscale-dev libqtgui4 libqt4-test
+sudo apt-get install libilmbase-dev libopenexr-dev libgstreamer1.0-dev libjasper-dev libwebp-dev libatlas-base-dev libavcodec-dev libavformat-dev libswscale-dev
 ```
 
 ### Step 10: Setup Virtual Env
