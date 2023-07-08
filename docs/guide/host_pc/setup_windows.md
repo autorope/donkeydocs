@@ -175,7 +175,7 @@ The Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environmen
 
 * Install the following two libraries for the UI to work: `sudo apt-get install libmtdev1 xclip`
 
-* At this point switch to the [Ubuntu instructions)(http://docs.donkeycar.com/guide/host_pc/setup_ubuntu/) and continue the setup there.
+At this point switch to the [Ubuntu instructions](http://docs.donkeycar.com/guide/host_pc/setup_ubuntu/) and continue the setup there.
 
 * Possible problems when running the UI
 
