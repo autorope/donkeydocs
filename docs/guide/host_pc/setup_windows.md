@@ -171,6 +171,12 @@ The Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environmen
 
 * Open the Ubuntu App to get a prompt window via Start Menu | Ubuntu
 
+* Refresh list of packages:
+
+```sudo apt update
+sudo apt upgrade
+```
+
 * Install `pip` using `sudo apt install python3-pip`
 
 * Install the following two libraries for the UI to work: `sudo apt-get install libmtdev1 xclip`
