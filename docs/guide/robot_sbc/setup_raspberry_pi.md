@@ -6,7 +6,7 @@ Please read this carefully as Donkey Car is now installed differently
 depending on the version. Versions <= 4.4 which is currently the latest
 stable release are using Raspberry Pi OS Buster (32 bit) and tensorflow 2.2.
 The `main` branch has already advanced to Raspberry Pi OS Bulleseye (64 bit)
-and uses tensorflow 2.9.
+and uses tensorflow 2.9. *We recommend you use that and you can jump to those instructions [here](#step-1-install-raspberry-pi-os)*
 
 Tub data, car templates, etc are compatible between the two versions as well
 as models in keras format `.h5`. However, Tensorflow Lite models `.tflite`
