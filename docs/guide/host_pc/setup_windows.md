@@ -173,8 +173,8 @@ The Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environmen
 
 * Refresh list of packages:
 
-```sudo apt update
-sudo apt upgrade
+```bash
+sudo apt-get update
 ```
 
 * Install `pip` using `sudo apt install python3-pip`
