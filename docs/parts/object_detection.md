@@ -12,12 +12,18 @@ traffic cones. For each object type, a protocol is defined that adjusts the thro
 This part will override the pilot_throttle to stop the Donkeycar when it detects a stop sign.  After a pause, the
 car will pass the stop sign and proceed around the track. The pause time is configurable.
 
+<iframe class="video" width="560" height="315" src="https://youtu.be/0TLaEs126zs" allowfullscreen></iframe>
+Stop Sign Detection with Autopilot in Action
+
 ## Protocol: Swerve around a Traffic Cone (class Pass_Object)
 This part will override the pilot angle and pilot throttle to control the Donkeycar.
 On detection of a traffic cone, the car will steer around the cone. The output steering angle is based upon
 the difference between the pilot angle and the object detection angle. The output angle will be in the direction of the pilot angle,
 if the difference is greater than the tolerance and less than the max angle. Otherwise, the output angle will be set to the
 object angle - tolerance.
+
+<iframe class="video" width="560" height="315" src="https://youtu.be/sjvswIy4TGE" allowfullscreen></iframe>
+Traffic Cone avoidance with Autopilot in Action
 
 ## Inputs/Outputs
 ```
