@@ -337,7 +337,7 @@ an SD card image. Follow
 these [instructions](/guide/deep_learning/mobile_app/#optional-manual-installation)
 to install manually.
 
-> -**Note**- The server component currently supports **RaspberryPi 4B only**.
+> **Note** The server component currently supports **RaspberryPi 4B only**.
 
 
 ## Installation for Donkey Car main (>= 5.0) using Raspberry Pi OS Bullseye
