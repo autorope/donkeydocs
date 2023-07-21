@@ -3,24 +3,142 @@
 ![donkey](/assets/logos/rpi_logo.png)
 
 Please read this carefully as Donkey Car is now installed differently
-depending on the version. Versions <= 4.4 which is currently the latest
-stable release are using Raspberry Pi OS Buster (32 bit) and tensorflow 2.2.
-The `main` branch has already advanced to Raspberry Pi OS Bulleseye (64 bit)
-and uses tensorflow 2.9. *We recommend you use that and you can jump to those instructions [here](#step-1-install-raspberry-pi-os)*
+depending on the version. The latest version is 5.x and requires 64-bit Raspberry Pi OS Bullseye, which is the current version of that. If you're using that OS, continue below. 
+If you're using the older Raspberry Pi OS (Raspian) called Buster, jump to those instructions [here](#step-1-flash-operating-system).
 
 Tub data, car templates, etc are compatible between the two versions as well
 as models in keras format `.h5`. However, Tensorflow Lite models `.tflite`
 are not and need to be regenerated.
-
-If you want to stick with the last stable version, please follow the next
-section. If you want to work with the latest version, please follow
-this [section](#installation-for-donkey-car-main-using-raspberry-pi-os-bullseye).
 
 In general, we recommend the RPi 4 with 4GB of ram. It's also recommended using a 128GB
 microSD card with U3 speed, like for example 
 [this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
 
 
+## Installation for Donkey Car main (>= 5.0) using Raspberry Pi OS Bullseye
+
+This installation is using Raspberry Pi OS Bullseye (64 bit).
+
+* [Step 1: Install Operating System](#step-1-install-raspberry-pi-os)
+* [Step 2: Update and Upgrade](#step-2-update-and-upgrade)
+* [Step 3: Raspi-config](#step-3-raspi-config)
+* [Step 4: Setup Virtual Env](#step-4-setup-virtual-env)
+* [Step 5: Install Donkeycar Python Code](#step-5-install-donkeycar-python-code)
+* Then [Create your Donkeycar Application](/guide/create_application/)
+
+
+### Step 1: Install Raspberry Pi OS
+
+Raspberry Pi OS can now be installed with the graphical installer _Raspberry Pi
+Imager_ which can be downloaded
+from [here](https://www.raspberrypi.com/software/).
+Please download and start the application.
+
+In the drop-down menu 'Operating System' go to 'Raspberry Pi OS (other)' and
+then select either of 'Raspberry Pi OS (64 bit)' or 'Raspberry Pi OS Lite
+(64 bit)'. Note, that both OS will work, but if your Pi is old, has only
+little ram or only a small SD card, then you might be better off using the
+headless Lite version.
+
+We have found that running the full desktop version of the OS on the Pi doesn't
+show any measurable performance impacts on an RPi 4 with 4GB and having
+access to a desktop can be beneficial. You can always switch to booting
+into headless later on, if you prefer to.
+
+Click the little cog in the lower right corner or press 'Ctrl-Shift-X' to
+enter the advanced settings. Please set the hostname (here chosen to be
+'donkeypi'), your wifi, region, local settings, etc. It should look like here:
+![imager_advanced_dialog](/assets/rpi_imager.png)
+
+Plug an SD card into your card reader, selected it as the medium, and
+press 'Write' to burn the OS onto the card. You should be able to ssh into
+the Pi through your network using the hostname 'donkeypi.local' (or whatever
+you chose in the menu).
+
+If you want to connect to the desktop on the Pi, you need to install VNC
+Viewer on your host PC
+from [Real VNC](https://www.realvnc.com/en/connect/download/viewer/).
+
+
+### Step 2: Update and Upgrade
+
+```bash
+sudo apt-get update --allow-releaseinfo-change
+sudo apt-get upgrade
+```
+
+
+### Step 3: Raspi-config
+
+Doing it in the shell through:
+
+```bash
+sudo raspi-config
+```
+
+* enable `Interfacing Options` - `I2C`
+* select `Advanced Options` - `Expand Filesystem` so you can use your whole
+  sd-card storage
+
+Choose `<Finish>` and hit enter.
+
+> Note: Reboot after changing these settings. Should happen if you select `yes`.
+
+Alternatively if you connect to the full desktop using VNC and are running
+the desktop, go to 'Raspberry -> Preferences -> Raspberry Pi Configuration'
+and apply the settings there.
+
+> Note: If you prefer to install the headless version of Raspberry Pi OS, 
+> please follow the steps [here](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi).
+> You will need to run `sudo apt -y install pi git; pip install virutalenv` 
+> afterwards.
+
+
+### Step 4: Setup Virtual Env
+
+This needs to be done only once:
+
+```bash
+pip install virtualenv
+python3 -m virtualenv -p python3 env --system-site-packages
+echo "source ~/env/bin/activate" >> ~/.bashrc
+source ~/.bashrc
+```
+
+Modifying your `.bashrc` in this way will automatically enable this environment
+each time you login. To return to the system python you can type `deactivate`.
+
+
+### Step 5: Install Donkeycar Python Code
+
+* Create and change to a directory you would like to use as the head of your
+  projects.
+
+```bash
+mkdir projects
+cd projects
+```
+
+* Get the latest donkeycar from Github.
+
+> Note: Only the main branch currently works on bullseye.
+
+```bash
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git checkout main
+pip install -e .[pi]
+```
+
+You can validate your tensorflow install with
+
+```bash
+python -c "import tensorflow; print(tensorflow.__version__)"
+```
+
+##  
+
+----
 ## Installation for Donkeycar <= 4.5 using Raspberry Pi OS Buster
 
 This installation is using Raspberry Pi OS Buster (32 bit).
@@ -339,130 +457,5 @@ to install manually.
 
 > **Note** The server component currently supports **RaspberryPi 4B only**.
 
-
-## Installation for Donkey Car main (>= 5.0) using Raspberry Pi OS Bullseye
-
-This installation is using Raspberry Pi OS Bullseye (64 bit).
-
-* [Step 1: Install Operating System](#step-1-install-raspberry-pi-os)
-* [Step 2: Update and Upgrade](#step-2-update-and-upgrade)
-* [Step 3: Raspi-config](#step-3-raspi-config)
-* [Step 4: Setup Virtual Env](#step-4-setup-virtual-env)
-* [Step 5: Install Donkeycar Python Code](#step-5-install-donkeycar-python-code)
-* Then [Create your Donkeycar Application](/guide/create_application/)
-
-
-### Step 1: Install Raspberry Pi OS
-
-Raspberry Pi OS can now be installed with the graphical installer _Raspberry Pi
-Imager_ which can be downloaded
-from [here](https://www.raspberrypi.com/software/).
-Please download and start the application.
-
-In the drop-down menu 'Operating System' go to 'Raspberry Pi OS (other)' and
-then select either of 'Raspberry Pi OS (64 bit)' or 'Raspberry Pi OS Lite
-(64 bit)'. Note, that both OS will work, but if your Pi is old, has only
-little ram or only a small SD card, then you might be better off using the
-headless Lite version.
-
-We have found that running the full desktop version of the OS on the Pi doesn't
-show any measurable performance impacts on an RPi 4 with 4GB and having
-access to a desktop can be beneficial. You can always switch to booting
-into headless later on, if you prefer to.
-
-Click the little cog in the lower right corner or press 'Ctrl-Shift-X' to
-enter the advanced settings. Please set the hostname (here chosen to be
-'donkeypi'), your wifi, region, local settings, etc. It should look like here:
-![imager_advanced_dialog](/assets/rpi_imager.png)
-
-Plug an SD card into your card reader, selected it as the medium, and
-press 'Write' to burn the OS onto the card. You should be able to ssh into
-the Pi through your network using the hostname 'donkeypi.local' (or whatever
-you chose in the menu).
-
-If you want to connect to the desktop on the Pi, you need to install VNC
-Viewer on your host PC
-from [Real VNC](https://www.realvnc.com/en/connect/download/viewer/).
-
-
-### Step 2: Update and Upgrade
-
-```bash
-sudo apt-get update --allow-releaseinfo-change
-sudo apt-get upgrade
-```
-
-
-### Step 3: Raspi-config
-
-Doing it in the shell through:
-
-```bash
-sudo raspi-config
-```
-
-* enable `Interfacing Options` - `I2C`
-* select `Advanced Options` - `Expand Filesystem` so you can use your whole
-  sd-card storage
-
-Choose `<Finish>` and hit enter.
-
-> Note: Reboot after changing these settings. Should happen if you select `yes`.
-
-Alternatively if you connect to the full desktop using VNC and are running
-the desktop, go to 'Raspberry -> Preferences -> Raspberry Pi Configuration'
-and apply the settings there.
-
-> Note: If you prefer to install the headless version of Raspberry Pi OS, 
-> please follow the steps [here](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi).
-> You will need to run `sudo apt -y install pi git; pip install virutalenv` 
-> afterwards.
-
-
-### Step 4: Setup Virtual Env
-
-This needs to be done only once:
-
-```bash
-pip install virtualenv
-python3 -m virtualenv -p python3 env --system-site-packages
-echo "source ~/env/bin/activate" >> ~/.bashrc
-source ~/.bashrc
-```
-
-Modifying your `.bashrc` in this way will automatically enable this environment
-each time you login. To return to the system python you can type `deactivate`.
-
-
-### Step 5: Install Donkeycar Python Code
-
-* Create and change to a directory you would like to use as the head of your
-  projects.
-
-```bash
-mkdir projects
-cd projects
-```
-
-* Get the latest donkeycar from Github.
-
-> Note: Only the main branch currently works on bullseye.
-
-```bash
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git checkout main
-pip install -e .[pi]
-```
-
-You can validate your tensorflow install with
-
-```bash
-python -c "import tensorflow; print(tensorflow.__version__)"
-```
-
-##  
-
-----
 
 ## Next, [create your Donkeycar application](/guide/create_application/).
