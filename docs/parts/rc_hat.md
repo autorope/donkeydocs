@@ -89,10 +89,10 @@ PWM_STEERING_THROTTLE = {
     "PWM_THROTTLE_PIN": "PIGPIO.BCM.18",    # PWM output pin for ESC
     "PWM_THROTTLE_SCALE": 1.0,              # used to compensate for PWM frequence differences from 60hz; NOT for increasing/limiting speed
     "PWM_THROTTLE_INVERTED": False,         # True if hardware requires an inverted PWM pulse
-    "STEERING_LEFT_PWM": 460,               #pwm value for full left steering
-    "STEERING_RIGHT_PWM": 290,              #pwm value for full right steering
-    "THROTTLE_FORWARD_PWM": 500,            #pwm value for max forward throttle
-    "THROTTLE_STOPPED_PWM": 370,            #pwm value for no movement
+    "STEERING_LEFT_PWM": 400,               #pwm value for full left steering
+    "STEERING_RIGHT_PWM": 200,              #pwm value for full right steering
+    "THROTTLE_FORWARD_PWM": 400,            #pwm value for max forward throttle
+    "THROTTLE_STOPPED_PWM": 300,            #pwm value for no movement
     "THROTTLE_REVERSE_PWM": 220,            #pwm value for max reverse throttle
 }
 ```
