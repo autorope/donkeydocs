@@ -18,7 +18,7 @@ donkey createcar --path <dir> [--overwrite] [--template <donkey2>]
 * `--overwrite` will update the files in the destination directory _except_ the `myconfig.py`. This is useful if you have update donkeycar and you want those changes reflected in you `mycar` folder but you don't want to have to recreate your `myconfig.py`.
 * The optional `--template` will specify the template file to start from. For a list of templates, see the `donkeycar/templates` dir. This source template will be copied over the `manage.py` for the user.  Common templates are:
     - `--template=complete`: the [Deep Learning Autopilot](/guide/train_autopilot/#deep-learning-autopilot)
-    - `--template=path_follow`: the [Path Folloow Autopilot](/guide/train_autopilot/#path-follow-autopilot)
+    - `--template=path_follow`: the [Path Follow Autopilot](/guide/train_autopilot/#path-follow-autopilot)
     - `--template=cv_control`: the [Computer Vision Autopilot](/guide/train_autopilot/#computer-vision-autopilot)
 
 ## Find Car
