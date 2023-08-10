@@ -49,11 +49,34 @@ A standard RC car is equipped with a steering servo for steering the front wheel
 **Configuration**
 
 - Use `DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"` in myconfig.py
-  - Set the pin specifiers for GPIO in the `# PWM_STEERING_THROTTLE` section. Note that each pin has both a BOARD mode and a BCM (Broadcom) mode identifier.  You can use either mode, but all pins must use the same mode.  For example:
+  - Set the pin specifiers for GPIO in the `# PWM_STEERING_THROTTLE` section. Note that each pin has both a BOARD mode and a BCM (Broadcom) mode identifier.  You can use either mode, but all pins must use the same mode.
+  - The RaspberryPi 4b has 4 pwm hardware outputs; 3 of which are mapped to pins on the 40 pin header (see https://linuxhint.com/gpio-pinout-raspberry-pi/); note that pins can be addressed either by their board number or by their internal gpio number (see http://docs.donkeycar.com/parts/pins/). In the case of the hardware PWM pins, board pin 12 ("RPI_GPIO.BOARD.12") is the same as GPIO18 ("RPI_GPIO.BCM.18"), board pin 33 ("RPI_GPIO.BOARD.33") is the same as GPIO13 ("RPI_GPIO.BCM.13") and board pin 32 ("RPI_GPIO.BOARD.32") is the same as GPIO12 ("RPI_GPIO.BCM.12"). So you should be setting up your myconfig.py so that `DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"` and `PWM_STEERING_PIN` and `PWM_THROTTLE_PIN` are set to use one of the hardware pwm pins for output. For example:
+
 ```python
-  PWM_STEERING_PIN = "RPI_GPIO.BOARD.33"  # GPIO board mode pin-33 == BCM mode pin-13
-  PWM_THROTTLE_PIN = "RPI_GPIO.BOARD.12"  # GPIO board mode pin-12 == BCM mode pin-18
+    DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"
+    
+    #
+    # PWM_STEERING_THROTTLE
+    #
+    # Drive train for RC car with a steering servo and ESC.
+    # Uses a PwmPin for steering (servo) and a second PwmPin for throttle (ESC)
+    # Base PWM Frequence is presumed to be 60hz; use PWM_xxxx_SCALE to adjust pulse with for non-standard PWM frequencies
+    #
+    PWM_STEERING_THROTTLE = {
+        "PWM_STEERING_PIN": "RPI_GPIO.BOARD.33",# GPIO board mode pin-33 == BCM mode pin-13
+        "PWM_STEERING_SCALE": 1.0,              # used to compensate for PWM frequency differents from 60hz; NOT for adjusting steering range
+        "PWM_STEERING_INVERTED": False,         # True if hardware requires an inverted PWM pulse
+        "PWM_THROTTLE_PIN": "RPI_GPIO.BOARD.12",# GPIO board mode pin-12 == BCM mode pin-18
+        "PWM_THROTTLE_SCALE": 1.0,              # used to compensate for PWM frequence differences from 60hz; NOT for increasing/limiting speed
+        "PWM_THROTTLE_INVERTED": False,         # True if hardware requires an inverted PWM pulse
+        "STEERING_LEFT_PWM": 460,               # pwm value for full left steering
+        "STEERING_RIGHT_PWM": 290,              # pwm value for full right steering
+        "THROTTLE_FORWARD_PWM": 500,            # pwm value for max forward throttle
+        "THROTTLE_STOPPED_PWM": 370,            # pwm value for no movement
+        "THROTTLE_REVERSE_PWM": 220,            # pwm value for max reverse throttle
+    }
 ```
+
 > See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### Direct control with the RaspberryPi GPIO pins. 
