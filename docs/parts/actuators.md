@@ -36,11 +36,35 @@ A standard RC car is equipped with a steering servo for steering the front wheel
 **Configuration**
 
 - Use `DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"` in myconfig.py
-  - Set the pin specifiers for PCA9685 in the `# PWM_STEERING_THROTTLE` section of myconfig.py. For example:
+  - Set use PCA9685 pin specifiers for `PWM_STEERING_PIN` and `PWM_THROTTLE_PIN` in the `PWM_STEERING_THROTTLE` section of myconfig.py. For example:
+
 ```python
-  PWM_STEERING_PIN = "PCA9685.1:40.0"  # PCA9685, I2C bus 1, address 0x40, channel 0
-  PWM_THROTTLE_PIN = "PCA9685.1:40.1"  # PCA9685, I2C bus 1, address 0x40, channel 1
+    DRIVE_TRAIN_TYPE = "PWM_STEERING_THROTTLE"
+    
+    #
+    # PWM_STEERING_THROTTLE
+    #
+    # Drive train for RC car with a steering servo and ESC.
+    # Uses a PwmPin for steering (servo) and a second PwmPin for throttle (ESC)
+    # Base PWM Frequence is presumed to be 60hz; use PWM_xxxx_SCALE to adjust pulse with for non-standard PWM frequencies
+    #
+    PWM_STEERING_THROTTLE = {
+        "PWM_STEERING_PIN": "PCA9685.1:40.0",   # PCA9685, I2C bus 1, address 0x40, channel 0
+        "PWM_STEERING_SCALE": 1.0,              # used to compensate for PWM frequency differents from 60hz; NOT for adjusting steering range
+        "PWM_STEERING_INVERTED": False,         # True if hardware requires an inverted PWM pulse
+        "PWM_THROTTLE_PIN": "PCA9685.1:40.1",   # PCA9685, I2C bus 1, address 0x40, channel 1
+        "PWM_THROTTLE_SCALE": 1.0,              # used to compensate for PWM frequence differences from 60hz; NOT for increasing/limiting speed
+        "PWM_THROTTLE_INVERTED": False,         # True if hardware requires an inverted PWM pulse
+        "STEERING_LEFT_PWM": 460,               # pwm value for full left steering
+        "STEERING_RIGHT_PWM": 290,              # pwm value for full right steering
+        "THROTTLE_FORWARD_PWM": 500,            # pwm value for max forward throttle
+        "THROTTLE_STOPPED_PWM": 370,            # pwm value for no movement
+        "THROTTLE_REVERSE_PWM": 220,            # pwm value for max reverse throttle
+    }
 ```
+
+> NOTE: the pwm values (`STEERING_LEFT_PWM`, etc.) differ from car to car and are derived by running the calibration procedure.  See [Calibrate your Car](http://docs.donkeycar.com/guide/calibrate/)
+
 > See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### Generating PWM pulses from the 40 pin GPIO header
@@ -76,6 +100,7 @@ A standard RC car is equipped with a steering servo for steering the front wheel
         "THROTTLE_REVERSE_PWM": 220,            # pwm value for max reverse throttle
     }
 ```
+> NOTE: the pwm values (`STEERING_LEFT_PWM`, etc.) differ from car to car and are derived by running the calibration procedure.  See [Calibrate your Car](http://docs.donkeycar.com/guide/calibrate/)
 
 > See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
