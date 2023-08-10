@@ -2,37 +2,51 @@
 
 ![donkey](/assets/logos/apple_logo.jpg)
 
-* Install [miniconda Python 3.7 64 bit](https://conda.io/miniconda.html)
-
-* Install [git 64 bit](https://www.atlassian.com/git/tutorials/install-git)
+* Install [miniconda Python 3.9 64 bit](https://conda.io/miniconda.html)
 
 * Start Terminal
 
-* Change to a dir you would like to use as the head of your projects.
+Setup your `donkey` conda env with:
+
+```bash
+conda create -n donkey python=3.9
+conda activate donkey
+```
+
+Now there are two different installations possible. Very likely you will 
+want to do the user install. Then you will perform Step 2a. In case you want 
+to debug or edit the source code, you will need to do the more advanced 
+developer install. But you can do only one.
+
+> _**Note**_: Only do User install or Developer install but not both!
+
+### User install
+
+As you have activated the new `donkey` env already you simply type:
+
+```bash
+pip install donkeycar
+```
+This will install the latest release.
+
+### Developer install
+
+Here you can choose which branch or tag you want to install, and you can 
+edit and/or debug the code, by downloading the source code from GitHub.
+
+Install [git 64 bit](https://www.atlassian.com/git/tutorials/install-git) 
+and change to a dir you would like to use as the head of your projects. 
 
 ```bash
 mkdir projects
 cd projects
-```
-
-* Get the latest donkeycar from Github.
-> Note: There are currently version upgrades happening on the `main` branch so you might want to rather checkout a stable release as discribed below.
-
-```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
+pip install -e .
 ```
 
-* Get a stable release from Github.
-
-```bash
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git fetch --all --tags -f
-latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-git checkout $latestTag
-```
+### Further steps
 
 * If this is not your first install, update Conda and remove old donkey
 
@@ -41,31 +55,9 @@ conda update -n base -c defaults conda
 conda env remove -n donkey
 ```
 
-* Create the Python anaconda environment
-
-Recommended (faster install time):
-
-```bash
-conda install mamba -n base -c conda-forge
-mamba env create -f install/envs/mac.yml
-conda activate donkey
-pip install -e .[pc]
-```
-Note: if you are using ZSH (you'll know if you are), you won't be able to run `pip install -e .[pc]`. You'll need to escape the brackets and run `pip install -e .\[pc\]`.
-
-Alternative (slower install time):
-
-```bash
-conda env create -f install/envs/mac.yml
-conda activate donkey
-pip install -e .[pc]
-```
-We have observed that the `conda` installation can be slow (not as slow in OSX as in Linux, but 
-still slow). If the install looks like it's hanging then you can install with `mamba` instead (above). 
-
 * Tensorflow GPU
 
-Currently there is no NVidia gpu support for [tensorflow on mac](https://www.tensorflow.org/install#install-tensorflow).
+Currently, there is no NVidia gpu support for [tensorflow on mac](https://www.tensorflow.org/install#install-tensorflow).
 
 * Create your local working dir:
 

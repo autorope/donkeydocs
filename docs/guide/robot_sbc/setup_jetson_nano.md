@@ -168,11 +168,11 @@ Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
 
 
 
-## Installation for Donkey Car main
+## Installation for Donkey Car >= 5.X
 
-Instructions for the latest code from the `main` branch. Note the 
-installation differs between the two available OSs. On Jetson you need to 
-install Jetpack 5.0.2.
+Instructions for the latest code from the `main` branch or newer releases >= 
+5.X. Note the installation differs between the two available OSs. On Jetson 
+you need to install Jetpack 5.0.2.
 
 
 ### Installation on Jetson Xavier (or newer Jetson boards)
@@ -225,20 +225,51 @@ sudo systemctl disable nvgetty
 
 #### Step 3c: Setup python environment
 
-* Step 1: Install mamba-forge
+* Step 1: Install Miniconda
 
-Download and install Miniconda and install `mamba`.
+Download and install Miniconda.
 
 ```bash
 wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
 chmod u+x ./Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
 bash ./Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
-conda install mamba -n base -c conda-forge
 ```
 
-* Step 2: Download and install Donkey Car
+* Step 2: Install Donkey Car
 
-Downloading Donkey Car from GitHub
+Setup your `donkey` conda env with:
+
+```bash
+conda create -n donkey python=3.8
+conda activate donkey
+```
+If you don't want to activate the `donkey` environment manually everytime 
+you log into the Nano, then add this into your `.bashrc` file:
+
+```bash
+echo >> ~/.bashrc conda activate donkey
+```
+
+Now there are two different installations possible. Very likely you will 
+want to do the user install. Then you will perform Step 2a. In case you want 
+to debug or edit the source code, you will need to do the more advanced 
+developer install. But you can do only one.
+
+> _**Note**_: Only do Step 2a or 2b but not both!
+
+* Step 2a: User install
+
+As you have activated the new `donkey` env already you simply type:
+
+```bash
+pip install donkeycar[nano]
+```
+This will install the latest release.
+
+* Step 2b: Developer install
+
+Here you can choose which branch or tag you want to install, and you can 
+edit and/or debug the code, by downloading the source code from GitHub.
 
 ```bash
 mkdir projects
@@ -246,8 +277,6 @@ cd projects
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
-mamba env create -f install/envs/jetson.yml
-conda activate donkey
 pip install -e .[nano]
 pip install -U albumentations --no-binary qudida,albumentations
 sudo chmod 666 /dev/gpiochip*
