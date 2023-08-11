@@ -14,9 +14,10 @@ conda activate donkey
 ```
 
 Now there are two different installations possible. Very likely you will 
-want to do the user install. Then you will perform Step 2a. In case you want 
-to debug or edit the source code, you will need to do the more advanced 
-developer install. But you can do only one.
+want to do the user install. Then you will perform Step 
+[_User install_](#user-install). In case 
+you want to debug or edit the source code, you will need to do the more advanced 
+[_Developer install_](#developer-install). But you can do only one.
 
 > _**Note**_: Only do User install or Developer install but not both!
 
@@ -25,7 +26,7 @@ developer install. But you can do only one.
 As you have activated the new `donkey` env already you simply type:
 
 ```bash
-pip install donkeycar
+pip install donkeycar[pc]
 ```
 This will install the latest release.
 
@@ -43,8 +44,12 @@ cd projects
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
-pip install -e .
+pip install -e .[pc]
 ```
+
+Note: if you are using ZSH (you'll know if you are), you won't be able to 
+run `pip install -e .[pc]`. You'll need to escape the brackets and run 
+`pip install -e .\[pc\]`.
 
 ### Further steps
 
@@ -57,7 +62,8 @@ conda env remove -n donkey
 
 * Tensorflow GPU
 
-Currently, there is no NVidia gpu support for [tensorflow on mac](https://www.tensorflow.org/install#install-tensorflow).
+Currently, there is no NVidia gpu support for 
+[tensorflow on mac](https://www.tensorflow.org/install#install-tensorflow).
 
 * Create your local working dir:
 
@@ -66,7 +72,9 @@ donkey createcar --path ~/mycar
 ```
 
 > Note: After closing the Terminal, when you open it again, you will need to 
-> type ```conda activate donkey``` to re-enable the mappings to donkey specific 
+> type
+>`conda activate donkey`
+> to re-enable the mappings to donkey specific 
 > Python libraries
 
 ----

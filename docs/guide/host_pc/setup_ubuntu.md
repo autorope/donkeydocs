@@ -1,7 +1,7 @@
 # Install Donkeycar on Linux
 
 
-> Note : tested on Ubuntu 20.04 LTS
+> Note : tested on Ubuntu 20.04 LTS, 22.04 LTS
 
 * Open the Terminal application.
 
@@ -12,32 +12,52 @@ wget https://repo.anaconda.com/miniconda/Miniconda3-py39_23.3.1-0-Linux-x86_64.s
 bash ./Miniconda3-py39_23.3.1-0-Linux-x86_64.sh
 ```
 
-* Change to a dir you would like to use as the head of your projects.
+Setup your `donkey` conda env with:
+
+```bash
+conda create -n donkey python=3.9
+conda activate donkey
+```
+
+Now there are two different installations possible. Very likely you will 
+want to do the user install. Then you will perform Step 
+[_User install_](#user-install). In case 
+you want to debug or edit the source code, you will need to do the more advanced 
+[_Developer install_](#developer-install). But you can do only one.
+
+> _**Note**_: Only do User install or Developer install but not both!
+
+### User install
+
+As you have activated the new `donkey` env already you simply type:
+
+```bash
+pip install donkeycar[pc]
+```
+This will install the latest release.
+
+### Developer install
+
+Here you can choose which branch or tag you want to install, and you can 
+edit and/or debug the code, by downloading the source code from GitHub.
+
+Create a project directory you would like to use as the 
+head of your projects, change into it and download and install `donkeycar` 
+from GitHub.
 
 ```bash
 mkdir projects
 cd projects
-```
-
-* Get the latest donkeycar from Github
-
-> Note: There are version changes happening on the `main` branch at the moment, so you might want to checkout a release as explained in the next step.
-
-```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
+pip install -e .[pc]
 ```
 
-* To get a stable release
+Note: if you are using ZSH (you'll know if you are), you won't be able to 
+run `pip install -e .[pc]`. You'll need to escape the brackets and run 
+`pip install -e .\[pc\]`.
 
-```bash
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git fetch --all --tags -f
-latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-git checkout $latestTag
-```
 
 * If this is not your first install, update Conda and remove old donkey
 
@@ -46,44 +66,31 @@ conda update -n base -c defaults conda
 conda env remove -n donkey
 ```
 
-* Create the Python anaconda environment
-
-Recommended (faster install time):
-
-```bash
-conda install mamba -n base -c conda-forge
-mamba env create -f install/envs/ubuntu.yml
-conda activate donkey
-pip install -e .[pc]
-```
-Note: if you are using ZSH (you'll know if you are), you won't be able to run `pip install -e .[pc]`. 
-You'll need to escape the brackets and run `pip install -e .\[pc\]`.
-
-Alternative (slower install time):
-
-```bash
-conda env create -f install/envs/ubuntu.yml
-conda activate donkey
-pip install -e .[pc]
-```
-We have observed that the `conda` installation can be very slow. If the install looks like it's hanging
-then you can install with `mamba` instead. This should take < 5 min. 
-
-The newer version of Tensorflow is already built with GPU support. If you have an Nvidia GPU, install Cuda 11 following instructions on Nivida's page [here](https://developer.nvidia.com/cuda-11.0-download-archive)
+The newer version of Tensorflow is already built with GPU support. If you 
+have an Nvidia GPU, install Cuda 11 following instructions on Nivida's page 
+[here](https://developer.nvidia.com/cuda-11.0-download-archive)
 
 * Optional Install Coral edge tpu compiler
 
-If you have a Google Coral edge tpu, you may wish to compile models. You will need to install the edgetpu_compiler exectutable. Follow [their instructions](https://coral.withgoogle.com/docs/edgetpu/compiler/).
+If you have a Google Coral edge tpu, you may wish to compile models. You 
+will need to install the edgetpu_compiler exectutable. Follow [their 
+instructions](https://coral.withgoogle.com/docs/edgetpu/compiler/).
 
 * Optionally configure PyTorch to use GPU - only for NVidia Graphics cards
 
-If you have an NVidia card, you should update to the latest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
+If you have an NVidia card, you should update to the latest drivers and 
+[install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup).
 
 ```bash
 conda install cudatoolkit=11 -c pytorch
 ```
 
-You should replace `<CUDA Version>` with your CUDA version. Any version above 10.0 should work. You can find out your CUDA version by running `nvcc --version` or `nvidia-smi`. (if those commands don't work, it means you don't already have them installed. Follow the directions given by that error to install them.) If the version given by these two commands don't match, go with the version given by `nvidia-smi`.
+You should replace `<CUDA Version>` with your CUDA version. Any version 
+above 10.0 should work. You can find out your CUDA version by running 
+`nvcc --version` or `nvidia-smi`. (if those commands don't work, it means you 
+don't already have them installed. Follow the directions given by that error 
+to install them.) If the version given by these two commands don't match, go 
+with the version given by `nvidia-smi`.
 
 * Create your local working dir:
 

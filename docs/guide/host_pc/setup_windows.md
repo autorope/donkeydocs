@@ -1,12 +1,12 @@
 # Windows
 
-Windows provides a few different methods for setting up and installing Donkey Car.  
+Windows provides two different methods for setting up and installing Donkey 
+Car.  
 
-1. Miniconda
-2. Native
-3. Windows Subsystem for Linux (WSL) - Recommended
+1.Native
+2Windows Subsystem for Linux (WSL) - Recommended
 
-## Install Donkeycar on Windows (miniconda)
+## Install Donkeycar on Windows (Native)
 
 ![donkey](/assets/logos/windows_logo.png)
 
@@ -14,32 +14,50 @@ Windows provides a few different methods for setting up and installing Donkey Ca
 
 * Open the Anaconda prompt window via Start Menu | Anaconda 64bit | Anaconda Prompt
 
+
+Setup your `donkey` conda env with:
+
+```bash
+conda create -n donkey python=3.9
+conda activate donkey
+```
+
+Now there are two different installations possible. Very likely you will 
+want to do the user install. Then you will perform Step 
+[_User install_](#user-install). In case 
+you want to debug or edit the source code, you will need to do the more advanced 
+[_Developer install_](#developer-install). But you can do only one.
+
+> _**Note**_: Only do User install or Developer install but not both!
+
+### User install
+
+As you have activated the new `donkey` env already you simply type:
+
+```bash
+pip install donkeycar[pc]
+```
+This will install the latest release.
+
+### Developer install
+
+Here you can choose which branch or tag you want to install, and you can 
+edit and/or debug the code, by downloading the source code from GitHub.
+
 * type `git`. If the command is not found, then install [git 64 bit](https://git-scm.com/download/win)
 
-* Change to a dir you would like to use as the head of your projects.
+
+Create a project directory you would like to use as the 
+head of your projects, change into it and download and install `donkeycar` 
+from GitHub.
 
 ```bash
 mkdir projects
 cd projects
-```
-
-* Get the latest donkey from Github.
-
-> Note: There are currently version changes happening on the `main` branch so you might rather want to check out a stable release as explained below.
-
-```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
-```
-
-* Get a stable release from Github.
-
-```bash
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git fetch --all --tags -f
-git checkout tags/4.4.0
+pip install -e .[pc]
 ```
 
 * If this is not your first install, update Conda and remove old donkey
@@ -48,16 +66,6 @@ git checkout tags/4.4.0
 conda update -n base -c defaults conda
 conda env remove -n donkey
 ```
-
-* Create the Python anaconda environment
-
-```bash
-conda env create -f install\envs\windows.yml
-conda activate donkey
-pip install --user tensorflow==2.9
-pip install -e .[pc]
-```
-Note: if you are using ZSH (you'll know if you are), you won't be able to run `pip install -e .[pc]`. You'll need to escape the brackets and run `pip install -e .\[pc\]`.
 
 * Optionally Install Tensorflow GPU - only for NVidia Graphics cards
 
@@ -87,60 +95,6 @@ donkey createcar --path ~/mycar
 > type ```conda activate donkey``` to re-enable the mappings to donkey specific 
 > Python libraries
 
-----
-### Next let's [install software on Donkeycar](/guide/install_software/#step-2-install-software-on-donkeycar)
-
----
-
-## Install Donkeycar on Windows (native)
-
-![donkey](/assets/logos/windows_logo.png)
-
-* Install [Python 3.9](https://www.python.org/downloads/)
-
-* Install [Git Bash](https://gitforwindows.org/).  During install make sure you check Git to run 'from command line and also from 3rd-party software'.
-
-* Open Command Prompt as Administrator via the Start Menu (cmd.exe | right-click | run as administrator)
-
-* Change to a folder that that you would like to use for all your projects
-
-```shell
-mkdir projects
-cd projects
-```
-
-* Get the latest donkey from Github.
-
-```bash
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git checkout main
-```
-
-> NOTE:  The `main` branch has the latest (unstable) version of donkeycar with experimental features.
-
-* Get a stable release from Github:
-
-```bash
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git fetch --all --tags
-git checkout tags/4.3.6.1
-```
-
-* Install Donkeycar into Python
-
-```
-pip3 install -e .[pc]
-```
-
-* Recommended for GPU Users: Install Tensorflow GPU - only for NVIDIA Graphics cards
-
-If you have an NVIDIA card, you should update to the lastest drivers and [install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
-
-```bash
-pip3 install tensorflow
-```
 
 * Create your local working dir:
 
@@ -153,9 +107,6 @@ donkey createcar --path \Users\<username>\projects\mycar --template complete
 >  basic | complete
 >  You can find all the templates in the [donkeycar/donkeycar/templates](https://github.com/autorope/donkeycar/tree/dev/donkeycar/templates) folder
 
----
-### Next let's [install software on Donkeycar](/guide/install_software/#step-2-install-software-on-donkeycar)
----
 
 
 ## Install Donkeycar on Windows (WSL)
@@ -205,4 +156,4 @@ sudo apt-get install libmtdev-dev
 ```
 
 ---
-### Next let's [install software on Donkeycar](/guide/install_software/#step-2-install-software-on-donkeycar)
+## Next let's [install software on Donkeycar](/guide/install_software/#step-2-install-software-on-donkeycar)
