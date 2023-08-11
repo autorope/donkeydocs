@@ -76,10 +76,10 @@ Doing it in the shell through:
 sudo raspi-config
 ```
 
-* enable `Interfacing Options` - `I2C`
-* select `Advanced Options` - `Expand Filesystem` so you can use your whole
+* Enable `Interfacing Options` - `I2C`
+* Select `Advanced Options` - `Expand Filesystem` so you can use your whole
   sd-card storage
-
+* Do *not* enable the legacy camera (it's disabled by default, so don't change anything)
 Choose `<Finish>` and hit enter.
 
 > Note: Reboot after changing these settings. Should happen if you select `yes`.
