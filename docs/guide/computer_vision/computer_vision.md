@@ -17,6 +17,20 @@ What if your track does not have a center line; what if it just has a left and r
 
 >> IMPORTANT: The computer vision template requires that opencv is installed.  Opencv is pre-installed on the Jetson Nano, but it must be explicitly installed on the Raspberry Pi. See Raspberry Pi installation [Step 9](/guide/robot_sbc/setup_raspberry_pi/#step-9-optional-install-opencv-dependencies) and [Step 11](/guide/robot_sbc/setup_raspberry_pi/#step-11-install-donkeycar-python-code).  
 
+## Create a computer vision Application
+
+You can create a computer vision application similarly to the how we create a deep learning application; we just tell it to use the **cv_vision** template instead of the default template.  First, make sure your donkeycar python environment is activated, then use the **createcar** command to create your application folder.
+
+```bash
+donkey createcar --template=cv_vision --path=~/mycar
+```
+
+When updating to a new version of donkeycar, you will want to refresh your application folder.  You can do this with the same command, but add `--overwrite` so that it does not erase your **myconfig.py** file.
+
+```bash
+donkey createcar --template=cv_control --path=~/mycar --overwrite
+```
+
 ## The Line Follower
 
 The built-in algorithm can follow a line using the camera.  By default it is tuned for a yellow line, but the color that it tracks can be configured.  Many other aspects of the algorithm can be tuned.  Below is as description of the algorithm and how it uses the configuraton values.  The values themselves are listed and described afterwards.
