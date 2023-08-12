@@ -3,15 +3,19 @@
 ![donkey](/assets/logos/rpi_logo.png)
 
 Please read this carefully as Donkey Car is now installed differently
-depending on the version. The latest version is 5.x and requires 64-bit Raspberry Pi OS Bullseye, which is the current version of that. If you're using that OS, continue below. 
-If you're using the older Raspberry Pi OS (Raspian) called Buster, jump to those instructions [here](#step-1-flash-operating-system).
+depending on the version. The latest Donkey Car version is 5.x and requires 
+64-bit Raspberry Pi OS Bullseye. 
+
+If you're using an older version of Donkey Car, like 4.X then you need to 
+use the older Raspberry Pi OS (Raspian) version Buster, jump to 
+those instructions [here](#step-1-flash-operating-system).
 
 Tub data, car templates, etc are compatible between the two versions as well
 as models in keras format `.h5`. However, Tensorflow Lite models `.tflite`
 are not and need to be regenerated.
 
-In general, we recommend the RPi 4 with 4GB of ram. It's also recommended using a 128GB
-microSD card with U3 speed, like for example 
+In general, we recommend the RPi 4 with 4GB of ram. It's also recommended 
+using a 128GB microSD card with U3 speed, like for example 
 [this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
 
 
@@ -30,8 +34,7 @@ This installation is using Raspberry Pi OS Bullseye (64 bit).
 ### Step 1: Install Raspberry Pi OS
 
 Raspberry Pi OS can now be installed with the graphical installer _Raspberry Pi
-Imager_ which can be downloaded
-from [here](https://www.raspberrypi.com/software/).
+Imager_ which can be downloaded from [here](https://www.raspberrypi.com/software/).
 Please download and start the application.
 
 In the drop-down menu 'Operating System' go to 'Raspberry Pi OS (other)' and
@@ -90,45 +93,76 @@ and apply the settings there.
 
 > Note: If you prefer to install the headless version of Raspberry Pi OS, 
 > please follow the steps [here](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi).
-> You will need to run `sudo apt -y install pi git; pip install virutalenv` 
-> afterwards.
+> You will need to run `sudo apt -y install pi git` afterwards.
 
 
-### Step 4: Setup Virtual Env
+### Step 4: Setup conda using Miniforge
 
-This needs to be done only once:
+Because there are currently issues with supporting Miniconda on 
+[aarch64 infrastructure](https://github.com/conda/conda/issues/11486)
+we need to install conda through Miniforge. Answer all questions with `yes` 
+in the installation script.
 
 ```bash
-pip install virtualenv
-python3 -m virtualenv -p python3 env --system-site-packages
-echo "source ~/env/bin/activate" >> ~/.bashrc
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge-pypy3-Linux-aarch64.sh
+bash ./Miniforge-pypy3-Linux-aarch64.sh
 source ~/.bashrc
 ```
 
-Modifying your `.bashrc` in this way will automatically enable this environment
-each time you login. To return to the system python you can type `deactivate`.
+Now create the donkey python environment:
 
+```bash
+conda create -n donkey python=3.9
+conda activate donkey
+```
+
+If you don't want to activate the donkey environment everytime you open a 
+new shell, including the login shell then append the activation to your 
+`.bashrc` by:
+
+```bash
+echo "conda activate donkey" >> ~/.bashrc
+```
 
 ### Step 5: Install Donkeycar Python Code
 
-* Create and change to a directory you would like to use as the head of your
-  projects.
+Now there are two different installations possible. Very likely you will 
+want to do the user install. Then you will perform Step 
+[_User install_](#user-install). In case 
+you want to debug or edit the source code, you will need to do the more advanced 
+[_Developer install_](#developer-install). But you can do only one.
+
+> _**Note**_: Only do User install or Developer install but not both!
+
+### User install
+
+As you have activated the new `donkey` env already you simply type:
+
+```bash
+pip install donkeycar[pi]
+```
+
+This will install the latest release.
+
+### Developer install
+
+Here you can choose which branch or tag you want to install, and you can 
+edit and/or debug the code, by downloading the source code from GitHub.
+
+Create a project directory you would like to use as the 
+head of your projects, change into it and download and install `donkeycar` 
+from GitHub.
 
 ```bash
 mkdir projects
 cd projects
-```
-
-* Get the latest donkeycar from Github.
-
-> Note: Only the main branch currently works on bullseye.
-
-```bash
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
 pip install -e .[pi]
 ```
+
+### Further steps
 
 You can validate your tensorflow install with
 
