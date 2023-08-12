@@ -19,10 +19,10 @@ What if your track does not have a center line; what if it just has a left and r
 
 ## Create a computer vision Application
 
-You can create a computer vision application similarly to the how we create a deep learning application; we just tell it to use the **cv_vision** template instead of the default template.  First, make sure your donkeycar python environment is activated, then use the **createcar** command to create your application folder.
+You can create a computer vision application similarly to the how we create a deep learning application; we just tell it to use the **cv_control** template instead of the default template.  First, make sure your donkeycar python environment is activated, then use the **createcar** command to create your application folder.
 
 ```bash
-donkey createcar --template=cv_vision --path=~/mycar
+donkey createcar --template=cv_control --path=~/mycar
 ```
 
 When updating to a new version of donkeycar, you will want to refresh your application folder.  You can do this with the same command, but add `--overwrite` so that it does not erase your **myconfig.py** file.
