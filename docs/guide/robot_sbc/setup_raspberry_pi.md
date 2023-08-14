@@ -93,7 +93,7 @@ and apply the settings there.
 
 > Note: If you prefer to install the headless version of Raspberry Pi OS, 
 > please follow the steps [here](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi).
-> You will need to run `sudo apt -y install pi git` afterwards.
+> You will need to run `sudo apt -y install pip git` afterwards.
 
 
 ### Step 4: Setup conda using Miniforge
@@ -117,7 +117,7 @@ conda activate donkey
 ```
 
 If you don't want to activate the donkey environment everytime you open a 
-new shell, including the login shell then append the activation to your 
+new shell, including the login shell, then append the activation to your 
 `.bashrc` by:
 
 ```bash
@@ -151,7 +151,7 @@ edit and/or debug the code, by downloading the source code from GitHub.
 
 Create a project directory you would like to use as the 
 head of your projects, change into it and download and install `donkeycar` 
-from GitHub.
+from GitHub. Make sure your `donkey` env is activated.
 
 ```bash
 mkdir projects
