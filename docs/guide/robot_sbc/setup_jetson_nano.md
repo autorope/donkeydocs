@@ -259,9 +259,8 @@ pip3 install --extra-index-url https://developer.download.nvidia.com/compute/red
 
 * Step 2b: additional installs
 ```bash
-pip install kivy pillow pylint pytest pytest-cov codecov moviepy PrettyTable mypy pyyaml fastai
+pip install kivy==2.1.0 pillow pylint pytest pytest-cov codecov moviepy PrettyTable mypy pyyaml fastai
 pip uninstall opencv-python-headless
-pip install kivy==2.1.0
 ```
 
 * Step 3: Check the TF and OpenCV installation
