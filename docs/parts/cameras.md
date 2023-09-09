@@ -8,13 +8,13 @@ If you are using the default deep learning template or the computer vision templ
 
 If you are using the gps path follow template then you do not need, and may not want, a camera.  In this case you can change the camera type to mock; `CAMERA_TYPE = "MOCK"`.
 
-### Raspberry Pi**:
+### Raspberry Pi:
 
 If you are on a raspberry pi and using the recommended pi camera ("PICAM"), then no changes are needed to your __myconfg.py__.
 
 This works with all Raspberry Pi cameras, including the original Raspberry Pi Camera Module based on the 5 megapixel OV5647 chipset and the Raspberry Pi Camera Module v2 based on the Sony IMX219 chip.  These cameras are easily obtainable and are offered in generic (clone) versions by many vendors.
 
-### Jetson Nano**:
+### Jetson Nano:
 
 The Jetson does not have a driver for the original 5 megapixels OV5647 based Raspberry Pi Camera, but it does have a driver for the v2 camera based on the IMX219 chip.  Indeed the recommended camera is based on the IMX219 chip.
 
@@ -30,9 +30,21 @@ If you have installed the optional pygame library then you can connect to the ca
 
 If you have more than one camera then you made need to the `CAMERA_INDEX` configuration value.  By default it is zero.
 
+>> NOTE: `CAMERA_TYPE = CVCAM` depends upon a version of OpenCV that has GStreamer support compiled in.  This is the default on the Jetson computers and is supported in the recommended version of OpenCV for that Raspberry Pi.
+
 ### Intel Realsense D435
 
-The Intel Realsense cameras are RGBD cameras; they provide RGB images and Depth.  You can use them as an RGB camera to provide images for the Deep Learning template or the Computer Vision template by setting `CAMERA_TYPE = "D435"` in your __myconfig.py__ settings.  
+The Intel Realsense cameras are RGBD cameras; they provide RGB images and Depth.  You can use them as an RGB camera to provide images for the Deep Learning template or the Computer Vision template by setting `CAMERA_TYPE = "D435"` in your __myconfig.py__ settings.  You will also want to review the settings that are specific to the Intel Realsense cameras;
+
+```
+# Intel Realsense D435 and D435i depth sensing camera
+REALSENSE_D435_RGB = True       # True to capture RGB image
+REALSENSE_D435_DEPTH = True     # True to capture depth as image array
+REALSENSE_D435_IMU = False      # True to capture IMU data (D435i only)
+REALSENSE_D435_ID = None        # serial number of camera or None if you only have one camera (it will autodetect)
+```
+
+If you are not using depth then you will want to set `REALSENSE_D435_DEPTH = False` so it does save that data.
 
 ## Troubleshooting
 
