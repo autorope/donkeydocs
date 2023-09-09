@@ -31,6 +31,7 @@ nav:
   - Parts:
     - About: parts/about.md
     - Actuators: parts/actuators.md
+    - Cameras: parts/cameras.md
     - Controllers: parts/controllers.md
     - Odometry/encoders: parts/odometry.md
     - RC: parts/rc.md
