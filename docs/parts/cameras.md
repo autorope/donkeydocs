@@ -44,7 +44,7 @@ REALSENSE_D435_IMU = False      # True to capture IMU data (D435i only)
 REALSENSE_D435_ID = None        # serial number of camera or None if you only have one camera (it will autodetect)
 ```
 
-If you are not using depth then you will want to set `REALSENSE_D435_DEPTH = False` so it does save that data.
+If you are not using depth then you will want to set `REALSENSE_D435_DEPTH = False` so it does not save the depth data.
 
 ## Troubleshooting
 
