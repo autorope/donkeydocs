@@ -171,7 +171,7 @@ Later on you can add the `CAMERA_TYPE="WEBCAM"` in myconfig.py.
 
 Instructions for the latest code from the `main` branch. Note the 
 installation differs between the two available OSs. On Jetson you need to 
-install Jetpack 5.0.2.
+install Jetpack 5.1.2.
 
 
 ### Installation on Jetson Xavier (or newer Jetson boards)
@@ -184,7 +184,7 @@ install Jetpack 5.0.2.
 
 #### Step 1c: Flash Operating System
 
-These instructions work for Jetpack 5.0.2.
+These instructions work for Jetpack 5.1.2.
 
 Please install the Jetpack image from [jetson-nx-developer-kit-sd-card-image.zip](https://developer.nvidia.com/jetson-nx-developer-kit-sd-card-image).
 
@@ -224,15 +224,15 @@ sudo systemctl disable nvgetty
 
 #### Step 3c: Setup python environment
 
-* Step 1: Install mamba-forge
+* Step 1: Install virtualenv
 
-Download and install Miniconda and install `mamba`.
+Download and install `virtualenv`.
 
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
-chmod u+x ./Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
-bash ./Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
-conda install mamba -n base -c conda-forge
+pip3 install virtualenv
+python3 -m virtualenv -p python3 env --system-site-packages
+echo "source env/bin/activate" >> ~/.bashrc
+source ~/.bashrc
 ```
 
 * Step 2: Download and install Donkey Car
@@ -245,12 +245,23 @@ cd projects
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
-mamba env create -f install/envs/jetson.yml
-conda activate donkey
-pip install -e .[nano]
+pip3 install -e .[nano]
 pip install -U albumentations --no-binary qudida,albumentations
 sudo chmod 666 /dev/gpiochip*
+```
 
+* Step 2a: Download and install tensorflow
+Follow the [NVIDIA instructions to install tensorflow](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html)
+```bash
+pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor protobuf keras-applications keras-preprocessing wrapt google-pasta setuptools testresources
+pip3 install --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v512 tensorflow==2.12.0+nv23.06
+```
+
+* Step 2b: additional installs
+```bash
+pip install kivy pillow pylint pytest pytest-cov codecov moviepy PrettyTable mypy pyyaml fastai
+pip uninstall opencv-python-headless
+pip install kivy==2.1.0
 ```
 
 * Step 3: Check the TF and OpenCV installation
