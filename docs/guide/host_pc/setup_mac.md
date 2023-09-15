@@ -43,7 +43,16 @@ conda env remove -n donkey
 
 * Create the Python anaconda environment
 
-Recommended (faster install time):
+Recomended (fastest install time):
+```bash
+brew install --cask micromamba
+micromamba env create -f install/envs/mac.yml
+conda activate donkey
+pip install -e .[pc]
+```
+Note: if you are using ZSH (you'll know if you are), you won't be able to run `pip install -e .[pc]`. You'll need to escape the brackets and run `pip install -e .\[pc\]`.
+
+Alternative (faster install time):
 
 ```bash
 conda install mamba -n base -c conda-forge
