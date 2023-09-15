@@ -90,7 +90,7 @@ and apply the settings there.
 
 > Note: If you prefer to install the headless version of Raspberry Pi OS, 
 > please follow the steps [here](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi).
-> You will need to run `sudo apt -y install pi git; pip install virutalenv` 
+> You will need to run `sudo apt -y install pi git python3-pip; pip install virutalenv` 
 > afterwards.
 
 
