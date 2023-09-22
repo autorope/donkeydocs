@@ -124,6 +124,11 @@ new shell, including the login shell, then append the activation to your
 echo "conda activate donkey" >> ~/.bashrc
 ```
 
+Lastly, install dependent libraries
+```bash
+sudo apt install libcap-dev
+```
+
 ### Step 5: Install Donkeycar Python Code
 
 Now there are two different installations possible. Very likely you will 
