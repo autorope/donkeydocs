@@ -70,7 +70,6 @@ sudo apt-get update --allow-releaseinfo-change
 sudo apt-get upgrade
 ```
 
-
 ### Step 3: Raspi-config
 
 Doing it in the shell through:
@@ -96,35 +95,16 @@ and apply the settings there.
 > You will need to run `sudo apt -y install pip git` afterwards.
 
 
-### Step 4: Setup conda using Miniforge
+### Step 4: Create a virtual environment for donkeycar
 
-Because there are currently issues with supporting Miniconda on 
-[aarch64 infrastructure](https://github.com/conda/conda/issues/11486)
-we need to install conda through Miniforge. Answer all questions with `yes` 
-in the installation script.
-
+To create a virtual environmnet run the following:
 ```bash
-wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge-pypy3-Linux-aarch64.sh
-bash ./Miniforge-pypy3-Linux-aarch64.sh
+python3 -m virtualenv -p python3 env --system-site-packages
+echo "source ~/env/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-Now create the donkey python environment:
-
-```bash
-conda create -n donkey python=3.9
-conda activate donkey
-```
-
-If you don't want to activate the donkey environment everytime you open a 
-new shell, including the login shell, then append the activation to your 
-`.bashrc` by:
-
-```bash
-echo "conda activate donkey" >> ~/.bashrc
-```
-
-Lastly, install dependent libraries
+Install required libraries
 ```bash
 sudo apt install libcap-dev
 ```
@@ -141,7 +121,7 @@ you want to debug or edit the source code, you will need to do the more advanced
 
 ### User install
 
-As you have activated the new `donkey` env already you simply type:
+As you have activated the new `env` already you simply type:
 
 ```bash
 pip install donkeycar[pi]
