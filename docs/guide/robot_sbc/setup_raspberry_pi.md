@@ -97,7 +97,7 @@ and apply the settings there.
 
 ### Step 4: Create a virtual environment for donkeycar
 
-To create a virtual environmnet run the following:
+To create a virtual environmnet run the following from your home directory:
 ```bash
 python3 -m virtualenv -p python3 env --system-site-packages
 echo "source ~/env/bin/activate" >> ~/.bashrc
