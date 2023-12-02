@@ -225,32 +225,17 @@ sudo systemctl disable nvgetty
 
 #### Step 3c: Setup python environment
 
-* Step 1: Install Miniconda
-
-Download and install Miniconda.
+* Step 1: Set up a venv
 
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
-chmod u+x ./Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
-bash ./Miniconda3-py38_23.1.0-1-Linux-aarch64.sh
+python3 -m venv env --system-site-packages
+echo "source ~/env/bin/activate" >> ~/.bashrc
+source ~/.bashrc
 ```
 
 * Step 2: Install Donkey Car
 
-Setup your `donkey` conda env with:
-
-```bash
-conda create -n donkey python=3.8
-conda activate donkey
-```
-If you don't want to activate the `donkey` environment manually everytime 
-you log into the Nano, then add this into your `.bashrc` file:
-
-```bash
-echo >> ~/.bashrc conda activate donkey
-```
-
-Now there are two different installations possible. Very likely you will 
+There are two different installations possible. Very likely you will 
 want to do the user install. Then you will perform Step 2a. In case you want 
 to debug or edit the source code, you will need to do the more advanced 
 developer install. But you can do only one.
@@ -259,17 +244,25 @@ developer install. But you can do only one.
 
 * Step 2a: User install
 
-As you have activated the new `donkey` env already you simply type:
+As you have activated the new `env` env already you type:
 
 ```bash
 pip install donkeycar[nano]
+pip install -U albumentations --no-binary qudida,albumentations
+pip uninstall opencv-python-headless
+pip uninstall scikit-learn
+git clone https://github.com/scikit-learn/scikit-learn.git
+cd scikit-learn/
+python setup.py install
+sudo chmod 666 /dev/gpiochip*
 ```
 This will install the latest release.
 
 * Step 2b: Developer install
 
 Here you can choose which branch or tag you want to install, and you can 
-edit and/or debug the code, by downloading the source code from GitHub.
+edit and/or debug the code, by downloading the source code from GitHub. Do this
+for getting the latest version from the `main` branch.
 
 ```bash
 mkdir projects
@@ -279,8 +272,12 @@ cd donkeycar
 git checkout main
 pip install -e .[nano]
 pip install -U albumentations --no-binary qudida,albumentations
+pip uninstall opencv-python-headless
+pip uninstall scikit-learn
+git clone https://github.com/scikit-learn/scikit-learn.git
+cd scikit-learn/
+python setup.py install
 sudo chmod 666 /dev/gpiochip*
-
 ```
 
 * Step 3: Check the TF and OpenCV installation
