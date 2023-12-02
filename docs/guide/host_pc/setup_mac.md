@@ -28,7 +28,12 @@ As you have activated the new `donkey` env already you simply type:
 ```bash
 pip install donkeycar[pc]
 ```
-This will install the latest release.
+if you are using an Intel Mac or you type:
+
+```bash
+pip install donkeycar[macos]
+```
+if you are on Apple Silicon. This will install the latest release.
 
 ### Developer install
 
