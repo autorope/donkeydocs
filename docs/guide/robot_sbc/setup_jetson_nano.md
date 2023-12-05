@@ -177,13 +177,13 @@ you need to install Jetpack 5.0.2.
 
 ### Installation on Jetson Xavier (or newer Jetson boards)
 
-* [Step 1c: Flash Operating System](#step-1c-flash-operating-system)
-* [Step 2c: Free up the serial port](#step-2c-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
-* [Step 3c: Setup Python Environment](#step-3c-setup-python-environment)
-* [Step 4c: (Optional) Install PyGame for USB camera](#step-4c-optional-install-pygame-for-usb-camera)
+* [Step 1b: Flash Operating System](#step-1c-flash-operating-system)
+* [Step 2b: Free up the serial port](#step-2c-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1)
+* [Step 3b: Setup Python Environment](#step-3c-setup-python-environment)
+* [Step 4b: (Optional) Install PyGame for USB camera](#step-4c-optional-install-pygame-for-usb-camera)
 
 
-#### Step 1c: Flash Operating System
+#### Step 1b: Flash Operating System
 
 These instructions work for Jetpack 5.0.2.
 
@@ -216,16 +216,20 @@ cd installSwapfile
 reboot 
 ```
 
-#### Step 2c: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
+#### Step 2b: Free up the serial port (optional. Only needed if you're using the Robohat MM1)
 
 ```bash
 sudo usermod -aG dialout <your username>
 sudo systemctl disable nvgetty
 ```
 
-#### Step 3c: Setup python environment
+#### Step 3b: Setup python environment
 
-* Step 1: Set up a venv
+* Step 3b-1: Install tensorflow into the system python environment
+
+To install tensorflow and its dependencies for JP5.1.2 follow the NVIDIA instructions [here](https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html#overview__section_z4r_vjd_v2c) 
+
+* Step 3b-2: Set up a venv
 
 ```bash
 python3 -m venv env --system-site-packages
@@ -233,16 +237,16 @@ echo "source ~/env/bin/activate" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-* Step 2: Install Donkey Car
+* Step 3b-3: Install Donkey Car
 
 There are two different installations possible. Very likely you will 
 want to do the user install. Then you will perform Step 2a. In case you want 
 to debug or edit the source code, you will need to do the more advanced 
 developer install. But you can do only one.
 
-> _**Note**_: Only do Step 2a or 2b but not both!
+> _**Note**_: Only do Step 3b-4 or 3b-5 but not both!
 
-* Step 2a: User install
+* Step 3b-4: User install
 
 As you have activated the new `env` env already you type:
 
@@ -258,7 +262,9 @@ sudo chmod 666 /dev/gpiochip*
 ```
 This will install the latest release.
 
-* Step 2b: Developer install
+* Step 3b-5: Developer install
+
+Only do this if you have not done the user install in 3b-4. 
 
 Here you can choose which branch or tag you want to install, and you can 
 edit and/or debug the code, by downloading the source code from GitHub. Do this
@@ -280,7 +286,7 @@ python setup.py install
 sudo chmod 666 /dev/gpiochip*
 ```
 
-* Step 3: Check the TF and OpenCV installation
+* Step 3b-6: Check the TF and OpenCV installation
 
 Run python and verify that tensorflow is version 2.9 and trt is version 8.2.1.
 To get the tensorrt shared libraries to load correctly we must set the
@@ -303,7 +309,7 @@ python
 >>> print(cv2.getBuildInformation())
 ```
 
-#### Step 4c: (Optional) Install PyGame for USB camera
+#### Step 4b: (Optional) Install PyGame for USB camera
 
 If you plan to use a USB camera, you will also want to setup pygame:
 
