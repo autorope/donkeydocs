@@ -18,35 +18,21 @@ The Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environmen
 ```bash
 sudo apt-get update
 sudo apt install python3-pip
-sudo apt-get install libmtdev1 xclip
+sudo apt-get install libmtdev1 libgl1 xclip
 ```
+* Add export `LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6` to your `.bashrc` and re-source it.
+  ```bash
+  source ~/.bashrc
+  ```
 
 At this point switch to the [Ubuntu instructions](http://docs.donkeycar.com/guide/host_pc/setup_ubuntu/) and continue the setup there.
 
 * Possible problems when running the UI
 
-If you use the Donkey UI and see the following error:
-```bash
-[ERROR  ] [Input       ] MTDev is not supported by your version of linux
-Traceback (most recent call last):
-  File "/home/you/miniconda3/envs/donkey/lib/python3.7/site-packages/kivy/input/providers/init.py", line 41, in <module>
-    import kivy.input.providers.mtdev
-  File "/home/you/miniconda3/envs/donkey/lib/python3.7/site-packages/kivy/input/providers/mtdev.py", line 84, in <module>
-    from kivy.lib.mtdev import Device, \
-  File "/home/you/miniconda3/envs/donkey/lib/python3.7/site-packages/kivy/lib/mtdev.py", line 29, in <module>
-    libmtdev = cdll.LoadLibrary('libmtdev.so.1')
-  File "/home/you/miniconda3/envs/donkey/lib/python3.7/ctypes/init.py", line 442, in LoadLibrary
-    return self._dlltype(name)
-  File "/home/you/miniconda3/envs/donkey/lib/python3.7/ctypes/init.py", line 364, in init
-    self._handle = _dlopen(self._name, mode)
-OSError: libmtdev.so.1: cannot open shared object file: No such file or directory
-
-```
-Then please install `libmtdev`:
-```bash
-sudo apt-get update
-sudo apt-get install libmtdev-dev
-```
+If you use the Donkey UI with an NVIDIA graphics card and you see a blurred window it might be due to some settings on 
+your PC. In the settings, switch the NVIDIA graphics card 3D rendering mode from 
+`let the running program decide the 3D rendering mode`
+to `let me decide on the 3D rendering mode: Quality`.
 
 ---
 ## Next let's [install software on Donkeycar](/guide/install_software/#step-2-install-software-on-donkeycar)
