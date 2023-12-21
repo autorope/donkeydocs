@@ -149,9 +149,8 @@ cd ~/projects
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git fetch --all --tags -f
-latestTag=$(git describe --tags `git rev-list --tags --max-count=1`)
-git checkout $latestTag
-pip install -e .[nano45]
+git checkout 4.5.0
+pip install -e .[nano]
 
 ```
 

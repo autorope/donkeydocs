@@ -23,7 +23,7 @@ nav:
     - Create Donkeycar App.: guide/create_application.md
     - Calibrate steering and throttle.: guide/calibrate.md
     - Get driving.: guide/get_driving.md
-    - Train an autopilot.: guide/train_autopilot.md
+    - Create an autopilot.: guide/train_autopilot.md
     - Donkey UI.: utility/ui.md
     - Donkey Simulator.: guide/deep_learning/simulator.md
     - Virtual Race League.: guide/deep_learning/virtual_race_league.md
@@ -31,6 +31,7 @@ nav:
   - Parts:
     - About: parts/about.md
     - Actuators: parts/actuators.md
+    - Cameras: parts/cameras.md
     - Controllers: parts/controllers.md
     - Odometry/encoders: parts/odometry.md
     - RC: parts/rc.md

@@ -20,7 +20,13 @@ The latest version of the software installation instructions are maintained in t
 
 ## Choosing a Car
 
-There are 4 fully supported chassis all made under the "Exceed" Brand, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html).   The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress but takes about a month to get to the US, there are local options that charge a premium.
+There are two main options for cars.  One is the WL Toys brand and the second is the exceed brand.  
+
+*NOTE: only the WL Toys 144010 and HSP-94186 are readily avilable rignt now* 
+
+The [WL Toys 144010](https://www.banggood.com/custlink/vvKtByVPZn) is probably the easiest car to get right now.  It has a brushless motor, which makes it fast, but takes some getting used to for beginners.  There are brushed motor versions of theis car the 144011 and 144001 but both require the user to replace both the steering servo and ESC.  Only do this if you are familiar with RC or enjoy tinkering.  [Here is a short video](https://www.youtube.com/watch?v=4LKDjoTKlaE) explaining how to assemble the car.  You can find the adapters in [Thingiverse](https://www.thingiverse.com/thing:2566276) or if you would like to buy them you can do so one the [donkey car store](https://store.donkeycar.com/products/donkey-adapter-for-wl-toys-144010?variant=40161156562979)
+
+The alterate car, which often has slighly less availability is the HSP 94186 and the "Exceed" brand cars.  There are 5 supported cars, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html).   The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress but takes about a month to get to the US, there are local options that charge a premium.
 
 *  Exceed Magnet [Blue](https://amzn.to/2BkBRka), [Red](https://amzn.to/3qKksIC)
 *  HSP-94186 [1/16 electric Truck](https://www.aliexpress.us/item/2255799890095973.html)
@@ -30,7 +36,7 @@ There are 4 fully supported chassis all made under the "Exceed" Brand, all are v
 
 These cars are electrically identical but have different tires, mounting and other details.  It is worth noting that the Desert Monster, Short Course Truck and Blaze all require adapters which can be easily printed or purchased from the donkey store.  These are the standard build cars because they are mostly plug and play, both have a brushed motor which makes training easier, they handle rough driving surfaces well and are inexpensive.
 
-Here is a [video](https://youtu.be/UucnCmCAGTI) overview of the different cars and how to assemble them.
+Here is a [video](https://youtu.be/UucnCmCAGTI) overview of the different cars (Excluding the WL Toys car) and how to assemble them.
 
 For advanced users there are 2 more cars supported under the "Donkey Pro" name.  These are 1/10 scale cars which means that they are bigger, perform a little better and are slightly more expensive.  They can be found here:
 
@@ -67,7 +73,7 @@ If you are in Asia, the DIYRobocars community in Hong Kong also sells car kits a
 
 | Part Description                                                                    | Link                                                                                  | Approximate Cost |
 |-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|------------------|
-| Exceed Magnet, Desert Monster, Blaze, or Short Course Truck                                                                       | See links above                                     | ~$90              |
+| WL Toys 144010, Exceed Magnet, Desert Monster, Blaze, or Short Course Truck                                                                       | See links above                                     | $100-130              |
 | USB Battery with microUSB cable (any battery capable of 2A 5V output is sufficient) | [Anker 10,000 mAh](https://amzn.to/3BOqqND)                                          | $39              |
 | Raspberry Pi 3b+                                                                      | [Pi 3b+](https://amzn.to/3gCUcZL)                                          | $42              |
 | MicroSD Card (many will work, we strongly recommend this one)             | 64GB [https://amzn.to/2XP7UAa](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X?tag=donkeycar-20)                            | $11.99           |

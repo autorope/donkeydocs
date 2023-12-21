@@ -163,31 +163,11 @@ If you plan to use a joystick, take a side track over to [here](/parts/controlle
 
 ## Camera Setup
 
-If you are using the default deep learning template then you will need a camera.  By default __myconfig.py__ assumes a RaspberryPi camera.  You can change this by editing the __myconfig.py__ file in your `~/mycar` folder.  
+If you are using the default deep learning template or the computer vision template then you will need a camera.  By default __myconfig.py__ assumes a RaspberryPi camera.  You can change this by editing the `CAMERA_TYPE` value in the __myconfig.py__ file in your `~/mycar` folder.  
 
 If you are using the gps path follow template then you do not need, and may not want, a camera.  In this case you can change the camera type to mock; `CAMERA_TYPE = "MOCK"`.
 
-**Raspberry Pi**:
-
-If you are on a raspberry pi and using the recommended pi camera ("PICAM"), then no changes are needed to your __myconfg.py__.
-
-**Jetson Nano**:
-
-When using a Sony IMX219 based camera, and you are using the default car template, then you will want edit your __myconfg.py__ to have:
-`CAMERA_TYPE = "CSIC"`.
-For flipping the image vertically set `CSIC_CAM_GSTREAMER_FLIP_PARM = 6` - this is helpful if you have to mount the camera in a rotated position.
-
-`CAMERA_TYPE = CVCAM` is a camera type that has worked for USB cameras when OpenCV is setup. This requires additional setup for [OpenCV for Nano](/guide/robot_sbc/setup_jetson_nano/#step-4-install-opencv) or [OpenCV for Raspberry Pi](https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/).
-
-**USB Cameras**
-
-You can also use a USB camera if you prefer.  If you have installed the optional OpenCV dependencies then you can use OpenCV to connect to the camera by editing the camera type to `CAMERA_TYPE = "CVCAM"`. If you have installed the optional pygame library then you can connect to the camera by editing the camera type to `CAMERA_TYPE = "WEBCAM"`.  See the required additional setup for [pygame](https://www.pygame.org/wiki/GettingStarted).
-
-We are adding other cameras over time, so read the camera section in __myconfig.py__ to see what options are available.
-
-## Troubleshooting
-
-If you are having troubles with your camera, check out our [Discord hardware channel](https://discord.gg/zcyzK69S) for more help.
+See [Cameras](/parts/cameras) for details on the various cameras and configuration.
 
 ## Upgrade Donkey Car Software
 

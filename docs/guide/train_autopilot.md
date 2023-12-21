@@ -1,4 +1,4 @@
-# Train an Autopilot
+# Create an Autopilot
 
 Donkey supports three kinds of autopilots; a deep-learning autopilot, a path follow autopilot and a computer vision autopilot.  
 
@@ -22,7 +22,7 @@ Because the deep learning autopilot depends on a camera image, lighting conditio
 [Train a deep learning autopilot](./deep_learning/train_autopilot.md)
 
 
-## Path Follow Autopilot
+## Path Follow Autopilot (using GPS, wheel encoders, etc)
 The path follow template is an alternative to the deep learning template.  Outside we have access to GPS; the path follow template allows you to record a path using a GPS receiver and then configure an autopilot that can follow that path.  The overall process looks like this;
 
 - A **human drives** the car to **gather data**. The data is aquired from a GPS receiver and represents and (x,y) position in meters.  Each (x,y) position is called a waypoint.  The user will drive the course once to collect waypoints.  The complete set of waypoints is called a path.
