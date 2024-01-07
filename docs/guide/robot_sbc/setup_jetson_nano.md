@@ -149,7 +149,7 @@ cd ~/projects
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git fetch --all --tags -f
-git checkout 4.5.0
+git checkout 4.5.1
 pip install -e .[nano]
 
 ```
