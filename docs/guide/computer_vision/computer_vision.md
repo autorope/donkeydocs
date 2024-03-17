@@ -1,19 +1,12 @@
 # Computer Vision Autopilot
 
-The computer vision autopilot, like the deep learning autopilot, interprets camera images in order to determine steering and throttle values.  However, rather that deep learning models, the computer vision autopilot utilizes traditional computer vision algorithms, such as Canny edge detection, to interpret images of the track.  The computer vision autopilot is specifically designed to make it easy to write your own algorithm and use it in place of the built-in algorithm.
+The computer vision autopilot, like the deep learning autopilot, interprets camera images in order to determine steering and throttle values.  However, rather than deep learning models, the computer vision autopilot utilizes traditional computer vision algorithms, such as Canny edge detection, to interpret images of the track.  The computer vision autopilot is specifically designed to make it easy to write your own algorithm and use it in place of the built-in algorithm.
 
 ![The Computer Vision Autopilot](/assets/cv_track.png)
 
-The built-in algorithm is a line following algorithm; it expects the track to have a center line, preferably solid, that it can detect.  The expected color of the line can be tuned with configuration, but by default it expects a yellow line.  The algorithm calculates the distance of the line from the center of hte image and a PID controller uses that value to calculate a steering value.  If the car is to the left of the line then it will turn right.  If the car is to the right of the line then it will turn left.  The chosen steering angle is proportional to the distance from the line.  The chosen throttle is inversely proportional to the steering angle so that the car will go faster on a straight path and slow down for turns.  More details on the algorithm and the configuration parameters are discussed below.
+The built-in algorithm is a line following algorithm; it expects the track to have a center line, preferably solid, that it can detect.  The expected color of the line can be tuned with configuration; by default it expects a yellow line.  The algorithm calculates the distance of the line from the center of the image, then a PID controller uses that value to calculate a steering value.  If the car is to the left of the line then it will turn right.  If the car is to the right of the line then it will turn left.  The chosen steering angle is proportional to the distance from the line.  The chosen throttle is inversely proportional to the steering angle so that the car will go faster on a straight path and slow down for turns.  More details on the algorithm and the configuration parameters are discussed below.
 
-
-<div class="video-container" align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bN4xvfQ5iKY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<div>Computer Vision Autopilot with camera pointed at horizon</div>
-</div><p><br/></p>
-
-
-What if your track does not have a center line; what if it just has a left and right lane boundary lines; you don't want to have to drive on a boundary.  What if it is a sidewalk?  What if you simply want to make your own algorithm?  The computer vision template is designed to make the pretty easy.  You can write you own part in Python to use as the autopilot and simply change the configuration in your myconfig.py to point to it.  Your part can utilize computer vision parts in [cv.py](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/cv.py) or you can call OpenCV's python api directly.  We present a simplified example below.
+But what if your track does not have a center line; what if it just has a left and right lane boundary lines?  What if it is a sidewalk?  What if you simply want to implement your own algorithm?  The computer vision template is designed to make that pretty easy.  You can write your own part in Python to use as the autopilot and simply change the configuration in your myconfig.py to point to it.  Your part can utilize computer vision parts in [cv.py](https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/cv.py) or you can call OpenCV's python api directly.  We present a simplified example below.
 
 >> IMPORTANT: The computer vision template requires that opencv is installed.  Opencv is pre-installed on the Jetson Nano, but it must be explicitly installed on the Raspberry Pi. See Raspberry Pi installation [Step 9](/guide/robot_sbc/setup_raspberry_pi/#step-9-optional-install-opencv-dependencies) and [Step 11](/guide/robot_sbc/setup_raspberry_pi/#step-11-install-donkeycar-python-code).  
 
@@ -36,12 +29,12 @@ donkey createcar --template=cv_control --path=~/mycar --overwrite
 The built-in algorithm can follow a line using the camera.  By default it is tuned for a yellow line, but the color that it tracks can be configured.  Many other aspects of the algorithm can be tuned.  Below is as description of the algorithm and how it uses the configuraton values.  The values themselves are listed and described afterwards.
 
 
-0. If `TARGET_PIXEL` is None, then use steps 1 to 5 to estimate the target (expected) position of the line.
-1. Get copy of the image rows at `SCAN_Y` and `SCAN_HEIGHT` pixels height.  So the result is a block of pixels as wide as the image and `SCAN_HEIGHT` high.
+0. If `TARGET_PIXEL` is None, then use steps 1 to 5 to estimate the target (the expected) position of the line.
+1. Copy the image rows at `SCAN_Y` and `SCAN_HEIGHT` pixels height.  So the result is a block of pixels as wide as the image and `SCAN_HEIGHT` high.
 2. Convert the pixels from `RBG` red-gree-blue color space to `HSV` hue-saturation-value color space.  
 3. The algorithm then identifies all the pixels in the block that have an HSV color between `COLOR_THRESHOLD_LOW` and `COLOR_THRESHOLD_HIGH`.
-4. Once the pixels with our color target are isolated then a histogram is created that creates counts of yellow pixels from left to right for each 1 pixel wide by `SCAN_HEIGHT` pixel high slice.
-5. The x value (horizontal offset) of the slice with the most yellow pixels is chosen.  This is where we think the yellow line is.
+4. Once the pixels with the color target are isolated then a histogram is created that creates counts of yellow pixels from left to right for each 1 pixel wide by `SCAN_HEIGHT` pixel high slice.
+5. The x value (horizontal offset) of the slice with the most yellow pixels is chosen.  This is where the algorithm thinks the yellow line is.
 6. The difference between this x-value and the `TARGET_PIXEL` value is used as the value the PID algorithm uses to calculate a new steering.  If the value is to the left of the `TARGET_PIXEL` more than `TARGET_THRESHOLD` pixels then the car steers right; if hte value is to the right of `TARGET_PIXEL` more than `TARGET_THRESHOLD` pixels the the car steers left.  If the value is withing `TARGET_THRESHOLD` pixels of `TARGET_PIXEL` then steering is not changed.
 7. The steering value is used to decide if the car should speed up or slow down.  If steering is not changed then the throttle is increased by `THROTTLE_STEP`, but not over `THROTTLE_MAX`.  If steering is changed then throttle is decreased by `THROTTLE_STEP`, but not below `THROTTLE_MIN`.
 
@@ -52,45 +45,26 @@ The complete source code is provided and discussed in the [LineFollower class](#
 
 
 ### Camera Setup
-The first video above shows the camera setup approximately how it would be using the standard Donkeycar cage.  It is setup to see to the horizon so that it can see turns from far away.  This is good when going very fast.  However you can also see in the video that the detected line is quite thin and there are some false positives around it.  This could lead to false positives that cause the vehicle to move off the line.
-
-If you are not going fast and you want to be as accurate as possible then pointing the camera down at the line is a good idea.  See this video which shows the car following the line with the camera pointed straigh down at the line.
-
-
-<div class="video-container" align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aVLZ7fiprvE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<div>Computer Vision Autopilot with camera pointed straight down</div>
-</div><p><br/></p>
-
-Here is a video of the vehicle following a turn, using a setup where the camera is pointed straight down.
-
-
-<div class="video-container" align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3RN81fRefjY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-<div>Computer Vision Autopilot following a curve with camera pointed straight down</div>
-</div><p><br/></p>
-
-
-So if your camera can be adjusted then you can make trade-offs between accuracy (point it down) and speed (point to to the horizon).
+The image at the top of the page shows the camera setup approximately how it would be using the standard Donkeycar cage.  It is angled to see to the horizon so that it can see turns from far away.  This is good when going very fast because you can see far ahead.  However if the detected line is very thin then it could have artifacting (noise) that could lead to false positives that cause the vehicle to move off the line. If you are not going fast and you want to be as accurate as possible then pointing the camera down at the line is a good idea.  So if your camera can be adjusted then you can make trade-offs between accuracy (point it down) and speed (point to to the horizon).
 
 ### Choosing Parameters for the LineFollower
-The computer vision template is a little different than than the deep learning and path follow templates; there is no data recording.  After setting your configuration parameters you just put your car on the track that has the line that you want to follow and then chage from user mode to one of the auto-pilot modes; full-auto or auto-steering.  The complete set of configuration parameters can be found in the [LineFollower Configuration](#linefollower-configuration) section below; we will discuss the most important configuration in more detail in this section.
+The computer vision template is a little different than the deep learning and path follow templates; there is no data recording.  After setting your configuration parameters you just put your car on the track that has the line that you want to follow and then change from user mode to one of the auto-pilot modes; full-auto or auto-steering.  The complete set of configuration parameters can be found in the [LineFollower Configuration](#linefollower-configuration) section below; we will discuss the most important configuration in more detail in this section.
 
 #### SCAN_Y and SCAN_HEIGHT
-The rectangular area that will be scanned for the line is determined with the `SCAN_Y` and `SCAN_HEIGHT`; called the detection area.
+The rectangular area that will be scanned for the line, called the detection area, is determined with the `SCAN_Y` and `SCAN_HEIGHT`.
 
-When in autopilot mode, the `LineFollower` shows the detection area as a horizontal black bar.  Pixels that fall with the color threshold range (see next sectino) are drawn as white pixels. Ideally only the pixels in the line that are in the detection bar will show as white; any white pixels that are NOT part of the line you want to follow are considered false positives.  If the false positives are relatively disperse then they should not interfere with detecting the line.  However, if there are big areas of white then they might trick the algorithm.  See the next section of how to adjust the color threshold range to minimize false positives.
+When in autopilot mode, the `LineFollower` shows the detection area as a horizontal black bar.  Pixels that fall within the color threshold range (see next sectino) are drawn as white pixels. Ideally, only the pixels in the line that are in the detection bar will show as white; any white pixels that are NOT part of the line that you want to follow are considered false positives.  If the false positives are relatively disperse then they should not interfere with detecting the line.  However, if there are big areas of white false positives then they might trick the algorithm.  See the next section of how to adjust the color threshold range to minimize false positives.
 
 The image below shows the detection area and the detected line.
 
 ![The Detection Area](/assets/cv_track_telemetry.png)
 
 #### COLOR_THRESHOLD_LOW, COLOR_THRESHOLD_HIGH
-The color threshold values represent the range of colors used to detect the line; they should be chosen to include the colors in the line in the area that it passes through the detection bar and ideally they should not include any other colors.  The color threshold values are in HSV (Hue, Saturation, Color) format, not RGB format.  RGB color space is how a computer shows colors.  HSV color space is closer to how human's perceive color.  For our purposes the 'hue' part is the 'pure' color without regard for shadows or lighting.  This makes it easier to find a color because it is one number, rather than combination of 3 numbers.  
+The color threshold values represent the range of colors used to detect the line; they should be chosen to include the colors in the line in the area that it passes through the detection bar and ideally they should not include any other colors.  The color threshold values are in HSV color space (Hue, Saturation, Color) format, not RGB format.  RGB color space is how a computer shows colors.  HSV color space is closer to how humans perceive color.  For our purposes the 'hue' part is the 'pure' color without regard for shadows or lighting.  This makes it easier to find a color because it is one number, rather than combination of 3 numbers.  
 
->> There are many online converters between RGB and HSV.  This one was used when creating this documentation; [peko-step](https://www.peko-step.com/en/tool/hsvrgb_en.html)  I like that tool because it will allow the Saturation and Value to be output in the range of 0.255, which is what we need.  IMPORTANT: The online tools use the standard way of representing HSV, which is a Hue value of 0 to 359 degrees, Saturation of 0 to 100%, Value of 0 to 100%.  OpenCV, which our code is based on, use a Hue value of 0 to 179, Saturation of 0 to 255 and value of 0 to 255; so be aware.
+>> There are many online converters between RGB and HSV.  This one was used when creating this documentation; [peko-step](https://www.peko-step.com/en/tool/hsvrgb_en.html)  I like that tool because it will allow the Saturation and Value to be output in the range of 0.255, which is what we need.  IMPORTANT: The online tools use the standard way of representing HSV, which is a Hue value of 0 to 359 degrees, Saturation of 0 to 100%, Value of 0 to 100%.  OpenCV, which our code is based on, uses a Hue value of 0 to 179, Saturation of 0 to 255 and value of 0 to 255; so be aware that you may need to convert from the tool's values to the OpenCV values when changing these configurations.
 
-When choosing the threshold colors it is important to take into account what the camera will see including the lighting conditions.  Donkeycar includes a script to make this easy to do.  the `hsv_picker.sh` script allows you tove view what that camera sees or alternatively to choose an image.  So if you have a full linux desktop on your car then you can run the script and view the camera image.  If you do not have a full linux desktop, so you can view graphics on your car, then you can run the car and open the web view in a browser on your host laptop at take a screen shot save save it.  In either case, arrange the car on the course so it can see the line as it would see it when you drive in autopilot so you are getting a realistic view.  
+When choosing the threshold colors it is important to take into account what the camera will see including the lighting conditions.  Donkeycar includes a script to make this easy to do.  the `hsv_picker.sh` script allows you to view the live camera image or alternatively to choose a static image to view.  So if you are running a desktop image on your car (so not a server image or headless image) then you can run the script and view the camera image.  If you do not have a desktop on the car, then you can run the car and open the web view in a browser on your host laptop at take a screen shot to save it, then use that static image with the `hsv_picker.sh` script on your laptop computer.  In either case, arrange the car on the course so it can see the line as it would see it when you drive in autopilot so you are getting a realistic view.  
 
 You can run the `hsv_picker.sh` script to view a screen shot image; with the donkey python environment activated run the script from the root of your donkeycar repo folder;
 ```
@@ -114,9 +88,9 @@ python scripts/hsv_picker.sh --camera=2  --width=320 --height=240
 The image above shows the `hsv_script.sh` with a web ui screenshot loaded.  The blue line in the center of the image is the line that we want to follow.  The horizontal black bar in the camera image is the detection bar; this is defined by `SCAN_Y` and `SCAN_HEIGHT` and is the area where the mask is applied to try to isolate the pixels in the line.  When pixels are detected they will be draw in white in the detection area.
 
 
-The bottom of the screen has 6 trackbars to select the 3 parts of the low HSV value and the 3 parts of the high HSV value that are used to create a mask to pull out the pixels in the line.  You can move those scrollbars manually to try to find the right range to pick out the line.  As you change them the resulting mask will be applied to the image and you will see pixels start to turn back.  The Hue value is typically the most important value to get the range correct on.  You can reset the trackbars and clear the mask anytime by selecting the Escape key on the keyboard.
+The bottom of the screen has 6 trackbars to select the 3 parts of the low HSV value and the 3 parts of the high HSV value that are used to create a mask to pull out the pixels in the line.  You can move those scrollbars manually to try to find the best values for the detection range.  As you change the scrollbars the resulting mask will be applied to the image and you will see pixels start to turn back.  The Hue value is typically the most important value.  You can reset the trackbars and clear the mask anytime by selecting the Escape key on the keyboard.
 
-Using the scrollbars works, but there is an easier way.  You can also just select a rectangular area by clicking-dragging-releasing and the pixels in that area will be search for a low and high value and the trackbars will by updated with those low and high values.  So the easier way to find the mask for the line is to select a rectangular area _on the line_ itself.  You can fine-tune the selected mask using the trackbars.
+Using the scrollbars works, but there is an easier way.  You can also just select a rectangular area by clicking-dragging-releasing; the pixels in that area will be searched for a low and high value and the trackbars will by updated with those low and high values.  So the easiest way to find the mask for the line is to select a rectangular area _on the line_ itself.  You can fine-tune the selected mask using the trackbars.
 
 The image below shows the mask that was created by selecting a rectangular area within the blue line.
 
@@ -132,15 +106,16 @@ Features of `hsv_picker.sh`:
 
 
 #### TARGET_PIXEL
-The `TARGET_PIXEL` value is the horizontal position of the line to follow in the image.  The line follow algorithm will adjust steering to try to keep the line at that position in the image.  More specifically, the difference between the `TARGET_PIXEL` value and where the line follow algorithm detects that actual line is in the image is used by a PID controller to adjust steering (see [The PID Controller](#the-pid-controller)) below.
+The `TARGET_PIXEL` value is the expected horizontal position of the line to follow in the image.  The line follow algorithm will adjust steering to try to keep the line at that position in the image.  More specifically, the difference between the `TARGET_PIXEL` value and where the line follow algorithm detects that actual line is in the image is used by a PID controller to adjust steering (see [The PID Controller](#the-pid-controller)) below.
 
-If you are the only car on the course, then you probably want to the car to drive directly on the line to follow.  In this case setting `TARGET_PIXEL` to  the horizontal center of the image at `(IMAGE_W / 2)` means the auto-pilot assumes the line to follow should be directly in the middle of the image and so the car will try to stay in the middle.  So if your car actually starts to the left or right of that line, it will quickly move the the line and stay on it.
+If you are the only car on the course, then you probably want the car to drive directly on the line to follow.  In this case setting `TARGET_PIXEL` to  the horizontal center of the image at `(IMAGE_W / 2)` means the auto-pilot assumes the line to follow should be directly in the middle of the image and so the car will try to stay in the middle.  So if your car actually starts to the left or right of that line, it will quickly move the the line and stay on it.
 
 However, if you are on a course where two cars drive at the same time (there are two lanes separated by a line), then you probably want your car to stay in it's lane.  In that case you would set `TARGET_PIXEL` to None, which will cause the car to detect the location of the line at startup.  The auto-pilot will then assume the line should stay at that position in the image, and so it will the try to keep the car it it's lane to make that true.
 
+>> If you are really motivated then you might try implementing a lane-changing algorithm that would dynamically change the target pixel value in order to move from one lane to another.
 
 ### LineFollower Configuration
-The complete set configuration values and their defaults can be found in [donkeycar/templates/cfg_cv_control.py](https://github.com/autorope/donkeycar/blob/main/donkeycar/templates/cfg_cv_control.py#L556) and is copied here for convenience.
+The complete set of configuration values and their defaults can be found in [donkeycar/templates/cfg_cv_control.py](https://github.com/autorope/donkeycar/blob/main/donkeycar/templates/cfg_cv_control.py#L556) and is copied here for convenience.
 
 ```
 # configure which part is used as the autopilot - change to use your own autopilot
@@ -196,7 +171,7 @@ It is very common to use a Proportional Integral Derivative (PID) controller to 
 
 
 ## Writing a Computer Vision Autopilot
-You can use the `CV_CONTROLLER_*` configuration values to point to a python file and class that implements your own computer vision autopilot part  Your autopilot class it must conform to the [donkeycar part](/parts/about/#parts) standard.  You can also determine the name of the input values, output values and run_condition.  The default configuration values point the the included LineFollower part.  At a minimum computer vistion autpilot part takes the camera image as an input and outputs the autopilot's throttle and steering values.
+You can use the `CV_CONTROLLER_*` configuration values to point to a python file and class that implements your own computer vision autopilot part.  Your autopilot class must conform to the [donkeycar part](/parts/about/#parts) standard.  You can also determine the name of the input values, output values and run_condition.  The default configuration values point the the included LineFollower part.  At a minimum computer vistion autpilot part takes the camera image as an input and outputs the autopilot's throttle and steering values.
 
 Let's create a simple custom computer vision part.  It won't be much of an autopilot because it will just output a constant throttle and steering value and an image that counts that frames.
 
