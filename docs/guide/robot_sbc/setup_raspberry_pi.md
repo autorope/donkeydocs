@@ -19,7 +19,7 @@ using a 128GB microSD card with U3 speed, like for example
 [this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
 
 
-## Installation for Donkey Car main (>= 5.0) using Raspberry Pi OS Bullseye
+## Installation for Donkey Car main (>= 5.0) using Raspberry Pi OS Bookworm
 
 This installation is using Raspberry Pi OS Bullseye (64 bit).
 
@@ -35,32 +35,25 @@ This installation is using Raspberry Pi OS Bullseye (64 bit).
 
 Raspberry Pi OS can now be installed with the graphical installer _Raspberry Pi
 Imager_ which can be downloaded from [here](https://www.raspberrypi.com/software/).
-Please download and start the application.
+Please download and start the application, with the SD card you'll be using for your RaspberryPi inserted into your computer's SD card reader.
 
-In the drop-down menu 'Operating System' go to 'Raspberry Pi OS (other)' and
-then select either of 'Raspberry Pi OS (64 bit)' or 'Raspberry Pi OS Lite
-(64 bit)'. Note, that both OS will work, but if your Pi is old, has only
-little ram or only a small SD card, then you might be better off using the
-headless Lite version.
+First choose the device you'll be using: Raspberry Pi 5 or Raspberry Pi 4
 
-We have found that running the full desktop version of the OS on the Pi doesn't
-show any measurable performance impacts on an RPi 4 with 4GB and having
-access to a desktop can be beneficial. You can always switch to booting
-into headless later on, if you prefer to.
+Then click on 'Operating System' and select 'Raspberry Pi OS (64 bit)' 
 
-Click the little cog in the lower right corner or press 'Ctrl-Shift-X' to
-enter the advanced settings. Please set the hostname (here chosen to be
-'donkeypi'), your wifi, region, local settings, etc. It should look like here:
+Then click on 'Storage' and select your SD card. 
+
+Press 'NEXT' and you will be given the option to apply 'OS customization settings'. Select 'Edit Settings'
+
+Here you can enter the specifics of your username. password and wifi details. Set a hostname (here chosen to be
+'donkeypi'), desired password, your wifi, region, etc. It should look like this:
 ![imager_advanced_dialog](/assets/rpi_imager.png)
 
-Plug an SD card into your card reader, selected it as the medium, and
-press 'Write' to burn the OS onto the card. You should be able to ssh into
+Everything else can be left at the default. When you're done, click on 'Save' which will bring you back to the OS customization dialog. Click on 'Yes' and it will write the OS to your SD card.
+
+When it's done, you can place your SD card in the Pi and power it on. It will take a minute or so to boot the first time, but once it has done so (the green light stops flashing) You should be able to ssh into
 the Pi through your network using the hostname 'donkeypi.local' (or whatever
 you chose in the menu).
-
-If you want to connect to the desktop on the Pi, you need to install VNC
-Viewer on your host PC
-from [Real VNC](https://www.realvnc.com/en/connect/download/viewer/).
 
 
 ### Step 2: Update and Upgrade
@@ -111,29 +104,6 @@ sudo apt install libcap-dev
 ```
 
 ### Step 5: Install Donkeycar Python Code
-
-Now there are two different installations possible. Very likely you will 
-want to do the user install. Then you will perform Step 
-[_User install_](#user-install). In case 
-you want to debug or edit the source code, you will need to do the more advanced 
-[_Developer install_](#developer-install). But you can do only one.
-
-> _**Note**_: Only do User install or Developer install but not both!
-
-### User install
-
-As you have activated the new `env` already you simply type:
-
-```bash
-pip install donkeycar[pi]
-```
-
-This will install the latest release.
-
-### Developer install
-
-Here you can choose which branch or tag you want to install, and you can 
-edit and/or debug the code, by downloading the source code from GitHub.
 
 Create a project directory you would like to use as the 
 head of your projects, change into it and download and install `donkeycar` 
