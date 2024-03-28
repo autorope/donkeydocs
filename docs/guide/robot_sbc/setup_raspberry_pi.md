@@ -46,14 +46,14 @@ Then click on 'Storage' and select your SD card.
 Press 'NEXT' and you will be given the option to apply 'OS customization settings'. Select 'Edit Settings'
 
 Here you can enter the specifics of your username. password and wifi details. Set a hostname (here chosen to be
-'donkeypi'), desired password, your wifi, region, etc. It should look like this:
+'donkeycar', desired password, your wifi, region, etc. It should look like this:
 ![imager_advanced_dialog](/assets/imager.png)
 
 Everything else can be left at the default. When you're done, click on 'Save' which will bring you back to the OS customization dialog. Click on 'Yes' and it will write the OS to your SD card.
 
 When it's done, you can place your SD card in the Pi and power it on. It will take a minute or so to boot the first time, but once it has done so (the green light stops flashing)  
 
-You should be able to ssh intothe Pi through your network using the hostname 'donkeycar.local' (or whatever
+You should be able to ssh in to the Pi through your network using the hostname 'donkeycar.local' (or whatever
 you chose in the menu) like this: ```ssh username@hostname.local```. So in the above example it would be ```ssh mydonkey@donkeycar.local``` . 
 
 
