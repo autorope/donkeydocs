@@ -52,7 +52,7 @@ Here you can enter the specifics of your username. password and wifi details. Se
 Everything else can be left at the default. When you're done, click on 'Save' which will bring you back to the OS customization dialog. Click on 'Yes' and it will write the OS to your SD card.
 
 When it's done, you can place your SD card in the Pi and power it on. It will take a minute or so to boot the first time, but once it has done so (the green light stops flashing) You should be able to ssh into
-the Pi through your network using the hostname 'donkeypi.local' (or whatever
+the Pi through your network using the hostname 'donkeycar.local' (or whatever
 you chose in the menu).
 
 
