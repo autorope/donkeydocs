@@ -68,7 +68,7 @@ sudo apt-get upgrade
 
 ### Step 3: Raspi-config
 
-Doing it in the shell through:
+Launch the Raspi config utility:
 
 ```bash
 sudo raspi-config
