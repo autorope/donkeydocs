@@ -4,7 +4,7 @@
 
 Please read this carefully as Donkey Car is now installed differently
 depending on the version. The latest Donkey Car version is 5.x and requires 
-64-bit Raspberry Pi OS Bullseye. 
+64-bit Raspberry Pi OS Bookworm. 
 
 If you're using an older version of Donkey Car, like 4.X then you need to 
 use the older Raspberry Pi OS (Raspian) version Buster, jump to 
@@ -14,14 +14,14 @@ Tub data, car templates, etc are compatible between the two versions as well
 as models in keras format `.h5`. However, Tensorflow Lite models `.tflite`
 are not and need to be regenerated.
 
-In general, we recommend the RPi 4 with 4GB of ram. It's also recommended 
+In general, we recommend the RPi 4 or 5 with 4GB of ram. It's also recommended 
 using a 128GB microSD card with U3 speed, like for example 
 [this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
 
 
 ## Installation for Donkey Car main (>= 5.0) using Raspberry Pi OS Bookworm
 
-This installation is using Raspberry Pi OS Bullseye (64 bit).
+This installation is using Raspberry Pi OS Bookworm (64 bit).
 
 * [Step 1: Install Operating System](#step-1-install-raspberry-pi-os)
 * [Step 2: Update and Upgrade](#step-2-update-and-upgrade)
@@ -51,9 +51,10 @@ Here you can enter the specifics of your username. password and wifi details. Se
 
 Everything else can be left at the default. When you're done, click on 'Save' which will bring you back to the OS customization dialog. Click on 'Yes' and it will write the OS to your SD card.
 
-When it's done, you can place your SD card in the Pi and power it on. It will take a minute or so to boot the first time, but once it has done so (the green light stops flashing) You should be able to ssh into
-the Pi through your network using the hostname 'donkeycar.local' (or whatever
-you chose in the menu).
+When it's done, you can place your SD card in the Pi and power it on. It will take a minute or so to boot the first time, but once it has done so (the green light stops flashing)  
+
+You should be able to ssh intothe Pi through your network using the hostname 'donkeycar.local' (or whatever
+you chose in the menu) like this: ```ssh username@hostname.local```. So in the above example it would be ```ssh mydonkey@donkeycar.local``` . 
 
 
 ### Step 2: Update and Upgrade
