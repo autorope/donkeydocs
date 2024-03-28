@@ -6,8 +6,8 @@ Please read this carefully as Donkey Car is now installed differently
 depending on the version. The latest Donkey Car version is 5.x and requires 
 64-bit Raspberry Pi OS Bookworm. 
 
-If you're using an older version of Donkey Car, like 4.X then you need to 
-use the older Raspberry Pi OS (Raspian) version Buster, jump to 
+If you're using an older version of Donkey Car, sucbh as 4.X, then you need to 
+use the older Raspberry Pi OS (Raspian) version called Buster. Jump to 
 those instructions [here](#step-1-flash-operating-system).
 
 Tub data, car templates, etc are compatible between the two versions as well
@@ -19,7 +19,7 @@ using a 128GB microSD card with U3 speed, like for example
 [this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
 
 
-## Installation for Donkey Car main (>= 5.0) using Raspberry Pi OS Bookworm
+## Installation for latest Donkey Car (>= 5.0) using Raspberry Pi OS Bookworm
 
 This installation is using Raspberry Pi OS Bookworm (64 bit).
 
@@ -33,7 +33,7 @@ This installation is using Raspberry Pi OS Bookworm (64 bit).
 
 ### Step 1: Install Raspberry Pi OS
 
-Raspberry Pi OS can now be installed with the graphical installer _Raspberry Pi
+Raspberry Pi OS can be installed with the graphical installer _Raspberry Pi
 Imager_ which can be downloaded from [here](https://www.raspberrypi.com/software/).
 Please download and start the application, with the SD card you'll be using for your RaspberryPi inserted into your computer's SD card reader.
 
