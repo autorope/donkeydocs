@@ -47,7 +47,7 @@ Press 'NEXT' and you will be given the option to apply 'OS customization setting
 
 Here you can enter the specifics of your username. password and wifi details. Set a hostname (here chosen to be
 'donkeypi'), desired password, your wifi, region, etc. It should look like this:
-![imager_advanced_dialog](/assets/rpi_imager.png)
+![imager_advanced_dialog](/assets/imager.png)
 
 Everything else can be left at the default. When you're done, click on 'Save' which will bring you back to the OS customization dialog. Click on 'Yes' and it will write the OS to your SD card.
 
