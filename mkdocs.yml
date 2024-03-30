@@ -34,8 +34,6 @@ nav:
     - Cameras: parts/cameras.md
     - Controllers: parts/controllers.md
     - Odometry/encoders: parts/odometry.md
-    - RC: parts/rc.md
-    - RC Hat: parts/rc_hat.md
     - Keras: parts/keras.md
     - Stores: parts/stores.md
     - 'Fastai': parts/fastai.md    
