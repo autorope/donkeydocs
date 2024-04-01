@@ -3,8 +3,9 @@
 ![donkey](/assets/logos/rpi_logo.png)
 
 Please read this carefully as Donkey Car is now installed differently
-depending on the version. The latest Donkey Car version is 5.x and requires 
-64-bit Raspberry Pi OS Bookworm. 
+depending on the version. The latest Donkey Car version is 5.1 and requires 
+64-bit Raspberry Pi OS Bookworm. Only in case you are using 5.0 you would 
+install 64-bit Bullseye.
 
 If you're using an older version of Donkey Car, sucbh as 4.X, then you need to 
 use the older Raspberry Pi OS (Raspian) version called Buster. Jump to 
@@ -19,14 +20,14 @@ using a 128GB microSD card with U3 speed, like for example
 [this SanDisk SD Card.](https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&qid=1676908353&sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&sr=8-4)
 
 
-## Installation for latest Donkey Car (>= 5.0) using Raspberry Pi OS Bookworm
+## Installation for latest Donkey Car (>= 5.1) using Raspberry Pi OS Bookworm
 
 This installation is using Raspberry Pi OS Bookworm (64 bit).
 
 * [Step 1: Install Operating System](#step-1-install-raspberry-pi-os)
 * [Step 2: Update and Upgrade](#step-2-update-and-upgrade)
 * [Step 3: Raspi-config](#step-3-raspi-config)
-* [Step 4: Setup Virtual Env](#step-4-setup-virtual-env)
+* [Step 4: Setup Virtual Environment](#step-4-setup-virtual-environment)
 * [Step 5: Install Donkeycar Python Code](#step-5-install-donkeycar-python-code)
 * Then [Create your Donkeycar Application](/guide/create_application/)
 
@@ -92,7 +93,7 @@ and apply the settings there.
 > You will need to run `sudo apt -y install pip git` afterwards.
 
 
-### Step 4: Create a virtual environment for donkeycar
+### Step 4: Setup virtual environment
 
 To create a virtual environmnet run the following from your home directory:
 ```bash
@@ -107,6 +108,14 @@ sudo apt install libcap-dev
 ```
 
 ### Step 5: Install Donkeycar Python Code
+
+#### User Install (preferred way)
+Simply type:
+```bash
+pip install donkeycar[pi]
+```
+
+#### Developer Install (only required if you want to checkout different forks, branches, tags)
 
 Create a project directory you would like to use as the 
 head of your projects, change into it and download and install `donkeycar` 
@@ -129,7 +138,6 @@ You can validate your tensorflow install with
 python -c "import tensorflow; print(tensorflow.__version__)"
 ```
 
-##  
 
 ----
 ## Installation for Donkeycar <= 4.5 using Raspberry Pi OS Buster
