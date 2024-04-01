@@ -34,7 +34,13 @@ As you have activated the new `donkey` env already you simply type:
 ```bash
 pip install donkeycar[pc]
 ```
-This will install the latest release.
+This will install the latest release. Note, if you are using ZSH then
+you have to escape the `[` and `]`, i.e. 
+
+```bash
+pip install donkeycar\[pc\]
+```
+
 
 ### Developer install
 
