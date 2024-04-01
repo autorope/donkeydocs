@@ -9,7 +9,7 @@
 Setup your `donkey` conda env with:
 
 ```bash
-conda create -n donkey python=3.9
+conda create -n donkey python=3.11
 conda activate donkey
 ```
 
@@ -28,7 +28,14 @@ As you have activated the new `donkey` env already you simply type:
 ```bash
 pip install donkeycar[pc]
 ```
-if you are using an Intel Mac or you type:
+If you are using ZSH (which is default on MacOS) you need to escape
+`[` and `]` and hence you would rather type:
+
+```bash
+pip install donkeycar\[pc\]
+```
+If you are using an Intel Mac or you type (read above how to change
+this if you are using ZSH):
 
 ```bash
 pip install donkeycar[macos]
