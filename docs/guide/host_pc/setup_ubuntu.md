@@ -67,8 +67,8 @@ conda env remove -n donkey
 ```
 
 The newer version of Tensorflow is already built with GPU support. If you 
-have an Nvidia GPU, install Cuda 11 following instructions on Nivida's page 
-[here](https://developer.nvidia.com/cuda-11.0-download-archive)
+have an Nvidia GPU, install Cuda 12 following instructions on Nivida's page 
+[here](https://developer.nvidia.com/cuda-toolkit-archive)
 
 * Optional Install Coral edge tpu compiler
 
@@ -79,7 +79,9 @@ instructions](https://coral.withgoogle.com/docs/edgetpu/compiler/).
 * Optionally configure PyTorch to use GPU - only for NVidia Graphics cards
 
 If you have an NVidia card, you should update to the latest drivers and 
-[install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup).
+[install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
+You will also need to change the code to use the GPU in a few places, so
+you need the developer install. 
 
 ```bash
 conda install cudatoolkit=11 -c pytorch
