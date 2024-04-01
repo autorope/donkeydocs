@@ -15,7 +15,7 @@ bash ./Miniconda3-py39_23.3.1-0-Linux-x86_64.sh
 Setup your `donkey` conda env with:
 
 ```bash
-conda create -n donkey python=3.9
+conda create -n donkey python=3.11
 conda activate donkey
 ```
 
