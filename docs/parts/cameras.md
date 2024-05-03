@@ -14,6 +14,8 @@ If you are on a raspberry pi and using the recommended pi camera ("PICAM"), then
 
 This works with all Raspberry Pi cameras, including the original Raspberry Pi Camera Module based on the 5 megapixel OV5647 chipset and the Raspberry Pi Camera Module v2 based on the Sony IMX219 chip.  These cameras are easily obtainable and are offered in generic (clone) versions by many vendors.
 
+> NOTE: The latest donkeycar assumes 64bit RaspberryPi OS.  This version of the OS has changed how camera software works. If you are having trouble with your camera then please make sure it works outside of donkeycar by using the build-in camera applications to capture a still and a video.  See the [RaspberryPi OS Camera Software](https://www.raspberrypi.com/documentation/computers/camera_software.html#introducing-the-raspberry-pi-cameras) documentation.
+
 ### Jetson Nano:
 
 The Jetson does not have a driver for the original 5 megapixels OV5647 based Raspberry Pi Camera, but it does have a driver for the v2 camera based on the IMX219 chip.  Indeed the recommended camera is based on the IMX219 chip.
