@@ -10,17 +10,7 @@ The default controller to drive the car with your phone or browser. This has a w
 4. Keyboard input via the 'ikjl' keys.
 
 > Note: Recently iOS has [disabled default Safari](https://www.macrumors.com/2019/02/04/ios-12-2-safari-motion-orientation-access-toggle/) access to motion control. 
-
-## RC Controller
-If you bought an RC car then it might have come with a standard 2.4GHz car radio and receiver as shown in picture below. This can be used to drive the car. There are a few ways this can be accomplished.
-
-* You can use a Teensy or Arduino microcontroller that can emulate a USB HID device and use this [arduino sketch](https://github.com/n6wxd/wireless-rc-adapter) to make your RC controller emulate a game controller.  Instructions for wiring and using the sketch can be found in the associated [wiki](https://github.com/wireless-rc-adapter/wireless-rc-adapter/wiki).  Once that is setup you would choose `CONTROLLER_TYPE = "rc3"` as the controller type in your `myconfig.py` configuration.  
  
-* You can wire your RC car's receiver directly to the Raspberry Pi's gpio pins to read the length of the PWM steering and throttle signals being sent by your RC controller.  Note that we don't recommend this for Jetson Nano users; the gpio support is not adequate. You can also use the RaspberryPi pins to output PWM directly to the car's servo and ESC, without the need for an I2C servo driver board. You will need to install the PiGPIO driver on you RaspberryPi to to make this work; it is not installed by default.   If you wire your RC receiver to gpio pins, then you would choose `CONTROLLER_TYPE = pigpio_rc` in your `myconfig.py` configuration. A full tutorial on implementing the RC controller and servo/esc control via gpio pins is [here](rc.md).
-
-* Finally you can use the Donkeycar RC Hat.  This board plugs into your RaspberryPi's gpio header and exposes connections for your RC Reciever's servo and throttle channels.  It can also be used to control the car's steering servo and ESC, so you don't need a PCA9685 board.  It includes a very handy OLED display that can be used to show your car's IP address on startup; see this [DIYRobocars article](https://diyrobocars.com/2021/12/29/show-your-raspberrypi-ip-address-on-startup-with-an-oled/).  See the [docs](rc_hat.md) for how to setup the RC Hat.  The Donkeycar RC Hat can be purchased in the [Donkeycar Store](https://store.donkeycar.com/collections/accessories/products/donkey-car-rc-hat).
-
-![RC Hat for RaspberryPi](../assets/rc_hat.jpg "The Donkey RC Hat for RaspberryPi")
 
 ## Joystick Controller
 
