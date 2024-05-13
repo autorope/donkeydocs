@@ -104,7 +104,7 @@ source ~/.bashrc
 
 Install required libraries
 ```bash
-sudo apt install libcap-dev
+sudo apt install libcap-dev libhdf5-dev
 ```
 
 ### Step 5: Install Donkeycar Python Code
