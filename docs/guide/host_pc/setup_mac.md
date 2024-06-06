@@ -2,7 +2,7 @@
 
 ![donkey](/assets/logos/apple_logo.jpg)
 
-* Install [miniconda Python 3.9 64 bit](https://conda.io/miniconda.html)
+* Install [miniconda Python 3.11 64 bit](https://conda.io/miniconda.html)
 
 * Start Terminal
 
