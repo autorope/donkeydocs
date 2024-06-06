@@ -5,11 +5,11 @@
 
 * Open the Terminal application.
 
-* Install miniconda Python 3.9 64 bit. 
+* Install miniconda Python 3.11 64 bit. 
 
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-py39_23.3.1-0-Linux-x86_64.sh
-bash ./Miniconda3-py39_23.3.1-0-Linux-x86_64.sh
+wget https://repo.anaconda.com/miniconda/Miniconda3-py311_24.4.0-0-Linux-x86_64.sh
+bash ./Miniconda3-py311_24.4.0-0-Linux-x86_64.sh
 ```
 
 Setup your `donkey` conda env with:
