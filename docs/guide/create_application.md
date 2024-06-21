@@ -4,27 +4,25 @@ If you are not already, please [ssh into your vehicle](/guide/robot_sbc/setup_ra
 
 ## Create Donkeycar from Template
 
-Create a set of files to control your Donkey with this command:
+Create a set of files to control your Donkey with the [createcar](/utility/donkey/#create-car) command:
 
 ```bash
 donkey createcar --path ~/mycar
 ```
 
-That creates a car using the default deep learning template.  You can also create a car the uses the gps path follow template;
+That creates a car using the default [deep learning template](/guide/deep_learning/train_autopilot/).  You can also create a car that uses the [gps path follow template](/guide/path_follow/path_follow/);
 
 ```bash
 donkey createcar --template=path_follow --path ~/mycar
 ```
 
-You can also create a car the uses the computer vision template;
+You can also create a car that uses the [computer vision template](/guide/computer_vision/computer_vision/);
 
 ```bash
 donkey createcar --template=cv_control --path ~/mycar
 ```
 
->> `mycar` is not a special name; you can name your car folder anything you want.
-
-See also more information on [createcar.](/utility/donkey/#create-car)
+> `mycar` is not a special name; you can name your car folder anything you want. See the [createcar](/utility/donkey/#create-car) documentation for more details.
 
 ## Configure Options
 
