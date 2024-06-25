@@ -233,19 +233,21 @@ Attach the USB battery to the underside of the printed bottom plate using cable 
 
 ### Step 6: Attach Camera
 
-Slip the camera into the slot, cable end first.  However, be careful not to push on the camera lens and instead press the board.
+Slip the camera into the slot, cable end first.  However, **do not to push on the camera lens** and instead press the board.
 ![donkey](../assets/build_hardware/assemble_camera.jpg)
 
-If you need to remove the camera the temptation is to push on the lens, instead push on the connector as is shown in these pictures.  
+The temptation is to push on the lens if you need to remove the camera, but **do not push on the camera lens**; instead push on the connector as is shown in these pictures.  
 ![donkey](../assets/build_hardware/Remove--good.jpg) ![donkey](../assets/build_hardware/Remove--bad.jpg)
 
 Before using the car, remove the plastic film or lens cover from the camera lens.
 
 ![donkey](../assets/build_hardware/6a.png)
 
-It is easy to put the camera cable in the wrong way so look at these photos and make sure the cable is put in properly.  There are loads of tutorials on youtube if you are not used to this.
+It is easy to put the camera cable in the wrong way so look at these photos and make sure the cable is put in properly.  There are loads of tutorials on youtube if you are not used to this.  The Raspberry Pi documentation has an excellent section on how to [Connect the Camera](https://www.raspberrypi.com/documentation/accessories/camera.html#connect-the-camera).
 
 ![donkey](../assets/build_hardware/6b.png)
+
+Later, in the [Install the Software](https://docs.donkeycar.com/guide/install_software/#step-2-install-software-on-donkeycar) steps you will install RaspberryPi OS; at that time you will want to make sure that your camera works correctly; see **Make sure your camera works** in the [Camera](https://docs.donkeycar.com/parts/cameras/#raspberry-pi) part documentation.
 
 ### Step 7: Put it all together
 
