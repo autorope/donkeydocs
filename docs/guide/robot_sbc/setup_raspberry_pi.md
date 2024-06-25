@@ -132,7 +132,9 @@ pip install -e .[pi]
 
 ### Further steps
 
-You can validate your tensorflow install with
+- **Make sure your camera works**.  [Camera connection](https://www.raspberrypi.com/documentation/accessories/camera.html#connect-the-camera) issues are common, especially after [assembly of a new Donkeycar](https://docs.donkeycar.com/guide/build_hardware/#step-6-attach-camera), installation of a new camera or after a crash.  In any of those cases or if you otherwise encounter an camera error when using the Donkeycar software, you should make sure your camera is working properly before asking for help on the [Discord](https://discord.gg/PN6kFeA).  Raspberry Pi OS includes [Camera Software](https://www.raspberrypi.com/documentation/computers/camera_software.html) that will take a picture or stream video.  If you have a keyboard, mouse and monitor connected to the Raspberry Pi, then you can run the [`rpicam-hello`](https://www.raspberrypi.com/documentation/computers/camera_software.html#rpicam-hello) utility to show the camera's video stream.  If you are ssh'ing into your Raspberry Pi, then you can take an image and save it as a jpeg using the [`rpicam-jpeg`](https://www.raspberrypi.com/documentation/computers/camera_software.html#rpicam-jpeg) utility, then copy the resulting jpeg file to you host computer to view it (generally if it successfully takes the photo without reporting an error then the camera should be ok).
+
+- **Make sure tensorflow works**.  You can validate your tensorflow install by running this command (with the donkey environment activated; if you have completed Step 4 above, then it should be activated).  Make sure the version that here is no error.  Write down the version that it prints; if you have trouble training a Deep Learning autopilot in [later steps](https://docs.donkeycar.com/guide/train_autopilot/) then knowing the version of tensorflow that is running is critical to getting help on the [Discord](https://discord.gg/PN6kFeA). 
 
 ```bash
 python -c "import tensorflow; print(tensorflow.__version__)"
