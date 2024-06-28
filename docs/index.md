@@ -12,7 +12,7 @@ Donkey is an open source Self Driving Car Platform for remote control cars writt
 
 ### Use Donkeycar if you want to:
 * Build a robot and teach it to drive itself.
-* Experiment with [autopilots](guide/train_autopilot/), GPS, computer vision and neural networks.
+* Experiment with [autopilots](guide/train_autopilot/), neural networks, computer vision, and GPS.
 * Compete in self driving races like [DIY Robocars](http://diyrobocars.com), including [online simulator races](guide/deep_learning/virtual_race_league/) against competitors from around the world.
 * Participate in a vibrant [online community](https://discord.gg/PN6kFeA) learning cutting edge techology and having fun doing it.
 
@@ -46,8 +46,8 @@ Donkeycar includes a number of pre-built [templates](guide/create_application/) 
 
 - Get images from a camera. Donkeycar supports lots of different kinds of [cameras](parts/cameras/), including 3D cameras and [lidar](parts/lidar/).
 - Get position readings from a GPS receiver.
-- Get steering and throttle inputs from a [game controller](parts/controllers/) or RC controller.  Donkeycar support PS3, PS4, XBox, WiiU, Nimbus and Logitech Bluetooth game controllers and any game controller that works with RaspberryPi.  Donkeycar also implements a WebUI that allows any browser compatible game controller to be connected and also offers an onscreen touch controller that works with phones.
-- Control the car's drivetrain [motors](parts/actuators/) for acceleration and steering. Donkeycar supports various drivetrains including the ESC/Steering-servo configuration that is common to most RC cars and Differential Drive configurations.
+- Get steering and throttle inputs from a [game controller](parts/controllers/) or RC controller.  Donkeycar supports PS3, PS4, XBox, WiiU, Nimbus and Logitech bluetooth game controllers and any game controller that works with RaspberryPi.  Donkeycar also implements a WebUI that allows any browser compatible game controller to be connected and also offers an onscreen touch controller that works with phones.
+- Control the car's [drivetrain](parts/actuators/) throttle and steering. Donkeycar supports various drivetrains including the [ESC+Servo](parts/actuators/#standard-rc-with-esc-and-steering-servo) configuration that is common to most RC cars.  It also supports various [differential drive](parts/actuators/#differential-drive-cars) configurations.
 - Save telemetry [data](parts/stores/) such as camera images, steering and throttle inputs, lidar data, etc.
 - Drive the car on autopilot.  Donkey supports three kinds of [autopilots](guide/train_autopilot/); a [deep-learning](guide/deep_learning/train_autopilot/) autopilot, a [gps autopilot](guide/path_follow/path_follow/) and a [computer vision](guide/computer_vision/computer_vision/) autopilot.  The Deep Learning autopilot supports Tensorflow, Tensorflow Lite, and Pytorch and many model [architectures](parts/keras/).
 
