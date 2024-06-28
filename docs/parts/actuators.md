@@ -192,7 +192,7 @@ In this configuration the DC motor that drives the wheels is controlled by an L2
 ### 3-pin HBridge and Steering Servo
 A single DC gear motor is controlled with an L298N using two TTL output pins to select direction and a PWM pin to control the power to the motor.
 
-![L298N Motor Driver Module](../assets/assets/L298N-Driver-Board-Module.png "L298N Motor Driver Module")
+![L298N Motor Driver Module](../assets/L298N-Driver-Board-Module.png "L298N Motor Driver Module")
 **L298N Motor Driver Module**
 
 See https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/ for a discussion of how the L298N HBridge module is wired in 3-pin mode to the RaspberryPi GPIO. This also applies to the some other driver chips that emulate the L298N, such as the TB6612FNG motor driver.
@@ -215,7 +215,7 @@ A PCA9685 could also be used to generate all control signals.  See [pins](pins.m
 ### 2-pin HBridge and Steering Servo
 A single DC gear motor is controlled with an 'mini' L298d HBridge (or an L9110S HBridge) using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.
 
-![L293D Motor Driver Module](../assets/assets/MINI-L293D-Motor-driver-module.png "L293D Motor Driver Module")
+![L293D Motor Driver Module](../assets/MINI-L293D-Motor-driver-module.png "L293D Motor Driver Module")
 **L293D Motor Driver Module**
 
 See https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/ for how an L298d mini-hbridge module is wired in 2-pin mode.  
