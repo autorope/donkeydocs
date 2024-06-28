@@ -192,6 +192,9 @@ In this configuration the DC motor that drives the wheels is controlled by an L2
 ### 3-pin HBridge and Steering Servo
 A single DC gear motor is controlled with an L298N using two TTL output pins to select direction and a PWM pin to control the power to the motor.
 
+![L298N Motor Driver Module](../assets/assets/L298N-Driver-Board-Module.png "L298N Motor Driver Module")
+**L298N Motor Driver Module**
+
 See https://www.electronicshub.org/raspberry-pi-l298n-interface-tutorial-control-dc-motor-l298n-raspberry-pi/ for a discussion of how the L298N HBridge module is wired in 3-pin mode to the RaspberryPi GPIO. This also applies to the some other driver chips that emulate the L298N, such as the TB6612FNG motor driver.
 
 **Configuration**
@@ -210,9 +213,12 @@ STEERING_RIGHT_PWM = 290        # pwm value for full right steering (use `donkey
 A PCA9685 could also be used to generate all control signals.  See [pins](pins.md) for a detailed discussion of pin providers and pin specifiers.
 
 ### 2-pin HBridge and Steering Servo
-A single DC gear motor is controlled with an 'mini' L298N HBridge (or an L9110S HBridge) using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.
+A single DC gear motor is controlled with an 'mini' L298d HBridge (or an L9110S HBridge) using 2 PWM pins; one pwm pin to enable and control forward speed and one to enable and control reverse motor speed.
 
-See https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/ for how an L298N mini-hbridge module is wired in 2-pin mode.  
+![L293D Motor Driver Module](../assets/assets/MINI-L293D-Motor-driver-module.png "L293D Motor Driver Module")
+**L293D Motor Driver Module**
+
+See https://www.instructables.com/Tutorial-for-Dual-Channel-DC-Motor-Driver-Board-PW/ for how an L298d mini-hbridge module is wired in 2-pin mode.  
 See https://electropeak.com/learn/interfacing-l9110s-dual-channel-h-bridge-motor-driver-module-with-arduino/ for how an L9110S/HG7881 motor driver module is wired.
 
 **Configuration**
