@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Roll Your Own - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Roll Your Own";
+        var mkdocs_page_input_path = "cars/roll_your_own.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Roll Your Own</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#the-quick-and-dirty">The Quick and Dirty</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#chassis-build">Chassis build</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#chilicorn-rail">Chilicorn rail</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scad-files">sCAD Files</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#servo-specifics">Servo Specifics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#esc-specifics">ESC Specifics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#receiver-specifics">Receiver Specifics</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#batteries">Batteries</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#physical-constraints">Physical Constraints</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other-options">Other Options</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Cars</li>
+      <li class="breadcrumb-item active">Roll Your Own</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/cars/roll_your_own.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="roll-your-own-car">Roll Your Own Car</h1>
+<p><img alt="Crunch" src="../../assets/build_hardware/Crunch.png" /></p>
+<h2 id="the-quick-and-dirty">The Quick and Dirty</h2>
+<ul>
+<li>Your car needs to be easy to control from a Raspberry Pi</li>
+<li>Your car needs to be not too large, because it will be too heavy and dangerous (and expensive)</li>
+<li>Your car needs to be not too small, because it needs to carry a certain minimum amount of equipment</li>
+<li>Your car needs to meet minimum performance standards in power and control for the model to make sense for it</li>
+<li>Your car needs to be smooth to control even at low speeds</li>
+</ul>
+<p>This generally means:</p>
+<ul>
+<li>Your car needs to have a speed controller for the motor (ESC) that takes a standard RC 3-pin control signal (RC PWM style)</li>
+<li>Your car needs to have a steering servo that takes a standard RC 3-pin control signal (RC PWM style)</li>
+<li>Your car needs to have a radio receiver that contains standard 100-mil (2.54 mm) pin headers for each of the ESC and the steering servo.</li>
+<li>Your car needs to be between 1/18th scale (smallest end) and 1/8th scale (largest end) if you want to race in the DIYRobocars race.</li>
+<li>Your car needs to either use a brushed motor, or a sensored brushless motor. Sensorless brushless motors are too rough at low speeds.  If you buy a car with a brushless motor included it is invariably a sensorless brushless motor and will need to be replaced along with the ESC.</li>
+</ul>
+<p>Other options are perhaps possible, see the end of this document.</p>
+<p>Many car builders end up looking at "integrated" RC hobby cars, because they
+are typically cheaper. However, the reason these are cheaper, is that they will
+integrate many parts of electronics and mechanics into a single package, which
+means that we can't intersect the appropriate signals to control the car with a
+Raspberry Pi. In fact, the expected signals may not even exist at all in an
+integrated car.</p>
+<p>Here is an example of an integrated RX and ESC - typically these should be avoided:
+<img alt="RX ESC example" src="../../assets/ESC_RX.png" /></p>
+<p>You also need to know some things about electronics, such as the difference
+between power rails and control signals, what the duration of a microsecond is,
+and how Volts, Amperes, Watts, Hours, Ohms, and other measurement units relate.</p>
+<h2 id="chassis-build">Chassis build</h2>
+<p>While there are lots of designs out there besides the Donkeycar, but two stand out and are worth mentioning specifically.</p>
+<h3 id="chilicorn-rail">Chilicorn rail</h3>
+<p>This is a flexible mounting system developed by Markku.ai.</p>
+<ul>
+<li><a href="http://markku.ai">markku.ai</a></li>
+<li><a href="https://github.com/markku-ai">markku-ai github</a></li>
+</ul>
+<h3 id="scad-files">sCAD Files</h3>
+<p>Doug LaRue, a long time community member has extensive designs for making your own chassis in sCAD.  If you want to roll your own but are not comfortable with CAD this is a good place to start.  </p>
+<ul>
+<li><a href="https://www.thingiverse.com/thing:2781404">Basic Donkeycar</a></li>
+<li><a href="https://www.thingiverse.com/thing:3428003">1/28 scale car</a></li>
+<li><a href="https://www.thingiverse.com/thing:2774944">inverted donkey car</a></li>
+</ul>
+<h2 id="servo-specifics">Servo Specifics</h2>
+<p>An RC servo is used for controlling the steering wheels of the car. This servo
+typically expects around 4.8V to 6V input on the power wire (varies by car) and
+a PWM control signal on the signal wire. Typically, the three wires are colored
+black-red-white, or brown-red-yellow, where the dark wire (black/brown) is ground,
+and the center wire (red) is power, and the light wire (white/yellow) is control.</p>
+<p>The control signal is RC-style PWM, where one pulse is sent 60 times a second,
+and the width of this pulse controls how left/right the servo turns. When this
+pulse is 1500 microseconds, the servo is centered; when the pulse is 1000
+microseconds, the servo is turned all the way left (or right) and when the pulse
+is 2000 microseconds, the servo is turned all the way in the other direction.
+This is NOT the same kind of PWM that you would use to control the duty cycle of
+a motor, or the brightness of a LED.</p>
+<p>The power for the servo typically comes from the motor ESC, which has a BEC
+(Battery Eliminator Circuit) built in.</p>
+<h2 id="esc-specifics">ESC Specifics</h2>
+<p>The role of the ESC is to take a RC PWM control signal (pulse between 1000 and
+2000 microseconds) in, and use that to control the power to the motor so the
+motor spins with different amounts of power in forward or reverse. Again, 1500
+microseconds typically means "center" which for the motor means "dead stop."</p>
+<p>The battery typically connects straight to the ESC using thicker wiring than the
+simple control signals, because the motor draws many more amps than the control.
+The ESC then connects on to the motor with equally thick power wiring. The
+standard Donkey motor and ESC probably have a peak current of about 12A; a
+1/8th scale RC car with powerful brushless motor can have a peak draw up to
+200A!</p>
+<p>Additionally, the ESC typically contains a linear or switching voltage converter
+that outputs the power needed to control the steering servo; this is typically
+somewhere in the 4.8V to 6V range. Most BECs built into ESCs will not deliver
+more than about 1A of current, so it is not typically possible to power both the
+steering servo and the Raspberry Pi from the BEC.</p>
+<h2 id="receiver-specifics">Receiver Specifics</h2>
+<p>If you buy a "kit car" that is listed as "needs a receiver," then you don't need
+to buy a receiver. The Raspberry Pi plus the PCA9685 board take the role of the
+receiver, outputting control signals to the car. Buying a "kit car" that comes
+with steering servo, motor, and ESC, but not with radio, is actually a great way
+to make sure that the car you build will have the right signalling, because any
+RC car with separate receiver will be designed for the appropriate PWM signals.</p>
+<p>If your car comes with a receiver, make sure it has the appropriate three-pin
+headers next to each other for steering servo and for ESC control. Some receivers
+may have additional three-pin headers for additional channels, which may be empty
+or may control fancy attachments like horns, lights, and so forth.</p>
+<p>There is a modification to the Donkey car which uses the RC radio to drive the
+car when collecting training data; this will give better control of the car than
+you typically get with a PlayStation controller, or cell phone. However, it also
+requires replacing the PCA9685 board with an external micro-controller, and
+changing the software of the Donkey to use it.</p>
+<p>Finally, some receivers can output, in addition to the PWM control signals, a
+serial data packet that contains the control signals. An example of such a receiver
+is the FS-i6B, which has 6 output channels for PWM signals, but can output 10
+channels of data at 115,200 bps as serial data, which you can read with an external
+micro-controller, or perhaps even with the Raspberry Pi (requires re-configuration
+of the Pi boot loader, and custom modifications to the donkey software.)</p>
+<h2 id="batteries">Batteries</h2>
+<p>The Donkey comes with a Nickel Metal Hydride battery (NiMH) which is just enough
+to make its motor go, for a little bit of time (5-10 minutes) before needing a
+recharge. The specifications on this battery are 6 cells, 1100 mAh. Because
+NiHM batteries range from 0.9V to 1.35V with a "nominal" voltage of 1.2V, you can
+expect to see voltages in the 5.4V to 8.1V range.</p>
+<p>NiHM batteries have medium energy capacity per weight and volume. Thus, you can
+improve the runtime and performance of the Magnet car by upgrading to a Lithium
+Polymer battery (LiPo.) Typically, you will get a 2 cell battery (2S) and
+Lithium batteries have 3.2V to 4.2V per cell, so you will see voltages in the
+6.4V to 8.4V range. Additionally, Lithium Polymer batteries generally have higher
+current capacity (amount of Amps the battery can deliver at one point while
+driving) as well as energy storage (number of Amp Hours the battery stores when
+fully charged) so it may also last longer.</p>
+<p>Note that the amount of charge a battery can hold (how long it runs) is measured
+in Ampere-hours (Ah), or milli-Ampere-hours (mAh), whereas the amount of current a battery
+can instantaneously deliver while driving is measured simply in Amperes. But to
+make things more confusing, Amperes are often re-calculated in terms of multiples
+of the energy content, divided by one hour; this ratio is often called "C." Thus,
+a LiPo rated for 10C and 2000 mAh, can deliver 20 Amperes of current while
+driving. A NiHM rated for 5C and 1100 mAh can deliver 5.5 Amperes of current while
+driving. Batteries typically will deliver more than the C rating for very short
+amounts of time, but will heat up or build up internal resistance such that that
+is not something you can rely on for normal operation.</p>
+<p>For your custom car, be aware of the voltages needed for the ESC and motor of the
+car, and make sure to get a battery that matches in voltage. Smaller RC cars will
+come with NiMH for affordability, or 2S LiPo for power. Larger RC cars will use 3S
+(11.1V) or 4S (14.8V) or even 6S (22.2V) Lithium batteries, and thus need to have
+ESC and motor combinations to match.</p>
+<p>Finally, be sure to get a charger that matches your battery. If you have a LiPo
+battery, get a good Lithium battery charger, with a balancing plug that matches
+your battery. Never discharge a Lithium battery below 3.2V per cell; if you let it
+run dead, it will not want to be charged up to normal voltage again, and trying to
+do so may very well overheat the batter and light it on fire! See YouTube pictures
+of burning Teslas for what that can look like. Seriously, houses have burned down
+because people have tried to save $10 by re-charging a Lithium battery that they
+forgot to disconnect and it ran down too much. It's not worth it. Instead, get a
+battery alarm, that you plug into the battery balance connector, and it beeps when
+the battery has discharged so much that you should disconnect and recharge it.</p>
+<h2 id="physical-constraints">Physical Constraints</h2>
+<p>Adding the additional battery and electronics for self-driving to a toy car will
+add more load than the car was initially designed for. For a large, 1/8th scale
+car, this may not be much of a problem. For a small car, 1/18th scale or below, the
+additional weight and top-heaviness will cause the car to not react well to the
+steering output, which may cause the self-driving model to be less able to control
+the car.</p>
+<p>If you use a car that's not the standard Magnet, at a minimum, you will have to
+figure out how to mount all the hardware securely. Just piling things on and hoping
+wiring will keep it in place will not work for things that actually drive and turn.
+Finding good mounting points, and making your own "base plate" with measurements
+from the car you have, is likely to be necessary. You can build this base plate
+using 3D printing, laser cutting, CNC milling, or even just drilling into a thin
+piece of plywood, but getting a good fit to your chassis is important, so don't
+rush it or try to cut corners.</p>
+<p>Doug LaRue also built a <a href="https://www.thingiverse.com/thing:2781404">configurator</a> in Thingiverse that enables people to easily make custom 3D printed plates.</p>
+<h2 id="other-options">Other Options</h2>
+<p>Yes, you can make a self-driving car out of your 1/5th scale Nitro Dragster. You
+will just have to learn even more about the different bits and pieces of the
+solution, and figure out all the necessary integration yourself. The control
+signals for a Nitro car are the same, so this might not even be hard. However, the
+indoors arenas used for Donkey Racing Meetups do not allow fuel-burning cars, only
+electric.</p>
+<p>Yes, you can make a self-driving car out of a cheap two-wheel chassis that uses
+a LM298 H-bridge with direct PWM control to "tank steer" two wheels. However, you
+will have to adapt the Donkey software to output the right steering controls, and
+you will additionally have to figure out how to wire up the H-bridge to the Pi in
+a way that makes sense to you; the PWM signals output by the PCA9685 board are the
+RC control kind, NOT the motor control kind! Also, most affordable two-wheel-drive
+robot chassis are not actually big enough, strong enough, and mechanically
+consistent enough to make for good Donkey Car candidates.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../supported_cars/" class="btn btn-neutral float-left" title="Supported Cars"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../support/faq/" class="btn btn-neutral float-right" title="FAQ">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../supported_cars/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../support/faq/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

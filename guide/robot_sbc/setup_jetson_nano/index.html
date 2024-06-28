@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Get Your Jetson Nano/Xavier NX Working - Donkey Car</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Get Your Jetson Nano/Xavier NX Working";
+        var mkdocs_page_input_path = "guide/robot_sbc/setup_jetson_nano.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Get Your Jetson Nano/Xavier NX Working</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/robot_sbc/setup_jetson_nano.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="get-your-jetson-nanoxavier-nx-working">Get Your Jetson Nano/Xavier NX Working</h1>
+<p><img alt="donkey" src="/assets/logos/nvidia_logo.png" /></p>
+<p>We have a different approaches to installing the software depending on the
+version of Donkey Car. For Donkey Car &lt;= 4.5.X we are using Jetpack 4.5.X
+which comes with Tensorflow 2.3.1. The python installation is using virtual
+env, i.e. it is based on the system python with version 3.6. This is the 
+only version that is working on the old Jetson Nano.</p>
+<p>For the <code>main</code> branch we have updated Tensorflow to 2.9 and python to 3.8 or
+3.9. This is running on a newer version of Jetpack. You will need a Jetson 
+Xavier or any of the newer Jetsons like the Orin, to use Jetpack 5.0.2. To 
+decouple the python installation from the system python we are using Miniforge 
+which is a mamba based version of Miniconda that works on the aarm architecture.</p>
+<p>For Donkey Car &lt;= 4.5.X please go to the next section. For the latest
+version on the <code>main</code> branch please jump
+to <a href="#installation-for-donkey-car-main">this section</a>.</p>
+<p>We recommend to use 4GB version of the Jetson Nano or the Jetson Xavier to
+run the software without issues. It's also recommended using a 128GB
+microSD card with U3 speed, like for example
+<a href="https://www.amazon.com/SanDisk-128GB-Extreme-microSD-Adapter/dp/B07FCMKK5X/ref=sr_1_4?crid=1J19V1ZZ4EVQ5&amp;keywords=SanDisk+128GB+Extreme+microSDXC+UHS-I&amp;qid=1676908353&amp;sprefix=sandisk+128gb+extreme+microsdxc+uhs-i%2Caps%2C121&amp;sr=8-4">this SanDisk SD Card.</a></p>
+<p>These are the supported versions:</p>
+<table>
+<thead>
+<tr>
+<th>Jetson</th>
+<th>Jetpack</th>
+<th>Python</th>
+<th>Donkey</th>
+<th>Tensorflow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nano</td>
+<td>4.5.1</td>
+<td>3.6</td>
+<td>&lt;= 4.5.X</td>
+<td>2.3.1</td>
+</tr>
+<tr>
+<td>Xavier/Orin</td>
+<td>5.0.2</td>
+<td>3.8</td>
+<td>&gt;= 5.X</td>
+<td>2.9</td>
+</tr>
+</tbody>
+</table>
+<p>Then <a href="/guide/create_application/">Create your Donkeycar Application</a></p>
+<h2 id="installation-for-donkey-car-45x">Installation for Donkey Car &lt;= 4.5.X</h2>
+<blockquote>
+<p>Note: These instructions are working for DC 4.3.6 and DC 4.4.0 only at the 
+moment. We are working on a patch to have support for 4.5.X too. </p>
+</blockquote>
+<ul>
+<li><a href="#step-1a-flash-operating-system">Step 1a: Flash Operating System</a></li>
+<li><a href="#step-2a-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1">Step 2a: Free up the serial port</a></li>
+<li><a href="#step-3a-install-system-wide-dependencies">Step 3a: Install Dependencies</a></li>
+<li><a href="#step-4a-setup-python-environment">Step 4a: Setup Python Environment</a></li>
+<li><a href="#step-5a-optional-install-pygame-for-usb-camera">Step 5a: (Optional) Install PyGame for USB camera</a></li>
+</ul>
+<h3 id="step-1a-flash-operating-system">Step 1a: Flash Operating System</h3>
+<p>These instructions work for Jetpack 4.5.1. </p>
+<ul>
+<li>If you have a 4gb Jetson Nano then download Jetpack 4.5.1 from Nvidia
+  here; <a href="https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/jeston_nano/jetson-nano-jp451-sd-card-image.zip">jetson-nano-jp451-sd-card-image.zip</a></li>
+<li>If you have a 2gb Jetson Nano the download Jetpack 4.5.1from Nvidia
+  here; <a href="https://developer.nvidia.com/embedded/l4t/r32_release_v5.1/r32_release_v5.1/jeston_nano_2gb/jetson-nano-2gb-jp451-sd-card-image.zip">jetson-nano-2gb-jp451-sd-card-image.zip</a></li>
+</ul>
+<p>This installs the official Nvidia build of Tensorflow 2.3.1; make sure you are
+using the same version of Tensorflow on your host PC if you are using one. Using
+a different version of Tensorflow to train your network may result in errors
+when you attempt to use it as an autopilot.</p>
+<p>Visit the official <a href="https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#prepare">Nvidia Jetson Nano Getting Started Guide</a>
+or <a href="https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit">Nvidia Xavier NX Getting Started Guide</a>.
+Work through the <strong>Prepare for Setup</strong>, <strong>Writing Image to the microSD Card</strong>,
+and <strong>Setup and First Boot</strong> instructions, then return here.</p>
+<p>Once you're done with the setup, ssh into your vehicle. Use the terminal for
+Ubuntu or Mac. <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">Putty</a>
+for windows.</p>
+<p>Remove Libre Office:</p>
+<pre><code class="language-bash">sudo apt-get remove --purge libreoffice*
+sudo apt-get clean
+sudo apt-get autoremove
+</code></pre>
+<p>And add a 8GB swap file:</p>
+<pre><code class="language-bash">git clone https://github.com/JetsonHacksNano/installSwapfile
+cd installSwapfile
+./installSwapfile.sh
+sudo reboot now 
+</code></pre>
+<h3 id="step-2a-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1">Step 2a: Free up the serial port (optional. Only needed if you're using the Robohat MM1)</h3>
+<pre><code class="language-bash">sudo usermod -aG dialout &lt;your username&gt;
+sudo systemctl disable nvgetty
+</code></pre>
+<h3 id="step-3a-install-system-wide-dependencies">Step 3a: Install System-Wide Dependencies</h3>
+<p>First install some packages with <code>apt-get</code>.</p>
+<pre><code class="language-bash">sudo apt-get update -y
+sudo apt-get upgrade -y
+sudo apt-get install -y libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
+sudo apt-get install -y python3-dev python3-pip
+sudo apt-get install -y libxslt1-dev libxml2-dev libffi-dev libcurl4-openssl-dev libssl-dev libpng-dev libopenblas-dev
+sudo apt-get install -y git nano
+sudo apt-get install -y openmpi-doc openmpi-bin libopenmpi-dev libopenblas-dev
+</code></pre>
+<h3 id="step-4a-setup-python-environment">Step 4a: Setup Python Environment.</h3>
+<h4 id="setup-virtual-environment">Setup Virtual Environment</h4>
+<pre><code class="language-bash">pip3 install virtualenv
+python3 -m virtualenv -p python3 env --system-site-packages
+echo &quot;source ~/env/bin/activate&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<h4 id="setup-python-dependencies">Setup Python Dependencies</h4>
+<p>Next, you will need to install packages with <code>pip</code>:</p>
+<pre><code class="language-bash">pip3 install -U pip testresources setuptools
+pip3 install -U futures==3.1.1 protobuf==3.12.2 pybind11==2.5.0
+pip3 install -U cython==0.29.21 pyserial
+pip3 install -U future==0.18.2 mock==4.0.2 h5py==2.10.0 keras_preprocessing==1.1.2 keras_applications==1.0.8 gast==0.3.3
+pip3 install -U absl-py==0.9.0 py-cpuinfo==7.0.0 psutil==5.7.2 portpicker==1.3.1 six requests==2.24.0 astor==0.8.1 termcolor==1.1.0 wrapt==1.12.1 google-pasta==0.2.0
+pip3 install -U gdown
+
+# This will install tensorflow as a system package
+pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v45 tensorflow==2.5
+</code></pre>
+<h4 id="install-donkeycar-python-code">Install Donkeycar Python Code</h4>
+<p>Change to a dir you would like to use as the head of your projects. Assuming
+you've already made the <code>projects</code> directory above, you can use that. Get
+the latest 4.5.X release and install that into the venv.</p>
+<pre><code class="language-bash">mkdir projects
+cd ~/projects
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git fetch --all --tags -f
+git checkout 4.5.1
+pip install -e .[nano]
+
+</code></pre>
+<h3 id="step-5a-optional-install-pygame-for-usb-camera">Step 5a: (Optional) Install PyGame for USB camera</h3>
+<p>If you plan to use a USB camera, you will also want to setup pygame:</p>
+<pre><code class="language-bash">sudo apt-get install python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev
+pip install pygame
+</code></pre>
+<p>Later on you can add the <code>CAMERA_TYPE="WEBCAM"</code> in myconfig.py.</p>
+<h2 id="installation-for-donkey-car-5x">Installation for Donkey Car &gt;= 5.X</h2>
+<p>Instructions for the latest code from the <code>main</code> branch or newer releases &gt;= 
+5.X. Note the installation differs between the two available OSs. On Jetson 
+you need to install Jetpack 5.0.2.</p>
+<h3 id="installation-on-jetson-xavier-or-newer-jetson-boards">Installation on Jetson Xavier (or newer Jetson boards)</h3>
+<ul>
+<li><a href="#step-1c-flash-operating-system">Step 1b: Flash Operating System</a></li>
+<li><a href="#step-2c-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1">Step 2b: Free up the serial port</a></li>
+<li><a href="#step-3c-setup-python-environment">Step 3b: Setup Python Environment</a></li>
+<li><a href="#step-4c-optional-install-pygame-for-usb-camera">Step 4b: (Optional) Install PyGame for USB camera</a></li>
+</ul>
+<h4 id="step-1b-flash-operating-system">Step 1b: Flash Operating System</h4>
+<p>These instructions work for Jetpack 5.0.2.</p>
+<p>Please install the Jetpack image from <a href="https://developer.nvidia.com/jetson-nx-developer-kit-sd-card-image">jetson-nx-developer-kit-sd-card-image.zip</a>.</p>
+<p>Visit the official <a href="https://developer.nvidia.com/embedded/learn/get-started-jetson-xavier-nx-devkit">Nvidia Xavier NX Getting Started Guide</a>.
+Work through the <strong>Prepare for Setup</strong>, <strong>Writing Image to the microSD Card</strong>,
+and <strong>Setup and First Boot</strong> instructions, then return here.</p>
+<p>Once you're done with the setup, ssh into your vehicle. Use the terminal for
+Ubuntu or Mac. <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">Putty</a>
+for windows.</p>
+<p>Remove Libre Office:</p>
+<pre><code class="language-bash">sudo apt-get remove --purge libreoffice*
+sudo apt-get clean
+sudo apt-get autoremove
+</code></pre>
+<p>And add a 8GB swap file. Note, if you intend to run from an SSD, perform the 
+swap file setup only after booting from the SSD:</p>
+<pre><code class="language-bash">git clone https://github.com/JetsonHacksNano/installSwapfile
+cd installSwapfile
+./installSwapfile.sh -s 8
+reboot 
+</code></pre>
+<h4 id="step-2b-free-up-the-serial-port-optional-only-needed-if-youre-using-the-robohat-mm1">Step 2b: Free up the serial port (optional. Only needed if you're using the Robohat MM1)</h4>
+<pre><code class="language-bash">sudo usermod -aG dialout &lt;your username&gt;
+sudo systemctl disable nvgetty
+</code></pre>
+<h4 id="step-3b-setup-python-environment">Step 3b: Setup python environment</h4>
+<ul>
+<li>Step 3b-1: Install tensorflow into the system python environment</li>
+</ul>
+<p>To install tensorflow and its dependencies for JP5.1.2 follow the NVIDIA instructions <a href="https://docs.nvidia.com/deeplearning/frameworks/install-tf-jetson-platform/index.html#overview__section_z4r_vjd_v2c">here</a> </p>
+<ul>
+<li>Step 3b-2: Set up a venv</li>
+</ul>
+<pre><code class="language-bash">python3 -m venv env --system-site-packages
+echo &quot;source ~/env/bin/activate&quot; &gt;&gt; ~/.bashrc
+source ~/.bashrc
+</code></pre>
+<ul>
+<li>Step 3b-3: Install Donkey Car</li>
+</ul>
+<p>There are two different installations possible. Very likely you will 
+want to do the user install. Then you will perform Step 2a. In case you want 
+to debug or edit the source code, you will need to do the more advanced 
+developer install. But you can do only one.</p>
+<blockquote>
+<p><em><strong>Note</strong></em>: Only do Step 3b-4 or 3b-5 but not both!</p>
+</blockquote>
+<ul>
+<li>Step 3b-4: User install</li>
+</ul>
+<p>As you have activated the new <code>env</code> env already you type:</p>
+<pre><code class="language-bash">pip install donkeycar[nano]
+pip install -U albumentations --no-binary qudida,albumentations
+pip uninstall opencv-python-headless
+pip uninstall scikit-learn
+git clone https://github.com/scikit-learn/scikit-learn.git
+cd scikit-learn/
+python setup.py install
+sudo chmod 666 /dev/gpiochip*
+</code></pre>
+<p>This will install the latest release.</p>
+<ul>
+<li>Step 3b-5: Developer install</li>
+</ul>
+<p>Only do this if you have not done the user install in 3b-4. </p>
+<p>Here you can choose which branch or tag you want to install, and you can 
+edit and/or debug the code, by downloading the source code from GitHub. Do this
+for getting the latest version from the <code>main</code> branch.</p>
+<pre><code class="language-bash">mkdir projects
+cd projects
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git checkout main
+pip install -e .[nano]
+pip install -U albumentations --no-binary qudida,albumentations
+pip uninstall opencv-python-headless
+pip uninstall scikit-learn
+git clone https://github.com/scikit-learn/scikit-learn.git
+cd scikit-learn/
+python setup.py install
+sudo chmod 666 /dev/gpiochip*
+</code></pre>
+<ul>
+<li>Step 3b-6: Check the TF and OpenCV installation</li>
+</ul>
+<p>Run python and verify that tensorflow is version 2.9 and trt is version 8.2.1.
+To get the tensorrt shared libraries to load correctly we must set the
+environment variable <code>LD_PRELOAD</code> as:</p>
+<pre><code class="language-bash">export LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libnvinfer.so.8:/usr/lib/aarch64-linux-gnu/libgomp.so.1
+</code></pre>
+<p>Note, this has to be done either every time you run donkeycar or tensorflow, or
+you put the above line into your <code>.bashrc</code>.</p>
+<pre><code class="language-bash">python
+&gt;&gt;&gt; import tensorflow as tf
+&gt;&gt;&gt; tf.__version__
+&gt;&gt;&gt; from tensorflow.python.compiler.tensorrt import trt_convert as trt
+&gt;&gt;&gt; trt._check_trt_version_compatibility()
+&gt;&gt;&gt; import cv2
+&gt;&gt;&gt; print(cv2.getBuildInformation())
+</code></pre>
+<h4 id="step-4b-optional-install-pygame-for-usb-camera">Step 4b: (Optional) Install PyGame for USB camera</h4>
+<p>If you plan to use a USB camera, you will also want to setup pygame:</p>
+<pre><code class="language-bash">pip install pygame
+</code></pre>
+<p>Later on you can add the <code>CAMERA_TYPE="WEBCAM"</code> in myconfig.py.</p>
+<h2 id="optional-fix-for-pink-tint-on-csic-cameras">(Optional) Fix for pink tint on CSIC cameras</h2>
+<p>This applies to any installation you did above, either JP 4.6.X or 5.0.X.
+If you're using a CSIC camera you may have a pink tint on the images. As
+described <a href="https://jonathantse.medium.com/fix-pink-tint-on-jetson-nano-wide-angle-camera-a8ce5fbd797f">here</a>,
+this fix will remove it.</p>
+<pre><code class="language-bash">wget https://www.dropbox.com/s/u80hr1o8n9hqeaj/camera_overrides.isp
+sudo cp camera_overrides.isp /var/nvidia/nvcam/settings/
+sudo chmod 664 /var/nvidia/nvcam/settings/camera_overrides.isp
+sudo chown root:root /var/nvidia/nvcam/settings/camera_overrides.isp
+</code></pre>
+<hr />
+<h2 id="next-create-your-donkeycar-application">Next, <a href="/guide/create_application">create your Donkeycar application</a>.</h2>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

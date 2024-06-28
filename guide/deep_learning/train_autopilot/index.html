@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Train an autopilot with Keras - Donkey Car</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Train an autopilot with Keras";
+        var mkdocs_page_input_path = "guide/deep_learning/train_autopilot.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Train an autopilot with Keras</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/deep_learning/train_autopilot.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="train-an-autopilot-with-keras">Train an autopilot with Keras</h1>
+<p>Now that you're able to drive your car reliably you can use <a href="https://keras.io/">Keras</a> to train a
+neural network to drive like you. Here are the steps.</p>
+<h2 id="collect-data">Collect Data</h2>
+<p>Make sure you collect good, clean data.  The neural network will learn what is in the data that it is train upon, so bad data results in a bad model.  If your data has segments where you drive off the track, then there will be as aspect of the trained model that will reflect that.  Ideally you would drive perfectly and no bad data would be recorded.  However, that is not realistic, but there are ways to easily remove errors as they happen.</p>
+<p>A technique that is useful to avoid collecting bad data is to use the erase-records button on the controller when you make a mistake.  So if you crash then immediately toggle recording to off and select the erase-records button to delete the last 100 records.  It get's even easier if you use set <code>AUTO_RECORD_ON_THROTTLE = True</code> in your <code>myconfig.py</code> file; in that case recording will turn on when you apply throttle and will turn off when you stop applying throttle.  So between that and the erase-records button you can record tens-of-thousands of records without having to go back and clean data with the <code>donkey tubclean</code> command.</p>
+<p>Beyond actual mistakes, the consistency in the data you record matters.  The more variation there is in the data, the more data you will need to get a good model.  The more consistent you are when you drive, then the more uniform the data will be and so the neural network will be able to correllate the inputs to the outputs more effectively.  Consistency is particularly hard to get for throttle; it is very hard to replicate throttle exactly at each place on the track.  One strategy (a strategy I use) is to find the maximum throttle you can maintain around the entire track or at least most of the track, then just use that; set <code>JOYSTICK_MAX_THROTTLE</code> in your <code>myconfig.py</code> file to that throttle, then you can put the pedal to the metal around most of the course when you are collecting data.   </p>
+<ol>
+<li>Practice driving around the track a couple times.</li>
+<li>When you're confident you can drive 10 laps with few mistakes, restart the python mange.py process to create a new data recording session. Press <code>Start Recording</code> if using web controller or use <code>AUTO_RECORD_ON_THROTTLE = True</code> as described above so the joystick will auto record with any non-zero throttle.</li>
+<li>If you crash or run off the track press Stop Car immediately and stop recording. If you are using a joystick tap the button that erases the last 100 records (5 seconds at 20 hz drive loop).</li>
+<li>After you've collected 10-20 laps of good data (5-20k images) you can stop
+your car with <code>Ctrl-c</code> in the ssh session for your car.</li>
+<li>The data you've collected is in the mycar data folder.</li>
+<li>If you recorded mistakes then you can use the <code>donkey tubclean</code> to edit your data and remove the mistakes.</li>
+</ol>
+<h2 id="transfer-data-from-your-car-to-your-computer">Transfer data from your car to your computer</h2>
+<p>Since the Raspberry Pi is not very powerful, we need to transfer the data
+to a PC computer to train. The Jetson nano is more powerful, but still quite slow to train. If desired, skip this transfer step and train on the Nano.</p>
+<h2 id="training-the-easy-gui-way">Training the easy, GUI way</h2>
+<p>The easiest way to do the training on your desktop is by using the <a href="/utility/ui">Donkey UI application</a>.
+ <img alt="Tub_manager UI" src="/assets/ui-tub-manager.png" /></p>
+<p>If, however, you want to do the training with the command line, read on....</p>
+<h2 id="training-with-the-command-line">Training with the command line</h2>
+<p>In a new terminal session on your host PC use rsync to copy your cars
+folder from the Raspberry Pi.</p>
+<pre><code class="language-bash">rsync -rv --progress --partial pi@&lt;your_pi_ip_address&gt;:~/mycar/data/  ~/mycar/data/
+</code></pre>
+<h2 id="train-a-model">Train a model</h2>
+<ul>
+<li>In the same terminal you can now run the training script on the latest data by passing the path to that data as an argument. You can optionally pass path masks, such as <code>./data/*</code> to gather multiple manifests. For example, from your mycar folder on your host PC:</li>
+</ul>
+<pre><code class="language-bash">~\mycar$ donkey train --tub ./data --model ./models/mypilot.h5
+</code></pre>
+<p>You may specify more than one tub using a comma separated list <code>--tub=foo/data,bar/data</code> or just leaving spaces like <code>--tub foo/data bar/data</code>.  See <a href="/utility/donkey#train-the-model">Train the Model</a></p>
+<ul>
+<li>
+<p>You can create different model types with the <code>--type</code> argument during training. You may also choose to change the default model type in myconfig.py <code>DEFAULT_MODEL_TYPE</code>. When specifying a new model type, be sure to provide that type when running the model, or using the model in other tools like plotting or profiling. For more information on the different model types, look here for <a href="/parts/keras">Keras Parts</a>. The model will be placed into the folder <code>models/</code>. You can as well omit the <code>--model</code> flag and the model name will be auto created using the pattern <code>pilot_YY-MM-DD_N.h5</code>. </p>
+</li>
+<li>
+<p>If you run with version &gt;= 4.3.0, the model will be automatically created in tflite format for fast inferencing, generating a <code>./models/mypilot.tflite</code> file, too. Tflite creation can be suppressed, by setting <code>CREATE_TF_LITE = False</code> in your <code>myconfig.py</code> file. In addition, a tensorrt model is produced if you set <code>CREATE_TENSOR_RT = True</code>, which is <code>False</code> by default. That setting produces a <code>./models/mypilot.trt</code> file that should work on all platforms. On RPi, the tflite model will be the fastest. </p>
+</li>
+</ul>
+<blockquote>
+<p><em><strong>Note:</strong></em> There was a regression in version 4.2 where you only had to provide the model name in the model argument, like <code>--model mypilot.h5</code>. This got resolved in version 4.2.1. Please update to that version.</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Image Augmentation</strong> With version &gt;= 4.3.0 you also have access to image augmentations for training. Image augmentation is a technique where data, in this case images, is changed (augmented) to create variation in the data.  The purpose is two-fold.  First it can help extend your data when you don't have a lot of data.  Second it can create a model that is more resilient to variations in the data at inference time.  In our case, we want to handle various lighting conditions.  Currently supported are <code>AUGMENTATIONS = ['MULTIPLY', 'BLUR']</code> in the settings which generate brightness modifications and apply a Gaussian blur. These can be used individually or together. Augmentations are only applied during training; they are not applied when driving on autopilot.</p>
+</li>
+<li>
+<p><strong>Image Transformation</strong> With version &gt;= 4.3.0 you also have access to image transformations like cropping or trapezoidal masking.  <strong>Cropping and masking</strong> are similar; both 'erase' pixels on the image.  This is done to <strong>remove pixels that are not important</strong> and that may add unwanted detail that can make the model perform poorly under conditions where that unwanted detail is different.  Cropping can erase pixels on the top, bottom, left and/or right of the image.  Trapezoidal masking is a little more flexible in that it can mask pixels using a trapezoidal mask that can account for perspective in the image.  To crop the image or apply a trapezoidal mask you can provide <code>TRANSFORMATIONS = ['CROP']</code> or <code>TRANSFORMATIONS = ['TRAPEZE']</code>. Generally you will use either cropping or trapezoidal masking but not both.  <strong>Transformations must be applied in the same way in training and when driving on autopilot</strong>; make sure the transformation configuration is the same on your training machine and on your Donkey Car. </p>
+</li>
+</ul>
+<h2 id="copy-model-back-to-car">Copy model back to car</h2>
+<ul>
+<li>
+<p>In previous step we managed to get a model trained on the data. Now is time to move the model back to Rasberry Pi, so we can use it for testing it if it will drive itself.</p>
+</li>
+<li>
+<p>Use rsync again to move your trained model pilot back to your car.</p>
+</li>
+</ul>
+<pre><code class="language-bash">rsync -rv --progress --partial ~/mycar/models/ pi@&lt;your_ip_address&gt;:~/mycar/models/
+</code></pre>
+<ul>
+<li>
+<p>Ensure to place car on the track so that it is ready to drive.</p>
+</li>
+<li>
+<p>Now you can start your car again and pass it your model to drive.</p>
+</li>
+</ul>
+<pre><code class="language-bash">python manage.py drive --model ~/mycar/models/mypilot.h5
+</code></pre>
+<ul>
+<li>However, you will see better performance if you start with the tflite mode.</li>
+</ul>
+<pre><code class="language-bash">python manage.py drive --model ~/mycar/models/mypilot.tflite --type tflite_linear
+</code></pre>
+<ul>
+<li>The car should start to drive on its own, congratulations!</li>
+</ul>
+<h2 id="optional-use-tensorrt-on-the-jetson-nano">[Optional] Use TensorRT on the Jetson Nano</h2>
+<p>Read <a href="/docs/guide/robot_sbc/tensorrt_jetson_nano.md">this</a> for more information.</p>
+<h2 id="training-tips">Training Tips</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4fXbDf_QWM4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr />
+<ol>
+<li><strong>Mode &amp; Pilot</strong>: Congratulations on getting it this far. The first thing to note after running the command above, is to look at the options in the Mode &amp; Pilot menu. It can be pretty confusing. So here's what the different options mean:</li>
+</ol>
+<p>a. <strong>User</strong> : As you guessed, this is where you are in control of both the steering and throttle control.</p>
+<p>b. <strong>Local Angle</strong> : Not too obvious, but this is where the trained model (mypilot from above) controls the steering. The <em>Local</em> refers to the trained model which is locally hosted on the raspberry-pi.</p>
+<p>c. <strong>Local Pilot</strong> : This is where the trained model (mypilot) assumes control of both the steering and the throttle. As of now, it's purportedly not very reliable.</p>
+<p>Be sure to also check out the <strong>Max Throttle</strong> and <strong>Throttle Mode</strong> options, and play around with a few settings. Can help with training quite a lot.</p>
+<ol>
+<li>
+<p><strong>Build a Simple Track</strong> : This isn't very well-documented, but the car should (theoretically) be able to train against any kind of track. To start off with, it might not be necessary to build a two-lane track with a striped center-lane. Try with a single lane with no center-line, or just a single strip that makes a circuit! At the least, you'll be able to do an end-to-end testing and verify that the software pipeline is all properly functional. Of course, as the next-step, you'll want to create a more standard track, and compete at a <a href="https://diyrobocars.com/local-meetup-groups/">meetup</a> nearest to you!</p>
+</li>
+<li>
+<p><strong>Get help</strong> : Try to get some helping hands from a friend or two. Again, this helps immensely with building the track, because it is harder than it looks to build a two-line track on your own! Also, you can save on resources (and tapes) by using a <a href="https://www.amazon.com/gp/product/B00L2MLCNO">ribbon</a> instead of tapes. They'll still need a bit of tapes to hold them, but you can reuse them and they can be laid down with a lot less effort (Although the wind, if you're working outside, might make it difficult to lay them down initially).</p>
+</li>
+</ol>
+<h2 id="training-behavior-models">Training Behavior Models</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aLFuHGlU0CM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<hr />
+<h3 id="how-to-train-a-behavior-model">How to train a Behavior model</h3>
+<ul>
+<li>
+<p>Make sure <code>TRAIN_BEHAVIORS = True</code> in myconfig.py when training and when running on the robot.</p>
+</li>
+<li>
+<p>Setup an RGB led on robot to indicate which state is active. Enable in config.py. Verify when running robot that L1 PS3 button changes state led indicator. (that's the left upper shoulder button)</p>
+</li>
+<li>
+<p>By default there are two states. If you like, adjust the number of states in bottom of config.py. Rename or change <code>BEHAVIOR_LIST</code> to an arbitrary number of labels. Make sure same number of rgb colors in <code>BEHAVIOR_LED_COLORS</code>. Make sure to reflect any changes to both PC and Robot.</p>
+</li>
+<li>
+<p>Now for training: Activate any state with L1 shoulder button. Then drive as you wish the car to drive when in that state. Switch states and then transition to the new steady state behavior.</p>
+</li>
+<li>
+<p>For the two lane case. Drive 33% in one lane, 33% in the other, and 33% transitioning between them. It's important to trigger the state transition before changing lanes.</p>
+</li>
+<li>
+<p>Check the records in the data file. Open a .json. In addition to steering and throttle, you should also have some additional state information about your behavior vector and which was was activate on that frame. This is crucial to training correctly.</p>
+</li>
+<li>
+<p>Move data to PC and train as normal, ensuring <code>TRAIN_BEHAVIORS = True</code> in myconfig.py on PC, otherwise extra state information will be ignored.</p>
+</li>
+<li>
+<p>Move trained model back to robot. Now place the robot in the location of the initial state. Start the robot with the given model</p>
+</li>
+</ul>
+<pre><code class="language-bash">python manage.py drive --model=models/my_beh.h5 --type=behavior
+</code></pre>
+<ul>
+<li>Now press select to switch to desired AI mode. Constant throttle available as well as trained throttle.</li>
+</ul>
+<p>As it drives, you can now toggle states with L1 and see whether and how much it can replicate your steady state behaviors and transitions.</p>
+<p>Be sure to include quite a lot of example of transitions from one state to another. At least 50, but more like 100. </p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

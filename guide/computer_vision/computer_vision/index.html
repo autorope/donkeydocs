@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Computer Vision Autopilot - Donkey Car</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Computer Vision Autopilot";
+        var mkdocs_page_input_path = "guide/computer_vision/computer_vision.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Computer Vision Autopilot</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/computer_vision/computer_vision.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="computer-vision-autopilot">Computer Vision Autopilot</h1>
+<p>The computer vision autopilot, like the deep learning autopilot, interprets camera images in order to determine steering and throttle values.  However, rather than deep learning models, the computer vision autopilot utilizes traditional computer vision algorithms, such as Canny edge detection, to interpret images of the track.  The computer vision autopilot is specifically designed to make it easy to write your own algorithm and use it in place of the built-in algorithm.</p>
+<p><img alt="The Computer Vision Autopilot" src="/assets/cv_track.png" /></p>
+<p>The built-in algorithm is a line following algorithm; it expects the track to have a center line, preferably solid, that it can detect.  The expected color of the line can be tuned with configuration; by default it expects a yellow line.  The algorithm calculates the distance of the line from the center of the image, then a PID controller uses that value to calculate a steering value.  If the car is to the left of the line then it will turn right.  If the car is to the right of the line then it will turn left.  The chosen steering angle is proportional to the distance from the line.  The chosen throttle is inversely proportional to the steering angle so that the car will go faster on a straight path and slow down for turns.  More details on the algorithm and the configuration parameters are discussed below.</p>
+<p>But what if your track does not have a center line; what if it just has a left and right lane boundary lines?  What if it is a sidewalk?  What if you simply want to implement your own algorithm?  The computer vision template is designed to make that pretty easy.  You can write your own part in Python to use as the autopilot and simply change the configuration in your myconfig.py to point to it.  Your part can utilize computer vision parts in <a href="https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/cv.py">cv.py</a> or you can call OpenCV's python api directly.  We present a simplified example below.</p>
+<blockquote>
+<blockquote>
+<p>IMPORTANT: The computer vision template requires that opencv is installed.  Opencv is pre-installed on the Jetson Nano, but it must be explicitly installed on the Raspberry Pi. See Raspberry Pi installation <a href="/guide/robot_sbc/setup_raspberry_pi/#step-9-optional-install-opencv-dependencies">Step 9</a> and <a href="/guide/robot_sbc/setup_raspberry_pi/#step-11-install-donkeycar-python-code">Step 11</a>.  </p>
+</blockquote>
+</blockquote>
+<h2 id="create-a-computer-vision-application">Create a computer vision Application</h2>
+<p>You can create a computer vision application similarly to the how we create a deep learning application; we just tell it to use the <strong>cv_control</strong> template instead of the default template.  First, make sure your donkeycar python environment is activated, then use the <strong>createcar</strong> command to create your application folder.</p>
+<pre><code class="language-bash">donkey createcar --template=cv_control --path=~/mycar
+</code></pre>
+<p>When updating to a new version of donkeycar, you will want to refresh your application folder.  You can do this with the same command, but add <code>--overwrite</code> so that it does not erase your <strong>myconfig.py</strong> file.</p>
+<pre><code class="language-bash">donkey createcar --template=cv_control --path=~/mycar --overwrite
+</code></pre>
+<h2 id="the-line-follower">The Line Follower</h2>
+<p>The built-in algorithm can follow a line using the camera.  By default it is tuned for a yellow line, but the color that it tracks can be configured.  Many other aspects of the algorithm can be tuned.  Below is as description of the algorithm and how it uses the configuraton values.  The values themselves are listed and described afterwards.</p>
+<ol>
+<li>If <code>TARGET_PIXEL</code> is None, then use steps 1 to 5 to estimate the target (the expected) position of the line.</li>
+<li>Copy the image rows at <code>SCAN_Y</code> and <code>SCAN_HEIGHT</code> pixels height.  So the result is a block of pixels as wide as the image and <code>SCAN_HEIGHT</code> high.</li>
+<li>Convert the pixels from <code>RBG</code> red-gree-blue color space to <code>HSV</code> hue-saturation-value color space.  </li>
+<li>The algorithm then identifies all the pixels in the block that have an HSV color between <code>COLOR_THRESHOLD_LOW</code> and <code>COLOR_THRESHOLD_HIGH</code>.</li>
+<li>Once the pixels with the color target are isolated then a histogram is created that creates counts of yellow pixels from left to right for each 1 pixel wide by <code>SCAN_HEIGHT</code> pixel high slice.</li>
+<li>The x value (horizontal offset) of the slice with the most yellow pixels is chosen.  This is where the algorithm thinks the yellow line is.</li>
+<li>The difference between this x-value and the <code>TARGET_PIXEL</code> value is used as the value the PID algorithm uses to calculate a new steering.  If the value is to the left of the <code>TARGET_PIXEL</code> more than <code>TARGET_THRESHOLD</code> pixels then the car steers right; if hte value is to the right of <code>TARGET_PIXEL</code> more than <code>TARGET_THRESHOLD</code> pixels the the car steers left.  If the value is withing <code>TARGET_THRESHOLD</code> pixels of <code>TARGET_PIXEL</code> then steering is not changed.</li>
+<li>The steering value is used to decide if the car should speed up or slow down.  If steering is not changed then the throttle is increased by <code>THROTTLE_STEP</code>, but not over <code>THROTTLE_MAX</code>.  If steering is changed then throttle is decreased by <code>THROTTLE_STEP</code>, but not below <code>THROTTLE_MIN</code>.</li>
+</ol>
+<blockquote>
+<blockquote>
+<p>This <a href="https://pyimagesearch.com/2021/04/28/opencv-color-spaces-cv2-cvtcolor/">pyimagesearch article</a> and accompanying video describe the various color spaces available and OpenCV and their characteristics.  </p>
+</blockquote>
+</blockquote>
+<p>The complete source code is provided and discussed in the <a href="#linefollower-class">LineFollower class</a> section near the end of this page.</p>
+<h3 id="camera-setup">Camera Setup</h3>
+<p>The image at the top of the page shows the camera setup approximately how it would be using the standard Donkeycar cage.  It is angled to see to the horizon so that it can see turns from far away.  This is good when going very fast because you can see far ahead.  However if the detected line is very thin then it could have artifacting (noise) that could lead to false positives that cause the vehicle to move off the line. If you are not going fast and you want to be as accurate as possible then pointing the camera down at the line is a good idea.  So if your camera can be adjusted then you can make trade-offs between accuracy (point it down) and speed (point to to the horizon).</p>
+<h3 id="choosing-parameters-for-the-linefollower">Choosing Parameters for the LineFollower</h3>
+<p>The computer vision template is a little different than the deep learning and path follow templates; there is no data recording.  After setting your configuration parameters you just put your car on the track that has the line that you want to follow and then change from user mode to one of the auto-pilot modes; full-auto or auto-steering.  The complete set of configuration parameters can be found in the <a href="#linefollower-configuration">LineFollower Configuration</a> section below; we will discuss the most important configuration in more detail in this section.</p>
+<h4 id="scan_y-and-scan_height">SCAN_Y and SCAN_HEIGHT</h4>
+<p>The rectangular area that will be scanned for the line, called the detection area, is determined with the <code>SCAN_Y</code> and <code>SCAN_HEIGHT</code>.</p>
+<p>When in autopilot mode, the <code>LineFollower</code> shows the detection area as a horizontal black bar.  Pixels that fall within the color threshold range (see next sectino) are drawn as white pixels. Ideally, only the pixels in the line that are in the detection bar will show as white; any white pixels that are NOT part of the line that you want to follow are considered false positives.  If the false positives are relatively disperse then they should not interfere with detecting the line.  However, if there are big areas of white false positives then they might trick the algorithm.  See the next section of how to adjust the color threshold range to minimize false positives.</p>
+<p>The image below shows the detection area and the detected line.</p>
+<p><img alt="The Detection Area" src="/assets/cv_track_telemetry.png" /></p>
+<h4 id="color_threshold_low-color_threshold_high">COLOR_THRESHOLD_LOW, COLOR_THRESHOLD_HIGH</h4>
+<p>The color threshold values represent the range of colors used to detect the line; they should be chosen to include the colors in the line in the area that it passes through the detection bar and ideally they should not include any other colors.  The color threshold values are in HSV color space (Hue, Saturation, Color) format, not RGB format.  RGB color space is how a computer shows colors.  HSV color space is closer to how humans perceive color.  For our purposes the 'hue' part is the 'pure' color without regard for shadows or lighting.  This makes it easier to find a color because it is one number, rather than combination of 3 numbers.  </p>
+<blockquote>
+<blockquote>
+<p>There are many online converters between RGB and HSV.  This one was used when creating this documentation; <a href="https://www.peko-step.com/en/tool/hsvrgb_en.html">peko-step</a>  I like that tool because it will allow the Saturation and Value to be output in the range of 0.255, which is what we need.  IMPORTANT: The online tools use the standard way of representing HSV, which is a Hue value of 0 to 359 degrees, Saturation of 0 to 100%, Value of 0 to 100%.  OpenCV, which our code is based on, uses a Hue value of 0 to 179, Saturation of 0 to 255 and value of 0 to 255; so be aware that you may need to convert from the tool's values to the OpenCV values when changing these configurations.</p>
+</blockquote>
+</blockquote>
+<p>When choosing the threshold colors it is important to take into account what the camera will see including the lighting conditions.  Donkeycar includes a script to make this easy to do.  the <code>hsv_picker.sh</code> script allows you to view the live camera image or alternatively to choose a static image to view.  So if you are running a desktop image on your car (so not a server image or headless image) then you can run the script and view the camera image.  If you do not have a desktop on the car, then you can run the car and open the web view in a browser on your host laptop at take a screen shot to save it, then use that static image with the <code>hsv_picker.sh</code> script on your laptop computer.  In either case, arrange the car on the course so it can see the line as it would see it when you drive in autopilot so you are getting a realistic view.  </p>
+<p>You can run the <code>hsv_picker.sh</code> script to view a screen shot image; with the donkey python environment activated run the script from the root of your donkeycar repo folder;</p>
+<pre><code>python scripts/hsv_picker.sh --file=&lt;path-to-image&gt;
+</code></pre>
+<p>To view the camera stream, again with donkey python environment activated, run the script from the root of your donkeycar repo folder;</p>
+<pre><code>python scripts/hsv_picker.sh
+</code></pre>
+<p>If you have more than one camera and it is not showing the correct one, you can choose the camera index and/or set the image size</p>
+<pre><code>python scripts/hsv_picker.sh --camera=2  --width=320 --height=240
+</code></pre>
+<p><img alt="A screenshot in hsv_script.sh" src="/assets/hsv_picker_no_mask.png" /></p>
+<p>The image above shows the <code>hsv_script.sh</code> with a web ui screenshot loaded.  The blue line in the center of the image is the line that we want to follow.  The horizontal black bar in the camera image is the detection bar; this is defined by <code>SCAN_Y</code> and <code>SCAN_HEIGHT</code> and is the area where the mask is applied to try to isolate the pixels in the line.  When pixels are detected they will be draw in white in the detection area.</p>
+<p>The bottom of the screen has 6 trackbars to select the 3 parts of the low HSV value and the 3 parts of the high HSV value that are used to create a mask to pull out the pixels in the line.  You can move those scrollbars manually to try to find the best values for the detection range.  As you change the scrollbars the resulting mask will be applied to the image and you will see pixels start to turn back.  The Hue value is typically the most important value.  You can reset the trackbars and clear the mask anytime by selecting the Escape key on the keyboard.</p>
+<p>Using the scrollbars works, but there is an easier way.  You can also just select a rectangular area by clicking-dragging-releasing; the pixels in that area will be searched for a low and high value and the trackbars will by updated with those low and high values.  So the easiest way to find the mask for the line is to select a rectangular area <em>on the line</em> itself.  You can fine-tune the selected mask using the trackbars.</p>
+<p>The image below shows the mask that was created by selecting a rectangular area within the blue line.</p>
+<p><img alt="A masked screenshot in the hsv_picker.sh script" src="/assets/hsv_picker_mask.png" /></p>
+<p>Features of <code>hsv_picker.sh</code>:</p>
+<ul>
+<li>change the low and high mask values using the taskbars at the bottom of the screen.</li>
+<li>set the low and high mask values by selecting a rectangular area on the image using click-drag-release.</li>
+<li>select the Escape key on the keyboard to clear the mast.</li>
+<li>select the 'p' key to print the current mask values to the console.</li>
+<li>select the 'q' key to print the final mask values and quit.</li>
+</ul>
+<h4 id="target_pixel">TARGET_PIXEL</h4>
+<p>The <code>TARGET_PIXEL</code> value is the expected horizontal position of the line to follow in the image.  The line follow algorithm will adjust steering to try to keep the line at that position in the image.  More specifically, the difference between the <code>TARGET_PIXEL</code> value and where the line follow algorithm detects that actual line is in the image is used by a PID controller to adjust steering (see <a href="#the-pid-controller">The PID Controller</a>) below.</p>
+<p>If you are the only car on the course, then you probably want the car to drive directly on the line to follow.  In this case setting <code>TARGET_PIXEL</code> to  the horizontal center of the image at <code>(IMAGE_W / 2)</code> means the auto-pilot assumes the line to follow should be directly in the middle of the image and so the car will try to stay in the middle.  So if your car actually starts to the left or right of that line, it will quickly move the the line and stay on it.</p>
+<p>However, if you are on a course where two cars drive at the same time (there are two lanes separated by a line), then you probably want your car to stay in it's lane.  In that case you would set <code>TARGET_PIXEL</code> to None, which will cause the car to detect the location of the line at startup.  The auto-pilot will then assume the line should stay at that position in the image, and so it will the try to keep the car it it's lane to make that true.</p>
+<blockquote>
+<blockquote>
+<p>If you are really motivated then you might try implementing a lane-changing algorithm that would dynamically change the target pixel value in order to move from one lane to another.</p>
+</blockquote>
+</blockquote>
+<h3 id="linefollower-configuration">LineFollower Configuration</h3>
+<p>The complete set of configuration values and their defaults can be found in <a href="https://github.com/autorope/donkeycar/blob/main/donkeycar/templates/cfg_cv_control.py#L556">donkeycar/templates/cfg_cv_control.py</a> and is copied here for convenience.</p>
+<pre><code># configure which part is used as the autopilot - change to use your own autopilot
+CV_CONTROLLER_MODULE = &quot;donkeycar.parts.line_follower&quot;
+CV_CONTROLLER_CLASS = &quot;LineFollower&quot;
+CV_CONTROLLER_INPUTS = ['cam/image_array']
+CV_CONTROLLER_OUTPUTS = ['pilot/steering', 'pilot/throttle', 'cv/image_array']
+CV_CONTROLLER_CONDITION = &quot;run_pilot&quot;
+
+# LineFollower - line color and detection area
+SCAN_Y = 120          # num pixels from the top to start horiz scan
+SCAN_HEIGHT = 20      # num pixels high to grab from horiz scan
+COLOR_THRESHOLD_LOW  = (0, 50, 50)    # HSV dark yellow (opencv HSV hue value is 0..179, saturation and value are both 0..255)
+COLOR_THRESHOLD_HIGH = (50, 255, 255) # HSV light yellow (opencv HSV hue value is 0..179, saturation and value are both 0..255)
+
+# LineFollower - target (expected) line position and detection thresholds
+TARGET_PIXEL = None   # In not None, then this is the expected horizontal position in pixels of the yellow line.
+                      # If None, then detect the position yellow line at startup;
+                      # so this assumes you have positioned the car prior to starting.
+TARGET_THRESHOLD = 10 # number of pixels from TARGET_PIXEL that vehicle must be pointing
+                      # before a steering change will be made; this prevents algorithm
+                      # from being too twitchy when it is on or near the line.
+CONFIDENCE_THRESHOLD = (1 / IMAGE_W) / 3  # The fraction of total sampled pixels that must be yellow in the sample slice.
+                                          # The sample slice will have SCAN_HEIGHT pixels and the total number
+                                          # of sampled pixels is IMAGE_W x SCAN_HEIGHT, so if you want to make sure
+                                          # that all the pixels in the sample slice are yellow, then the confidence
+                                          # threshold should be SCAN_HEIGHT / (IMAGE_W x SCAN_HEIGHT) or (1 / IMAGE_W).
+                                          # If you keep getting `No line detected` logs in the console then you
+                                          # may want to lower the threshold.
+
+# LineFollower - throttle step controller; increase throttle on straights, descrease on turns
+THROTTLE_MAX = 0.3    # maximum throttle value the controller will produce
+THROTTLE_MIN = 0.15   # minimum throttle value the controller will produce
+THROTTLE_INITIAL = THROTTLE_MIN  # initial throttle value
+THROTTLE_STEP = 0.05  # how much to change throttle when off the line
+
+# These three PID constants are crucial to the way the car drives. If you are tuning them
+# start by setting the others zero and focus on first Kp, then Kd, and then Ki.
+PID_P = -0.01         # proportional mult for PID path follower
+PID_I = 0.000         # integral mult for PID path follower
+PID_D = -0.0001       # differential mult for PID path follower
+
+OVERLAY_IMAGE = True  # True to draw computer vision overlay on camera image in web ui
+                      # NOTE: this does not affect what is saved to the data
+
+</code></pre>
+<h2 id="the-pid-controller">The PID Controller</h2>
+<p>It is very common to use a Proportional Integral Derivative (PID) controller to control throttle and/or steering in a wheeled robot.  For example, the <a href="/guide/path_follow/path_follow">Path Follow</a> autopilot uses a PID algorithm to modify steering based on how far away from the desired path the robot is.  In the Computer Vision template, the built-in Line Follower algorithm uses a PID in a similar way; the line follow algorithm outputs a value that is proportional to how far the car is from the center line and whose sign indicates which side of the line it is on.  The PID controller uses the magnitude and sign of the distance from the center line to calculate a steering value that will move the car towards the center line.  </p>
+<blockquote>
+<blockquote>
+<p>The path_follow autopilot also uses a PID controller.  There is a good description of how to tune a controller for driving at <a href="/guide/path_follow/path_follow/#determining-pid-coefficients">Determining PID Coefficients</a></p>
+</blockquote>
+</blockquote>
+<h2 id="writing-a-computer-vision-autopilot">Writing a Computer Vision Autopilot</h2>
+<p>You can use the <code>CV_CONTROLLER_*</code> configuration values to point to a python file and class that implements your own computer vision autopilot part.  Your autopilot class must conform to the <a href="/parts/about/#parts">donkeycar part</a> standard.  You can also determine the name of the input values, output values and run_condition.  The default configuration values point the the included LineFollower part.  At a minimum computer vistion autpilot part takes the camera image as an input and outputs the autopilot's throttle and steering values.</p>
+<p>Let's create a simple custom computer vision part.  It won't be much of an autopilot because it will just output a constant throttle and steering value and an image that counts that frames.</p>
+<p>A computer vision is a <a href="/parts/about/#parts">donkeycar part</a>, so at a minimum it must be a Python class with a <code>run(self)</code> method.  An autpilot needs a little more than that, which we will see, but here is a minimal structure;</p>
+<pre><code>import cv2
+import numpy as np
+from simple_pid import PID
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class MockCvPilot:
+    def __init__(self, pid, cfg):
+        # initialize instance properties
+        pass
+
+    def run(self, img):
+        # use img to determine a steering and throttle value
+        return 0, 0, None  # steering, throttle, image
+</code></pre>
+<p>The constructor, <code>__init__(self, pid, cfg)</code> takes a PID controller instance and the vehicle configuration properties.  It is very common for autopilots to use a PID controller, so the framework provides one.  Your autopilot may have values that you want to adjust to tune the algorithm; you should put those values in the <code>myconfig.py</code> configuration file, then retrieve them in the constructor.  In our <code>MockCvPilot</code> we want to know if the user wants to see the telemetry image or just the camera image.  We do the same thing in the built-in <code>LineFollower</code> autopilot part, so we can just re-use that configuration value, <code>OVERLAY_IMAGE</code>, in our autpilot.  We can add that in our constructor;</p>
+<pre><code>    def __init__(self, pid, cfg):
+        self.pid_st = pid
+        self.overlay_image = cfg.OVERLAY_IMAGE
+        self.counter = 0
+</code></pre>
+<p>The <code>run(self, img)</code> method is called each time through the loop.  This is where you will interpret the image that is passed and determine a steering and throttle value that the car should use.  The Computer Vision template also allows for showing an image in the web ui that is different in autopilot mode; typically you would add telemetry information to the camera image that is passed to run; such as the new steering and throttle values and perhaps a other alterations to the image so the user can better understand how the algorithm is working.  For instance, if your algorithm did edge detection using the Canny algorithm, then you might want to show the processed image with the edges.  So the minimal autopilot part returns a tuple of (steering, throttle, image).</p>
+<p>To keep things simple, the MockCvPilot won't actually predict a steering and throttle, it will just return zero for each.  However it will maintain a counter and display that in the telemetry image.  We can see that in the <code>run()</code> method.</p>
+<pre><code>    def run(self, cam_img):
+        if cam_img is None:
+            return 0, 0, None
+
+        self.counter += 1
+
+        # show some diagnostics
+        if self.overlay_image:
+            # draw onto a COPY of the image so we don't alter the original
+            cam_img = self.overlay_display(np.copy(cam_img))
+
+        return self.steering, self.throttle, cam_img
+</code></pre>
+<p>There are a couple of things to note here:</p>
+<ul>
+<li>The <code>run()</code> method is protected against an empty camera image - this can happen, espcially during startup.  So in this case we stop the car.</li>
+<li>We only produce a telemetry image if the original configuration value, <code>OVERLAY_IMAGE</code>, that we copied into <code>self.overlay_image</code>is <code>True</code>.  If it is not <code>True</code> then we just pass throught the original camera image.</li>
+<li>Note that we make a copy of the original camera image so that we do not alter the original.  This is called a <em>defensive copy</em>; we don't know what other parts in the vehicle need to do with the orignal image, so we don't want t alter it.</li>
+</ul>
+<p>We put the logic that draws the telemetry image into it's own method so keep the both it and the <code>run()</code> method clean and cohesive.  Also because we <code>run()</code> method has made a defensive copy of the original image, the method can do anything it wants to the image; even overwrite it completely.  In our case we just draw some text on it to show the steering, throttle and counter values.  We know the steering and throttle values will be zero in our mock autopilot, but it is instructive to show how you might display them.  In this case we are showing them as text, but you might prefer to show them as bars, like we do in the webui, or some other visualization.  This is the display method we use in our mock autopilot;</p>
+<pre><code>    def overlay_display(self, img):
+        display_str = []
+        display_str.append(f&quot;STEERING:{self.steering:.1f}&quot;)
+        display_str.append(f&quot;THROTTLE:{self.throttle:.2f}&quot;)
+        display_str.append(f&quot;COUNTER:{self.counter}&quot;)
+
+        lineheight = 25
+        y = lineheight
+        x = lineheight
+        for s in display_str:
+            cv2.putText(img, s, color=(0, 0, 0), org=(x ,y), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, thickness=3)
+            cv2.putText(img, s, color=(0, 255, 0), org=(x ,y), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, thickness=1)
+            y += lineheight
+
+        return img
+</code></pre>
+<p>There are a couple of things to note:
+- We organize the text as an array of strings; that makes it easy to process the line when we are drawing the text.  You might even want to have a separate method to create this list of text string and possibly pass them into the display() methed if that simplies the display method or makes it more versatile (it can do both).
+- We draw the text twice, once with a thick black stroke and then again with a thinner green stroke.  This creates green text with a black outline; this makes it easier to read on an unpredictable background.</p>
+<p>Here is the complete custom computer vision autopilot part:</p>
+<pre><code>import cv2
+import numpy as np
+from simple_pid import PID
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class MockCvPilot:
+    '''
+    OpenCV based MOCK controller; just draws a counter and 
+    returns 0 for thottle and steering.
+
+    :param pid: a PID controller that can be used to estimate steering and/or throttle
+    :param cfg: the vehicle configuration properties
+    '''
+    def __init__(self, pid, cfg):
+        self.pid_st = pid
+        self.overlay_image = cfg.OVERLAY_IMAGE
+        self.steering = 0
+        self.throttle = 0
+        self.counter = 0
+
+
+    def run(self, cam_img):
+        '''
+        main runloop of the CV controller.
+
+        :param cam_img: the camerate image, an RGB numpy array
+        :return: tuple of steering, throttle, and the telemetry image.
+
+        If overlay_image is True, then the output image
+        includes an overlay that shows how the 
+        algorithm is working; otherwise the image
+        is just passed-through untouched. 
+        '''
+        if cam_img is None:
+            return 0, 0, None
+
+        self.counter += 1
+
+        # show some diagnostics
+        if self.overlay_image:
+            # draw onto a COPY of the image so we don't alter the original
+            cam_img = self.overlay_display(np.copy(cam_img))
+
+        return self.steering, self.throttle, cam_img
+
+    def overlay_display(self, img):
+        '''
+        draw on top the given image.
+        show some values we are using for control
+
+        :param img: the image to draw on as a numpy array
+        :return: the image with overlay drawn
+        '''
+        # some text to show on the overlay
+        display_str = []
+        display_str.append(f&quot;STEERING:{self.steering:.1f}&quot;)
+        display_str.append(f&quot;THROTTLE:{self.throttle:.2f}&quot;)
+        display_str.append(f&quot;COUNTER:{self.counter}&quot;)
+
+        lineheight = 25
+        y = lineheight
+        x = lineheight
+        for s in display_str:
+            # green text with black outline so it shows up on any background
+            cv2.putText(img, s, color=(0, 0, 0), org=(x ,y), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, thickness=3)
+            cv2.putText(img, s, color=(0, 255, 0), org=(x ,y), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=1, thickness=1)
+            y += lineheight
+
+        return img
+</code></pre>
+<p>To use the custom part, we must modify the myconfig.py file in the mycar folder to locate the python file and the class within it and to specify the inputs, outputs and run_condition that should be used when adding the part to the vehicle loop:</p>
+<pre><code># # configure which part is used as the autopilot - change to use your own autopilot
+CV_CONTROLLER_MODULE = &quot;my_cv_pilot&quot;
+CV_CONTROLLER_CLASS = &quot;MockCvPilot&quot;
+CV_CONTROLLER_INPUTS = ['cam/image_array']
+CV_CONTROLLER_OUTPUTS = ['pilot/steering', 'pilot/throttle', 'cv/image_array']
+CV_CONTROLLER_CONDITION = &quot;run_pilot&quot;
+</code></pre>
+<p><code>CV_CONTROLLER_MODULE</code> is the package path to the <code>my_cv_autpilot.py</code> file.  It is generally is convenient to have this in the mycar folder and this is what we have done here.  However, if you are developing this in your own repository, then if you are a Mac or Linux machine you can create a symbolic link to the file or the folder in which the file or files are.</p>
+<p><code>CV_CONTROLLER_CLASS</code> is the name of the part's class in the python file to which <code>CV_CONTROLLER_MODULE</code> points.  In our case this is <code>MockCvPilot</code>.</p>
+<p><code>CV_CONTROLLER_INPUTS</code> is an array of the named inputs to the part that are passed when the part is added to the vehicle loop.  For a computer vision autopilot the image is the minimum required.  However you can pass any named values in the vehicle's memory.  These correspond in a one-to-one fashion to the arguments (ignore the self argument) to the autopilot's run() method.  So our mock example expects only an image <code>run(self, cam_img)</code> and we only declare an image in the inputs, <code>['cam/image_array']</code>.</p>
+<p><code>CV_CONTROLLER_OUTPUTS</code> is an array of named outputs to the part that are passed when the part is added to vehicle loop.  These correspond to the return values from the autopilot's <code>run()</code>.  This is an autopilot, so we return a steering value and a throttle value.  We also produce a new image with telemetry information drawn on it.  So our mock autopilot returns <code>return self.steering, self.throttle, cam_img</code> which corresponds to the declared output values, <code>['pilot/steering', 'pilot/throttle', 'cv/image_array']</code>.</p>
+<p><code>CV_CONTROLLER_CONDITION</code> is the named value that decides if the autopilot part will run or not run.  If you always want it to run, then pass <code>None</code>, otherwise this should be the name of a boolean value; when it is <code>True</code> the part's <code>run()</code> method will be called; when it if <code>False</code> the <code>run()</code> method is not called.  The templates maintain such a boolean value named <code>"run_pilot"</code>, so we use that.</p>
+<h2 id="linefollower-class">LineFollower Class</h2>
+<p>Now that you understand the structure of an autopilot part, it is worth reviewing the pseudocode in <a href="#the-line-follower">The Line Follower</a> section above and compare that to the actual implementation.  The python file is located at https://github.com/autorope/donkeycar/blob/main/donkeycar/parts/line_follower.py and is copied below.  In particular:</p>
+<ul>
+<li>get_i_color() uses SCAN_Y and SCAN_HEIGHT to copy a section of the camera image, convert it to HSV and apply the mask created by the low and high HSV mask values.  Then it finds the x (horizontal) index in the area that has the highest amount of the positive pixels; that is where the autopilot thinks the line is.</li>
+</ul>
+<pre><code>    def get_i_color(self, cam_img):
+        # take a horizontal slice of the image
+        iSlice = self.scan_y
+        scan_line = cam_img[iSlice : iSlice + self.scan_height, :, :]
+
+        # convert to HSV color space
+        img_hsv = cv2.cvtColor(scan_line, cv2.COLOR_RGB2HSV)
+
+        # make a mask of the colors in our range we are looking for
+        mask = cv2.inRange(img_hsv, self.color_thr_low, self.color_thr_hi)
+
+        # which index of the range has the highest amount of yellow?
+        hist = np.sum(mask, axis=0)
+        max_yellow = np.argmax(hist)
+
+        return max_yellow, hist[max_yellow], mask
+</code></pre>
+<ul>
+<li>Note how target value is initialized by reading the image if it is not already initialized in the configuration:</li>
+</ul>
+<pre><code>        max_yellow, confidence, mask = self.get_i_color(cam_img)
+        if self.target_pixel is None:
+            self.target_pixel = max_yellow
+</code></pre>
+<ul>
+<li>Note how the PID controller's set point (the target value) in initialized in the <code>run()</code> method with the <code>TARGET_PIXEL</code> value.</li>
+</ul>
+<pre><code>        if self.pid_st.setpoint != self.target_pixel:
+            # this is the target of our steering PID controller
+            self.pid_st.setpoint = self.target_pixel
+</code></pre>
+<ul>
+<li>If we got a good reading from the image, then we use it to predict a new steering value based on the horizontal distance of the detected line from the target_pixel.</li>
+</ul>
+<pre><code>        if confidence &gt;= self.confidence_threshold:
+            # invoke the controller with the current yellow line position
+            # get the new steering value as it chases the ideal target_value
+            self.steering = self.pid_st(max_yellow)
+</code></pre>
+<ul>
+<li>Slow down if we are turning</li>
+</ul>
+<pre><code>            if abs(max_yellow - self.target_pixel) &gt; self.target_threshold:
+                # we will be turning, so slow down
+                if self.throttle &gt; self.throttle_min:
+                    self.throttle -= self.delta_th
+</code></pre>
+<ul>
+<li>Or speed up if we are going straight</li>
+</ul>
+<pre><code>            else:
+                # we are going straight, so speed up
+                if self.throttle &lt; self.throttle_max:
+                    self.throttle += self.delta_th
+
+</code></pre>
+<p>Here is the complete source to the <code>LineFollower</code> part.</p>
+<pre><code>import cv2
+import numpy as np
+from simple_pid import PID
+import logging
+
+logger = logging.getLogger(__name__)
+
+
+class LineFollower:
+    '''
+    OpenCV based controller
+    This controller takes a horizontal slice of the image at a set Y coordinate.
+    Then it converts to HSV and does a color thresh hold to find the yellow pixels.
+    It does a histogram to find the pixel of maximum yellow. Then is uses that iPxel
+    to guid a PID controller which seeks to maintain the max yellow at the same point
+    in the image.
+    '''
+    def __init__(self, pid, cfg):
+        self.overlay_image = cfg.OVERLAY_IMAGE
+        self.scan_y = cfg.SCAN_Y   # num pixels from the top to start horiz scan
+        self.scan_height = cfg.SCAN_HEIGHT  # num pixels high to grab from horiz scan
+        self.color_thr_low = np.asarray(cfg.COLOR_THRESHOLD_LOW)  # hsv dark yellow
+        self.color_thr_hi = np.asarray(cfg.COLOR_THRESHOLD_HIGH)  # hsv light yellow
+        self.target_pixel = cfg.TARGET_PIXEL  # of the N slots above, which is the ideal relationship target
+        self.target_threshold = cfg.TARGET_THRESHOLD # minimum distance from target_pixel before a steering change is made.
+        self.confidence_threshold = cfg.CONFIDENCE_THRESHOLD  # percentage of yellow pixels that must be in target_pixel slice
+        self.steering = 0.0 # from -1 to 1
+        self.throttle = cfg.THROTTLE_INITIAL # from -1 to 1
+        self.delta_th = cfg.THROTTLE_STEP  # how much to change throttle when off
+        self.throttle_max = cfg.THROTTLE_MAX
+        self.throttle_min = cfg.THROTTLE_MIN
+
+        self.pid_st = pid
+
+
+    def get_i_color(self, cam_img):
+        '''
+        get the horizontal index of the color at the given slice of the image
+        input: cam_image, an RGB numpy array
+        output: index of max color, value of cumulative color at that index, and mask of pixels in range
+        '''
+        # take a horizontal slice of the image
+        iSlice = self.scan_y
+        scan_line = cam_img[iSlice : iSlice + self.scan_height, :, :]
+
+        # convert to HSV color space
+        img_hsv = cv2.cvtColor(scan_line, cv2.COLOR_RGB2HSV)
+
+        # make a mask of the colors in our range we are looking for
+        mask = cv2.inRange(img_hsv, self.color_thr_low, self.color_thr_hi)
+
+        # which index of the range has the highest amount of yellow?
+        hist = np.sum(mask, axis=0)
+        max_yellow = np.argmax(hist)
+
+        return max_yellow, hist[max_yellow], mask
+
+
+    def run(self, cam_img):
+        '''
+        main runloop of the CV controller
+        input: cam_image, an RGB numpy array
+        output: steering, throttle, and the image.
+        If overlay_image is True, then the output image
+        includes and overlay that shows how the 
+        algorithm is working; otherwise the image
+        is just passed-through untouched. 
+        '''
+        if cam_img is None:
+            return 0, 0, False, None
+
+        max_yellow, confidence, mask = self.get_i_color(cam_img)
+        conf_thresh = 0.001
+
+        if self.target_pixel is None:
+            # Use the first run of get_i_color to set our relationship with the yellow line.
+            # You could optionally init the target_pixel with the desired value.
+            self.target_pixel = max_yellow
+            logger.info(f&quot;Automatically chosen line position = {self.target_pixel}&quot;)
+
+        if self.pid_st.setpoint != self.target_pixel:
+            # this is the target of our steering PID controller
+            self.pid_st.setpoint = self.target_pixel
+
+        if confidence &gt;= self.confidence_threshold:
+            # invoke the controller with the current yellow line position
+            # get the new steering value as it chases the ideal target_value
+            self.steering = self.pid_st(max_yellow)
+
+            # slow down linearly when away from ideal, and speed up when close
+            if abs(max_yellow - self.target_pixel) &gt; self.target_threshold:
+                # we will be turning, so slow down
+                if self.throttle &gt; self.throttle_min:
+                    self.throttle -= self.delta_th
+                if self.throttle &lt; self.throttle_min:
+                    self.throttle = self.throttle_min
+            else:
+                # we are going straight, so speed up
+                if self.throttle &lt; self.throttle_max:
+                    self.throttle += self.delta_th
+                if self.throttle &gt; self.throttle_max:
+                    self.throttle = self.throttle_max
+        else:
+            logger.info(f&quot;No line detected: confidence {confidence} &lt; {self.confidence_threshold}&quot;)
+
+        # show some diagnostics
+        if self.overlay_image:
+            cam_img = self.overlay_display(cam_img, mask, max_yellow, confidence)
+
+        return self.steering, self.throttle, cam_img
+
+    def overlay_display(self, cam_img, mask, max_yellow, confidense):
+        '''
+        composite mask on top the original image.
+        show some values we are using for control
+        '''
+
+        mask_exp = np.stack((mask, ) * 3, axis=-1)
+        iSlice = self.scan_y
+        img = np.copy(cam_img)
+        img[iSlice : iSlice + self.scan_height, :, :] = mask_exp
+        # img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+
+        display_str = []
+        display_str.append(&quot;STEERING:{:.1f}&quot;.format(self.steering))
+        display_str.append(&quot;THROTTLE:{:.2f}&quot;.format(self.throttle))
+        display_str.append(&quot;I YELLOW:{:d}&quot;.format(max_yellow))
+        display_str.append(&quot;CONF:{:.2f}&quot;.format(confidense))
+
+        y = 10
+        x = 10
+
+        for s in display_str:
+            cv2.putText(img, s, color=(0, 0, 0), org=(x ,y), fontFace=cv2.FONT_HERSHEY_SIMPLEX, fontScale=0.4)
+            y += 10
+
+        return img
+</code></pre>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

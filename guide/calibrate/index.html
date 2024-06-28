@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Calibrate steering and throttle. - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Calibrate steering and throttle.";
+        var mkdocs_page_input_path = "guide/calibrate.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Calibrate steering and throttle.</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#how-to-adjust-your-cars-settings">How to adjust your car's settings</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#steering-calibration">Steering Calibration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#throttle-calibration">Throttle Calibration</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#fine-tuning-your-calibration">Fine tuning your calibration</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#next-lets-get-driving">Next let's get driving!</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+      <li class="breadcrumb-item active">Calibrate steering and throttle.</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/calibrate.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="calibrate-your-car">Calibrate your Car</h1>
+<p>The point of calibrating your car is to make it drive consistently.  If you have a steering servo then donkey needs to know the PWM values associated with full left and full right turns.  If you have an ESC, then donkey needs to know the PWM values for full forward throttle, stopped and full reverse throttle.  You figure out those values in the calibration process, then save them to your myconfig.py file so they can be used then the car is driving.</p>
+<p><strong>Some kinds of drivetrains do not need to be calibrated</strong>.  If you are using any drivetrain that uses an L298N motor controller or similar (rather than and ESC), then no calibration is necessary; those drivetrains do not use PWM; they use a duty cycle that does not need to be calibrated.  Most of the <a href="../../parts/actuators/#differential-drive-cars">differential drivetrains</a> (those whose name begins with <code>DC_TWO_WHEEL</code>) are of that type.  If your drivetrain uses an L298N motor controller or similar for throttle, but uses a servo for steering, then you will need to calibrate steering, but not throttle.</p>
+<p>There is a more complete discussion of drivetrains in <a href="../../parts/actuators/">Actuators</a></p>
+<h2 id="how-to-adjust-your-cars-settings">How to adjust your car's settings</h2>
+<blockquote>
+<p>You will need to ssh into your Pi to do the calibration.</p>
+</blockquote>
+<p>All of the car's default settings are in the <code>config.py</code>.  You can override the default settings by editing the <code>myconfig.py</code> script in your car directory.  This was generated when you ran the <code>donkey createcar --path ~/mycar</code> command. You can edit this file on your car by running:</p>
+<pre><code class="language-bash">nano ~/mycar/myconfig.py
+</code></pre>
+<h2 id="steering-calibration">Steering Calibration</h2>
+<blockquote>
+<p><strong>Make sure your car is off the ground to prevent a runaway situation.</strong>  </p>
+</blockquote>
+<ol>
+<li>Turn on your car.</li>
+<li>Find the servo's 3-pin cable and make sure it is connected property to the PWM output pins. <ul>
+<li>if using the Donkey Hat, the 3-pin servo cable will be plugged into the hat.  See <a href="../../parts/rc_hat/#controlling-esc-and-steering-servo-with-rc-hat">Controlling ESC and Steering Servo with RC Hat</a> for a complete description on the connections.</li>
+<li>if using a PCA9685, the servo cable will be connected to one of the PCA9685's 3-pin input channels.  See <a href="../build_hardware/#step-4-connect-servo-shield-to-raspberry-pi">Connect Servo Shield to Raspberry Pi</a> for a description.</li>
+</ul>
+</li>
+<li>Run <code>donkey calibrate ...</code> and provide it with arguments to specify which pin will produce the PWM<ul>
+<li>When calibrating a drivetrain that uses pin specifiers, like <code>PWM_STEERING_THROTTLE</code>, then use <code>--pwm-pin</code> argument to specify the target pin,  like <code>RPI_GPIO.BOARD.33</code> or <code>PCA9685.1:40.13</code>.  If you are using the <a href="../../parts/rc_hat/#controlling-esc-and-steering-servo-with-rc-hat">Donkey Hat</a> then you would use <code>donkey calibrate --pwm-pin=PIGPIO.BCM.13</code> to calibrate steering.  See <a href="../../parts/pins/">Pins</a> for a more complete discussion of pins and pin specifiers.</li>
+<li>When using a legacy PCA9685 drivetrain, like <code>I2C_SERVO</code>, then specify the PCA9685 channel (the index of the 3-pin connector that cable in connected to) and the I2C bus the PCA9685 is connected to; <code>donkey calibrate --channel &lt;your_steering_channel&gt; --bus=&lt;your_i2c_bus&gt;</code></li>
+</ul>
+</li>
+<li>First <strong>find the value that turns the tires all the way to the left</strong> extreme. When calibrating steering you want to <strong>choose the value that just turns the wheels to the maximum</strong>; the wheels should turn all the way but <strong>the servo should <em>NOT</em> make a whining noise</strong>.  Try the value <code>360</code> and you should see the wheels on your car move slightly. If not try <code>400</code> or <code>300</code>.  Next enter values +/- 10 from your starting value to find the PWM setting that makes your car turn all the way left, again making sure the motor is not making a whining sound. Remember this value.</li>
+<li>Next <strong>find the value that turns the tires all the way to the right</strong> extreme.  Enter values +/- 10 from your starting value to find the PWM setting that makes your car turn all the way right, again making sure the motor is not making a whining sound. Remember this value.</li>
+</ol>
+<p><strong>Edit the <code>myconfig.py</code> script on your car</strong> and enter these values as <code>STEERING_LEFT_PWM</code> and <code>STEERING_RIGHT_PWM</code> respectively.</p>
+<ul>
+<li><code>STEERING_LEFT_PWM</code>  = PWM for full left turn</li>
+<li><code>STEERING_RIGHT_PWM</code> = PWM value for full right turn</li>
+</ul>
+<h2 id="throttle-calibration">Throttle Calibration</h2>
+<ol>
+<li>Find the ESC's 3-pin cable and make sure it is connected property to the PWM output pins. <ul>
+<li>if using the Donkey Hat, the ESC's 3-pin cable will be plugged into the hat.  See <a href="../../parts/rc_hat/#controlling-esc-and-steering-servo-with-rc-hat">Controlling ESC and Steering Servo with RC Hat</a> for a complete description on the connections.</li>
+<li>if using a PCA9685, the ESC's 3-pin cable will be connected to one of the PCA9685's 3-pin input channels.  See <a href="../build_hardware/#step-4-connect-servo-shield-to-raspberry-pi">Connect Servo Shield to Raspberry Pi</a> for a description.</li>
+</ul>
+</li>
+<li>Run <code>donkey calibrate ...</code> and provide it with arguments to specify which pin will produce the PWM<ul>
+<li>When calibrating a drivetrain that uses pin specifiers, like <code>PWM_STEERING_THROTTLE</code>, then use <code>--pwm-pin</code> argument to specify the target pin, like <code>RPI_GPIO.BOARD.33</code> or <code>PCA9685.1:40.13</code>.  If you are using the <a href="../parts/rc_hat/#controlling-esc-and-steering-servo-with-rc-hat">Donkey Hat</a> then you would use <code>donkey calibrate --pwm-pin=PIGPIO.BCM.18</code> to calibrate throttle.  See <a href="../../parts/pins/">Pins</a> for a more complete discussion of pins and pin specifiers.</li>
+<li>When using a legacy PCA9685 drivetrain, like <code>I2C_SERVO</code>, then specify the PCA9685 channel (the index of the 3-pin connector that cable in connected to) and the I2C bus the PCA9685 is connected to; <code>donkey calibrate --channel &lt;your_throttle_channel&gt; --bus=&lt;your_i2c_bus&gt;</code></li>
+</ul>
+</li>
+<li>Enter <code>370</code> when prompted for a PWM value.</li>
+<li>You should hear your ESC beep indicating that it's calibrated.</li>
+<li>Enter <code>400</code> and you should see your cars wheels start to go forward. If not,
+its likely that this is reverse, try entering <code>330</code> instead.</li>
+<li>Keep trying different values until you've found a reasonable max speed and remember this PWM value.</li>
+</ol>
+<p>Reverse on RC cars is a little tricky because the ESC must receive a reverse pulse, zero pulse, reverse pulse to start to go backwards. To calibrate a reverse PWM setting...</p>
+<ol>
+<li>Use the same technique as above set the PWM setting to your zero throttle.</li>
+<li>Enter the reverse value, then the zero throttle value, then the reverse value again.</li>
+<li>Enter values +/- 10 of the reverse value to find a reasonable reverse speed. Remember this reverse PWM value.</li>
+</ol>
+<p>Now open your <code>myconfig.py</code> script and enter the PWM values for your car into the throttle_controller part:</p>
+<ul>
+<li><code>THROTTLE_FORWARD_PWM</code> = PWM value for full throttle forward</li>
+<li><code>THROTTLE_STOPPED_PWM</code> = PWM value for zero throttle</li>
+<li><code>THROTTLE_REVERSE_PWM</code> = PWM value at full reverse throttle</li>
+</ul>
+<h2 id="fine-tuning-your-calibration">Fine tuning your calibration</h2>
+<p><img alt="fine calibration" src="../../assets/fine_calibration.gif" /></p>
+<p>Now that you have your car roughly calibrated you can try driving it to verify that it drives as expected. Here's how to fine tune your car's calibration.</p>
+<p>First and most importantly, <strong>make sure your car goes perfectly straight</strong> when no steering input is applied.</p>
+<ol>
+<li>Start your car by running <code>python manage.py drive</code>.</li>
+<li>Go to <code>&lt;your_cars_hostname.local&gt;:8887</code> in a browser.</li>
+<li>Press the <code>i</code> key on your keyboard a couple of times to get the car to move forward.  This is best done if you have your car on a very flat floor with some kind of grid, so you can guage if it going straight.  Be careful not to confuse driving off at an angle versus driving along an arc. Driving at an angle may simply mean you pointed the car at an angle when starting it.  Driving a curved arc indicates the car is steering.</li>
+<li>If your car tends to turn left without steering applied then update the <code>STEERING_LEFT_PWM</code> in your <strong>myconfig.py</strong> file so it is closer to neutral.  For example, if <code>STEERING_LEFT_PWM</code> is 460 and <code>STEERING_RIGHT_PWM</code> is 290, then reduce <code>STEERING_LEFT_PWM</code> a little, maybe 458.</li>
+<li>If your car tends to steer right with no steering applied, then update <code>STEERING_RIGHT_PWM</code> in your <strong>myconfig.py</strong> file so it is closer to neutral.  For example, if <code>STEERING_LEFT_PWM</code> is 460 and <code>STEERING_RIGHT_PWM</code> is 290, then increase <code>STEERING_RIGHT_PWM</code> a little, maybe 292.</li>
+<li>Repeat this process a couple of times until you have your car driving straight.</li>
+</ol>
+<p>Next, try to make it so that a full left turn and a full right turn are the same turn angle (they make the same diameter circle when driven all the way around). </p>
+<blockquote>
+<p>Note : optional</p>
+</blockquote>
+<ol>
+<li>Start your car by running <code>python manage.py drive</code>.</li>
+<li>Go to <code>&lt;your_cars_hostname.local&gt;:8887</code> in a browser.</li>
+<li>Press <code>j</code> until the cars steering is all the way right.</li>
+<li>Press <code>i</code> a couple of times to get the car to go forward.</li>
+<li>Measure the diameter of the turn and record it on a spreadsheet.</li>
+<li>Repeat this measurement for different steering values for turning each direction.</li>
+<li>Chart these so you can see if your car turns the same in each direction.</li>
+</ol>
+<p>Corrections:</p>
+<ul>
+<li>If your car turns the same amount at an 80% turn and a 100% turn, change the PWM setting for that turn direction to be the PWM value at 80%.</li>
+<li>If your car is biased to turn one direction, change the PWM values of your turns in the opposite direction of the bias.</li>
+</ul>
+<p>After you've fine tuned your car the steering chart should look something like this.</p>
+<p><img alt="calibration graph" src="../../assets/calibration_graph.png" /></p>
+<p>You may need to iterate making sure the car is driving straight and that the left and right turns are the same to get those both to work.  Prioritize making sure the car drives straight.</p>
+<h3 id="next-lets-get-driving">Next let's <a href="/guide/get_driving">get driving!</a></h3>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../create_application/" class="btn btn-neutral float-left" title="Create Donkeycar App."><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../get_driving/" class="btn btn-neutral float-right" title="Get driving.">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../create_application/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../get_driving/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

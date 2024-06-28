@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>OLED - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "OLED";
+        var mkdocs_page_input_path = "parts/oled.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">OLED</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#supported-displays">Supported displays</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#hardware-setup">Hardware Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#software-setup">Software Setup</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#showing-your-ip-address-on-startup">Showing your IP address on startup.</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#known-issues">Known Issues</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Parts</li>
+      <li class="breadcrumb-item active">OLED</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/parts/oled.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="oled-displays">OLED Displays</h1>
+<p>OLED displays can be used to show information about the current state of the car. This is especially useful in the when collecting data for training, and when racing. </p>
+<p>The OLED display currently displays the following information:
+* The IP address of the car (<code>eth</code> and <code>wlan</code>)
+* The number of records collected, for training.
+* The driving mode.</p>
+<h2 id="supported-displays">Supported displays</h2>
+<p>Examples of displays that are currently supported are:</p>
+<ul>
+<li><a href="https://www.adafruit.com/product/3527">Adafruit PiOLED - 128X32 MonoChrome OLED</a></li>
+</ul>
+<h2 id="hardware-setup">Hardware Setup</h2>
+<p>Simply connect the display to the I2C pins on the Raspberry Pi or the Jetson Nano. Use <code>bus 1</code> so the display can be inserted directly on the pins. <a href="https://cdn-shop.adafruit.com/1200x900/3527-04.jpg">Here</a> is an example of what that looks like.</p>
+<h2 id="software-setup">Software Setup</h2>
+<p>Enable the display in <code>myconfig.py</code> by uncommenting this line <code>USE_SSD1306_128_32 = False</code> by removing the <code>#</code> at the start and change <code>False</code> to <code>True</code>. If you have a 128x32 OLED select resolution 1, if you have 128x64 select resolution 2 and don't forget to remove the <code>#</code> in front of that line, too, to make it active.</p>
+<p>This part of your <code>myconfig.py</code> file should now look like this.</p>
+<pre><code class="language-python">USE_SSD1306_128_32 = True    # Enable the SSD_1306 OLED Display
+# SSD1306_128_32_I2C_ROTATION = 0 # 0 = text is right-side up, 1 = rotated 90 degrees clockwise, 2 = 180 degrees (flipped), 3 = 270 degrees
+SSD1306_RESOLUTION = 2 # 1 = 128x32; 2 = 128x64
+</code></pre>
+<h2 id="showing-your-ip-address-on-startup">Showing your IP address on startup.</h2>
+<p>One of the cool things about having an OLED screen is that you can show your car's IP address on startup, so you can connect to it. Instructions to set that up are <a href="https://diyrobocars.com/2021/12/29/show-your-raspberrypi-ip-address-on-startup-with-an-oled/">here</a></p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you are unable to start the car, ensure that the <code>Adafruit_SSD1306</code> package is installed in your virtual environment. This should automatically be installed, if you are using a recent version of <code>donkeycar</code>.</p>
+<pre><code class="language-bash">pip install Adafruit_SSD1306
+</code></pre>
+<h2 id="known-issues">Known Issues</h2>
+<ul>
+<li>The <code>Adafruit_SSD1306</code> library is incompatible with steering/motor configurations when the Duty Cycle/PWM is supplied directly from GPIO header using the <code>RPI_GPIO</code> pin provider.  This is because internally the Adafruit library sets a GPIO pin mode that is incompatible with our GPIO library.  In this case you have a couple of options:</li>
+<li>Use a PCA9685 to generate the necessary duty cycle/PWM for throttle and steering.</li>
+<li>Use the <code>PIGPIO</code> pin provider to generate the necessary duty cycle/PWM for throttle and steering from the GPIO.  See <a href="../pins/#PIGPIO">PIGPIO</a> for how to set up the pigpio library.</li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../lidar/" class="btn btn-neutral float-left" title="Lidar"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../pins/" class="btn btn-neutral float-right" title="Pins">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../lidar/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../pins/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

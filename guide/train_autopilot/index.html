@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Create an autopilot. - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Create an autopilot.";
+        var mkdocs_page_input_path = "guide/train_autopilot.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Create an autopilot.</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#deep-learning-autopilot">Deep Learning Autopilot</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#path-follow-autopilot-using-gps-wheel-encoders-etc">Path Follow Autopilot (using GPS, wheel encoders, etc)</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#computer-vision-autopilot">Computer Vision Autopilot</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+      <li class="breadcrumb-item active">Create an autopilot.</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/train_autopilot.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="create-an-autopilot">Create an Autopilot</h1>
+<p>Donkey supports three kinds of autopilots; a deep-learning autopilot, a path follow autopilot and a computer vision autopilot.  </p>
+<p>If you followed along with the <a href="/guide/create_application">Create Donkeycar App</a> section, then you know that you choose which template to use when you create your <strong>mycar</strong> application folder using the <strong>createcar</strong> command.</p>
+<p>This section will talk about what the templates are for, then we can get onto training an autopilot.</p>
+<h2 id="deep-learning-autopilot">Deep Learning Autopilot</h2>
+<p>The deep learning autopilot uses a single forward facing camera and a convolutional neural network to implement an autopilot using a technique known as Behavioral Cloning (also known as Imitation Learning).  The technique is called Behavioral Cloning because the goal is to create an autopilot that imitates that actions of a human.  This is the first kind of autopilot that Donkeycar supported and what it is best known for.  For driving a car the overall process looks like this;</p>
+<ul>
+<li>A <strong>human drives</strong> the car to <strong>gather data</strong>. As the you manually drive around the track Donkeycar records data 20 times per second.  Each piece of data has 3 components; a camera image, the throttle value and the steering values that were in place at the time the image was taken. We want about 10,000 of these.</li>
+<li><strong>Clean the data</strong>.  We don't want driving mistakes in the data; things like driving off the track or crashing into an obstacle.  Alternatively, we can delete such data while we are driving so it never get's into the data set.</li>
+<li>Use the collected data to calculate (<strong>train</strong>) <strong>a Convolutional Neural Network</strong>.</li>
+<li>Use the trained CNN to <strong>infer the throttle and steering values</strong> given an image.  So when we are in autopilot mode, we take an image, give it to the CNN, get the throttle and steering and put those into the cars hardware.  We <strong>do that 20 times per second</strong> and now we are driving!</li>
+</ul>
+<p>Because the deep learning autopilot depends on a camera image, lighting conditions are important.  The deep learning template is great for an indoor track where lighting conditions and the details of the room can be controlled, but it can be more difficult to get working outside where lighting conditions are variable and things change in the environment.  </p>
+<p><strong>Aside:</strong> The Donkeycar approach to deep learning driving was inspired by an Nvidia research paper entitled <a href="https://arxiv.org/pdf/1604.07316v1.pdf">End to End Learning for Self-Driving Cars</a>.</p>
+<p><a href="../deep_learning/train_autopilot/">Train a deep learning autopilot</a></p>
+<h2 id="path-follow-autopilot-using-gps-wheel-encoders-etc">Path Follow Autopilot (using GPS, wheel encoders, etc)</h2>
+<p>The path follow template is an alternative to the deep learning template.  Outside we have access to GPS; the path follow template allows you to record a path using a GPS receiver and then configure an autopilot that can follow that path.  The overall process looks like this;</p>
+<ul>
+<li>A <strong>human drives</strong> the car to <strong>gather data</strong>. The data is aquired from a GPS receiver and represents and (x,y) position in meters.  Each (x,y) position is called a waypoint.  The user will drive the course once to collect waypoints.  The complete set of waypoints is called a path.</li>
+<li>The autopilot gets the car's current (x,y) position from the GPS receiver, then finds the two closest points in the path and adjusts the car's steering to drive towards the path.  It does this 20 times per second and now we are driving!  </li>
+</ul>
+<p>There is a lot more detail on this in the next section.</p>
+<p><a href="../path_follow/path_follow/">Train a path follow autopilot</a></p>
+<h2 id="computer-vision-autopilot">Computer Vision Autopilot</h2>
+<p>The computer vision autopilot uses traditional computer vision techniques, such as color space conversion and edge detection algorithms, to identify features in the camera image and turn those into steering and throttle values.  This autopilot has an advantage over the other autopilots in that it does not require manual driving to gather data.  Instead you will choose or write a computer vision algorithm and modify the algorithm parameters to suit the track.  This autopilot is specifically designed to make it easy to write your own algorithm using the OpenCV library and the many Donkeycar-provided primitives.</p>
+<ul>
+<li>A <strong>human</strong> chooses the cv algorithm and modifies parameters until it delivers accurate and reliable steering and throttle values. </li>
+<li>A <strong>human</strong> places the car on the track and changes from user to autopilot mode.</li>
+<li>When in autopilot mode, an image from the camera is passed to the cv algorithm which interprets it and outputs steering and throttle values.  It does this 20 times per second and now we are driving!</li>
+</ul>
+<p>There is a lot more detail in the next section about the build-in algorithm and how to write your own algorithm.</p>
+<p><a href="../computer_vision/computer_vision/">Computer Vision Autopilot</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../get_driving/" class="btn btn-neutral float-left" title="Get driving."><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../utility/ui/" class="btn btn-neutral float-right" title="Donkey UI.">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../get_driving/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../utility/ui/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Create your own model - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Create your own model";
+        var mkdocs_page_input_path = "dev_guide/model.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Create your own model</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#constructor">Constructor</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#training-interface">Training interface</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parts-interface">Parts interface</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example">Example</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#building-the-model-using-keras">Building the model using keras</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#creating-a-tub">Creating a tub</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#making-the-model-available">Making the model available</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#go-train">Go train</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#support-and-discussions">Support and discussions</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Developer Guide</li>
+      <li class="breadcrumb-item active">Create your own model</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/dev_guide/model.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="how-to-build-your-own-model">How to build your own model</h1>
+<hr />
+<p><strong>Note:</strong> <em>This requires version &gt;= 4.1.X</em></p>
+<hr />
+<ul>
+<li><a href="./#overview">Overview</a></li>
+<li><a href="./#constructor">Constructor</a></li>
+<li><a href="./#training-interface">Training Interface</a></li>
+<li><a href="./#parts-interface">Parts Interface</a></li>
+<li><a href="./#example">Example</a></li>
+</ul>
+<h2 id="overview">Overview</h2>
+<p>You might want to write your own model:</p>
+<ul>
+<li>If you find the models that ship with donkey not sufficient, and you want to
+  experiment with your own model infrastructure</li>
+<li>If you want to add more input data to the model because your car has more
+  sensors</li>
+</ul>
+<h2 id="constructor">Constructor</h2>
+<p>Models are located in <code>donkeycar/parts/keras.py</code>. Your own model needs to
+inherit from <code>KerasPilot</code> and initialize your model:</p>
+<pre><code class="language-python">class KerasSensors(KerasPilot):
+    def __init__(self, input_shape=(120, 160, 3), num_sensors=2):
+        super().__init__()
+        self.num_sensors = num_sensors
+        self.model = self.create_model(input_shape)
+</code></pre>
+<p>Here, you implement the <a href="https://www.tensorflow.org/guide/keras/sequential_model">keras model</a>
+in the member function <code>create_model()</code>. The model needs to have labelled input
+and output tensors. These are required for the training to work.</p>
+<h2 id="training-interface">Training interface</h2>
+<p>What is required for your model to work, are the following functions:</p>
+<pre><code class="language-python">def compile(self):
+    self.model.compile(optimizer=self.optimizer, metrics=['accuracy'],
+                       loss={'angle_out': 'categorical_crossentropy',
+                             'throttle_out': 'categorical_crossentropy'},
+                       loss_weights={'angle_out': 0.5, 'throttle_out': 0.5})
+</code></pre>
+<p>The <code>compile</code> function tells keras how to define the loss function for training.
+We are using the <code>KerasCategorical</code> model as an example. The loss function here
+makes explicit usage of the output tensors of the
+model (<code>angle_out, throttle_out</code>).</p>
+<pre><code class="language-python">def x_transform(self, record: TubRecord):
+    img_arr = record.image(cached=True)
+    return img_arr
+</code></pre>
+<p>In this function you define how to extract the input data from your
+recorded data. This data is usually called <code>X</code> in the ML frame work . We have
+shown the implementation in the base class which works for all models that have
+only the image as input. </p>
+<p>The function returns a single data item if the model has only one input. You 
+need to return a tuple if your model uses more input data.</p>
+<p><strong>Note:</strong> <em>If your model has more inputs, the tuple needs to have the image in 
+the first place.</em> </p>
+<pre><code class="language-python">def y_transform(self, record: TubRecord):
+    angle: float = record.underlying['user/angle']
+    throttle: float = record.underlying['user/throttle']
+    return angle, throttle
+</code></pre>
+<p>In this function you specify how to extract the <code>y</code> values (i.e. target
+values) from your recorded data.</p>
+<pre><code class="language-python">def x_translate(self, x: XY) -&gt; Dict[str, Union[float, np.ndarray]]:
+    return {'img_in': x}
+</code></pre>
+<p>Here we require a translation of how the <code>X</code> value that you extracted above will
+be fed into <code>tf.data</code>. Note, <code>tf.data</code> expects a dictionary if the model has
+more than one input variable, so we have chosen to use dictionaries also in the
+one-argument case for consistency. Above we have shown the implementation in the
+base class which works for all models that have only the image as input. You
+don't have to overwrite neither <code>x_transform</code> nor <code>x_translate</code> if your 
+model only uses the image as input data.</p>
+<p><strong>Note:</strong> <em>the keys of the dictionary must match the name of the <strong>input</strong> 
+layers in the model.</em></p>
+<pre><code class="language-python">def y_translate(self, y: XY) -&gt; Dict[str, Union[float, np.ndarray]]:
+    if isinstance(y, tuple):
+        angle, throttle = y
+        return {'angle_out': angle, 'throttle_out': throttle}
+    else:
+        raise TypeError('Expected tuple')
+</code></pre>
+<p>Similar to the above, this provides the translation of the <code>y</code> data into the
+dictionary required for <code>tf.data</code>. This example shows the implementation of
+<code>KerasLinear</code>.</p>
+<p><strong>Note:</strong> <em>the keys of the dictionary must match the name of the <strong>output</strong>
+layers in the model.</em></p>
+<pre><code class="language-python">def output_shapes(self):
+    # need to cut off None from [None, 120, 160, 3] tensor shape
+    img_shape = self.get_input_shape()[1:]
+    shapes = ({'img_in': tf.TensorShape(img_shape)},
+              {'angle_out': tf.TensorShape([15]),
+               'throttle_out': tf.TensorShape([20])})
+    return shapes
+</code></pre>
+<p>This function returns a tuple of <em>two</em> dictionaries that tells tensorflow which
+shapes are used in the model. We have shown the example of the 
+<code>KerasCategorical</code> model here.</p>
+<p><strong>Note 1:</strong> <em>As above, the keys of the two dictionaries must match the name 
+of the <strong>input</strong> and <strong>output</strong> layers in the model.</em></p>
+<p><strong>Note 2:</strong> <em>Where the model returns scalar numbers, the corresponding 
+type has to be <code>tf.TensorShape([])</code>.</em></p>
+<h2 id="parts-interface">Parts interface</h2>
+<p>In the car application the model is called through the <code>run()</code> function. That
+function is already provided in the base class where the normalisation of the
+input image is happening centrally. Instead, the derived classes have to
+implement
+<code>inference()</code> which works on the normalised data. If you have additional data
+that needs to be normalised, too, you might want to override <code>run()</code> as well.</p>
+<pre><code class="language-python">def inference(self, img_arr, other_arr):
+    img_arr = img_arr.reshape((1,) + img_arr.shape)
+    outputs = self.model.predict(img_arr)
+    steering = outputs[0]
+    throttle = outputs[1]
+    return steering[0][0], throttle[0][0]
+</code></pre>
+<p>Here we are showing the implementation of the linear model. Please note that 
+the input tensor shape always contains the batch dimension in the first 
+place, hence the shape of the input image is adjusted from 
+<code>(120, 160, 3) -&gt; (1, 120, 160, 3)</code>.</p>
+<p><strong>Note:</strong> _If you are passing another array in the<code>other_arr</code> variable, you will
+have to do a similar re-shaping.</p>
+<h2 id="example">Example</h2>
+<p>Let's build a new donkey model which is based on the standard linear model 
+but has following changes w.r.t. input data and network design:</p>
+<ol>
+<li>
+<p>The model takes an additional vector of input data that represents a set 
+   of values from distance sensors which are attached to the front of the car.</p>
+</li>
+<li>
+<p>The model adds a couple of more feed-forward layers to combine the CNN 
+   layers of the vision system with the distance sensor data.</p>
+</li>
+</ol>
+<h3 id="building-the-model-using-keras">Building the model using keras</h3>
+<p>So here is the example model:</p>
+<pre><code class="language-python">class KerasSensors(KerasPilot):
+    def __init__(self, input_shape=(120, 160, 3), num_sensors=2):
+        super().__init__()
+        self.num_sensors = num_sensors
+        self.model = self.create_model(input_shape)
+
+    def create_model(self, input_shape):
+        drop = 0.2
+        img_in = Input(shape=input_shape, name='img_in')
+        x = core_cnn_layers(img_in, drop)
+        x = Dense(100, activation='relu', name='dense_1')(x)
+        x = Dropout(drop)(x)
+        x = Dense(50, activation='relu', name='dense_2')(x)
+        x = Dropout(drop)(x)
+        # up to here, this is the standard linear model, now we add the
+        # sensor data to it
+        sensor_in = Input(shape=(self.num_sensors, ), name='sensor_in')
+        y = sensor_in
+        z = concatenate([x, y])
+        # here we add two more dense layers
+        z = Dense(50, activation='relu', name='dense_3')(z)
+        z = Dropout(drop)(z)
+        z = Dense(50, activation='relu', name='dense_4')(z)
+        z = Dropout(drop)(z)
+        # two outputs for angle and throttle
+        outputs = [
+            Dense(1, activation='linear', name='n_outputs' + str(i))(z)
+            for i in range(2)]
+
+        # the model needs to specify the additional input here
+        model = Model(inputs=[img_in, sensor_in], outputs=outputs)
+        return model
+
+    def compile(self):
+        self.model.compile(optimizer=self.optimizer, loss='mse')
+
+    def inference(self, img_arr, other_arr):
+        img_arr = img_arr.reshape((1,) + img_arr.shape)
+        sens_arr = other_arr.reshape((1,) + other_arr.shape)
+        outputs = self.model.predict([img_arr, sens_arr])
+        steering = outputs[0]
+        throttle = outputs[1]
+        return steering[0][0], throttle[0][0]
+
+    def x_transform(self, record: TubRecord) -&gt; XY:
+        img_arr = super().x_transform(record)
+        # for simplicity we assume the sensor data here is normalised
+        sensor_arr = np.array(record.underlying['sensor'])
+        # we need to return the image data first
+        return img_arr, sensor_arr
+
+    def x_translate(self, x: XY) -&gt; Dict[str, Union[float, np.ndarray]]:
+        assert isinstance(x, tuple), 'Requires tuple as input'
+        # the keys are the names of the input layers of the model
+        return {'img_in': x[0], 'sensor_in': x[1]}
+
+    def y_transform(self, record: TubRecord):
+        angle: float = record.underlying['user/angle']
+        throttle: float = record.underlying['user/throttle']
+        return angle, throttle
+
+    def y_translate(self, y: XY) -&gt; Dict[str, Union[float, np.ndarray]]:
+        if isinstance(y, tuple):
+            angle, throttle = y
+            # the keys are the names of the output layers of the model
+            return {'n_outputs0': angle, 'n_outputs1': throttle}
+        else:
+            raise TypeError('Expected tuple')
+
+    def output_shapes(self):
+        # need to cut off None from [None, 120, 160, 3] tensor shape
+        img_shape = self.get_input_shape()[1:]
+        # the keys need to match the models input/output layers
+        shapes = ({'img_in': tf.TensorShape(img_shape),
+                   'sensor_in': tf.TensorShape([self.num_sensors])},
+                  {'n_outputs0': tf.TensorShape([]),
+                   'n_outputs1': tf.TensorShape([])})
+        return shapes
+</code></pre>
+<p>We could have inherited from <code>KerasLinear</code> which already provides the 
+implementation of <code>y_transform(), y_translate(), compile()</code>. However, to 
+make it explicit for the general case we have implemented all functions here. 
+The model requires the sensor data to be an array in the TubRecord with key 
+<code>"sensor"</code>. </p>
+<h3 id="creating-a-tub">Creating a tub</h3>
+<p>Because we don't have a tub with sensor data, let's create one with fake 
+sensor entries:</p>
+<pre><code class="language-python">import os
+import tarfile
+import numpy as np
+from donkeycar.parts.tub_v2 import Tub
+from donkeycar.pipeline.types import TubRecord
+from donkeycar.config import load_config
+
+
+if __name__ == '__main__':
+    # put your path to your car app
+    my_car = os.path.expanduser('~/mycar')
+    cfg = load_config(os.path.join(my_car, 'config.py'))
+    # put your path to donkey project
+    tar = tarfile.open(os.path.expanduser(
+        '~/Python/donkeycar/donkeycar/tests/tub/tub.tar.gz'))
+    tub_parent = os.path.join(my_car, 'data2/')
+    tar.extractall(tub_parent)
+    tub_path = os.path.join(tub_parent, 'tub')
+    tub1 = Tub(tub_path)
+    tub2 = Tub(os.path.join(my_car, 'data2/tub_sensor'),
+               inputs=['cam/image_array', 'user/angle', 'user/throttle',
+                       'sensor'],
+               types=['image_array', 'float', 'float', 'list'])
+
+    for record in tub1:
+        t_record = TubRecord(config=cfg,
+                             base_path=tub1.base_path,
+                             underlying=record)
+        img_arr = t_record.image(cached=False)
+        record['sensor'] = list(np.random.uniform(size=2))
+        record['cam/image_array'] = img_arr
+        tub2.write_record(record)
+</code></pre>
+<h3 id="making-the-model-available">Making the model available</h3>
+<p>We don't have a dynamic factory yet, so we need to add the new model into the 
+function <code>get_model_by_type()</code> in the module <code>donkeycar/utils.py</code>:</p>
+<pre><code class="language-python">...
+elif model_type == 'sensor':
+    kl = KerasSensors(input_shape=input_shape)
+...
+</code></pre>
+<h3 id="go-train">Go train</h3>
+<p>In your car app folder now the following should work:
+<code>donkey train --tub data2/tub_sensor --model models/pilot.h5 --type sensor</code>
+Because of the random values in the data the model will not converge quickly,
+the goal here is to get it working in the framework.</p>
+<h2 id="support-and-discussions">Support and discussions</h2>
+<p>Please join the <a href="https://discord.gg/dpvYHhpV2w">Discord</a> Donkey Car group for 
+support and discussions.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../tests/" class="btn btn-neutral float-left" title="Tests"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../cars/supported_cars/" class="btn btn-neutral float-right" title="Supported Cars">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../tests/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../cars/supported_cars/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

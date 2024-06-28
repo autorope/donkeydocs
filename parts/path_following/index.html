@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Path Following with the Intel Realsense T265 sensor - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Path Following with the Intel Realsense T265 sensor";
+        var mkdocs_page_input_path = "parts/path_following.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Path Following with the Intel Realsense T265 sensor</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/parts/path_following.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="path-following-with-the-intel-realsense-t265-sensor">Path Following with the Intel Realsense T265 sensor</h1>
+<p>Rather than using a standard camera and training a network to drive, Donkeycar supports using the <a href="https://www.intelrealsense.com/tracking-camera-t265/">Intel Realsense T265 "tracking camera"</a> to follow a path instead. In this application, you simply drive a path once manually, and Donkeycar will "remember" that path and repeat it autonomously.</p>
+<p>The Intel T265 uses a combination of stereo cameras and an internal Inertial Measurement Unit (IMU) plus its own Myriad X processor to do Visual Inertial Odometry, which is a fancy way of saying that it knows where it is by looking at the scene around it as it moves and correlating that with the IMU's sensing to localize itself, outputting an X,Y,Z position to Donkey, much as a GPS sensor would (but ideally much more accurately, to a precision of centemeters)</p>
+<hr />
+<ul>
+<li><strong>Note</strong> Although the Realsense T265 can be used with a Nvidia Jetson Nano, it's a bit easier to set up with a Raspberry Pi (we recommend the RPi 4, with at least 4GB memory). Also, the Intel Realsense D4XX series can also be used with Donkeycar as a regular camera (with the use of its depth sensing data coming soon), and we'll add instructions for that when it's ready.</li>
+</ul>
+<h2 id="original-t265-path-follower-code-by-tawn-kramer">Original T265 path follower code by <a href="https://github.com/tawnkramer/donkey">Tawn Kramer</a></h2>
+<h2 id="step-1-setup-librealsense-on-ubuntu-machine">Step 1: Setup Librealsense on Ubuntu Machine</h2>
+<p>Using the latest version of Raspian (tested with Raspian Buster) on the RPi, follow <a href="https://github.com/acrobotic/Ai_Demos_RPi/wiki/Raspberry-Pi-4-and-Intel-RealSense-D435">these instructions</a> to set up Intel's Realsense libraries (Librealsense) and dependencies. Although those instructions discuss another Realsense sensor, they work equally well for the T265. There are also <a href="https://www.youtube.com/watch?v=LBIBUntnxp8">video instructions</a></p>
+<h2 id="step-2-setup-donkeycar">Step 2: Setup Donkeycar</h2>
+<p>Follow the standard instructions <a href="https://docs.donkeycar.com/guide/install_software/">here</a>. With the Path Follower, there is no need to install Tensorflow for this particular Donkeycar configuration however do install numpy/upgrade before running "pip install -e .[pi]"</p>
+<h2 id="step-3-create-the-donkeycar-path-follower-app">Step 3: Create the Donkeycar path follower app</h2>
+<p>```donkey createcar --path ~/follow --template path_follow</p>
+<h2 id="step-4-checkchange-your-config-settings">Step 4: Check/change your config settings</h2>
+<p><code>cd ~follow</code>
+<code>sudo nano myconfig.py</code></p>
+<p>Make sure you agree with the default values or adjust them to your liking (ie. "throttle", "steering", PIDs, etc.). Uncomment (remove the #) for any line you've changed. In Nano press cntrl-o to save the file and cntrl-x to exit.</p>
+<h2 id="step-5-run-the-donkeycar-path-follower-app">Step 5: Run the Donkeycar path follower app</h2>
+<p>Running
+<code>ssh pi@&lt;your pi’s IP address or "raspberrypi.local"&gt;</code>
+<code>cd ~/follow</code> 
+<code>python3 manage.py drive</code></p>
+<p>Keep the terminal open to see the printed output of the app while it is running.</p>
+<p>If you get an error saying that it can't find the T265, unplug the sensor, plug it back in and try again. Ensure that your gamepad is on and connected, too (blue light is on the controller)</p>
+<p>Once it’s running, open a browser on your laptop and enter this in the URL bar: http://<your pi’s IP address or "raspberrypi.local">:8890</p>
+<p>When you drive, the Web interface will draw a red line for the path, a green circle for the robot location. If you're seeing the green dot but not the red line, that means that a path file has already been written. Delete “donkey_path.pkl” (rm donkey_path.pkl), restart and the red line should show up</p>
+<p>PS4 Gamepad controls are as follows:
++------------------+--------------------------+
+|     control      |          action          |
++------------------+--------------------------+
+|      share       | toggle auto/manual mode  |
+|      circle      |        save_path         |
+|     triangle     |        erase_path        |
+|      cross       |      emergency_stop      |
+|        L1        |  increase_max_throttle   |
+|        R1        |  decrease_max_throttle   |
+|     options      | toggle_constant_throttle |
+|      square      |       reset_origin       |
+|        L2        |        dec_pid_d         |
+|        R2        |        inc_pid_d         |
+| left_stick_horz  |       set_steering       |
+| right_stick_vert |       set_throttle       |
++------------------+--------------------------+</p>
+<h2 id="step-6-driving-instructions">Step 6: Driving instructions</h2>
+<p>1) Mark a nice starting spot for your robot. Be sure to put it right back there each time you start.
+2) Drive the car in some kind of loop. You see the red line show the path.
+3) Hit circle on the PS3/4 controller to save the path.
+4) Put the bot back at the start spot.
+5) Then hit the “select” button (on a PS3 controller) or “share” (on a PS4 controller) twice to go to pilot mode. This will start driving on the path. If you want it go faster or slower, change this line in the myconfig.py file: <code>THROTTLE_FORWARD_PWM = 400</code></p>
+<p>Check the bottom of myconfig.py for some settings to tweak. PID values, map offsets and scale. things like that. You might want to start by downloading and using the myconfig.py file from my repo, which has some known-good settings and is otherwise a good place to start.</p>
+<p>Some tips:</p>
+<p>When you start, the green dot will be in the top left corner of the box. You may prefer to have it in the center. If so, change PATH_OFFSET = (0, 0) in the myconfig.py file to PATH_OFFSET = (250, 250)</p>
+<p>For a small course, you may find that the path is too small to see well. In that case, change PATH_SCALE = 5.0 to PATH_SCALE = 10.0 (or more, if necessary)</p>
+<p>When you're running in auto mode, the green dot will change to blue</p>
+<p>It defaults to recording a path point every 0.3 meters. If you want it to be smoother, you can change to a smaller number in myconfig.py with this line: PATH_MIN_DIST = 0.3</p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

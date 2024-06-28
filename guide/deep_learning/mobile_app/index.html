@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Mobile app - Donkey Car</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Mobile app";
+        var mkdocs_page_input_path = "guide/deep_learning/mobile_app.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Mobile app</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#quickstart-guide">Quickstart Guide</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#features-details">Features Details</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#built-in-hotspot">Built-in Hotspot</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#search-vehicle-on-the-network">Search vehicle on the network</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#real-time-calibration">Real-time Calibration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#virtual-joystick">Virtual Joystick</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#drive-summary">Drive Summary</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visualize-the-data">Visualize the data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#free-gpu-training">Free GPU Training</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#more-on-free-gpu-training">More on Free GPU Training</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#limitation">Limitation</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#autopilot">Autopilot</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#advanced-configuration">Advanced configuration</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#battery-level">Battery level</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#upcoming-features">Upcoming features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#report-a-problem">Report a problem</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#optional-manual-installation">Optional Manual Installation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-complete-the-setup-for-raspberrypi">1. Complete the Setup for RaspberryPi</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-clone-the-donkey-car-console-project">2. Clone the Donkey Car Console project</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-install-dependencies">3. Install dependencies</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#4-run-the-init-script-to-set-up-the-database">4. Run the init script to set up the database</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#5-test-the-server-if-it-is-running-properly">5. Test the server if it is running properly</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#6-install-the-server-as-a-service">6. Install the server as a service</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#7-install-the-mobile-app-on-your-phone">7. Install the mobile app on your phone</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#faq">FAQ</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#commercial-usage">Commercial Usage</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+      <li class="breadcrumb-item active">Mobile app</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/deep_learning/mobile_app.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="robocar-controller">Robocar Controller</h1>
+<p>Robocar Controller is a mobile app designed to provide a “commandless” user experience to get started with the Donkey Car. </p>
+<p><img alt="cover" src="/docs/assets/mobile_app/cover.png" /></p>
+<h2 id="features">Features</h2>
+<ul>
+<li>Commandless experience - No SSH or text editor</li>
+<li>Built-in Hotspot </li>
+<li>Search vehicle on the network</li>
+<li>Real-time Calibration</li>
+<li>Virtual joystick</li>
+<li>Visualize the data</li>
+<li>Drive Summary</li>
+<li>Free GPU training</li>
+<li>Autopilot</li>
+<li>Advanced configuration</li>
+<li>Battery level</li>
+</ul>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>A Donkey Car with Pi 4B (Jetson Nano is not yet supported)</li>
+<li>A Mobile phone with iOS or Android</li>
+</ul>
+<h2 id="quickstart-guide">Quickstart Guide</h2>
+<p>Please refer to the <a href="https://medium.com/robocar-store/robocar-controller-quick-start-guide-bdf8cb16d7ce?source=friends_link&sk=8f21a5792f81a1d340abe9433d78cf5b" target="_blank">quick start guide here</a>.</p>
+<blockquote>
+<p>If you do not want to use the prebuilt image then you can install the server component onto your Donkey Car manually.  See <a href="#optional-manual-installation">Optional Manual Installation</a> below.</p>
+</blockquote>
+<h2 id="features-details">Features Details</h2>
+<h3 id="built-in-hotspot">Built-in Hotspot</h3>
+<p>The car will become a hotspot when there is no known Wifi network to connect. After connecting your phone to this hotspot, you can use the app to configure the car to join the Wifi network you want. </p>
+<h3 id="search-vehicle-on-the-network">Search vehicle on the network</h3>
+<p>Once your car connects to the same network as your phone, the app will scan the whole network to discover it. The app will also show you the IP address of the car in case you want to connect to it via SSH.</p>
+<p><img alt="Search Vehicle" src="/docs/assets/mobile_app/search-vehicle.png" /></p>
+<h3 id="real-time-calibration">Real-time Calibration</h3>
+<p>Sometimes it is quite annoying if the car goes too fast or does not run in a straight line. The calibration UI assists you to find the right settings so that your car could be properly calibrated. With the enhanced calibration function, the change will take place in real time and you could observe the change immediately.</p>
+<p><img alt="Real-time calibration" src="/docs/assets/mobile_app/calibration.png" /></p>
+<h3 id="virtual-joystick">Virtual Joystick</h3>
+<p>The virtual joystick offers a quick way to test drive the car if you don't have a physical gamepad controller. It also streams the video captured from the camera in real time. You can just look at the screen and start driving.</p>
+<p><img alt="Drive UI" src="/docs/assets/mobile_app/drive-ui.gif" /></p>
+<h3 id="drive-summary">Drive Summary</h3>
+<p>The app presents a drive summary with histogram, the size and the number of images you have collected. The histogram is generated automatically by calling the <code>tubhist</code> function in the Donkey car software. </p>
+<p><img alt="Drive summary" src="/docs/assets/mobile_app/drive-summary.png" /></p>
+<h3 id="visualize-the-data">Visualize the data</h3>
+<p>The app shows all the data(tubs) and the metadata you have collected on the Pi. The metadata includes number of images, size of the tub, the resolutions, the histogram and the location. The app will make use of the donkey makemovie command to generate a video so you can review how the data look like.</p>
+<p><img alt="Data" src="/docs/assets/mobile_app/data.png" /></p>
+<h3 id="free-gpu-training">Free GPU Training</h3>
+<p>Free GPU training is available to user who use the app. You can train a model by selecting the data(tubs) you wish to train. The data will be uploaded to our server to start the training process. Once the training is completed, the app will show you the training loss and accuracy graph. At the same time, the app will download the model to your car and you can test the model right away.</p>
+<p>Note: We keep the data and models for a period of time. After that, we will delete it from our storage. </p>
+<p><img alt="Train" src="/docs/assets/mobile_app/train.png" /></p>
+<h4 id="more-on-free-gpu-training">More on Free GPU Training</h4>
+<p>We are using AWS <a href="https://aws.amazon.com/ec2/instance-types/g4/">g4dn.xlarge</a> instance to train the model. It feautres <a href="https://www.nvidia.com/en-us/data-center/tesla-t4/">NVIDIA T4 GPU</a> and up to 16GB GPU memory. Increase the batch size to 256 or more to fully utilize the powerful GPU.</p>
+<h4 id="limitation">Limitation</h4>
+<p>N.B.: To protect our equipment from being abused, we have the following rules to use the training service.</p>
+<ul>
+<li>Each training is limited to a maximum of 15 minutes. The training job will timeout if it last more than 15 minutes</li>
+<li>Each device could train 5 times per 24 hours.</li>
+<li>Max data size is 100MB per training</li>
+</ul>
+<h3 id="autopilot">Autopilot</h3>
+<p>The app will list all models inside the Pi, no matter it is generated from the training function or just a model copied to the Pi. You can start the autopilot mode using a similar UI as the Drive UI.</p>
+<p><img alt="Autopilot" src="/docs/assets/mobile_app/autopilot.gif" /></p>
+<h3 id="advanced-configuration">Advanced configuration</h3>
+<p>The Doneky car software comes with a vast of configuration that you can experiment. We have included some of the popular options that you may want to change.</p>
+<ul>
+<li>Camera size </li>
+<li>Training configuration </li>
+<li>Drive train settings</li>
+</ul>
+<p><img alt="Advanced configuration" src="/docs/assets/mobile_app/advanced-configuration.png" /></p>
+<h3 id="battery-level">Battery level</h3>
+<p>If you are using MM1, the app shows you the current battery level in percentage. We have also added an OS tweak that if battery level fall below 7V, the system will shutdown automatically.</p>
+<h2 id="upcoming-features">Upcoming features</h2>
+<ul>
+<li>Salient visualization</li>
+<li>Auto throttle compensation based on battery level</li>
+<li>Transfer learning </li>
+</ul>
+<h2 id="report-a-problem">Report a problem</h2>
+<p>If you encountered a problem, please file an issue on <a href="https://github.com/robocarstore/donkeycar_controller">this github project</a>.</p>
+<h2 id="optional-manual-installation">Optional Manual Installation</h2>
+<p>If you can not or do not want to use the prebuild SD image for you Donkey Car, then you can install the server component onto your Donkey car manually.
+<a href="https://github.com/robocarstore/donkeycar-console">Donkey Car console</a> is a management software of the donkey car that provides a rest-based API to support Donkey Car mobile app. </p>
+<blockquote>
+<p><em><strong>Note</strong></em> This software currently supports <strong>RaspberryPi 4B only</strong>.</p>
+</blockquote>
+<h4 id="1-complete-the-setup-for-raspberrypi">1. Complete the <a href="/docs/guide/robot_sbc/setup_raspberry_pi.md">Setup for RaspberryPi</a></h4>
+<h4 id="2-clone-the-donkey-car-console-project">2. Clone the Donkey Car Console project</h4>
+<pre><code class="language-bash">git clone https://github.com/robocarstore/donkeycar-console
+sudo mv donkeycar-console /opt
+cd /opt/donkeycar-console
+</code></pre>
+<h4 id="3-install-dependencies">3. Install dependencies</h4>
+<pre><code class="language-bash">pip install -r requirements/production.txt
+</code></pre>
+<h4 id="4-run-the-init-script-to-set-up-the-database">4. Run the init script to set up the database</h4>
+<pre><code class="language-bash">python manage.py migrate
+</code></pre>
+<h4 id="5-test-the-server-if-it-is-running-properly">5. Test the server if it is running properly</h4>
+<pre><code class="language-bash">python manage.py runserver 0.0.0.0:8000
+</code></pre>
+<p>Go to http://your_pi_ip:8000/vehicle/status. If it returns something without error, it works.</p>
+<h4 id="6-install-the-server-as-a-service">6. Install the server as a service</h4>
+<pre><code class="language-bash">sudo ln -s gunicorn.service /etc/systemd/system/gunicorn.service
+</code></pre>
+<h4 id="7-install-the-mobile-app-on-your-phone">7. Install the mobile app on your phone</h4>
+<ul>
+<li><a href="https://apps.apple.com/app/robocar-controller/id1508125501">iOS</a></li>
+<li><a href="https://play.google.com/store/apps/details?id=com.robocarLtd.RobocarController">Android</a></li>
+</ul>
+<p>Make sure your phone is connected to the same network as your Pi (if it won't connect, try turning off your cell data). Fire up the mobile app and you can search your car using the mobile app.</p>
+<h2 id="faq">FAQ</h2>
+<ul>
+<li>Why the app is called Robocar Controller instead of Donkeycar Controller?</li>
+</ul>
+<p>We would love to call the app Donkeycar Controller but Apple does not allow us to do so. We are working with Adam to submit a proof to Apple that we can use the Donkeycar trademark in our app. In the meanwhile, we will be using the name Robocar Controller.</p>
+<h2 id="commercial-usage">Commercial Usage</h2>
+<p>This app is developed by <a href="https://www.robocarstore.com">Robocar Store</a>. If you plan to use this app to make money, please follow the <a href="https://www.donkeycar.com/make-money.html">Donkey Car guideline</a> and send an email to <a href="mailto:sales@robocarstore.com">Robocar Store</a>.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../virtual_race_league/" class="btn btn-neutral float-left" title="Virtual Race League."><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../../parts/about/" class="btn btn-neutral float-right" title="About">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../virtual_race_league/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../../parts/about/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

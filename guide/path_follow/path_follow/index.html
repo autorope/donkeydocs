@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>The Path Follow Template - Donkey Car</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "The Path Follow Template";
+        var mkdocs_page_input_path = "guide/path_follow/path_follow.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">The Path Follow Template</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/path_follow/path_follow.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="the-path-follow-template">The Path Follow Template</h1>
+<p>The path follow template is an alternative to the deep learning template.  The deep learning template is great for an indoor track where lighting conditions and the details of the room can be controlled, but it can be more difficult to get working outside where lighting conditions are variable and things change in the environment.  Outside we have access to GPS; the path_follow template allows you to record a path using a GPS receiver and then configure an autopilot that can follow that path.</p>
+<p>GPS positions are read from the GPS receiver over a serial port.  We read these as NMEA sentences; a line oriented protocol that most GPS receivers use by default.  The NMEA sentences include positions as latitude and longitude; we then convert those to a local coordinate system in meters.  </p>
+<p>When we record a path, we save each (x, y) coordinate pair (each waypoint) we get from the GPS receiver into an array in memory.  We can then save that to a CSV file which has one (x, y) coordinate pair per line.  Later, we can read this csv file back into memory.  Once we have our waypoints in memory, we can enter autopilot mode and follow those points.  </p>
+<p>Similar to the deep learning template, we have 3 modes of operation:</p>
+<ul>
+<li>In <strong>User</strong> driving mode you manually control the car.   Again similar to the deep learning template, you can use the web controller and/or a game controller to steer, apply throttle and choose actions using buttons.  </li>
+<li>In <strong>Autosteering</strong> mode the car will try to follow the set of recorded waypoints, but it will only control steering; you still control throttle manually.  This is a good mode to start in when following the path as you can safely stop the car by letting off the throttle.  It's also helpful in determining the maximum speed at which the car can reliably follow the waypoints.</li>
+<li>In <strong>Autopilot</strong> mode the car will try to follow the set of recorded waypoints by controlling both steering and throttle.  This is fully autonomous.  To stop the car use your controller to end User mode.</li>
+</ul>
+<div class="video-container" align="center">
+    <iframe class="video" width="560" height="315" src="https://www.youtube.com/embed/tjWmrCIKgnE" allowfullscreen></iframe>
+<p>Path Follow Autopilot in Action</p>
+  </div>
+<p>Before we can record or follow a path, we need to create an application and do a little configuration.</p>
+<h2 id="create-a-path-follow-application">Create a path follow Application</h2>
+<p>You can create a path follow application similarly to the how we create a deep learning application; we just tell it to use the <strong>path_follow</strong> template instead of the default template.  First, make sure your donkeycar python environment is activated, then use the <strong>createcar</strong> command to create your application folder.</p>
+<pre><code class="language-bash">donkey createcar --template=path_follow --path=~/mycar
+</code></pre>
+<p>When updating to a new version of donkeycar, you will want to refresh your application folder.  You can do this with the same command, but add <code>--overwrite</code> so that it does not erase your <strong>myconfig.py</strong> file.</p>
+<pre><code class="language-bash">donkey createcar --template=path_follow --path=~/mycar --overwrite
+</code></pre>
+<h2 id="configuration">Configuration</h2>
+<p>Again, like the deep learning template, we can change default configuration values by editing the <strong>myconfig.py</strong> file in the <strong>mycar</strong> folder you created with the <code>createcar</code> command.</p>
+<p>You will need to calibrate and configure the drivetrain as described in <a href="/guide/calibrate/"><strong>Calibrate your Car</strong></a>.  If you have a game controller paired to your car, then you will want to configure it as described in <a href="/parts/controllers">Controllers</a>.</p>
+<h3 id="configuring-gps">Configuring GPS</h3>
+<p>In <strong>myconfig.py</strong>, search for the 'gps' section.  Make sure <code>HAVE_GPS = True</code> is set.  You will need to determine the serial port that the GPS receiver is connected to and the baud rate to use.  If possible, set your serial port to <code>115200</code> baud to get good throughput.</p>
+<ul>
+<li><code>GPS_SERIAL = &lt;serialport&gt;</code><ul>
+<li>The <code>&lt;serialport&gt;</code> value differs depending on how you have your gps receiver connected (by usb or gpio serial) and by SBC (RPi vs Nano)</li>
+<li>You can list all potential serial ports; <code>ls /dev/tty*</code>.  Note that most of these are actually not usable.</li>
+<li>If connecting to the Nano USB port, use <code>/dev/ttyUSB0</code>.</li>
+<li>If connecting to the RPi USB port, use <code>/dev/ttyACM01</code>.</li>
+<li>If connecting to the default RPi gpio serial port (board pins 8&amp;10) use <code>/dev/ttyAMA0</code>.</li>
+<li>If connecting to the default Jetson Nano gpio serial port (board pins 8&amp;10) use <code>/dev/ttyTHS1</code>.</li>
+</ul>
+</li>
+<li><code>GPS_SERIAL_BAUDRATE = &lt;baudrate&gt;</code><ul>
+<li>The <code>&lt;baudrate&gt;</code> value differs depending on your gps and if you have changed it using U-Center.  </li>
+<li>when connecting between the SBC's USB port and the usb port on the gps receiver the baud rate is detected by USB, so choose 115200 so you have a fast connection.</li>
+<li>The ZED-F9P's other serial ports default to 38400 baud.</li>
+<li>Cheap gps receivers generally default to 9600 baud.  </li>
+<li>See this <a href="https://youtu.be/GLtEtxPWoIk">video</a> on how to use UBlox' U-Center to change the baudrate of the uarts on a UBlox GPS receiver.</li>
+</ul>
+</li>
+</ul>
+<p>Note that both the RPi and Jetson Nano may be using the default gpio serial port as a login console (you can connect up a serial 'terminal' and login).  If using the gpio serial ports you need to disable the login console.  See <a href="https://ezward.github.io/gps/#writing-to-the-serial-port">Writing to a serial port</a> for details.</p>
+<p>Those two settings are the only ones related to the GPS receiver that need to be set in <strong>myconfig.py</strong>.  Most GPS Receivers can also be directly configured to change things like the baudrate of the serial ports or how fast position estimates are sent to the computer.  Ideally the rate of position estimates should be as fast as possible, but different receivers have different upper limits and there is some tradeoff between the rate of updates and how accurate they are.  U-Blox based GPS receivers can be configured with <a href="https://www.u-blox.com/en/product/u-center">U-Blox U-Center</a> software; see the U-Center section of  <a href="https://ezward.github.io/gps/#u-center">Donkeycar Meets RTK GPS</a> for some details.  Other chipset manufacturers have their own software; you will have to check your GPS receiver to determine the manufacturer.  If you are using RTK high resolution GPS then you need to do a lot more configuration and wiring outside of Donkeycar.  See <a href="https://ezward.github.io/gps/#donkeycar-meets-rtk-gps">Donkeycar meets RTK GPS</a> for a detailed discussion of one way to setup an RTK GPS receiver for use with Donkeycar.  Here is a related <a href="https://youtu.be/q4T7kTaExTs?t=970">video</a> that goes over the same information.</p>
+<h3 id="configuring-encoders-and-kinematics">Configuring Encoders and Kinematics</h3>
+<p>An encoder setup can be used to estimate not only the vehicles' speed, but its position; that then allows encoders to be used with the <a href="/guide/path_follow/path_follow">Path Follow</a> template in place of GPS, so it can be used indoors. This requires a few configurations to be set in the <code>myconfig.py</code>; basically measurements of the wheel diameter, the length of the wheel base and the length of the axle.  See <a href="/parts/odometry#software-setup">Odometer Software Setup</a> for details.</p>
+<h3 id="configure-button-actions">Configure button actions</h3>
+<p>You can use either the <a href="/guide/get_driving/#driving-with-web-controller">web controller</a> or a <a href="/guide/get_driving/#driving-with-physical-joystick-controller">game controller</a>.  You can assign a game pad button OR web ui button to an action by editing the button assignments in <strong>myconfig.py</strong>.  The name of the game pad buttons depend on the game controller you have configured (NOTE: one button is reserved for the emergency stop; you can see which one is assigned by looking at the console output when you start that car using the <code>python manage.py drive</code> command).  The 5 available web ui buttons are named <code>web/w1</code> to <code>web/w5</code>. If you assign <code>None</code> action to a button then it is ignored.</p>
+<ul>
+<li><code>SAVE_PATH_BTN</code> is the button to save the in-memory path to a file.</li>
+<li><code>LOAD_PATH_BTN</code> is the button to (re)load path from the csv file into memory.</li>
+<li><code>RESET_ORIGIN_BTN</code> is the button to set the current position as the origin.</li>
+<li><code>ERASE_PATH_BTN</code> is the button to erase path from memory and reset the origin.</li>
+<li><code>TOGGLE_RECORDING_BTN</code> is the button to toggle recording mode on or off.  Note that there is a pre-assigned button in the web ui, so there is not need to assign this button to one of the <code>web/w*</code> buttons if you are using the web ui.</li>
+<li><code>INC_PID_D_BTN</code> is the button to change PID 'D' constant by PID_D_DELTA.  </li>
+<li><code>DEC_PID_D_BTN</code> is the button to change PID 'D' constant by -PID_D_DELTA</li>
+<li><code>INC_PID_P_BTN</code> is the button to change PID 'P' constant by PID_P_DELTA</li>
+<li><code>DEC_PID_P_BTN</code> is the button to change PID 'P' constant by -PID_P_DELTA</li>
+</ul>
+<h2 id="recording-a-path">Recording a path</h2>
+<p>The algorithm assumes we will be driving in a continuous connected path such that the start and end are the same.  You can adjust the space between recorded waypoints by editing the <code>PATH_MIN_DIST</code> value in <strong>myconfig.py</strong> You can change the name and location of the saved file by editing the <code>PATH_FILENAME</code> value.</p>
+<p>The workflow for recording a path is as follows:</p>
+<ul>
+<li>Enter <strong>User</strong> driving mode using either the <a href="/guide/get_driving/#driving-with-web-controller">web controller</a> or a <a href="/guide/get_driving/#driving-with-physical-joystick-controller">game controller</a>.</li>
+<li>Move the car to the desired starting point</li>
+<li>Erase the path in memory (which will also reset the origin).</li>
+<li>Toggle recording on.</li>
+<li>Drive the car manually around the track until you reach the desired starting point again.</li>
+<li>Toggle recording off.</li>
+<li>If desired, save the path.</li>
+</ul>
+<p>The path is saved as a comma-separated-values (.csv) file.  Each line in the file contains 3 numbers separated by commas; x-position, y-position, throttle.  The x and y positions are where the car was when the position was read and the throttle is the throttle value that was in effect at that time.  Here is a section from a path file for illustration;</p>
+<pre><code>0.0033510593930259347, 7.996719985734671, 0.14
+0.11206169077195227, 9.325505392625928, 0.16
+0.20344207028392702, 10.525161047000438, 0.18
+0.311049185693264, 11.724678185302764, 0.14
+0.23874327179510146, 12.75951695209369, 0.13
+0.26568955020047724, 14.015127370599657, 0.15
+0.35580877534812316, 15.06704786233604, 0.18
+0.4303318051388487, 16.192974457982928, 0.15
+0.2126157897291705, 17.302927474025637, 0.17
+-0.37973403913201764, 18.24986434960738, 0.17
+-1.2822835729457438, 18.97783037694171, 0.17
+-2.4313870034529828, 19.338536370545626, 0.17
+-3.633584696042817, 19.182584955357015, 0.17
+-4.694471199880354, 18.471380048431456, 0.25
+-5.2241318183369, 17.256997687276453, 0.25
+-5.462499356712215, 15.947787401732057, 0.25
+-5.5869644057238474, 14.674541235901415, 0.25
+</code></pre>
+<p>Since the path is saved in a simple .csv file it can be visualized in many tools.  A simple one to visualize your path is <a href="https://csvplot.com">CSV Plot</a>.  Use the button in the upper-right (just to the left of the home button) to make the axis scale square.  Here is an example path (rotated to fit a little better);</p>
+<p><img alt="A CSV Path plotted in https://csvplot.com" src="../../../assets/path_8_rotate.png" /></p>
+<h2 id="following-a-path">Following a path</h2>
+<p>The current autopilot uses a constant throttle value.  You can set this by editing the <code>PID_THROTTLE</code> value in <strong>myconfig.py</strong>.</p>
+<p>The workflow for following a path is as follows:</p>
+<ul>
+<li>Enter <strong>User</strong> driving mode using either the <a href="/guide/get_driving/#driving-with-web-controller">web controller</a> or a <a href="/guide/get_driving/#driving-with-physical-joystick-controller">game controller</a>.</li>
+<li>Move the car to the desired starting point.</li>
+<li>If you are following a saved path, then load the path into memory.</li>
+<li>Reset the origin (be careful; don't erase the path, just reset the origin).</li>
+<li>Enter <strong>Autosteering</strong> or <strong>Autopilot</strong> driving mode.  If you are in <strong>Autosteering</strong> mode you will need to manually provide throttle for the car to move.  If you are in <strong>Autopilot</strong> mode the car should drive itself completely.</li>
+<li>Re-enter <strong>User</strong> mode to stop the car.</li>
+</ul>
+<h2 id="the-path-follow-algorithm">The Path Follow Algorithm</h2>
+<p>The algorithm we use for following the path is extremely simple; it's the Hello World of path following.</p>
+<ul>
+<li>Get the vehicle's current GPS position</li>
+<li>Find the nearest point in the list of waypoints; starting at the last nearest waypoint, search up to <code>PATH_SEARCH_LENGTH</code> points and choose the waypoint that is closest to the current position.</li>
+<li>Choose the waypoint <code>PATH_LOOK_AHEAD</code> points ahead of the closest point on the path.</li>
+<li>Choose the waypoint <code>PATH_LOOK_BEHIND</code> points behind the closes point on the path.</li>
+<li>Use behind and ahead waypoints to create a line that represents the desired track.</li>
+<li>Calculate the cross-track error between the vehicle's current position and the desired track.  The cross-track error is a signed value that represents the distance from the line and which side of the line we are on.</li>
+<li>Use the cross-track error as the error input into the PID controller that controls steering.  </li>
+<li>The PID controller outputs a new steering value.</li>
+</ul>
+<p>In addition to steering, the path follow controller will set the throttle to the throttle saved with the closest point on the path scaled by the <code>PID_THROTTLE</code> value in the <code>myconfig.py</code> file.  That can be overridden if <code>USE_CONSTANT_THROTTLE = True</code> in the <code>myconfig.py</code>, in which case it will use <code>PID_THROTTLE</code> as the constant throttle.</p>
+<h3 id="configuring-path-follow-parameters">Configuring Path Follow Parameters</h3>
+<p>So the algorithm uses the cross-track error between a desired line and the vehicle's measured position to decide how much and which way to steer.  But the path we recorded is not a simple line; it is a lot of points that is typically some kind of circuit.  As described above, we use the vehicle's current position to choose a short segment of the path that we use as our desired track.  That short segment is recalculated every time we get a new measured car position.  There are a few configuration parameters that determine exactly which two points on the path that we use to calculate the desired track line.</p>
+<pre><code class="language-python">PATH_SEARCH_LENGTH = None   # number of points to search for closest point, None to search entire path
+PATH_LOOK_AHEAD = 1         # number of points ahead of the closest point to include in cte track
+PATH_LOOK_BEHIND = 1        # number of points behind the closest point to include in cte track   
+</code></pre>
+<p>Generally, if you are driving very fast you might want the look ahead to be larger than if driving slowly so that your steering can anticipate upcoming curves.  Increasing the length of the resulting track line, by increasing the look behind and/or look ahead, also acts as a noise filter; it smooths out the track.  This reduces the amount of jitter in the controller.  However, this must be balanced with the true curves in the path; longer track segments effectively 'flatten' curves and so can result in understeer; not steering enough when on a curve.</p>
+<h3 id="what-is-a-pid-controller">What is a PID Controller?</h3>
+<p>A PID controller is function that takes two parameters; 1) a target value to be achieved and 2) the current measured value. The PID function uses the difference between the target value and the measured value (the error) to calculate a control value that can be used to achieve the target value (so to drive the error between the desired value and the measured value to zero).  </p>
+<p>In our case, we want to stay on the desired track; we want the cross-track error (the distance between the desired line and the vehicle's measured position) to be zero; the control value that is output is a steering value that should move the vehicle closer to the desired line.  So our PID controller is controlling steering based on which side of the line and how far from the desired line the car is.</p>
+<p>The algorithm uses the sign of the cross track error to determine which way to steer.  Naturally, if the cross-track error indicates the vehicle is to the left of the desired track, then the vehicle should turn right to move towards the desired track.  If the cross-track error indicates the vehicle is to the right of the desired track, then the vehicle should turn left to move towards the desired track.  If the vehicle is on the desired track, then the steering should be neutral.</p>
+<p>But how much should we steer; should we turn only slightly or should be turn very hard?  The PID controller will output a steering value that is proportional to the magnitude of the cross-track error.  So if we are near the desired track, then it will steer slightly.  If we are far off the desired track then it will turn harder.  </p>
+<h3 id="determining-pid-coefficients">Determining PID Coefficients</h3>
+<p>The PID coefficients are the most important (and time consuming) parameters to configure.  If they are not correct for your car then it will not follow the path.  The coefficients can be changed by editing their values in the <strong>myconfig.py</strong> file.  </p>
+<ul>
+<li><code>PID_P</code> is the proportional coefficient; it is multiplied with the cross-track error.  This is the most important parameter; it contributes the most to the output steering value and in some cases may be all that is needed to follow the line.  If this is too small then car will not turn enough when it reaches a curve.  If this to too large then it will over-react to small changes in the path and may start turning in circles; especially when it gets to a curve.</li>
+<li><code>PID_D</code> is the differential coefficient; it is multiplied with the change in the cross-track error.  This parameter can be useful in reducing oscillations and overshoot.</li>
+<li><code>PID_I</code> is the integral coefficient; it is multiplied with the total accumulated cross-track error.  This may be useful in reducing offsets caused by accumulated error; such as if one wheel is slightly smaller in diameter than another.</li>
+</ul>
+<p>As descibed in the <a href="#configure-button-actions">Configuring Button Actions</a> section above, you can also assign functions like <code>INC_PID_P_BTN</code> or <code>DEC_PID_P_BTN</code> to the game controller or web ui buttons to modify the PID parameters 'on the fly'.  This helps when you are figuring out the best coefficients.  The button functions allow you to change values without having to stop the car, edit myconfig.py and restart the car.</p>
+<p>Determining PID Coefficients can be difficult.  One approach is:</p>
+<ul>
+<li>First determine the P coefficient.<ul>
+<li>zero out the D and the I coefficients.</li>
+<li>Use a kind of 'binary' search to find a value where the vehicle will roughly follow a recorded straight line; probably oscillating around it.  It will be weaving like it is under the influence.</li>
+<li>To do this, record a short straight line, maybe 6 meters.  You can do this by putting the car into recording mode and walking with the car (so you can keep the throttle at zero).  Once the short line is recorded put the car in autopilot mode and stand in the middle of the line holding the car parallel to the line; the car's front wheels should stay stable and straight.  Now slowly move the car off the line, keeping the car parallel to the line; the car should start to turn back towards the line.  The more off the line you move the more that car should turn.  Try both sides of the line.<ul>
+<li>If the car turns away from the line rather than towards the line then change the sign of the P value.  </li>
+<li>If the car turns very little then increase the P value.</li>
+<li>If the car turns very abruptly when off the line then reduce the P value.</li>
+<li>Play with the P value until you get the car to turn back to the line smoothly and proportional to how far from the line it is held.</li>
+<li>Now try actually driving the line in autopilot mode. The car may oscillate around the line; it if oscillates a lot then reduce the P value. Adjust the P value so it can actually drive that line from one end to the other.  It will likely go out of control at the end of the line; that is normal because the path is not closed.</li>
+<li>Once you can drive a short straight line then drive the car in autopilot on a full closed path with only the P value set.  Make sure there is a fairly tight turn in the path.  Adjust the P value until you get acceptable performance.  Once you get that working then you can refine things with the D value.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Next find a D coefficient that reduces the weaving (oscillations) on a straight line.  Then record a path with a tight turn.  Find a D coefficient that reduces the overshoot when turning.</li>
+<li>You may not even need the I value.  If the car becomes unstable after driving for a while then you may want to start to set this value.  It will likely be much smaller than the other values.</li>
+</ul>
+<p>Be patient.  Start with a reasonably slow speed.  Change one thing at a time and test the change; don't make many changes at once.  Write down what is working.</p>
+<p>Once you have a stable PID controller, then you can figure our just how fast you can go with it before autopilot becomes unstable.  If you want to go faster then set the desired speed and start tweaking the values again using the method suggested above.</p>
+<p><br/></p>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

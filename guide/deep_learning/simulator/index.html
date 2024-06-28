@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Donkey Simulator. - Donkey Car</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Donkey Simulator.";
+        var mkdocs_page_input_path = "guide/deep_learning/simulator.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Donkey Simulator.</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#installation-video">Installation Video:</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#my-virtual-donkey">My Virtual Donkey</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#install">Install</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#drive">Drive</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#train">Train</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#test">Test</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sample-driving-data">Sample Driving Data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#api">API</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get-protocol-version">Get Protocol Version</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#protocol-version">Protocol Version</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scene-selection-ready">Scene Selection Ready</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-scene-names">Get Scene Names</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scene-names">Scene Names</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#load-scene">Load Scene</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scene-loaded">Scene Loaded</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#car-loaded">Car Loaded</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#car-config">Car Config</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#camera-config">Camera Config</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#control-car">Control Car</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#telemetry">Telemetry</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#reset-car">Reset Car</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#set-car-position">Set Car Position</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-node-position-and-rotation">Get node position and rotation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#node-position-and-rotation">Node position and rotation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#exit-scene">Exit Scene</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#quit-app">Quit App</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+      <li class="breadcrumb-item active">Donkey Simulator.</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/deep_learning/simulator.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="donkey-simulator">Donkey Simulator</h1>
+<p>The <a href="https://github.com/tawnkramer/gym-donkeycar">Donkey Gym</a> project is a OpenAI gym wrapper around the <a href="https://github.com/tawnkramer/sdsandbox/tree/donkey">Self Driving Sandbox</a> donkey simulator (<code>sdsandbox</code>). When building the sim from source, checkout the <code>donkey</code> branch of the <code>sdsandbox</code> project. </p>
+<p>The simulator is built on the the <a href="https://unity.com/">Unity</a> game platform, uses their internal physics and graphics, and connects to a donkey Python process to use our trained model to control the simulated Donkey.</p>
+<h2 id="installation-video">Installation Video:</h2>
+<p>Here's some videos to help you through the installation.</p>
+<p>Linux:
+https://youtu.be/J6Ll5Obtuxk</p>
+<p>Windows:
+https://youtu.be/wqQMmHVT8qw</p>
+<h2 id="my-virtual-donkey">My Virtual Donkey</h2>
+<p>There are many ways to use the simulator, depending on your goals. You can use the simulator to get to know and use the standard Donkeycar drive/train/test cycle by treating it as virtual hardware. You will collect data, drive, and train using the <strong>same commands</strong> as if you were using a real robot. We will walk through that use-case first.</p>
+<p><img alt="sim_screen_shot" src="https://github.com/autorope/donkeydocs/blob/master/docs/assets/sim_screen_shot.png" /> </p>
+<h2 id="install">Install</h2>
+<ul>
+<li>Download and unzip the simulator for your host pc platform from <a href="https://github.com/tawnkramer/gym-donkeycar/releases">Donkey Gym Release</a>.</li>
+<li>Place the simulator where you like. For this example it will be ~/projects/DonkeySimLinux. Your dir will have a different name depending on platform. </li>
+<li>Complete all the steps to <a href="https://docs.donkeycar.com/guide/install_software/#step-1-install-software-on-host-pc">install Donkey on your host pc</a>.</li>
+<li>Setup DonkeyGym:</li>
+</ul>
+<pre><code class="language-bash">cd ~/projects
+git clone https://github.com/tawnkramer/gym-donkeycar
+cd gym-donkeycar
+conda activate donkey
+pip install -e .[gym-donkeycar]
+</code></pre>
+<ul>
+<li>You may use an existing ~/mycar donkey application, or begin a new one. Here we will start fresh: </li>
+</ul>
+<pre><code class="language-bash">donkey createcar --path ~/mysim
+cd ~/mysim
+</code></pre>
+<ul>
+<li>Edit your myconfig.py to enable donkey gym simulator wrapper, replace <code>&lt;user-name&gt;</code> and the other parts of the path:</li>
+</ul>
+<pre><code class="language-bash">DONKEY_GYM = True
+DONKEY_SIM_PATH = &quot;/home/&lt;user-name&gt;/projects/DonkeySimLinux/donkey_sim.x86_64&quot;
+DONKEY_GYM_ENV_NAME = &quot;donkey-generated-track-v0&quot;
+</code></pre>
+<blockquote>
+<p>Note: your path to the executable will vary depending on platform and user.
+ Windows: DonkeySimWin/donkey_sim.exe
+ Mac OS: DonkeySimMac/donkey_sim.app/Contents/MacOS/donkey_sim
+ Linux: DonkeySimLinux/donkey_sim.x86_64</p>
+</blockquote>
+<h2 id="drive">Drive</h2>
+<p>You may use all the normal commands to manage.py at this point. Such as:</p>
+<pre><code class="language-bash">python manage.py drive
+</code></pre>
+<p>This should start the simulator and connect to it automatically. By default you will have a web interface to control the donkey. Navigate to <a href="http://localhost:8887/drive">http://localhost:8887/drive</a> to see control page.</p>
+<p>On Ubuntu Linux only, you may plug in your joystick of choice.
+If it mounts as <code>/dev/input/js0</code> then there's a good chance it will work.
+Modify myconfig.py to indicate your joystick model and use the <code>--js</code> arg to run.</p>
+<pre><code class="language-bash">python manage.py drive --js
+</code></pre>
+<p>As you drive, this will create a tub of records in your data dir as usual.</p>
+<h2 id="train">Train</h2>
+<p>You will not need to rsync your data, as it was recorded and resides locally. You can train as usual:</p>
+<pre><code class="language-bash">donkey train --tub ./data --model models/mypilot.h5
+</code></pre>
+<h2 id="test">Test</h2>
+<p>You can use the model as usual:</p>
+<pre><code class="language-bash">python manage.py drive --model models/mypilot.h5
+</code></pre>
+<p>Then navigate to web control page. Set <code>Mode and Pilot</code> to <code>Local Pilot(d)</code>. The car should start driving.</p>
+<h2 id="sample-driving-data">Sample Driving Data</h2>
+<p>Here's some sample driving data to get you started. <a href="https://drive.google.com/open?id=1A5sTSddFsf494UDtnvYQBaEPYX87_LMp">Download this</a> and unpack it into your data dir. This should train to a slow but stable driver.</p>
+<hr />
+<h2 id="api">API</h2>
+<p>Here's some info on the api to talk to the sim server. Make a TCP client and connect to port 9091 on whichever host the sim is running. The server sends and receives UTF-8 encoded JSON packets. Each message must have a "msg_type" field. The sim will end all JSON packets with a newline character for termination. You don't have to end each packet with a newline when sending to the server. But if it gets too many messages too quickly it may have troubles. Check the player log file for JSON parse errors if you are having troubles.</p>
+<hr />
+<h3 id="get-protocol-version">Get Protocol Version</h3>
+<p>Client=&gt;Sim. Ask for the version of the protocol. Will help know when changes are made to these messages.</p>
+<p>Fields: <em>None</em></p>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;get_protocol_version&quot; 
+    }
+</code></pre>
+<hr />
+<h3 id="protocol-version">Protocol Version</h3>
+<p>Sim=&gt;Client. Reply for the version of the protocol. Currently at version 2.</p>
+<p>Fields: </p>
+<ul>
+<li><em>version</em> : string integer</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;protocol_version&quot;,
+    &quot;version&quot; : &quot;2&quot;,
+    }
+</code></pre>
+<hr />
+<h3 id="scene-selection-ready">Scene Selection Ready</h3>
+<p>Sim=&gt;Client. When the Menu scene is finished loading this will be sent. After this point, the sim can honor the Scene Loading message. (Menu only)</p>
+<p>Fields: <em>None</em></p>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;scene_selection_ready&quot; 
+    }
+</code></pre>
+<hr />
+<h3 id="get-scene-names">Get Scene Names</h3>
+<p>Client=&gt;Sim. Ask names of the scene you can load. (Menu only)</p>
+<p>Fields: <em>None</em></p>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;get_scene_names&quot; 
+    }
+</code></pre>
+<hr />
+<h3 id="scene-names">Scene Names</h3>
+<p>Sim=&gt;Client. Sim will reply with list of scene names.</p>
+<p>Fields: </p>
+<ul>
+<li><em>scene_names</em> : array of scene names</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;scene_names&quot; 
+    &quot;scene_names&quot; : [ &quot;generated_road&quot;, &quot;warehouse&quot;, &quot;sparkfun_avc&quot;. &quot;generated_track&quot; ]
+    }
+</code></pre>
+<hr />
+<h3 id="load-scene">Load Scene</h3>
+<p>Client=&gt;Sim. Asks the sim to load one of the scenes from the Menu screen. (Menu only)</p>
+<p>Fields: </p>
+<p><em>scene_name</em> : <strong>generated_road | warehouse | sparkfun_avc | generated_track</strong> ( or whatever list the sim returns from get_scene_names)</p>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+        &quot;msg_type&quot; : &quot;load_scene&quot;,
+        &quot;scene_name&quot; : &quot;generated_track&quot;
+    }
+</code></pre>
+<hr />
+<h3 id="scene-loaded">Scene Loaded</h3>
+<p>Sim=&gt;Client. Once scene is loaded, in reply, you will get a:</p>
+<pre><code class="language-bash">    {
+        &quot;msg_type&quot; : &quot;scene_loaded&quot;
+    }
+</code></pre>
+<hr />
+<h3 id="car-loaded">Car Loaded</h3>
+<p>Sim=&gt;Client. Once the sim finishes loading your car, it sends this message. The car is loaded for you automatically once the scene is loaded with an active client. Or a client make a connection.</p>
+<p>Fields: <em>None</em></p>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;car_loaded&quot; 
+    }
+</code></pre>
+<hr />
+<h3 id="car-config">Car Config</h3>
+<p>Client=&gt;Sim. Once loaded, you may configure your car visual details (scene only)</p>
+<p>Fields: </p>
+<ul>
+<li><em>body_style</em> :  <strong>donkey | bare | car01 | cybertruck | f1</strong></li>
+<li><em>body_r</em> :  string value of integer between 0-255</li>
+<li><em>body_g</em> :  string value of integer between 0-255</li>
+<li><em>body_b</em> :  string value of integer between 0-255</li>
+<li><em>car_name</em> :  string value car name to display over car. Newline accepted for multi-line.</li>
+<li><em>font_size</em> :  string value of integer between 10-100 to set size of car name text</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+        &quot;msg_type&quot; : &quot;car_config&quot;,
+        &quot;body_style&quot; : &quot;car01&quot;,
+        &quot;body_r&quot; : &quot;128&quot;,
+        &quot;body_g&quot; : &quot;0&quot;,
+        &quot;body_b&quot; : &quot;255&quot;,
+        &quot;car_name&quot; : &quot;Your Name&quot;,
+        &quot;font_size&quot; : &quot;100&quot;
+    }
+</code></pre>
+<hr />
+<h3 id="camera-config">Camera Config</h3>
+<p>Client=&gt;Sim. Once the scene is loaded, you may configure your car camera sensor details</p>
+<p>Fields: </p>
+<ul>
+<li><em>fov</em> :  string value of float between 10-200. Sets the camera field of view in degrees.</li>
+<li><em>fish_eye_x</em> :  string value of float between 0-1. Causes distortion warping in x axis.</li>
+<li><em>fish_eye_y</em> :  string value of float between 0-1. Causes distortion warping in y axis.</li>
+<li><em>img_w</em> :  string value of integer between 16-512. Sets camera sensor image width.</li>
+<li><em>img_h</em> :  string value of integer between 16-512. Sets camera sensor image height.</li>
+<li><em>img_d</em> :  string value of integer 1 or 3. Sets camera sensor image depth. In case of 1, you get 3 channels but all identicle with greyscale conversion done on the sim.</li>
+<li><em>img_enc</em> :  Image format of data <strong>JPG | PNG | TGA</strong></li>
+<li><em>offset_x</em> : string value of float. Moves the camera left and right axis.</li>
+<li><em>offset_y</em> : string value of float. Moves the camera up and down.</li>
+<li><em>offset_z</em> : string value of float. Moves the camera forward and back.</li>
+<li><em>rot_x</em> : string value of float. Degrees. Rotates camera around X axis.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;cam_config&quot;,
+    &quot;fov&quot; : &quot;150&quot;, 
+    &quot;fish_eye_x&quot; : &quot;1.0&quot;,
+    &quot;fish_eye_y&quot; : &quot;1.0&quot;,
+    &quot;img_w&quot; : &quot;255&quot;,
+    &quot;img_h&quot; : &quot;255&quot;,
+    &quot;img_d&quot; : &quot;1&quot;,
+    &quot;img_enc&quot; : &quot;PNG&quot;,
+    &quot;offset_x&quot; : &quot;0.0&quot;,
+    &quot;offset_y&quot; : &quot;3.0&quot;,
+    &quot;offset_z&quot; : &quot;0.0&quot;,
+    &quot;rot_x&quot; : &quot;90.0&quot;
+    }
+</code></pre>
+<p>Note:
+You can add an other camera by changing the msg_type to "cam_config_b"</p>
+<hr />
+<h3 id="control-car">Control Car</h3>
+<p>Client=&gt;Sim. Control throttle and steering.</p>
+<p>Fields:</p>
+<ul>
+<li><em>steering</em> :  string value of float between -1 to 1. Maps to full left or right, 16 deg from center.</li>
+<li><em>throttle</em> :  string value of float between -1 to 1. Full forward or reverse torque to wheels.</li>
+<li><em>brake</em> :  string value of float between 0 to 1.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;control&quot;,
+    &quot;steering&quot; : &quot;0.0&quot;,
+    &quot;throttle&quot; : &quot;0.3&quot;,
+    &quot;brake&quot; : &quot;0.0&quot;
+    }
+</code></pre>
+<hr />
+<h3 id="telemetry">Telemetry</h3>
+<p>Sim=&gt;Client. The sim sends this message containing camera image and details about vehicle state. These come at a regular rate set in the sim. Usually about 20 HZ.</p>
+<p>Fields: </p>
+<ul>
+<li><em>steering_angle</em> :  Last steering applied. Why not just steering like control? idk.</li>
+<li><em>throttle</em> :  Last throttle applied.</li>
+<li><em>speed</em> :  magnitude of linear velocity.</li>
+<li><em>image</em> :  a BinHex encoded binary image. Use PIL.Image.open(BytesIO(base64.b64decode(imgString)))</li>
+<li><em>imageb</em> :  (optionnal) same as above but for the second camera</li>
+<li><em>lidar</em> :  (optionnal) list of lidar points in the following format: {d: distanceToObject, rx: rayRotationX, ry: rayRotationY}</li>
+<li><em>hit</em> :  name of the last object struck. Or None if no object hit.</li>
+<li><em>accel_x</em> :  x acceleration of vehicle.</li>
+<li><em>accel_y</em> :  y acceleration of vehicle.</li>
+<li><em>accel_z</em> :  z acceleration of vehicle.</li>
+<li><em>gyro_x</em> :  x gyro acceleration.</li>
+<li><em>gyro_y</em> :  y gyro acceleration.</li>
+<li><em>gyro_z</em> :  z gyro acceleration.</li>
+<li><em>gyro_w</em> :  w gyro acceleration.</li>
+<li><em>pitch</em> :  pitch of the car in degrees.</li>
+<li><em>roll</em> :  roll of the car degrees.</li>
+<li><em>yaw</em> :  yaw of the car degrees.</li>
+<li><em>activeNode</em> : Progress on track (not working properly with multiple car for the moment)</li>
+<li><em>totalNodes</em> : number of nodes on track</li>
+<li><em>pos_x</em> :  (training only) x world coordinate of vehicle.</li>
+<li><em>pos_y</em> :  (training only) y world coordinate of vehicle.</li>
+<li><em>pos_z</em> :  (training only) z world coordinate of vehicle.</li>
+<li><em>vel_x</em> :  (training only) x velocity of vehicle.</li>
+<li><em>vel_y</em> :  (training only) y velocity of vehicle.</li>
+<li><em>vel_z</em> :  (training only) z velocity of vehicle.</li>
+<li><em>cte</em> :  (training only) Cross track error. The distance from the car to the path in the center of the right most lane or center of the track (depends on the track)</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;telemetry&quot;, 
+    &quot;steering_angle&quot; : &quot;0.0&quot;, 
+    &quot;throttle&quot; : &quot;0.0&quot;, 
+    &quot;speed&quot; : &quot;1.0&quot;, 
+    &quot;image&quot; : &quot;0x123...&quot;, 
+    &quot;hit&quot; : &quot;None&quot;, 
+    &quot;pos_x&quot; : &quot;0.0&quot;, 
+    &quot;pos_y&quot; : &quot;0.0&quot;, 
+    &quot;pos_z&quot; : &quot;0.0&quot;, 
+    &quot;accel_x&quot; : &quot;0.0&quot;, 
+    &quot;accel_y&quot; : &quot;0.0&quot;, 
+    &quot;accel_z&quot; : &quot;0.0&quot;, 
+    &quot;gyro_x&quot; : &quot;0.0&quot;, 
+    &quot;gyro_y&quot; : &quot;0.0&quot;, 
+    &quot;gyro_z&quot; : &quot;0.0&quot;, 
+    &quot;gyro_w&quot; : &quot;0.0&quot;,
+    &quot;pitch&quot; : &quot;0.0&quot;, 
+    &quot;roll&quot; : &quot;0.0&quot;, 
+    &quot;yaw&quot; : &quot;0.0&quot;,
+    &quot;activeNode&quot; : &quot;5&quot;
+    &quot;totalNodes&quot; : &quot;26&quot;
+    &quot;cte&quot; : &quot;0.5&quot;
+    }
+</code></pre>
+<hr />
+<h3 id="reset-car">Reset Car</h3>
+<p>Client=&gt;Sim. Return the car to the start point.</p>
+<p>Fields: <em>None</em></p>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;reset_car&quot; 
+    }
+</code></pre>
+<hr />
+<h3 id="set-car-position">Set Car Position</h3>
+<p>Client=&gt;Sim. Move the car to the given position (training only)</p>
+<p>Fields: </p>
+<ul>
+<li><em>pos_x</em> :  x world coordinate.</li>
+<li><em>pos_y</em> :  y world coordinate.</li>
+<li><em>pos_z</em> :  z world coordinate. </li>
+<li><em>qx</em> :  (optionnal) quaternion x</li>
+<li><em>qy</em> :  (optionnal) quaternion y</li>
+<li><em>qz</em> :  (optionnal) quaternion z</li>
+<li><em>qw</em> :  (optionnal) quaternion w</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;set_position&quot; 
+    &quot;pos_x&quot; : &quot;0.0&quot;, 
+    &quot;pos_y&quot; : &quot;0.0&quot;, 
+    &quot;pos_z&quot; : &quot;0.0&quot;
+    }
+</code></pre>
+<p>or:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;set_position&quot; 
+    &quot;pos_x&quot; : &quot;0.0&quot;, 
+    &quot;pos_y&quot; : &quot;0.0&quot;, 
+    &quot;pos_z&quot; : &quot;0.0&quot;,
+    &quot;qx&quot; : &quot;0.0&quot;,
+    &quot;qy&quot; : &quot;0.2&quot;,
+    &quot;qz&quot; : &quot;0.0&quot;,
+    &quot;qw&quot; : &quot;1.0&quot;
+    }
+</code></pre>
+<hr />
+<h3 id="get-node-position-and-rotation">Get node position and rotation</h3>
+<p>Client=&gt;Sim. Ask for a node_position packet</p>
+<p>Fields: </p>
+<ul>
+<li><em>index</em> :  node index</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot;: &quot;node_position&quot;,
+    &quot;index&quot;: &quot;0&quot;
+    }
+</code></pre>
+<hr />
+<h3 id="node-position-and-rotation">Node position and rotation</h3>
+<p>Sim=&gt;Client. node_position packet (received after sending a node_position packet)</p>
+<p>Fields:</p>
+<ul>
+<li><em>pos_x</em> :  x world coordinate.</li>
+<li><em>pos_y</em> :  y world coordinate.</li>
+<li><em>pos_z</em> :  z world coordinate. </li>
+<li><em>qx</em> :  (optionnal) quaternion x</li>
+<li><em>qy</em> :  (optionnal) quaternion y</li>
+<li><em>qz</em> :  (optionnal) quaternion z</li>
+<li><em>qw</em> :  (optionnal) quaternion w</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot;: &quot;node_position&quot;,
+    &quot;Qx&quot;: &quot;0&quot;,
+    &quot;Qy&quot;: &quot;0&quot;,
+    &quot;Qz&quot;: &quot;0&quot;,
+    &quot;Qw&quot;: &quot;1&quot;,
+    &quot;pos_x&quot;: &quot;0&quot;,
+    &quot;pos_y&quot;: &quot;0&quot;,
+    &quot;pos_z&quot;: &quot;0&quot;
+    }
+</code></pre>
+<hr />
+<h3 id="exit-scene">Exit Scene</h3>
+<p>Client=&gt;Sim. Leave the scene and return to the main menu screen.</p>
+<p>Fields: <em>None</em></p>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;exit_scene&quot; 
+    }
+</code></pre>
+<hr />
+<h3 id="quit-app">Quit App</h3>
+<p>Client=&gt;Sim. Close the sim executable. (Menu only)</p>
+<p>Fields: <em>None</em></p>
+<p>Example:</p>
+<pre><code class="language-bash">    {
+    &quot;msg_type&quot; : &quot;quit_app&quot; 
+    }
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../../utility/ui/" class="btn btn-neutral float-left" title="Donkey UI."><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../virtual_race_league/" class="btn btn-neutral float-right" title="Virtual Race League.">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../../utility/ui/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../virtual_race_league/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

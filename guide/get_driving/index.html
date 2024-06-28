@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Get driving. - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Get driving.";
+        var mkdocs_page_input_path = "guide/get_driving.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Get driving.</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#start-your-car">Start your car</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#driving-with-web-controller">Driving with Web Controller</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#features">Features</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#keyboard-shortcuts">Keyboard shortcuts</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#driving-with-physical-joystick-controller">Driving with Physical Joystick Controller</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#setup-bluetooth-and-pair-joystick">Setup Bluetooth and pair joystick</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#start-car">Start car</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#joystick-controls">Joystick Controls</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#next-lets-train-an-autopilot">Next let's train an autopilot.</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+      <li class="breadcrumb-item active">Get driving.</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/get_driving.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="drive-your-car">Drive your car</h1>
+<p>After you've <a href="/guide/calibrate">calibrated</a> your car you can start driving it. </p>
+<p>If you are not already, please <a href="/guide/robot_sbc/setup_raspberry_pi/#step-5-connecting-to-the-pi">ssh into your vehicle</a>.</p>
+<h2 id="start-your-car">Start your car</h2>
+<blockquote>
+<p>*** Put your car in a safe place where the wheels are off the ground ***.</p>
+</blockquote>
+<p>This is the step were the car can take off. </p>
+<p>Open your car's folder and start your car. </p>
+<pre><code>cd ~/mycar
+python manage.py drive
+</code></pre>
+<p>This script will start the drive loop in your car which includes a part that 
+is a web server for you to control your car. You can now control your car
+from a web browser at the URL: <code>&lt;your car's hostname.local&gt;:8887</code></p>
+<p><img alt="drive UI" src="../../assets/web_controller.png" /></p>
+<h2 id="driving-with-web-controller">Driving with Web Controller</h2>
+<p>There are 3 ways to move the car using the web controller
+- <strong>Device Tilt</strong>: 
+Select <strong>Device Tilt</strong> in the <strong>Control Mode</strong> section of the web controller.  Then select <strong>User</strong> in the <strong>Mode</strong> section.  You can then tilt your phone forward to increase throttle and tilt it side to side to turn the steering. 
+- <strong>Joystick</strong>:
+Select <strong>Joystick</strong> in the <strong>Control Mode</strong> section of the web controller.  Then select <strong>User</strong> in the <strong>Mode</strong> section.  You can then touch and drag on the virtual joystick area that appears.  Moving up increases throttle, moving down decreases or reverses.  Moving left turns left, moving right turns right.  Releasing you finger stops.
+- <strong>Gamepad</strong>:
+If you have a game controller attached (either by cable or by bluetooth) to the machine on which you are viewing the web ui, and that game controller is compatible with the HTML5 Gamepad API, then you can choose <strong>Gamepad</strong> in the <strong>Control Mode</strong> section of the web controller.  Then select <strong>User</strong> in the <strong>Mode</strong> section.  You can then drive the donkeycar using the game controller..</p>
+<h3 id="features">Features</h3>
+<ul>
+<li>Recording - Press record data to start recording images, steering angels and throttle values. </li>
+<li>Throttle mode - Option to set the throttle as constant. This is used in 
+races if you have a pilot that will steer but doesn't control throttle. </li>
+<li>Pilot mode - Choose this if the pilot should control the angle and/or throttle.</li>
+<li>Max throttle - Select the maximum throttle.</li>
+</ul>
+<h3 id="keyboard-shortcuts">Keyboard shortcuts</h3>
+<ul>
+<li><code>space</code> : stop car and stop recording</li>
+<li><code>r</code> : toggle recording</li>
+<li><code>i</code> : increase throttle</li>
+<li><code>k</code> : decrease throttle</li>
+<li><code>j</code> : turn left </li>
+<li><code>l</code> : turn right </li>
+</ul>
+<hr />
+<p>If you don't have a joystick then you can skip to next section - <a href="/guide/train_autopilot/">train an autopilot</a>.</p>
+<hr />
+<h2 id="driving-with-physical-joystick-controller">Driving with Physical Joystick Controller</h2>
+<p>You may find that it helps to use a physical joystick device to control your vehicle.</p>
+<h3 id="setup-bluetooth-and-pair-joystick">Setup Bluetooth and pair joystick</h3>
+<p>Check the <a href="/parts/controllers/#physical-joystick-controller">Controllers</a> section to read about setting up the bluetooth connection.</p>
+<h3 id="start-car">Start car</h3>
+<pre><code class="language-bash">cd ~/mycar
+python manage.py drive --js
+</code></pre>
+<p>Optionally, if you want joystick use to be sticky and don't want to add the --js each time, modify your <strong>myconfig.py</strong> so that <strong>USE_JOYSTICK_AS_DEFAULT = True</strong></p>
+<pre><code class="language-bash">nano myconfig.py
+</code></pre>
+<h3 id="joystick-controls">Joystick Controls</h3>
+<ul>
+<li>Left analog stick - Left and right to adjust steering</li>
+<li>Right analog stick - Forward to increase forward throttle</li>
+<li>Pull back twice on right analog to reverse</li>
+</ul>
+<blockquote>
+<p>Whenever the throttle is not zero, driving data will be recorded - as long as you are in User mode!</p>
+</blockquote>
+<ul>
+<li>Select button switches modes - "User, Local Angle, Local(angle and throttle)"</li>
+<li>Triangle - Increase max throttle</li>
+<li>X  - Decrease max throttle</li>
+<li>Circle - Toggle recording (disabled by default. auto record on throttle is enabled by default)</li>
+<li>dpad up - Increase throttle scale</li>
+<li>dpad down - Decrease throttle scale</li>
+<li>dpad left - Increase steering scale</li>
+<li>dpad right - Decrease steering scale</li>
+<li>Start - Toggle constant throttle. Sets to max throttle (modified by X and Triangle).</li>
+</ul>
+<hr />
+<h3 id="next-lets-train-an-autopilot">Next let's train an autopilot.</h3>
+<ul>
+<li><a href="/guide/deep_learning/train_autopilot">Train a deep-learning autopilot</a></li>
+<li><a href="/guide/path_follow/path_follow">Train a gps path-follow autopilot</a></li>
+<li><a href="/guide/computer_vision/computer_vision/">Build a computer vision autopilot</a></li>
+</ul>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../calibrate/" class="btn btn-neutral float-left" title="Calibrate steering and throttle."><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../train_autopilot/" class="btn btn-neutral float-right" title="Create an autopilot.">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../calibrate/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../train_autopilot/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

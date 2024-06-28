@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>donkey - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "donkey";
+        var mkdocs_page_input_path = "utility/donkey.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">donkey</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#create-car">Create Car</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#find-car">Find Car</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#calibrate-car">Calibrate Car</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#clean-data-in-tub">Clean data in Tub</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#train-the-model">Train the model</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#make-movie-from-tub">Make Movie from Tub</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#plot-predictions">Plot Predictions</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tub-histogram">Tub Histogram</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#joystick-wizard">Joystick Wizard</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#visualize-cnn-filter-activations">Visualize CNN filter activations</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#show-models-database">Show Models database</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#donkey-ui">Donkey UI</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Utilities</li>
+      <li class="breadcrumb-item active">donkey</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/utility/donkey.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="donkey-command-line-utilities">Donkey Command-line Utilities</h1>
+<p>The <code>donkey</code> command is created when you install the donkeycar Python package. This is a Python script that adds some important functionality. The operations here are vehicle independent, and should work on any hardware configuration.</p>
+<h2 id="create-car">Create Car</h2>
+<p>This command creates a new dir which will contain the files needed to run and train your robot.</p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey createcar --path &lt;dir&gt; [--overwrite] [--template &lt;donkey2&gt;]
+</code></pre>
+<ul>
+<li>This command may be run from any dir</li>
+<li>Run on the host computer or the robot</li>
+<li>It uses the <code>--path</code> as the destination dir to create. If <code>.py</code> files exist there, it will not overwrite them, unless the optional <code>--overwrite</code> is used.</li>
+<li><code>--overwrite</code> will update the files in the destination directory <em>except</em> the <code>myconfig.py</code>. This is useful if you have update donkeycar and you want those changes reflected in you <code>mycar</code> folder but you don't want to have to recreate your <code>myconfig.py</code>.</li>
+<li>The optional <code>--template</code> will specify the template file to start from. For a list of templates, see the <code>donkeycar/templates</code> dir. This source template will be copied over the <code>manage.py</code> for the user.  Common templates are:<ul>
+<li><code>--template=complete</code>: the <a href="/guide/train_autopilot/#deep-learning-autopilot">Deep Learning Autopilot</a></li>
+<li><code>--template=path_follow</code>: the <a href="/guide/train_autopilot/#path-follow-autopilot">Path Follow Autopilot</a></li>
+<li><code>--template=cv_control</code>: the <a href="/guide/train_autopilot/#computer-vision-autopilot">Computer Vision Autopilot</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="find-car">Find Car</h2>
+<p>This command attempts to locate your car on the local network using nmap.</p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey findcar
+</code></pre>
+<ul>
+<li>Run on the host computer</li>
+<li>Prints the host computer IP address and the car IP address if found</li>
+<li>Requires the nmap utility:</li>
+</ul>
+<pre><code class="language-bash">sudo apt install nmap
+</code></pre>
+<h2 id="calibrate-car">Calibrate Car</h2>
+<p>This command allows you to manually enter values to interactively set the PWM values and experiment with how your robot responds.
+See also <a href="/guide/calibrate/">more information.</a></p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey calibrate --channel &lt;0-15 channel id&gt;
+</code></pre>
+<ul>
+<li>Run on the host computer</li>
+<li>Opens the PWM channel specified by <code>--channel</code></li>
+<li>Type integer values to specify PWM values and hit enter</li>
+<li>Hit <code>Ctrl + C</code> to exit</li>
+</ul>
+<h2 id="clean-data-in-tub">Clean data in Tub</h2>
+<p>Opens a web server to delete bad data from a tub.</p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey tubclean &lt;folder containing tubs&gt;
+</code></pre>
+<ul>
+<li>Run on pi or host computer.</li>
+<li>Opens the web server to delete bad data.</li>
+<li>Hit <code>Ctrl + C</code> to exit</li>
+</ul>
+<h2 id="train-the-model">Train the model</h2>
+<p><strong>Note:</strong> <em>This section only applies to version &gt;= 4.1</em>
+This command trains the model.  There is more detail in <a href="/guide/deep_learning/train_autopilot/#train-a-model">Deep Learning Autopilot</a>.</p>
+<pre><code class="language-bash">donkey train --tub=&lt;tub_path&gt; [--config=&lt;config.py&gt;] [--model=&lt;model path&gt;] [--type=(linear|categorical|inferred)] [--transfer=&lt;transfer model path&gt;]
+</code></pre>
+<ul>
+<li>Uses the data from the <code>--tub</code> datastore.  You may specify more than one tub using a comma separated list <code>--tub=foo/data,bar/data</code> or just leaving spaces like <code>--tub foo/data bar/data</code>.</li>
+<li>Uses the config file from the <code>--config</code> path (optionally)</li>
+<li>Saves the model into path provided by <code>--model</code>. Auto-generates a model name if omitted. <em><strong>Note:</strong></em> There was a regression in version 4.2 where you only had to provide the model name in the model argument, like <code>--model mypilot.h5</code>. This got resolved in version 4.2.1. Please update to that version.</li>
+<li>Uses the model type <code>--type</code></li>
+<li>Allows to continue training a model given by <code>--transfer</code></li>
+<li>Supports filtering of records using a function defined in the variable 
+  <code>TRAIN_FILTER</code> in the <code>myconfig.py</code> file. For example: </li>
+</ul>
+<pre><code class="language-bash">def filter_record(record):
+    return record.underlying['user/throttle'] &gt; 0
+
+TRAIN_FILTER = filter_record
+</code></pre>
+<p>only uses records with positive throttle in training.</p>
+<ul>
+<li>In version 4.3.0 and later all 3.x models are supported again:</li>
+</ul>
+<pre><code class="language-bash">donkey train --tub=&lt;tub_path&gt; [--config=&lt;config.py&gt;] [--model=&lt;model path&gt;] [--type=(linear|categorical|inferred|rnn|imu|behavior|localizer|3d)] [--transfer=&lt;transfer model path&gt;]
+</code></pre>
+<p>In addition, a Tflite model is automatically generated in training. This can be suppressed by setting <code>CREATE_TF_LITE = False</code> in your config. Also Tensorrt models can now be generated. To do so, you set <code>CREATE_TENSOR_RT = True</code>.</p>
+<ul>
+<li>Note: The <code>createcar</code> command still creates a <code>train.py</code> file for backward  compatibility, but it's not required for training.</li>
+</ul>
+<h2 id="make-movie-from-tub">Make Movie from Tub</h2>
+<p>This command allows you to create a movie file from the images in a Tub.</p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey makemovie --tub=&lt;tub_path&gt; [--out=&lt;tub_movie.mp4&gt;] [--config=&lt;config.py&gt;] [--model=&lt;model path&gt;] [--model_type=(linear|categorical|inferred|rnn|imu|behavior|localizer|3d)] [--start=0] [--end=-1] [--scale=2] [--salient]
+</code></pre>
+<ul>
+<li>Run on the host computer or the robot</li>
+<li>Uses the image records from <code>--tub</code> dir path given</li>
+<li>Creates a movie given by <code>--out</code>. Codec is inferred from file extension. Default: <code>tub_movie.mp4</code></li>
+<li>Optional argument to specify a different <code>config.py</code> other than default: <code>config.py</code></li>
+<li>Optional model argument will load the keras model and display prediction as lines on the movie</li>
+<li>model_type may optionally give a hint about what model type we are loading. Categorical is default.</li>
+<li>optional <code>--salient</code> will overlay a visualization of which pixels excited the NN the most</li>
+<li>optional <code>--start</code> and/or <code>--end</code> can specify a range of frame numbers to use.</li>
+<li>scale will cause ouput image to be scaled by this amount</li>
+</ul>
+<h2 id="plot-predictions">Plot Predictions</h2>
+<p>This command allows you to plot steering and throttle against predictions coming from a trained model.</p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey tubplot --tub=&lt;tub_path&gt; --model=&lt;model_path&gt; [--limit=&lt;end_index&gt;] [--type=&lt;model_type&gt;] 
+</code></pre>
+<ul>
+<li>This command may be run from <code>~/mycar</code> dir</li>
+<li>Run on the host computer</li>
+<li>Will show a pop-up window showing the plot of steering values in a given tub compared to NN predictions from the trained model</li>
+<li>Optional <code>--limit=&lt;end_index&gt;</code> will use all records up to that index, defaults to 1000.</li>
+<li>Optional <code>--type=&lt;model_type&gt;</code> will use a different model type than the <code>DEFAULT_MODEL_TYPE</code></li>
+</ul>
+<h2 id="tub-histogram">Tub Histogram</h2>
+<p><strong><em>Note</em></strong>: Requires version &gt;= 4.3</p>
+<p>This command allows you to plot tub data (usually steering and throttle) as a histogram.</p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey tubhist --tub=&lt;tub_path&gt; --record=&lt;record_name&gt; --out=&lt;output_filename&gt;
+</code></pre>
+<ul>
+<li>This command may be run from <code>~/mycar</code> dir</li>
+<li>Run on the host computer</li>
+<li>Will show a pop-up window showing the histogram plot of tub values in a given tub</li>
+<li>Optional <code>--record=&lt;record_name&gt;</code> will only show the histogram of a certain data series, for example "user/throttle"</li>
+<li>Optional <code>--out=&lt;output_filename&gt;</code> saves histogram under that name, otherwise the name is auto-generated from the tub path</li>
+</ul>
+<h2 id="joystick-wizard">Joystick Wizard</h2>
+<p>This command line wizard will walk you through the steps to create a custom/customized controller.  </p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey createjs
+</code></pre>
+<ul>
+<li>Run the command from your <code>~/mycar</code> dir</li>
+<li>First make sure the OS can access your device. The utility <code>jstest</code> can be useful here. Installed via: <code>sudo apt install joystick</code>  You must pass this utility the path to your controller's device.  Typically this is <code>/dev/input/js0</code>  However, it if is not, you must find the correct device path and provide it to the utility.  You will need this for the createjs command as well.</li>
+<li>Run the command <code>donkey createjs</code> and it will create a file named my_joystick.py in your <code>~/mycar</code> folder, next to your manage.py</li>
+<li>Modify myconfig.py to set <code>CONTROLLER_TYPE="custom"</code> to use your my_joystick.py controller</li>
+</ul>
+<h2 id="visualize-cnn-filter-activations">Visualize CNN filter activations</h2>
+<p>Shows feature maps of the provided image for each filter in each of the convolutional layers in the model provided. Debugging tool to visualize how well feature extraction is performing.</p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey cnnactivations [--tub=&lt;data_path&gt;] [--model=&lt;path to model&gt;]
+</code></pre>
+<p>This will open a figure for each <code>Conv2d</code> layer in the model.</p>
+<p>Example:</p>
+<pre><code class="language-bash">donkey cnnactivations --model models/model.h5 --image data/tub/1_cam-image_array_.jpg
+</code></pre>
+<h2 id="show-models-database">Show Models database</h2>
+<p><strong><em>Note:</em></strong> This is only available in donkeycar &gt;= 4.3.1.</p>
+<p>This lists the models that are stored in <code>models/database.json</code>. Displays information
+like model type, model name, tubs used in training, transfer model and a comment if
+<code>--comment</code> was used in training or the model was trained in the UI.</p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey models [--group] 
+</code></pre>
+<ul>
+<li>Run from your <code>~/mycar</code> directory</li>
+<li>If the optional <code>--group</code> flag is given, then the tub path info is combined into groups, 
+if different models used different tubs. Useful, if you use multiple tubs, and the models 
+have used different tub combinations because it compresses the output information. </li>
+<li>You need to install <code>pandas</code> first if you want to run it on the car </li>
+</ul>
+<h2 id="donkey-ui">Donkey UI</h2>
+<p><strong>Note:</strong> <em>This section only applies to version &gt;= 4.2.0</em></p>
+<p>Usage:</p>
+<pre><code class="language-bash">donkey ui
+</code></pre>
+<p>This opens a UI to analyse tub data supporting following features:</p>
+<ul>
+<li>show selected data fields live as values and graphical bars</li>
+<li>delete or un-delete records</li>
+<li>try filters for data selection</li>
+<li>plot data of selected data fields</li>
+</ul>
+<p>The UI is an alternative to the web based <code>donkey tubclean</code>.</p>
+<p><img alt="Tub UI" src="../../assets/ui-tub-manager.png" /></p>
+<p>A full documentation of the UI is <a href="../ui/">here.</a></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../parts/stop_sign_detection/" class="btn btn-neutral float-left" title="Stop Sign Detection"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../ui/" class="btn btn-neutral float-right" title="Donkey UI.">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../parts/stop_sign_detection/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../ui/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

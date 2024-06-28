@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Virtual Race League. - Donkey Car</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Virtual Race League.";
+        var mkdocs_page_input_path = "guide/deep_learning/virtual_race_league.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Virtual Race League.</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#about-the-sim-server">About the Sim server</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-for-donkeycar-users">Setup for Donkeycar users</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#setup-for-non-donkeycar-users">Setup for Non-Donkeycar users</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">User Guide</li>
+      <li class="breadcrumb-item active">Virtual Race League.</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/deep_learning/virtual_race_league.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="virtual-race-league">Virtual Race League</h1>
+<p>We've taken the next step in DIY Robocars competitions. We are now hosting special events online! We welcome competitors from all over the world. Events will be scheduled by Chris Anderson and the Donkeycar maintainers. But this is by no means donkeycar only. Please read on, and we will provide two paths depending on whether you decide to use the donkeycar framework to race.</p>
+<p><img alt="race_previe" src="/docs/assets/virtual_race_league.jpg" /> </p>
+<p>We will be broadcasting the race stream over Twitch. Check the event annoucement for the url. Race comepetitors will join a group Zoom chat event. Tawn will host the race server and share the stream over Zoom/Twitch. And we will see how things go.</p>
+<h2 id="about-the-sim-server">About the Sim server</h2>
+<p>We are using the <a href="https://github.com/tawnkramer/sdsandbox">SDSandbox</a> open source project as the racing sim. This creates a 3d environment using <a href="https://unity.com/">Unity</a> game creation tool. It uses <a href="https://developer.nvidia.com/physx-sdk">NVidia PhysX</a> open source physics engine to simulate 4 wheeled vehicle dynamics. This sim also acts as a server, listening on TCP port 9091. This sends and receives JSON packets. More on the API later.</p>
+<p>We use an OpenAI GYM style wrapper to interface with the server. The project for this wrapper is <a href="https://github.com/tawnkramer/gym-donkeycar">gym-donkeycar</a>.</p>
+<p>You can build the server from the source project above, or use <a href="https://github.com/tawnkramer/gym-donkeycar/releases">pre-built binaries</a> for Ubuntu, Mac, and Windows. This has been tested on Ubuntu 18.04, Mac 10.13, and Windows 10.</p>
+<h2 id="setup-for-donkeycar-users">Setup for Donkeycar users</h2>
+<p>If you are using the donkeycar framework to race, you can use follow the guide to <a href="/docs/guide/deep_learning/simulator.md">setup the simulator</a>. If visuals directions help out, checkout the <a href="https://youtu.be/wqQMmHVT8qw">Windows Sim Setup Screen-Cast on Youtube</a>. Use this to practice before the race. When it comes time to race, modify your myconfig.py to have these two changes:</p>
+<pre><code>DONKEY_SIM_PATH = &quot;remote&quot;
+SIM_HOST = &quot;trainmydonkey.com&quot;
+</code></pre>
+<p>This racing server will not always be running. We will bring it up for testing events and on race day. We are aiming to have it up from 7pm-9pm Pacific every night a week before race day. If not up, ask on Discord and we will try to get things running.</p>
+<blockquote>
+<p>Note: If you trained a donkey model, but wish to run it on a Jetson Nano or some platform where you are having troubles installing all the dependencies, <a href="https://gist.github.com/tawnkramer/a74938653ab70e3fd22af1e4788a5001">here's a single script</a> you can use to run without any donkeycar or gym-donkeycar dependencies. Just pass it the model file name, the host name, and the car name. And it will run as a client to the race sim.</p>
+</blockquote>
+<h2 id="setup-for-non-donkeycar-users">Setup for Non-Donkeycar users</h2>
+<p>If you would like to roll your own client, we have some python code to get you started. </p>
+<ul>
+<li>
+<p>You will first want to download the sim <a href="https://github.com/tawnkramer/gym-donkeycar/releases">pre-built binary</a> for your platform. Extract that where you like.</p>
+</li>
+<li>
+<p>Then clone the gym-donkeycar python project and install. If you are using a virtual environment, don't forget to activate it first. </p>
+</li>
+</ul>
+<pre><code class="language-bash">git clone https://github.com/tawnkramer/gym-donkeycar
+pip install -e gym-donkeycar
+</code></pre>
+<ul>
+<li>get the test client. Download via wget on Mac or Linux like:</li>
+</ul>
+<pre><code>wget https://raw.githubusercontent.com/tawnkramer/sdsandbox/master/src/test_client.py
+</code></pre>
+<ul>
+<li>or on Windows open a browser to <a href="https://github.com/tawnkramer/sdsandbox/tree/master/src">https://github.com/tawnkramer/sdsandbox/tree/master/src</a></li>
+<li>
+<p>then right click on test_client.py and choose "Save link as..." and choose a location on your PC.</p>
+</li>
+<li>
+<p>start up the simulator and let it get to the menu screen. </p>
+</li>
+<li>run the test client like </li>
+</ul>
+<p><code>python3 test_client.py</code></p>
+<p>Checkout test_client.py to see what's going there. Class SimpleClient connects to the host of your choosing. Then it sends a load scene command depending on which course you want to try. It then sends some car visual configuration, and then some camera config information. Then it enters an update loop.</p>
+<p>You can try changing the num_clients variable to 2 or more clients. See how the sim can handle them.</p>
+<p>The test client will send random steering command for time_to_drive = 1.0 seconds. Then quit.</p>
+<p>During that time, the telemetry messages will come into SimpleClient::on_msg_recv. See them printed out for you. Also take a look at the 'test.png' that it writes to get a feel for what the camera looks like.</p>
+<p>There's some comments in there explaining the camera configuration in detail. If you have a custom camera setup, hopefully we can come close to matching it with these controls.</p>
+<p>When it's time to race, change the variable:</p>
+<pre><code>host = &quot;trainmydonkey.com&quot;
+</code></pre>
+<p>Be sure to enable controls to start the car on your command. We will likely be old school calling 3, 2, 1, GO! over video chat.</p>
+<h2 id="getting-help">Getting Help</h2>
+<p>There's a lot to learn. And come to <a href="https://discord.gg/JGQUU8w">Discord</a> to get some help. Check out the #virtual-racing-league channel there.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../simulator/" class="btn btn-neutral float-left" title="Donkey Simulator."><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../mobile_app/" class="btn btn-neutral float-right" title="Mobile app">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../simulator/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../mobile_app/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
