@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>Install Donkeycar on Linux - Donkey Car</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Install Donkeycar on Linux";
+        var mkdocs_page_input_path = "guide/host_pc/setup_ubuntu.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/cameras/">Cameras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../path_follow/path_follow/">GPS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../parts/stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Install Donkeycar on Linux</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/guide/host_pc/setup_ubuntu.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="install-donkeycar-on-linux">Install Donkeycar on Linux</h1>
+<blockquote>
+<p>Note : tested on Ubuntu 20.04 LTS, 22.04 LTS</p>
+</blockquote>
+<ul>
+<li>
+<p>Open the Terminal application.</p>
+</li>
+<li>
+<p>Install miniconda Python 3.11 64 bit. </p>
+</li>
+</ul>
+<pre><code class="language-bash">wget https://repo.anaconda.com/miniconda/Miniconda3-py311_24.4.0-0-Linux-x86_64.sh
+bash ./Miniconda3-py311_24.4.0-0-Linux-x86_64.sh
+</code></pre>
+<p>Setup your <code>donkey</code> conda env with:</p>
+<pre><code class="language-bash">conda create -n donkey python=3.11
+conda activate donkey
+</code></pre>
+<p>Now there are two different installations possible. Very likely you will 
+want to do the user install. Then you will perform Step 
+<a href="#user-install"><em>User install</em></a>. In case 
+you want to debug or edit the source code, you will need to do the more advanced 
+<a href="#developer-install"><em>Developer install</em></a>. But you can do only one.</p>
+<blockquote>
+<p><em><strong>Note</strong></em>: Only do User install or Developer install but not both!</p>
+</blockquote>
+<h3 id="user-install">User install</h3>
+<p>As you have activated the new <code>donkey</code> env already you simply type:</p>
+<pre><code class="language-bash">pip install donkeycar[pc]
+</code></pre>
+<p>This will install the latest release. Note, if you are using ZSH then
+you have to escape the <code>[</code> and <code>]</code>, i.e. </p>
+<pre><code class="language-bash">pip install donkeycar\[pc\]
+</code></pre>
+<h3 id="developer-install">Developer install</h3>
+<p>Here you can choose which branch or tag you want to install, and you can 
+edit and/or debug the code, by downloading the source code from GitHub.</p>
+<p>Create a project directory you would like to use as the 
+head of your projects, change into it and download and install <code>donkeycar</code> 
+from GitHub.</p>
+<pre><code class="language-bash">mkdir projects
+cd projects
+git clone https://github.com/autorope/donkeycar
+cd donkeycar
+git checkout main
+pip install -e .[pc]
+</code></pre>
+<p>Note: if you are using ZSH (you'll know if you are), you won't be able to 
+run <code>pip install -e .[pc]</code>. You'll need to escape the brackets and run 
+<code>pip install -e .\[pc\]</code>.</p>
+<ul>
+<li>If this is not your first install, update Conda and remove old donkey</li>
+</ul>
+<pre><code class="language-bash">conda update -n base -c defaults conda
+conda env remove -n donkey
+</code></pre>
+<p>The newer version of Tensorflow is already built with GPU support. If you 
+have an Nvidia GPU, install Cuda 12 following instructions on Nivida's page 
+<a href="https://developer.nvidia.com/cuda-toolkit-archive">here</a></p>
+<ul>
+<li>Optional Install Coral edge tpu compiler</li>
+</ul>
+<p>If you have a Google Coral edge tpu, you may wish to compile models. You 
+will need to install the edgetpu_compiler exectutable. Follow <a href="https://coral.withgoogle.com/docs/edgetpu/compiler/">their 
+instructions</a>.</p>
+<ul>
+<li>Optionally configure PyTorch to use GPU - only for NVidia Graphics cards</li>
+</ul>
+<p>If you have an NVidia card, you should update to the latest drivers and 
+<a href="https://www.tensorflow.org/install/gpu#windows_setup">install Cuda SDK</a>. 
+You will also need to change the code to use the GPU in a few places, so
+you need the developer install. </p>
+<pre><code class="language-bash">conda install cudatoolkit=11 -c pytorch
+</code></pre>
+<p>You should replace <code>&lt;CUDA Version&gt;</code> with your CUDA version. Any version 
+above 10.0 should work. You can find out your CUDA version by running 
+<code>nvcc --version</code> or <code>nvidia-smi</code>. (if those commands don't work, it means you 
+don't already have them installed. Follow the directions given by that error 
+to install them.) If the version given by these two commands don't match, go 
+with the version given by <code>nvidia-smi</code>.</p>
+<ul>
+<li>Create your local working dir:</li>
+</ul>
+<pre><code class="language-bash">donkey createcar --path ~/mycar
+</code></pre>
+<blockquote>
+<p>Note: After closing the Anaconda Prompt, when you open it again, you will need to 
+type <code>conda activate donkey</code> to re-enable the mappings to donkey specific 
+Python libraries</p>
+</blockquote>
+<hr />
+<h3 id="next-lets-install-software-on-donkeycar">Next let's <a href="/guide/install_software/#step-2-install-software-on-donkeycar">install software on Donkeycar</a></h3>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+  </span>
+</div>
+    <script src="../../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../../..";</script>
+    <script src="../../../js/theme_extra.js"></script>
+    <script src="../../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
