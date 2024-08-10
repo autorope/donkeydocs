@@ -24,7 +24,7 @@ There are two main options for cars.  One is the WL Toys brand and the second is
 
 *NOTE: only the WL Toys 144010 and HSP-94186 are readily avilable rignt now* 
 
-The [WL Toys 144010](https://www.banggood.com/custlink/vvKtByVPZn) is probably the easiest car to get right now.  It has a brushless motor, which makes it fast, but takes some getting used to for beginners.  There are brushed motor versions of theis car the 144011 and 144001 but both require the user to replace both the steering servo and ESC.  Only do this if you are familiar with RC or enjoy tinkering.  [Here is a short video](https://www.youtube.com/watch?v=4LKDjoTKlaE) explaining how to assemble the car.  You can find the adapters in [Thingiverse](https://www.thingiverse.com/thing:2566276) or if you would like to buy them you can do so one the [donkey car store](https://store.donkeycar.com/products/donkey-adapter-for-wl-toys-144010?variant=40161156562979)
+The [WL Toys 144010](https://www.banggood.com/custlink/vvKtByVPZn) is probably the easiest car to get right now.  It has a brushless motor, which makes it fast, but takes some getting used to for beginners.  There are brushed motor versions of theis car the 144011 and 144001 but both require the user to replace both the steering servo and ESC.  Only do this if you are familiar with RC or enjoy tinkering.  [Here is a short video](https://www.youtube.com/watch?v=4LKDjoTKlaE) explaining how to assemble the car.  You can find the adapters in [Thingiverse](https://www.thingiverse.com/thing:2566276) or if you would like to buy them you can do so one the [donkey car store](donkeycar-701334.square.site)
 
 The alterate car, which often has slighly less availability is the HSP 94186 and the "Exceed" brand cars.  There are 5 supported cars, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html).   The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress but takes about a month to get to the US, there are local options that charge a premium.
 
@@ -79,7 +79,7 @@ If you are in Asia, the DIYRobocars community in Hong Kong also sells car kits a
 | MicroSD Card (many will work, I like this one because it boots quickly)             | [64GB](https://amzn.to/2XP7UAa)                                         | $18.99           |
 | Wide Angle Raspberry Pi Camera                                                      | [Amazon](https://amzn.to/4bRHCRV)                    | $18              |
 | Female to Female Jumper Wire                                                        | [Amazon](https://amzn.to/36RiMlo))                                         | $7 &ast;             |
-| (Optional if you don't want to use RPi GPIO pins to control the car's servo and throttle directly) Servo Driver PCA 9685                                                               | [Amazon](https://amzn.to/2BbVYkj) or [Donkey Car Store](https://store.donkeycar.com/collections/accessories/products/servo-driver-pca-9685-with-jumper-cables)                                          | $12 &ast;&ast;           |
+| (Optional if you don't want to use RPi GPIO pins to control the car's servo and throttle directly) Servo Driver PCA 9685                                                               | [Amazon](https://amzn.to/2BbVYkj)                                           | $12 &ast;&ast;           |
 | 3D Printed roll cage and top plate.                                                 | Purchase: [Donkey Store](donkeycar-701334.square.site) Files: [thingiverse.com/thing:2260575](https://www.thingiverse.com/thing:2566276) | $50                 |
 
 &ast; If it is hard to find these components, there is some wiggle room. Instead of an M2 you can use an M2.2, m2.3 or #4 SAE screw.  Instead of an M3 a #6 SAE screw can be used.  Machine screws can be used in a pinch.  
@@ -127,7 +127,7 @@ If you purchased parts from the Donkey Car Store, skip to step 3.
 
 ### Step 1: Print Parts
 
-If you do not have a 3D Printer, you can order parts from [Donkey Store](https://store.donkeycar.com/collections/plastics-and-screws/products/standard-donkey-chassis-includes-screws), [Shapeways](https://www.shapeways.com/) or [3dHubs](https://www.3dhubs.com/).  I printed parts in black PLA, with 2mm layer height and no supports.  The top roll bar is designed to be printed upside down.   Remember that you need to print the adapters unless you have a "Magnet"
+If you do not have a 3D Printer, you can order parts from [Donkey Store](donkeycar-701334.square.site).  I printed parts in black PLA, with 2mm layer height and no supports.  The top roll bar is designed to be printed upside down.   Remember that you need to print the adapters unless you have a "Magnet"
 
 I printed parts in black PLA, with .3mm layer height with a .5mm nozzle and no supports.  The top roll bar is designed to be printed upside down.  
 
