@@ -72,15 +72,15 @@ If you are in Asia, the DIYRobocars community in Hong Kong also sells car kits a
 | Part Description                                                                    | Link                                                                                  | Approximate Cost |
 |-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|------------------|
 | Magnet Car or alternative                                                                        | see cars above under 'choosing a car'                                         | $92              |
-| M2x6 screws (8)                                                                     | [Amazon](https://amzn.to/2ZSKa0D) or [Donkey Store](donkeycar-701334.square.site)                                          | $4.89 &ast;          |
-| M3x10 screws (3)                                                                  | [Amazon](https://amzn.to/3gBQuzE)  or [Donkey Store](donkeycar-701334.square.site)                                                    | $7.89 &ast;          |
+| M2x6 screws (8)                                                                     | [Amazon](https://amzn.to/2ZSKa0D) or [Donkey Store](https://donkeycar-701334.square.site)                                          | $4.89 &ast;          |
+| M3x10 screws (3)                                                                  | [Amazon](https://amzn.to/3gBQuzE)  or [Donkey Store](https://donkeycar-701334.square.site)                                                    | $7.89 &ast;          |
 | USB Battery with microUSB cable (any battery capable of 2A 5V output is sufficient) | [Anker 10,000 maH](https://amzn.to/3BOqqND)                                           | $39              |
 | Raspberry Pi 5B 4GB                                                                      | [Pi 4B](https://amzn.to/4feOjjKv)                                          | $60              |
 | MicroSD Card (many will work, I like this one because it boots quickly)             | [64GB](https://amzn.to/2XP7UAa)                                         | $18.99           |
 | Wide Angle Raspberry Pi Camera                                                      | [Amazon](https://amzn.to/4bRHCRV)                    | $18              |
 | Female to Female Jumper Wire                                                        | [Amazon](https://amzn.to/36RiMlo))                                         | $7 &ast;             |
 | (Optional if you don't want to use RPi GPIO pins to control the car's servo and throttle directly) Servo Driver PCA 9685                                                               | [Amazon](https://amzn.to/2BbVYkj)                                           | $12 &ast;&ast;           |
-| 3D Printed roll cage and top plate.                                                 | Purchase: [Donkey Store](donkeycar-701334.square.site) Files: [thingiverse.com/thing:2260575](https://www.thingiverse.com/thing:2566276) | $50                 |
+| 3D Printed roll cage and top plate.                                                 | Purchase: [Donkey Store](https://donkeycar-701334.square.site) Files: [thingiverse.com/thing:2260575](https://www.thingiverse.com/thing:2566276) | $50                 |
 
 &ast; If it is hard to find these components, there is some wiggle room. Instead of an M2 you can use an M2.2, m2.3 or #4 SAE screw.  Instead of an M3 a #6 SAE screw can be used.  Machine screws can be used in a pinch.  
 
@@ -88,7 +88,7 @@ If you are in Asia, the DIYRobocars community in Hong Kong also sells car kits a
 
 ### Optional Upgrades
 
-* **NVIDIA JetsonNano Hardware Options**  The NVIDIA Jetson Nano is fully supported by the donkey Car.  To assemble the Donkey Car you will need a few parts including the Wifi card, Antennas and camera.  In addition you will need this [Adapter](donkeycar-701334.square.site). If you want to print it yourself, it is on the Thingiverse page for the project. Due to the higher power usage and consumption you should consider the 10Ahr 3A USB battery pack listed below and a good cable rated for 3A.
+* **NVIDIA JetsonNano Hardware Options**  The NVIDIA Jetson Nano is fully supported by the donkey Car.  To assemble the Donkey Car you will need a few parts including the Wifi card, Antennas and camera.  In addition you will need this [Adapter](https://donkeycar-701334.square.site). If you want to print it yourself, it is on the Thingiverse page for the project. Due to the higher power usage and consumption you should consider the 10Ahr 3A USB battery pack listed below and a good cable rated for 3A.
 
 ![adapter](../assets/Jetson_Adapter.jpg)
 
@@ -103,10 +103,10 @@ Finally this is the Donkey Assembled.
 | Part Description                                      | Link                                                              | Approximate Cost |
 |-------------------------------------------------------|-------------------------------------------------------------------|------------------|
 | Nvidia Jetson Nano | [Amazon](https://amzn.to/2TTGHLK)| $99 |
-| Jetson Nano Adapter | [Donkey Store](donkeycar-701334.square.site) | $7          |
-| Camera Module | [Donkey Store](donkeycar-701334.square.site)| $27 |
+| Jetson Nano Adapter | [Donkey Store](https://donkeycar-701334.square.site) | $7          |
+| Camera Module | [Donkey Store](https://donkeycar-701334.square.site)| $27 |
 | WiFi Card | [Amazon](https://amzn.to/2UcHszJ) | $18|
-| Antennas | [Donkey Store](donkeycar-701334.square.site)|$7|
+| Antennas | [Donkey Store](https://donkeycar-701334.square.site)|$7|
 
 
 For other options for part, feel free to look at the jetbot documentation [here](https://github.com/NVIDIA-AI-IOT/jetbot).
@@ -127,7 +127,7 @@ If you purchased parts from the Donkey Car Store, skip to step 3.
 
 ### Step 1: Print Parts
 
-If you do not have a 3D Printer, you can order parts from [Donkey Store](donkeycar-701334.square.site).  I printed parts in black PLA, with 2mm layer height and no supports.  The top roll bar is designed to be printed upside down.   Remember that you need to print the adapters unless you have a "Magnet"
+If you do not have a 3D Printer, you can order parts from [Donkey Store](https://donkeycar-701334.square.site).  I printed parts in black PLA, with 2mm layer height and no supports.  The top roll bar is designed to be printed upside down.   Remember that you need to print the adapters unless you have a "Magnet"
 
 I printed parts in black PLA, with .3mm layer height with a .5mm nozzle and no supports.  The top roll bar is designed to be printed upside down.  
 
