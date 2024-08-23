@@ -74,7 +74,7 @@ If you are in Asia, the DIYRobocars community in Hong Kong also sells car kits a
 | Magnet Car or alternative                                                                        | see cars above under 'choosing a car'                                         | $92              |
 | M2x6 screws (8)                                                                     | [Amazon](https://amzn.to/2ZSKa0D) or [Donkey Store](https://donkeycar-701334.square.site)                                          | $4.89 &ast;          |
 | M3x10 screws (3)                                                                  | [Amazon](https://amzn.to/3gBQuzE)  or [Donkey Store](https://donkeycar-701334.square.site)                                                    | $7.89 &ast;          |
-| USB Battery with microUSB cable  | [Anker 10,000 maH](https://amzn.to/3BOqqND)                                           | $39              |
+| USB Battery  | [Anker 10,000 maH](https://amzn.to/4dStvNr)                                           | $26              |
 | Raspberry Pi 5B 4GB                                                                      | [Pi 5B](https://amzn.to/3AmRmqa)                                          | $60              |
 | MicroSD Card              | [64GB](https://amzn.to/2XP7UAa)                                         | $18.99           |
 | Wide Angle Raspberry Pi Camera                                                      | [Amazon](https://amzn.to/4bRHCRV)                    | $18              |
