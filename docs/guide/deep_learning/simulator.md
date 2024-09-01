@@ -18,7 +18,7 @@ https://youtu.be/wqQMmHVT8qw
 
 There are many ways to use the simulator, depending on your goals. You can use the simulator to get to know and use the standard Donkeycar drive/train/test cycle by treating it as virtual hardware. You will collect data, drive, and train using the __same commands__ as if you were using a real robot. We will walk through that use-case first.
 
-![sim_screen_shot](assets/sim_screen_shot.png) 
+![sim_screen_shot](../../assets/sim_screen_shot.png) 
 
 ## Install
 
