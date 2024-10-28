@@ -92,7 +92,7 @@ If you are in Asia, the DIYRobocars community in Hong Kong also sells car kits a
 
 ![adapter](../assets/Jetson_Adapter.jpg)
 
-Plug in the Servo driver the same as the Raspberry Pi, just keep in mind that the Jetson pinout is reversed and that the Sombrero is not supported.
+Plug in the Servo driver the same as the Raspberry Pi.  Note that the Sombrero is not supported.
 
 ![Jetson Servo](../assets/Servo_Wiring.png)
 
@@ -149,7 +149,7 @@ This is a relatively simple assembly step.   Just use the 3mm self tapping screw
 
 When attaching the roll cage to the top plate, ensure that the nubs on the top plate face the roll-cage. This will ensure the equipment you mount to the top plate fits easily.
 
-### Step 4: Connect Servo Shield to Raspberry Pi
+### Step 4: Connect Servo Driver to Raspberry Pi
 
 The PCA9685 Servo controller can control up to 16 PWM devices like servos, motor controllers, LEDs or almost anything that uses a PWM signal.  It is connected to the RaspberryPi (or Jetson Nano) 40 pin GPIO bus via the I2C pins.
 
