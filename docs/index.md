@@ -17,10 +17,13 @@ Donkey is an open source Self Driving Car Platform for remote control cars writt
 * Participate in a vibrant [online community](https://discord.gg/PN6kFeA) learning cutting edge techology and having fun doing it.
 
 ---------
+### Buy a pre-made Donkeycar:
+
+If you just want something ready-to-run, we recommend the Waveshare PiRacer Pro, which is a great deal at $262 with a RaspberryPi 4 or $194 if you already have a Pi. Works well with Donkey. You can buy it [here](https://www.waveshare.com/product/robotics/mobile-robots/raspberry-pi-robots/piracer-pro-ai-kit.htm).
 
 ### Build your own Donkey
 
-Donkey is the standard car that most people build first. The parts cost about $250 to $300 and take 2 hours to assemble. Here are the main steps to build your own car:
+Building your own car is a pretty straightforwards process with a RC car, a Pi and a few other components. The parts cost about $250 to $300 and take 2 hours to assemble. Here are the main steps to build your own car:
 
 1. [Assemble hardware.](guide/build_hardware)
 2. [Install software.](guide/install_software)
