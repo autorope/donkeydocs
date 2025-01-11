@@ -20,11 +20,14 @@ The latest version of the software installation instructions are maintained in t
 
 ## Choosing a Car
 
-There are two main options for cars.  One is the WL Toys brand and the second is the exceed brand.  
+There are two main options for cars.  If you want a pre-assembled car, I would recommend the [Waveshare Piracer Pro](https://amzn.to/3BTKtxV), just buy this and a Raspberry Pi 4 (NOT a Raspberry Pi 5) and you will be mosty ready to go.  If you want to build a car follow these instructions below.  
+
+
+To build a car, you first need to choose a car.  A donkey car can be made out of almost any RC car, however if you want to follow an easy path buy either the WL Toys car listed below or the Exceed one.
 
 *NOTE: only the WL Toys 144010 and HSP-94186 are readily avilable rignt now* 
 
-The [WL Toys 144010](https://amzn.to/3yCVyBI) is probably the easiest car to get right now.  It has a brushless motor, which makes it fast, but takes some getting used to for beginners.  There are brushed motor versions of theis car the 144011 and 144001 but both require the user to replace both the steering servo and ESC.  Only do this if you are familiar with RC or enjoy tinkering.  [Here is a short video](https://www.youtube.com/watch?v=4LKDjoTKlaE) explaining how to assemble the car.  You can find the adapters in [Thingiverse](https://www.thingiverse.com/thing:2566276) or if you would like to buy them you can do so one the [donkey car store](https://donkeycar-701334.square.site)
+The [WL Toys 144010](https://amzn.to/3yCVyBI) is probably the easiest car to get right now.  It has a brushless motor, which makes it fast, but takes some getting used to for beginners.  There are brushed motor versions of theis car the 144011 and 144001 but both require the user to replace both the steering servo and ESC.  Only do this if you are familiar with RC or enjoy tinkering.  [Here is a short video](https://www.youtube.com/watch?v=4LKDjoTKlaE) explaining how to assemble the car.  You can find the adapters in [Thingiverse](https://www.thingiverse.com/thing:2566276) and print them yourself or go to a 3rd party printing service.
 
 The alterate car, which often has slighly less availability is the HSP 94186 and the "Exceed" brand cars.  There are 5 supported cars, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html).   The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress but takes about a month to get to the US, there are local options that charge a premium.
 
@@ -63,53 +66,24 @@ This [video](https://www.youtube.com/watch?v=OaVqWiR2rS0&t=48s) covers how to as
 
 The following instructions are for the Raspberry Pi, below in Optional Upgrades section, you can find the NVIDIA Jetson Nano instructions.  
 
-There are two official stores:
-
-If you are in the US, you can use the [Donkey store](https://donkeycar-701334.square.site).  The intention of the Donkey Store is to make it easier and less expensive to build the Donkey Car.  The Donkey Store is run by the original founders of donkey car and profits are used to fund development of the donkey cars.  Also it is worth noting the design of the parts out of the Donkey store is slightly improved over the standard build as it uses better parts that are only available in large quantities or are harder to get.  The Donkey Store builds are open source like all others.   
-
-If you are in Asia, the DIYRobocars community in Hong Kong also sells car kits at [Robocar Store](https://www.robocarstore.com/products/donkey-car-starter-kit).  They are long term Donkey community members and use proceeds to support the R&D efforts of this project. You can print the donkey car parts which can be found [here](https://www.thingiverse.com/thing:2566276)
-
 | Part Description                                                                    | Link                                                                                  | Approximate Cost |
 |-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|------------------|
 | Magnet Car or alternative                                                                        | see cars above under 'choosing a car'                                         | $92              |
-| M2x6 screws (8)                                                                     | [Amazon](https://amzn.to/2ZSKa0D) or [Donkey Store](https://donkeycar-701334.square.site)                                          | $4.89 &ast;          |
-| M3x10 screws (3)                                                                  | [Amazon](https://amzn.to/3gBQuzE)  or [Donkey Store](https://donkeycar-701334.square.site)                                                    | $7.89 &ast;          |
+| M2x6 screws (8)                                                                     | [Amazon](https://amzn.to/2ZSKa0D)                                           | $4.89 &ast;          |
+| M3x10 screws (3)                                                                  | [Amazon](https://amzn.to/3gBQuzE)                                                     | $7.89 &ast;          |
 | USB Battery  | [Anker 10,000 maH](https://amzn.to/4dStvNr)                                           | $26              |
 | Raspberry Pi 5B 4GB                                                                      | [Pi 5B](https://amzn.to/3AmRmqa)                                          | $60              |
 | MicroSD Card              | [64GB](https://amzn.to/2XP7UAa)                                         | $18.99           |
 | Wide Angle Raspberry Pi Camera                                                      | [Amazon](https://amzn.to/4bRHCRV)                    | $18              |
 | Female to Female Jumper Wire                                                        | [Amazon](https://amzn.to/36RiMlo))                                         | $7 &ast;             |
 | Servo Driver PCA 9685                                                               | [Amazon](https://amzn.to/2BbVYkj)                                           | $12 &ast;&ast;           |
-| 3D Printed roll cage and top plate.                                                 | Purchase: [Donkey Store](https://donkeycar-701334.square.site) Files: [thingiverse.com/thing:2260575](https://www.thingiverse.com/thing:2566276) | $50                 |
+| 3D Printed roll cage and top plate.                                                 | Print yourself, or go to a 3rd party service | $xx                 |
 
 &ast; If it is hard to find these components, there is some wiggle room. Instead of an M2 you can use an M2.2, m2.3 or #4 SAE screw.  Instead of an M3 a #6 SAE screw can be used.  Machine screws can be used in a pinch.  
 
 &ast;&ast; This component can be purchased from Ali Express for ~$2-4 if you can wait the 30-60 days for shipping.
 
 ### Optional Upgrades
-
-* **NVIDIA JetsonNano Hardware Options**  The NVIDIA Jetson Nano is fully supported by the donkey Car.  To assemble the Donkey Car you will need a few parts including the Wifi card, Antennas and camera.  In addition you will need this [Adapter](https://donkeycar-701334.square.site). If you want to print it yourself, it is on the Thingiverse page for the project. Due to the higher power usage and consumption you should consider the 10Ahr 3A USB battery pack listed below and a good cable rated for 3A.
-
-![adapter](../assets/Jetson_Adapter.jpg)
-
-Plug in the Servo driver the same as the Raspberry Pi, just keep in mind that the Jetson pinout is reversed and that the Sombrero is not supported.
-
-![Jetson Servo](../assets/Servo_Wiring.png)
-
-Finally this is the Donkey Assembled.  
-
-![Jetson Assembled](../assets/Jetbot_Assembled.png)
-
-| Part Description                                      | Link                                                              | Approximate Cost |
-|-------------------------------------------------------|-------------------------------------------------------------------|------------------|
-| Nvidia Jetson Nano | [Amazon](https://amzn.to/2TTGHLK)| $99 |
-| Jetson Nano Adapter | [Donkey Store](https://donkeycar-701334.square.site) | $7          |
-| Camera Module | [Donkey Store](https://donkeycar-701334.square.site)| $27 |
-| WiFi Card | [Amazon](https://amzn.to/2UcHszJ) | $18|
-| Antennas | [Donkey Store](https://donkeycar-701334.square.site)|$7|
-
-
-For other options for part, feel free to look at the jetbot documentation [here](https://github.com/NVIDIA-AI-IOT/jetbot).
 
 * **LiPo Battery and Accessories:** LiPo batteries have significantly better energy density and have a better dropoff curve.  See below (courtesy of Traxxas).
 
