@@ -7,7 +7,7 @@ Note that you will want your RC controller to be well trimmed prior to using it 
 
 To do so, you can either wire up it up manually as shown in [this tutorial](rc.md) (which works, but has a lot of fiddly wires that can fall off) or do it far more neatly with the Donkeycar RC hat, shown above, which handles all the wiring for you, along with including an OLED screen. 
 
-![RC Hat for RaspberryPi](../assets/PXL_20250527_030450600-600x509.jpg) "The Donkey RC Hat for RaspberryPi")
+![RC Hat for RaspberryPi](../assets/PXL_20250527_030450600-600x509.jpg)
 
 The Donkeycar RC hat can be purchased from the [Donkeycar Store](https://www.diyrobocars.com/shop/).
 
