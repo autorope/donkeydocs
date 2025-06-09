@@ -7,7 +7,7 @@ Note that you will want your RC controller to be well trimmed prior to using it 
 
 To do so, you can either wire up it up manually as shown in [this tutorial](rc.md) (which works, but has a lot of fiddly wires that can fall off) or do it far more neatly with the Donkeycar RC hat, shown above, which handles all the wiring for you, along with including an OLED screen and a fan. 
 
-The Donkeycar RC hat can be purchased from the [Donkeycar Store](https://store.donkeycar.com/products/donkey-car-rc-hat). Note that it only works with the RaspberryPi, not the Jetson Nano, due to limitations with the way the Jetson handles its I/O pins. 
+The Donkeycar RC hat can be purchased from the [Donkeycar Store](https://www.diyrobocars.com/shop/). Note that it only works with the RaspberryPi, not the Jetson Nano, due to limitations with the way the Jetson handles its I/O pins. 
 
 If you're using a standard [wheel encoder](odometry.md), you can plug it into the "Encoder" pins. You can also power the RaspberryPi from this board if you have a 5V source with the "Optional 5v power in" pins
 
