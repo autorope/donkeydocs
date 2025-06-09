@@ -7,6 +7,7 @@ A car needs a way to to move forward and backward and to turn left and right.  W
 
 Actuators take control signals from the Donkeycar to control their actions.  There are several options for generating these control signals.
 
+- A RC Hat, which is a board you mount on top of the RaspberryPi to use the regular RC that comes with ready-to-run cars
 - PCA9685 Servo controller board
 - RPi/Jetson 40 pin GPIO header
     - see [Generating PWM from the Jetson Nano](./pins.md#generating-pwm-from-the-jetson-nano) for how to enable PWM output from the Jetson Nano 40 pin GPIO header.
@@ -28,6 +29,9 @@ A standard RC car is equipped with a steering servo for steering the front wheel
 - For instance, if a 60hz frequency is used, then a 1 ms pulse requires a duty cycle of 0.05 * 60 / 50 = 0.06 (6%) duty cycle
 - We default the frequency of our PCA9685 to 60 hz, so pulses in config are generally based on 60hz frequency and 12 bit values. We use 12 bit values because the PCA9685 has 12 bit resolution. So a 1 ms pulse is 0.06 * 4096 ~= 246, a neutral pulse of 0.09 duty cycle is 0.09 * 4096 ~= 367 and full forward pulse of 0.12 duty cycles is 0.12 * 4096 ~= 492
 - These are generalizations that are useful for understanding the underlying api call arguments and the values that are generating when calibrating.  The final choice of duty-cycle/pulse length depends on your hardware and perhaps your strategy (you may not want to go too fast,  and so you may choose is low max throttle pwm)
+
+### Using a RC Hat to generate the commands. 
+- You can buy a RC Hat from the Donkeycar Store [here](https://www.diyrobocars.com/shop/). This is the easiest way to go if your car came with a regular RC Transmitter and Receiver. Instructions for using it are on the product page.
 
 ### Generating PWM pulses with a PCA9685 Servo controller
 - The hardware connection of the PCA9685 I2C servo driver board is described fully in the overall setup instructions [here](../guide/build_hardware.md)
