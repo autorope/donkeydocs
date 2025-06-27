@@ -20,8 +20,9 @@ The latest version of the software installation instructions are maintained in t
 
 ## Choosing a Car
 
-There are two main options for cars.  If you want a pre-assembled car, I would recommend the [Waveshare Piracer Pro](https://amzn.to/3BTKtxV), just buy this and a Raspberry Pi 4 (NOT a Raspberry Pi 5) and you will be mosty ready to go.  If you want to build a car follow these instructions below.  
+There are two main options for cars.  If you want a pre-assembled car, we recommend the [Waveshare Piracer Pro](https://amzn.to/4eqxpyM), which comes with a Raspberry Pi 4 and everything else you need.  
 
+If you want to build a car follow these instructions below.  
 
 To build a car, you first need to choose a car.  A donkey car can be made out of almost any RC car, however if you want to follow an easy path buy either the WL Toys car listed below or the Exceed one.
 
