@@ -114,6 +114,7 @@ Simply type:
 ```bash
 pip install donkeycar[pi]
 ```
+Note: this will take 5-10 minutes to complete. Be patient!
 
 #### Developer Install (only required if you want to checkout different forks, branches, tags)
 
