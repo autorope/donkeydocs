@@ -20,7 +20,7 @@ The latest version of the software installation instructions are maintained in t
 
 ## Choosing a Car
 
-There are two main options for cars.  If you want a pre-assembled car, we recommend the [Waveshare Piracer Pro](https://amzn.to/4eqxpyM), which comes with a Raspberry Pi 4 and everything else you need.  
+There are two main options for cars.  If you want a pre-assembled car, we recommend the [Waveshare Piracer Pro](https://amzn.to/4eqxpyM), which comes with a Raspberry Pi 4 and everything else you need. Although it comes with outdated Donkeycar software, you can easily upgrade it to the latest version by following the instructions [here](https://www.diyrobocars.com/2025/06/28/tips-for-installing-donkeycar-on-the-waveshare-piracer-pro/).
 
 If you want to build a car follow these instructions below.  
 
