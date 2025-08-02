@@ -64,23 +64,23 @@ The color threshold values represent the range of colors used to detect the line
 
 >> There are many online converters between RGB and HSV.  This one was used when creating this documentation; [peko-step](https://www.peko-step.com/en/tool/hsvrgb_en.html)  I like that tool because it will allow the Saturation and Value to be output in the range of 0.255, which is what we need.  IMPORTANT: The online tools use the standard way of representing HSV, which is a Hue value of 0 to 359 degrees, Saturation of 0 to 100%, Value of 0 to 100%.  OpenCV, which our code is based on, uses a Hue value of 0 to 179, Saturation of 0 to 255 and value of 0 to 255; so be aware that you may need to convert from the tool's values to the OpenCV values when changing these configurations.
 
-When choosing the threshold colors it is important to take into account what the camera will see including the lighting conditions.  Donkeycar includes a script to make this easy to do.  the `hsv_picker.sh` script allows you to view the live camera image or alternatively to choose a static image to view.  So if you are running a desktop image on your car (so not a server image or headless image) then you can run the script and view the camera image.  If you do not have a desktop on the car, then you can run the car and open the web view in a browser on your host laptop at take a screen shot to save it, then use that static image with the `hsv_picker.sh` script on your laptop computer.  In either case, arrange the car on the course so it can see the line as it would see it when you drive in autopilot so you are getting a realistic view.  
+When choosing the threshold colors it is important to take into account what the camera will see including the lighting conditions.  Donkeycar includes a script to make this easy to do.  the `hsv_picker.py` script allows you to view the live camera image or alternatively to choose a static image to view.  So if you are running a desktop image on your car (so not a server image or headless image) then you can run the script and view the camera image.  If you do not have a desktop on the car, then you can run the car and open the web view in a browser on your host laptop at take a screen shot to save it, then use that static image with the `hsv_picker.py` script on your laptop computer.  In either case, arrange the car on the course so it can see the line as it would see it when you drive in autopilot so you are getting a realistic view.  
 
-You can run the `hsv_picker.sh` script to view a screen shot image; with the donkey python environment activated run the script from the root of your donkeycar repo folder;
+You can run the `hsv_picker.py` script to view a screen shot image; with the donkey python environment activated run the script from the root of your donkeycar repo folder;
 ```
-python scripts/hsv_picker.sh --file=<path-to-image>
+python scripts/hsv_picker.py --file=<path-to-image>
 ```
 
 To view the camera stream, again with donkey python environment activated, run the script from the root of your donkeycar repo folder;
 
 ```
-python scripts/hsv_picker.sh
+python scripts/hsv_picker.py
 ```
 
 If you have more than one camera and it is not showing the correct one, you can choose the camera index and/or set the image size
 
 ```
-python scripts/hsv_picker.sh --camera=2  --width=320 --height=240
+python scripts/hsv_picker.py --camera=2  --width=320 --height=240
 ```
 
 ![A screenshot in hsv_script.sh](/assets/hsv_picker_no_mask.png)
@@ -94,9 +94,9 @@ Using the scrollbars works, but there is an easier way.  You can also just selec
 
 The image below shows the mask that was created by selecting a rectangular area within the blue line.
 
-![A masked screenshot in the hsv_picker.sh script](/assets/hsv_picker_mask.png)
+![A masked screenshot in the hsv_picker.py script](/assets/hsv_picker_mask.png)
 
-Features of `hsv_picker.sh`:
+Features of `hsv_picker.py`:
 
 - change the low and high mask values using the taskbars at the bottom of the screen.
 - set the low and high mask values by selecting a rectangular area on the image using click-drag-release.
