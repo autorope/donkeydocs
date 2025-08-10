@@ -20,10 +20,11 @@ sudo apt-get update
 sudo apt install python3-pip
 sudo apt-get install libmtdev1 libgl1 xclip
 ```
-* Add export `LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6` to your `.bashrc` and re-source it.
-  ```bash
+* Add export `LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libstdc++.so.6` to your `.bashrc` (just use `nano .bashrc`) and re-source it.
+
+```bash
   source ~/.bashrc
-  ```
+```
 
 At this point switch to the [Ubuntu instructions](http://docs.donkeycar.com/guide/host_pc/setup_ubuntu/) and continue the setup there.
 
