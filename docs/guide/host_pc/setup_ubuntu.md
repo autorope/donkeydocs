@@ -73,8 +73,12 @@ conda env remove -n donkey
 ```
 
 The newer version of Tensorflow is already built with GPU support. If you 
-have an Nvidia GPU, install Cuda 12 following instructions on Nivida's page 
-[here](https://developer.nvidia.com/cuda-toolkit-archive)
+have an Nvidia GPU, install Cuda 12.2 following instructions on Nivida's page 
+[here](https://developer.nvidia.com/cuda-toolkit-archive). Also, overwrite the
+tensorflow installation by running:
+```bash
+  pip install tensorflow[and-cuda]==2.15
+```
 
 * Optional Install Coral edge tpu compiler
 
