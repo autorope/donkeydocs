@@ -73,11 +73,11 @@ The following instructions are for the Raspberry Pi, below in Optional Upgrades 
 | M2x6 screws (8)                                                                     | [Amazon](https://amzn.to/2ZSKa0D)                                           | $4.89 &ast;          |
 | M3x10 screws (3)                                                                  | [Amazon](https://amzn.to/3gBQuzE)                                                     | $7.89 &ast;          |
 | USB Battery  | [Anker 10,000 maH](https://amzn.to/4dStvNr)                                           | $26              |
-| Raspberry Pi 5B 4GB                                                                      | [Pi 5B](https://amzn.to/3AmRmqa)                                          | $60              |
+| Raspberry Pi 5B 8GB                                                                      | [Pi 5B](https://amzn.to/4nYOYcL)                                          | $60              |
 | MicroSD Card              | [64GB](https://amzn.to/2XP7UAa)                                         | $18.99           |
 | Wide Angle Raspberry Pi Camera                                                      | [Amazon](https://amzn.to/4bRHCRV)                    | $18              |
 | Female to Female Jumper Wire                                                        | [Amazon](https://amzn.to/36RiMlo))                                         | $7 &ast;             |
-| Servo Driver PCA 9685                                                               | [Amazon](https://amzn.to/2BbVYkj)                                           | $12 &ast;&ast;           |
+| Servo Driver PCA 9685                                                               | [Amazon](https://amzn.to/4nYOYcL)                                           | $12 &ast;&ast;           |
 | 3D Printed roll cage and top plate.                                                 | Print yourself, or go to a 3rd party service | $xx                 |
 
 &ast; If it is hard to find these components, there is some wiggle room. Instead of an M2 you can use an M2.2, m2.3 or #4 SAE screw.  Instead of an M3 a #6 SAE screw can be used.  Machine screws can be used in a pinch.  
