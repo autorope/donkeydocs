@@ -36,11 +36,18 @@ This installation is using Raspberry Pi OS Bookworm (64 bit).
 
 Raspberry Pi OS can be installed with the graphical installer _Raspberry Pi
 Imager_ which can be downloaded from [here](https://www.raspberrypi.com/software/).
+
+You'll also need to download the RaspberryPi OS from the repo [here](https://www.raspberrypi.com/software/operating-systems/). Choose the one shown here:
+![image list](/assets/imagelist.png)
+
 Please download and start the application, with the SD card you'll be using for your RaspberryPi inserted into your computer's SD card reader.
 
 First choose the device you'll be using: Raspberry Pi 5 or Raspberry Pi 4
 
-Then click on 'Operating System' and select 'Raspberry Pi OS (64 bit)' 
+Then click on 'Operating System' and select 'Use Custom' as shown here:
+![image list](/assets/imager.png)
+
+Click on the diskimage you downloaded in the previous step
 
 Then click on 'Storage' and select your SD card. 
 
