@@ -37,7 +37,7 @@ This installation is using Raspberry Pi OS Bookworm (64 bit).
 Raspberry Pi OS can be installed with the graphical installer _Raspberry Pi
 Imager_ which can be downloaded from [here](https://www.raspberrypi.com/software/).
 
-You'll also need to download the RaspberryPi OS from the repo [here](https://www.raspberrypi.com/software/operating-systems/). Choose the one shown here:
+You'll also need to download the RaspberryPi OS from the repo [here](https://www.raspberrypi.com/software/operating-systems/). Choose the one shown here (look for "Bookworm"):
 ![image list](/assets/imagelist.png)
 
 Please download and start the application, with the SD card you'll be using for your RaspberryPi inserted into your computer's SD card reader.
