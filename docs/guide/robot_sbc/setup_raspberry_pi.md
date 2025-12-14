@@ -37,26 +37,23 @@ This installation is using Raspberry Pi OS Bookworm (64 bit).
 Raspberry Pi OS can be installed with the graphical installer _Raspberry Pi
 Imager_ which can be downloaded from [here](https://www.raspberrypi.com/software/).
 
-You'll also need to download the RaspberryPi OS from the repo [here](https://www.raspberrypi.com/software/operating-systems/). Choose the one shown here (look for "Bookworm"):
-![image list](/assets/imagelist.png)
-
 Please download and start the application, with the SD card you'll be using for your RaspberryPi inserted into your computer's SD card reader.
 
 First choose the device you'll be using: Raspberry Pi 5 or Raspberry Pi 4
 
-Then click on 'Operating System' and select 'Use Custom' as shown here:
-![image list](/assets/imager.png)
+Then click on 'OS' and select 'Raspberry Pi OS (other)' as shown here:
+![image list](/assets/imager1.png)
 
-Click on the diskimage you downloaded in the previous step
+Then, in the list it provides, scroll down and click on "Raspberry Pi OS (Legacy 64-bit)" as shown here
+
+![image list](/assets/imager2.png)
 
 Then click on 'Storage' and select your SD card. 
 
-Press 'NEXT' and you will be given the option to apply 'OS customization settings'. Select 'Edit Settings'
-
-Here you can enter the specifics of your username. password and wifi details. Set a hostname (try
+Then click on "Customization". Here you can enter the specifics of your username. password and wifi details. Set a hostname (try
 'donkeycar'), desired password, your wifi, region, etc. 
 
-Everything else can be left at the default. When you're done, click on 'Save' which will bring you back to the OS customization dialog. Click on 'Yes' and it will write the OS to your SD card.
+Everything else can be left at the default. When you're done, it will take you to the "Write" stage and will write the OS to your SD card.
 
 When it's done, you can place your SD card in the Pi and power it on. It will take a minute or so to boot the first time, but once it has done so (the green light stops flashing)  
 
