@@ -1,6 +1,6 @@
 # Donkey UI
 
-Launch the Donkey graphical training interface by entering `donkey ui` in the command line. This works on Linux, Mac, and Windows, although if you're on Windows it's recommended that you use WSL ([Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)) running Ubuntu 20 instead to get full functionality.
+Launch the Donkey graphical training interface by entering `donkey ui` in the command line. This works on Linux, Mac, and Windows, although if you're on Windows it's recommended that you use WSL ([Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install)) running Ubuntu 20 or Ubuntu 22 instead to get full functionality.
 
 The Donkey UI currently contains four screens supporting the following workflows:
 
@@ -22,7 +22,9 @@ sudo apt-get install xclip
 ## The tub manager
 ![Tub_manager UI](../assets/ui-tub-manager.png)
 
-In the tub manager screen you have to select the car directory that contains the config file `myconfig.py` first, using the `Load car directory` button. Then select the tub you want to be working with using `Load tub`, the tub needs to be inside the car directory. The application remembers the last loaded config and tub.
+In the tub manager screen you have to select the car directory that contains the config file `config.py` first. Typically, you'll create a `mycar` directory (`mkdir mycar`) and download [this](https://github.com/autorope/donkeycar/blob/main/donkeycar/templates/cfg_complete.py) config file and rename it to `config.py`. Then just select the `mycar` directory, using the `Load car directory` button. 
+
+Then we'll load the data. If you haven't already created a `data` directory in your `mycar` folder, do so now (`mkdir data`). Transfer all the data from the corresponding `data` folder on your car to this folder, using the "car connection" tab described below or manually using rsync or your other favorite file transfer utility. *The term "tub" refers to the directory that holds all the data you recorded from your car*. Then select the `data` folder using the `Load tub` button (just select the folder, not the manifest files within it). The application remembers the last loaded config and tub.
 
 The drop-down menu `Add/remove' in the data panel to the left of the image allows to select the record fields, like `user/angle`, `user/throttle`, etc. 
 
