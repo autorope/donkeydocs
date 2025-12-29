@@ -22,7 +22,7 @@ sudo apt-get install xclip
 ## The tub manager
 ![Tub_manager UI](../assets/ui-tub-manager.png)
 
-In the tub manager screen you have to select the car directory that contains the config file `config.py` first. Typically, you'll create a `mycar` directory ("mkdir mycar") and download [this](https://github.com/autorope/donkeycar/blob/main/donkeycar/templates/cfg_complete.py) config file and rename it to `config.py`. Then just select the `mycar` directory, using the `Load car directory` button. 
+In the tub manager screen you have to select the car directory that contains the config file `config.py` first. Typically, you'll create a `mycar` directory ("mkdir mycar") and download [this](https://github.com/autorope/donkeycar/blob/main/donkeycar/templates/cfg_complete.py) config file, copy it into the `mycar` directory and rename it to `config.py`. Then, in the app, just select the `mycar` directory using the `Load car directory` button. 
 
 Then we'll load the data. If you haven't already created a `data` directory in your `mycar` folder, do so now ("mkdir data"). Transfer all the data from the corresponding `data` folder on your car to this folder, using the "car connection" tab described below or manually using rsync or your other favorite file transfer utility. *Note: The term "tub" refers to the directory that holds all the data you recorded from your car*. Then select the `data` folder using the `Load tub` button (just select the folder, not the manifest files within it). The application remembers the last loaded config and tub.
 
