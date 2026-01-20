@@ -152,7 +152,9 @@ The PCA9685 Servo controller can control up to 16 PWM devices like servos, motor
                  CH-1 <------------------> Servo
 ---
 ```
+Here is a wiring diagram; this also shows how to power the RaspberryPi through a buck converter or BEC and the 5v header.
 
+![donkey wiring](../assets/build_hardware/DonkeycarWiring_bb.png)
 
 *   checking connections
     *   The PCA9685 should appear on I2C bus 1 at address 0x40
