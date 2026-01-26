@@ -77,7 +77,7 @@ The following instructions are for the Raspberry Pi, below in Optional Upgrades 
 | USB Battery  | [Anker 10,000 maH](https://amzn.to/4dStvNr)                                           | $26              |
 | Raspberry Pi 5B 8GB                                                                      | [Pi 5B](https://amzn.to/3YaIDQG)                                          | $60              |
 | MicroSD Card              | [64GB](https://amzn.to/2XP7UAa)                                         | $18.99           |
-| Wide Angle Raspberry Pi Camera                                                      | [Amazon](https://amzn.to/4bRHCRV)                    | $18              |
+| Wide Angle Raspberry Pi Camera                                                      | [Amazon](https://amzn.to/3O6ab7N)                    | $16              |
 | Female to Female Jumper Wire                                                        | [Amazon](https://amzn.to/36RiMlo))                                         | $7 &ast;             |
 | Servo Driver PCA 9685                                                               | [Amazon](https://amzn.to/4nYOYcL)                                           | $12 &ast;&ast;           |
 | 3D Printed roll cage and top plate.                                                 | Print yourself, or go to a 3rd party service | $xx                 |
