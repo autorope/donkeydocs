@@ -28,7 +28,7 @@ donkey createcar --template=cv_control --path ~/mycar
 
 There are two ways to configure Donkeycar, both of which create a custom __myconfig.py__ file that you will have in your mycar directory. The first is the easiest: use our handy [Web configurator](http://configurator.donkeycar.com/) and just go through the tabs selecting things as needed to match your configuration. For most people, the first tab (Hardware) is all you need to confirm what kind of drive train and joypad/controller you're using. Then save the created myconfig.py file to your computer and transfer it to your Pi using your favorite FTP transfer app such as [Filezilla](https://filezilla-project.org/).
 
-![web configurator](assets/configurator.png)
+![web configurator](../../assets/configurator.png)
 
 The second way is to manually edit the file on your Pi: look at __myconfig.py__ in your newly created directory, ~/mycar
 ```bash
