@@ -34,12 +34,6 @@ The [WL Toys 144010](https://amzn.to/4mHlY8t) is probably the easiest car to get
 
 The alterate car, which often has slighly less availability is the HSP 94186 and the "Exceed" brand cars.  There are 5 supported cars, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html).   The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress but takes about a month to get to the US, there are local options that charge a premium.
 
-*  Exceed Magnet [Blue](https://amzn.to/2BkBRka), [Red](https://amzn.to/3qKksIC)
-*  HSP-94186 [1/16 electric Truck](https://www.aliexpress.us/item/2255799890095973.html)
-*  Exceed Desert Monster [Green](https://amzn.to/2MhOfn6)
-*  Exceed Short Course Truck  [Green](https://amzn.to/2Bek0ew),  [Red](https://amzn.to/3cmCNkE)
-*  Exceed Blaze [Blue](https://amzn.to/3cnP9ci), [Yellow](https://amzn.to/2zOGthR), [Wild Blue](https://amzn.to/3dkI4uD), [Max Red](https://amzn.to/2TWOxE8)
-
 These cars are electrically identical but have different tires, mounting and other details.  It is worth noting that the Desert Monster, Short Course Truck and Blaze all require adapters which can be easily printed or purchased from the donkey store.  These are the standard build cars because they are mostly plug and play, both have a brushed motor which makes training easier, they handle rough driving surfaces well and are inexpensive.
 
 Here is a [video](https://youtu.be/UucnCmCAGTI) overview of the different cars (Excluding the WL Toys car) and how to assemble them.
