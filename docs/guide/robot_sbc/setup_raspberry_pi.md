@@ -53,6 +53,10 @@ Then click on 'Storage' and select your SD card.
 Then click on "Customization". Here you can enter the specifics of your username. password and wifi details. Set a hostname (try
 'donkeycar'), desired password, your wifi, region, etc. 
 
+Don't forget to enable SSH access:
+
+![image list](/assets/ssh.png)
+
 Everything else can be left at the default. When you're done, it will take you to the "Write" stage and will write the OS to your SD card.
 
 When it's done, you can place your SD card in the Pi and power it on. It will take a minute or so to boot the first time, but once it has done so (the green light stops flashing)  
