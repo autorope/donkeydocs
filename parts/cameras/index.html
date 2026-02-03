@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Cameras - Donkey Car</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../extra.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Cameras";
+        var mkdocs_page_input_path = "parts/cameras.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> Donkey Car
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/build_hardware/">Build a car.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/install_software/">Install the software.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/create_application/">Create Donkeycar App.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/calibrate/">Calibrate steering and throttle.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/get_driving/">Get driving.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/train_autopilot/">Create an autopilot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/simulator/">Donkey Simulator.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/virtual_race_league/">Virtual Race League.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/deep_learning/mobile_app/">Mobile app</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Parts</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../about/">About</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../actuators/">Actuators</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Cameras</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#camera-setup">Camera Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#raspberry-pi">Raspberry Pi:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#jetson-nano">Jetson Nano:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usb-cameras">USB Cameras</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#intel-realsense-d435">Intel Realsense D435</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../controllers/">Controllers</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../odometry/">Odometry/encoders</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../keras/">Keras</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stores/">Stores</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../fastai/">Fastai</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../imu/">IMU</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../guide/path_follow/path_follow/">GPS</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../lidar/">Lidar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oled/">OLED</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../pins/">Pins</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../voice_control/">Voice Control</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../stop_sign_detection/">Stop Sign Detection</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utilities</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/donkey/">donkey</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../utility/ui/">Donkey UI.</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Developer Guide</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/contribute/">Contribute</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../dev_guide/model/">Create your own model</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Cars</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/supported_cars/">Supported Cars</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../cars/roll_your_own/">Roll Your Own</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Support</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/faq/">FAQ</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../support/legacy/">Legacy</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Donkey Car</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">Parts</li>
+      <li class="breadcrumb-item active">Cameras</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/autorope/donkeydocs/edit/master/docs/parts/cameras.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="cameras">Cameras</h1>
+<p>Donkeycar supports a large number of cameras via the <code>CAMERA_TYPE</code> configuration.  For most applications a wide field of vision is important, so your camera should use a 120 degree wide angle lens or better.  A 160 degree wide angle lense is recommended.</p>
+<h2 id="camera-setup">Camera Setup</h2>
+<p>If you are using the default deep learning template or the computer vision template then you will need a camera.  By default <strong>myconfig.py</strong> assumes a RaspberryPi camera.  You can change this by editing the <code>CAMERA_TYPE</code> value in the <strong>myconfig.py</strong> file in your <code>~/mycar</code> folder.  </p>
+<p>If you are using the gps path follow template then you do not need, and may not want, a camera.  In this case you can change the camera type to mock; <code>CAMERA_TYPE = "MOCK"</code>.</p>
+<h3 id="raspberry-pi">Raspberry Pi:</h3>
+<p>If you are on a raspberry pi and using the recommended pi camera ("PICAM"), then no changes are needed to your <strong>myconfg.py</strong>.</p>
+<p>This works with all Raspberry Pi cameras, including the original Raspberry Pi Camera Module based on the 5 megapixel OV5647 chipset and the Raspberry Pi Camera Module v2 based on the Sony IMX219 chip.  These cameras are easily obtainable and are offered in generic (clone) versions by many vendors.</p>
+<blockquote>
+<p><strong>Make sure your camera works</strong>.  <a href="https://www.raspberrypi.com/documentation/accessories/camera.html#connect-the-camera">Camera connection</a> issues are common, especially after <a href="https://docs.donkeycar.com/guide/build_hardware/#step-6-attach-camera">assembly of a new Donkeycar</a>, installation of a new camera or after a crash.  In any of those cases or if you otherwise encounter an camera error when using the Donkeycar software, you should make sure your camera is working properly before asking for help on the <a href="https://discord.gg/PN6kFeA">Discord</a>.  Raspberry Pi OS includes <a href="https://www.raspberrypi.com/documentation/computers/camera_software.html">Camera Software</a> that will take a picture or stream video.  If you have a keyboard, mouse and monitor connected to the Raspberry Pi, then you can run the <a href="https://www.raspberrypi.com/documentation/computers/camera_software.html#rpicam-hello"><code>rpicam-hello</code></a> utility to show the camera's video stream.  If you are ssh'ing into your Raspberry Pi, then you can take an image and save it as a jpeg using the <a href="https://www.raspberrypi.com/documentation/computers/camera_software.html#rpicam-jpeg"><code>rpicam-jpeg</code></a> utility, then copy the resulting jpeg file to you host computer to view it (generally if it successfully takes the photo without reporting an error then the camera should be ok).</p>
+</blockquote>
+<h3 id="jetson-nano">Jetson Nano:</h3>
+<p>The Jetson does not have a driver for the original 5 megapixels OV5647 based Raspberry Pi Camera, but it does have a driver for the v2 camera based on the IMX219 chip.  Indeed the recommended camera is based on the IMX219 chip.</p>
+<p>The default setting <code>CAMERA_TYPE = "PICAM"</code> does <strong>not</strong> work on the Jetson, even if you are using an 8mp RaspberryPi camera or a camera based on a Sony IMX219 based camera  In either of these cases you will want edit your <strong>myconfg.py</strong> to have: <code>CAMERA_TYPE = "CSIC"</code>.</p>
+<p>For flipping the image vertically set <code>CSIC_CAM_GSTREAMER_FLIP_PARM = 6</code> - this is helpful if you have to mount the camera in a rotated position.</p>
+<h3 id="usb-cameras">USB Cameras</h3>
+<p><code>CAMERA_TYPE = CVCAM</code> is a camera type that has worked for USB cameras when OpenCV is setup. This requires additional setup for <a href="/guide/robot_sbc/setup_jetson_nano/#step-4-install-opencv">OpenCV for Nano</a> or <a href="https://www.learnopencv.com/install-opencv-4-on-raspberry-pi/">OpenCV for Raspberry Pi</a>.  </p>
+<p>If you have installed the optional pygame library then you can connect to the camera by editing the camera type to <code>CAMERA_TYPE = "WEBCAM"</code>.  See the required additional setup for <a href="https://www.pygame.org/wiki/GettingStarted">pygame</a>.</p>
+<p>If you have more than one camera then you made need to the <code>CAMERA_INDEX</code> configuration value.  By default it is zero.</p>
+<blockquote>
+<blockquote>
+<p>NOTE: <code>CAMERA_TYPE = CVCAM</code> depends upon a version of OpenCV that has GStreamer support compiled in.  This is the default on the Jetson computers and is supported in the recommended version of OpenCV for that Raspberry Pi.</p>
+</blockquote>
+</blockquote>
+<h3 id="intel-realsense-d435">Intel Realsense D435</h3>
+<p>The Intel Realsense cameras are RGBD cameras; they provide RGB images and Depth.  You can use them as an RGB camera to provide images for the Deep Learning template or the Computer Vision template by setting <code>CAMERA_TYPE = "D435"</code> in your <strong>myconfig.py</strong> settings.  You will also want to review the settings that are specific to the Intel Realsense cameras;</p>
+<pre><code># Intel Realsense D435 and D435i depth sensing camera
+REALSENSE_D435_RGB = True       # True to capture RGB image
+REALSENSE_D435_DEPTH = True     # True to capture depth as image array
+REALSENSE_D435_IMU = False      # True to capture IMU data (D435i only)
+REALSENSE_D435_ID = None        # serial number of camera or None if you only have one camera (it will autodetect)
+</code></pre>
+<p>If you are not using depth then you will want to set <code>REALSENSE_D435_DEPTH = False</code> so it does not save the depth data.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If the colors look wrong it may be that the camera is outputting BGR colors rather than RGB.  You can set <code>BGR2RGB = True</code> to convert from BGR to RGB.</p>
+<p>We are adding other cameras over time, so read the camera section in <strong>myconfig.py</strong> to see what options are available.</p>
+<p>If you are having troubles with your camera, check out our <a href="https://discord.gg/zcyzK69S">Discord hardware channel</a> for more help.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../actuators/" class="btn btn-neutral float-left" title="Actuators"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../controllers/" class="btn btn-neutral float-right" title="Controllers">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/autorope/donkeydocs/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../actuators/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../controllers/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
