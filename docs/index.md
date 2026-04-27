@@ -6,7 +6,7 @@
 ![Discord](https://img.shields.io/discord/662098530411741184.svg?logo=discord&colorB=7289DA)
 ----
 
-Donkey is an open source Self Driving Car Platform for remote control cars written in Python.  It is developed for hobbyists and students with a focus on allowing fast experimentation and easy [community contributions](https://github.com/autorope/donkeycar/blob/main/CONTRIBUTING.md).  It supports various kinds of autopilots including autopilots based on neural networks, computer vision and GPS.  It is being actively used at the high school and university level for learning and research.  It offers a [rich graphical interface](utility/ui/) and includes a [simulator](guide/deep_learning/simulator/) so you can experiment with self-driving even before you build a robot.  It is supported by an active [online community](https://discord.gg/PN6kFeA).
+Donkey is an open source Self Driving Car Platform for remote control cars written in Python.  It is developed for hobbyists and students with a focus on allowing fast experimentation and easy [community contributions](https://github.com/autorope/donkeycar/blob/main/CONTRIBUTING.md).  It supports various kinds of autopilots including autopilots based on neural networks, computer vision and GPS.  It is being actively used at the high school and university level for learning and research.  It offers a [rich graphical interface](utility/ui/) and includes a [simulator](guide/deep_learning/simulator/) so you can experiment with self-driving even before you build a robot. 
 
 ![donkeycar](assets/build_hardware/donkey2.png)
 
