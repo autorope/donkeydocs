@@ -28,11 +28,13 @@ If you want to build a car follow these instructions below.
 
 To build a car, you first need to choose a car.  A donkey car can be made out of almost any RC car, however if you want to follow an easy path buy either the WL Toys car listed below or the Exceed one.
 
-*NOTE: only the WL Toys 144010 and HSP-94186 are readily avilable rignt now* 
+**1/16th scale cars**
+
+1/16th scale cars are best for relatively large tracks, from large office spaces to outdoors. They're fast and weigh enough to damage themselves or something else when they crash, so you should ensure that they have plenty of room to run, especially if you're racing. 
 
 The [WL Toys 144010](https://amzn.to/4mHlY8t) is probably the easiest car to get right now.  It has a brushless motor, which makes it fast, but takes some getting used to for beginners.  There are brushed motor versions of theis car the 144011 and 144001 but both require the user to replace both the steering servo and ESC with these parts [ESC](https://amzn.to/42uvmpt) and [Servo](https://amzn.to/40vSDoi).  Only do this if you are familiar with RC or enjoy tinkering.  [Here is a short video](https://www.youtube.com/watch?v=4LKDjoTKlaE) explaining how to assemble the car.  You can find the adapters in [Thingiverse](https://www.thingiverse.com/thing:2566276) and print them yourself or go to a 3rd party printing service.
 
-The alterate car, which often has slighly less availability is the HSP 94186 and the "Exceed" brand cars.  There are 5 supported cars, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html).   The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress but takes about a month to get to the US, there are local options that charge a premium.
+The alternate car, which often has slighly less availability is the HSP 94186 and the "Exceed" brand cars.  There are 5 supported cars, all are very similar and should be considered equivalent.  Note, often some of these are out of stock, so go through the links to find one that is in stock.  If they are out of stock on Amazon, you can find the cars at the [Exceed Website](https://www.nitrorcx.com/1rcelca.html).   The HSP-94186 is identical to the Exceed Magnet 1/16 Truck; it can be found on AliExpress but takes about a month to get to the US, there are local options that charge a premium.
 
 These cars are electrically identical but have different tires, mounting and other details.  It is worth noting that the Desert Monster, Short Course Truck and Blaze all require adapters which can be easily printed or purchased from the donkey store.  These are the standard build cars because they are mostly plug and play, both have a brushed motor which makes training easier, they handle rough driving surfaces well and are inexpensive.
 
@@ -48,6 +50,12 @@ Here is a [video](https://youtu.be/K-REL9aqPE0) that goes over the different mod
 For more detail and other options, follow the link to: [supported cars](/cars/supported_cars)
 
 ![donkey](../assets/build_hardware/donkey.png)
+
+**1/28th scale cars**
+![donkey](../assets/build_hardware/128car.jpg)
+For smaller indoors areas, such as homes, we recommend 1/28th scale cars, which are slower and lighter and won't damage themselves or anything else in a crash. [This post](https://www.diyrobocars.com/2026/01/06/running-donkeycar-on-a-128-scale-car/) explains which ones to buy and how to modify them to run Donkeycar using the RC controller they come with and the custom Mini RC Hat for Donkeycar available [here](https://www.diyrobocars.com/product/mini-rc-hat-for-raspberry-pi-zero-2-w/).
+
+
 
 ## Roll Your Own Car
 
