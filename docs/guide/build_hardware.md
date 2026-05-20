@@ -38,14 +38,7 @@ The alternate car, which often has slighly less availability is the HSP 94186 an
 
 These cars are electrically identical but have different tires, mounting and other details.  It is worth noting that the Desert Monster, Short Course Truck and Blaze all require adapters which can be easily printed or purchased from the donkey store.  These are the standard build cars because they are mostly plug and play, both have a brushed motor which makes training easier, they handle rough driving surfaces well and are inexpensive.
 
-Here is a [video](https://youtu.be/UucnCmCAGTI) overview of the different cars (Excluding the WL Toys car) and how to assemble them.
-
-For advanced users there are 2 more cars supported under the "Donkey Pro" name.  These are 1/10 scale cars which means that they are bigger, perform a little better and are slightly more expensive.  They can be found here:
-
-*  HobbyKing Mission-D [found here](https://hobbyking.com/en_us/1-10-hobbykingr-mission-d-4wd-gtr-drift-car-arr.html?affiliate_code=XFPFGDFDZOPWEHF&_asc=337569952)
-*  Tamaya TT01 or Clone [commonly used knockoff found here](https://amzn.to/2MdNLhZ) - found worldwide but usually has to be built as a kits.  The other two cars are ready to be donkified, this one, however is harder to assemble.  
-
-Here is a [video](https://youtu.be/K-REL9aqPE0) that goes over the different models.  The Donkey Pro models are not yet very well documented, just a word of warning.  
+Here is a [video](https://youtu.be/UucnCmCAGTI) overview of the different cars (excluding the WL Toys car) and how to assemble them.
 
 For more detail and other options, follow the link to: [supported cars](/cars/supported_cars)
 
