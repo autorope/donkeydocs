@@ -5,25 +5,27 @@ on:
     branches:
       - master
 
+permissions:
+  contents: write
+
 jobs:
   mkdocs-build-and-push:
     name: mkdocs and push to docs.donkeycar.com
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -l {0}
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: conda-incubator/setup-miniconda@v2.1.1
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
-          auto-activate-base: true
-          channels: defaults, conda-forge
-      - run: |
-          conda info
-          conda list
-          conda install mkdocs
-          pip install mkdocs-redirects
-          pip install mkdocs-material
-          mkdocs gh-deploy --force -v
-          echo Docs were made and pushed to docs.donkeycar.com
+          python-version: "3.9"
+
+      - name: Install docs dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install mkdocs mkdocs-redirects mkdocs-material
+
+      - name: Build and deploy docs
+        run: |
+          python -m mkdocs gh-deploy --force -v
+          echo "Docs were made and pushed to docs.donkeycar.com"
