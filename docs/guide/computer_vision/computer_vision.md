@@ -114,6 +114,13 @@ However, if you are on a course where two cars drive at the same time (there are
 
 >> If you are really motivated then you might try implementing a lane-changing algorithm that would dynamically change the target pixel value in order to move from one lane to another.
 
+#### CROP_TOP_FRACTION and MASK_MORPH_KERNEL
+These two optional values make the line detection more robust in cluttered or noisy scenes.  Both default to a value that disables them, so if you leave them unset (or set them to `0`) the LineFollower behaves exactly as before.
+
+`CROP_TOP_FRACTION` ignores any line-colored pixels above the given fraction of the image height.  The line you are following is on the ground, near the bottom of the image, but line-colored things higher up in the frame — a person's shirt, a banner, a wall, sunlight — can fall inside the scan area and pull the detected line position off the real line.  Setting `CROP_TOP_FRACTION = 0.5` tells the algorithm to disregard the top half of the image so only the line on the ground is considered.  Increase it toward `1.0` if clutter reaches lower in your frame, or leave it `0.0` to consider the whole scan area as before.  This is especially helpful when following a white line, because so many other bright, washed-out things in a room look like white to the color threshold.
+
+`MASK_MORPH_KERNEL` cleans up the color mask before the histogram is taken.  With a positive odd value (for example `5`) the mask is run through a morphological open-then-close using an elliptical kernel of that size, which removes isolated speckle pixels (camera noise, glare) and fills small gaps in the line.  A larger kernel cleans more aggressively but can erase a thin line, so start at `3` or `5`.  Leave it `0` to skip denoising.
+
 ### LineFollower Configuration
 The complete set of configuration values and their defaults can be found in [donkeycar/templates/cfg_cv_control.py](https://github.com/autorope/donkeycar/blob/main/donkeycar/templates/cfg_cv_control.py#L556) and is copied here for convenience.
 
@@ -130,6 +137,13 @@ SCAN_Y = 120          # num pixels from the top to start horiz scan
 SCAN_HEIGHT = 20      # num pixels high to grab from horiz scan
 COLOR_THRESHOLD_LOW  = (0, 50, 50)    # HSV dark yellow (opencv HSV hue value is 0..179, saturation and value are both 0..255)
 COLOR_THRESHOLD_HIGH = (50, 255, 255) # HSV light yellow (opencv HSV hue value is 0..179, saturation and value are both 0..255)
+
+# LineFollower - optional robustness controls (both default to a no-op)
+CROP_TOP_FRACTION = 0.0  # if > 0, ignore line-colored pixels above this fraction of the
+                         # image height so clutter high in the frame (people, banners,
+                         # walls, sunlight) cannot bias detection. e.g. 0.5 ignores the top half.
+MASK_MORPH_KERNEL = 0    # if > 0 (use an odd value such as 5), denoise the mask with a
+                         # morphological open+close to drop speckle and fill small gaps.
 
 # LineFollower - target (expected) line position and detection thresholds
 TARGET_PIXEL = None   # In not None, then this is the expected horizontal position in pixels of the yellow line.
