@@ -3,12 +3,11 @@
 ![donkey](/assets/logos/rpi_logo.png)
 
 Please read this carefully as Donkey Car is now installed differently
-depending on the version. The latest Donkey Car version is 5.1 and requires 
-64-bit Raspberry Pi OS Bookworm. Only in case you are using 5.0 you would 
-install 64-bit Bullseye.
+depending on the version. The latest Donkey Car version is 5.4 and requires 
+64-bit Raspberry Pi OS Trixie.
 
-If you're using an older version of Donkey Car, sucbh as 4.X, then you need to 
-use the older Raspberry Pi OS (Raspian) version called Buster. Jump to 
+If you're using an older version of Donkey Car, such as 4.X, then you need to 
+use the older Raspberry Pi OS (Raspian) version called Bookworm. Jump to 
 those instructions [here](#step-1-flash-operating-system).
 
 Tub data, car templates, etc are compatible between the two versions as well
@@ -41,12 +40,7 @@ Please download and start the application, with the SD card you'll be using for 
 
 First choose the device you'll be using: Raspberry Pi 5 or Raspberry Pi 4
 
-Then click on 'OS' and select 'Raspberry Pi OS (other)' as shown here:
-![image list](/assets/imager1.png)
-
-Then, in the list it provides, scroll down and click on "Raspberry Pi OS (Legacy 64-bit)" as shown here
-
-![image list](/assets/imager2.png)
+Then click on 'OS' and select 'Raspberry Pi OS (64-bit)'
 
 Then click on 'Storage' and select your SD card. 
 
