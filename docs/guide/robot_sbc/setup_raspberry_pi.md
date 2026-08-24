@@ -122,6 +122,7 @@ uv pip install donkeycar[pi]
 
 ```bash
 git clone https://github.com/autorope/donkeycar.git
+cd donkeycar
 uv pip install -e ".[pi,dev]"
 ```
 ### Further steps
