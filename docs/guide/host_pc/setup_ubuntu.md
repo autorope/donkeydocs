@@ -5,41 +5,21 @@
 
 * Open the Terminal application.
 
-* Install miniconda Python 3.11 64 bit. 
+* Install UV. 
 
 ```bash
-wget https://repo.anaconda.com/miniconda/Miniconda3-py311_24.4.0-0-Linux-x86_64.sh
-bash ./Miniconda3-py311_24.4.0-0-Linux-x86_64.sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-Setup your `donkey` conda env with:
+# Create a persistent named venv
+uv venv ~/.venvs/donkeycar --python 3.12
 
-```bash
-conda create -n donkey python=3.11
-conda activate donkey
-```
+# Activate on login (bash)
+echo 'source ~/.venvs/donkeycar/bin/activate' >> ~/.bashrc
+source ~/.venvs/donkeycar/bin/activate
 
-Now there are two different installations possible. Very likely you will 
-want to do the user install. Then you will perform Step 
-[_User install_](#user-install). In case 
-you want to debug or edit the source code, you will need to do the more advanced 
-[_Developer install_](#developer-install). But you can do only one.
-
-> _**Note**_: Only do User install or Developer install but not both!
-
-### User install
-
-As you have activated the new `donkey` env already you simply type:
-
-```bash
-pip install donkeycar[pc]
-```
-This will install the latest release. Note, if you are using ZSH then
-you have to escape the `[` and `]`, i.e. 
-
-```bash
-pip install donkeycar\[pc\]
-```
+# User install (PyPI release):
+uv pip install donkeycar[pc]
 
 
 ### Developer install
@@ -57,27 +37,7 @@ cd projects
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
-pip install -e .[pc]
-```
-
-Note: if you are using ZSH (you'll know if you are), you won't be able to 
-run `pip install -e .[pc]`. You'll need to escape the brackets and run 
-`pip install -e .\[pc\]`.
-
-
-* If this is not your first install, update Conda and remove old donkey
-
-```bash
-conda update -n base -c defaults conda
-conda env remove -n donkey
-```
-
-The newer version of Tensorflow is already built with GPU support. If you 
-have an Nvidia GPU, install Cuda 12.2 following instructions on Nivida's page 
-[here](https://developer.nvidia.com/cuda-toolkit-archive). Also, overwrite the
-tensorflow installation by running:
-```bash
-  pip install tensorflow[and-cuda]==2.15
+uv pip install -e ".[pc,dev]"
 ```
 
 * Optional Install Coral edge tpu compiler
@@ -86,33 +46,6 @@ If you have a Google Coral edge tpu, you may wish to compile models. You
 will need to install the edgetpu_compiler exectutable. Follow [their 
 instructions](https://coral.withgoogle.com/docs/edgetpu/compiler/).
 
-* Optionally configure PyTorch to use GPU - only for NVidia Graphics cards
-
-If you have an NVidia card, you should update to the latest drivers and 
-[install Cuda SDK](https://www.tensorflow.org/install/gpu#windows_setup). 
-You will also need to change the code to use the GPU in a few places, so
-you need the developer install. 
-
-```bash
-conda install cudatoolkit=11 -c pytorch
-```
-
-You should replace `<CUDA Version>` with your CUDA version. Any version 
-above 10.0 should work. You can find out your CUDA version by running 
-`nvcc --version` or `nvidia-smi`. (if those commands don't work, it means you 
-don't already have them installed. Follow the directions given by that error 
-to install them.) If the version given by these two commands don't match, go 
-with the version given by `nvidia-smi`.
-
-* Create your local working dir:
-
-```bash
-donkey createcar --path ~/mycar
-```
-
-> Note: After closing the Anaconda Prompt, when you open it again, you will need to 
-> type ```conda activate donkey``` to re-enable the mappings to donkey specific 
-> Python libraries
 
 ----
 
