@@ -97,45 +97,32 @@ and apply the settings there.
 > please follow the steps [here](https://www.raspberrypi.com/documentation/computers/configuration.html#setting-up-a-headless-raspberry-pi).
 > You will need to run `sudo apt -y install pip git` afterwards.
 
-
-### Step 4: Setup virtual environment
-
-To create a virtual environmnet run the following from your home directory:
-```bash
-python3 -m venv env --system-site-packages
-echo "source ~/env/bin/activate" >> ~/.bashrc
-source ~/.bashrc
-```
-
-Install required libraries
-```bash
-sudo apt install libcap-dev libhdf5-dev libhdf5-serial-dev
-```
-
-### Step 5: Install Donkeycar Python Code
-
-#### User Install (preferred way)
-Simply type:
-```bash
-pip install donkeycar[pi]
-```
-Note: this will take 5-10 minutes to complete. Be patient!
-
-#### Developer Install (only required if you want to checkout different forks, branches, tags)
-
-Create a project directory you would like to use as the 
-head of your projects, change into it and download and install `donkeycar` 
-from GitHub. Make sure your `donkey` env is activated.
+# Install camera system packages first
 
 ```bash
-mkdir projects
-cd projects
-git clone https://github.com/autorope/donkeycar
-cd donkeycar
-git checkout main
-pip install -e .[pi]
+sudo apt install python3-libcamera python3-picamera2
+```
+# Create venv from the system Python 3.13 with access to system packages
+
+```bash
+uv venv ~/env --python 3.13 --system-site-packages
 ```
 
+# Activate on login
+```bash
+echo 'source ~/env/bin/activate' >> ~/.bashrc
+source ~/env/bin/activate
+```
+# User install (PyPI release):
+
+```bash
+uv pip install donkeycar[pi]
+```
+# Developer install (git clone):
+
+```bash
+uv pip install -e ".[pi,dev]"
+```
 ### Further steps
 
 - **Make sure your camera works**.  [Camera connection](https://www.raspberrypi.com/documentation/accessories/camera.html#connect-the-camera) issues are common, especially after [assembly of a new Donkeycar](https://docs.donkeycar.com/guide/build_hardware/#step-6-attach-camera), installation of a new camera or after a crash.  In any of those cases or if you otherwise encounter an camera error when using the Donkeycar software, you should make sure your camera is working properly before asking for help on the [Discord](https://discord.gg/PN6kFeA).  Raspberry Pi OS includes [Camera Software](https://www.raspberrypi.com/documentation/computers/camera_software.html) that will take a picture or stream video.  If you have a keyboard, mouse and monitor connected to the Raspberry Pi, then you can run the [`rpicam-hello`](https://www.raspberrypi.com/documentation/computers/camera_software.html#rpicam-hello) utility to show the camera's video stream.  If you are ssh'ing into your Raspberry Pi, then you can take an image and save it as a jpeg using the [`rpicam-jpeg`](https://www.raspberrypi.com/documentation/computers/camera_software.html#rpicam-jpeg) utility, then copy the resulting jpeg file to you host computer to view it (generally if it successfully takes the photo without reporting an error then the camera should be ok).
