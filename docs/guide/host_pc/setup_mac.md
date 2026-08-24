@@ -4,23 +4,23 @@
 
 # Create a persistent named venv
 
-bash```
+```bash
 uv venv ~/.venvs/donkeycar --python 3.12
 ```
 # Activate on login
 
-bash```
+```bash
 echo 'source ~/.venvs/donkeycar/bin/activate' >> ~/.zshrc
 source ~/.venvs/donkeycar/bin/activate
 ```
 # User install (PyPI release):
 
-bash```
+```bash
 uv pip install donkeycar[macos]
 ```
 # Developer install (git clone):
 
-bash```
+```bash
 uv pip install -e ".[macos,dev]"
 ```
 ### Next let's [install software on Donkeycar](/guide/install_software/#step-2-install-software-on-donkeycar)
