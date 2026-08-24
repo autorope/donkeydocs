@@ -12,15 +12,22 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 # Create a persistent named venv
-uv venv ~/.venvs/donkeycar --python 3.12
 
+```bash
+uv venv ~/.venvs/donkeycar --python 3.12
+```
 # Activate on login (bash)
+
+```bash
 echo 'source ~/.venvs/donkeycar/bin/activate' >> ~/.bashrc
 source ~/.venvs/donkeycar/bin/activate
+```
 
 # User install (PyPI release):
-uv pip install donkeycar[pc]
 
+```bash
+uv pip install donkeycar[pc]
+```
 
 ### Developer install
 
