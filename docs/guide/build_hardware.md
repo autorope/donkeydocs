@@ -46,7 +46,7 @@ For more detail and other options, follow the link to: [supported cars](/cars/su
 
 **1/28th scale cars**
 ![donkey](../assets/build_hardware/128car.jpg)
-For smaller indoors areas, such as homes, we recommend 1/28th scale cars, which are slower and lighter and won't damage themselves or anything else in a crash. [This post](https://www.diyrobocars.com/2026/01/06/running-donkeycar-on-a-128-scale-car/) explains which ones to buy and how to modify them to run Donkeycar using the RC controller they come with and the custom Mini RC Hat for Donkeycar available [here](https://www.diyrobocars.com/product/mini-rc-hat-for-raspberry-pi-zero-2-w/).
+For smaller indoors areas, such as homes, we recommend 1/28th scale cars, which are slower and lighter and won't damage themselves or anything else in a crash. [This post](https://www.diyrobocars.com/2026/01/06/running-donkeycar-on-a-128-scale-car/) explains which ones to buy and how to modify them to run Donkeycar using the RC controller they come with and the custom Mini RC Hat for Donkeycar available [here](https://diyrobocars.myshopify.com/products/mini-rc-hat-for-raspberry-pi-zero-2-w).
 
 
 
