@@ -31,7 +31,7 @@ A standard RC car is equipped with a steering servo for steering the front wheel
 - These are generalizations that are useful for understanding the underlying api call arguments and the values that are generating when calibrating.  The final choice of duty-cycle/pulse length depends on your hardware and perhaps your strategy (you may not want to go too fast,  and so you may choose is low max throttle pwm)
 
 ### Using a RC Hat to generate the commands. 
-- You can buy a RC Hat from the Donkeycar Store [here](https://www.diyrobocars.com/shop/). This is the easiest way to go if your car came with a regular RC Transmitter and Receiver. Instructions for using it are on the product page.
+- You can buy a RC Hat from the Donkeycar Store [here](https://diyrobocars.myshopify.com/products/rc-hat). This is the easiest way to go if your car came with a regular RC Transmitter and Receiver. Instructions for using it are on the product page.
 
 ### Generating PWM pulses with a PCA9685 Servo controller
 - The hardware connection of the PCA9685 I2C servo driver board is described fully in the overall setup instructions [here](../guide/build_hardware.md)
