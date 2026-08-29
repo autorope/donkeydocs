@@ -96,6 +96,12 @@ and apply the settings there.
 ```bash
 sudo apt install python3-libcamera python3-picamera2
 ```
+# Install UV
+
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
 # Create venv from the system Python 3.13 with access to system packages
 
 ```bash
