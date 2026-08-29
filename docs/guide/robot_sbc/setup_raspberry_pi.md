@@ -126,7 +126,7 @@ cd projects
 git clone https://github.com/autorope/donkeycar
 cd donkeycar
 git checkout main
-uv pip install -e ".[pc,dev]"
+uv pip install -e ".[pi,dev]"
 ```
 ### Further steps
 
