@@ -10,7 +10,7 @@ We will be broadcasting the race stream over Twitch. Check the event annoucement
 
 We are using the [SDSandbox](https://github.com/tawnkramer/sdsandbox) open source project as the racing sim. This creates a 3d environment using [Unity](https://unity.com/) game creation tool. It uses [NVidia PhysX](https://developer.nvidia.com/physx-sdk) open source physics engine to simulate 4 wheeled vehicle dynamics. This sim also acts as a server, listening on TCP port 9091. This sends and receives JSON packets. More on the API later.
 
-We use an OpenAI GYM style wrapper to interface with the server. The project for this wrapper is [gym-donkeycar](https://github.com/tawnkramer/gym-donkeycar).
+We use a [Gymnasium](https://gymnasium.farama.org/) style wrapper to interface with the server. The project for this wrapper is [gym-donkeycar](https://github.com/tawnkramer/gym-donkeycar).
 
 You can build the server from the source project above, or use [pre-built binaries](https://github.com/tawnkramer/gym-donkeycar/releases) for Ubuntu, Mac, and Windows. This has been tested on Ubuntu 18.04, Mac 10.13, and Windows 10.
 
