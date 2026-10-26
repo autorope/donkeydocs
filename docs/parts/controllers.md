@@ -85,6 +85,8 @@ To test that the Bluetooth PS3 remote is working, verify that `/dev/input/js0` e
 ls /dev/input/js0
 ```
 
+Then set `CONTROLLER_TYPE = 'ps3'` in your `myconfig.py`.
+
 #### Troubleshooting
 
 In case the BT connection on the Raspberry Pi does not work, you see might something like this in `bluetoothctl`:
@@ -114,6 +116,175 @@ And then reboot:
 ```bash
 sudo reboot
 ```
+
+### Third-party (clone) PS3 controllers
+
+Many inexpensive PS3-style pads, such as the Mo Vone wireless controller,
+identify themselves over USB as a Sony PS3 controller (`054c:0268`) but do not
+pair with the steps above. If, after you unplug the cable and press the PS
+button, all four LEDs blink and then go dark after about 30 seconds, and
+`bluetoothctl devices` never lists a PLAYSTATION(R)3 Controller, you probably
+have one of these.
+
+The Pi has to be told about these controllers by hand. These steps were tested
+on Raspberry Pi OS based on Debian 13 (trixie) with BlueZ 5.82. You don't need
+`sixpair` or `libusb-dev` for them.
+
+Run every command below on the Pi, in **one** shell session, because later
+steps use the variables `ADAPTER` and `PAD` set in earlier ones.
+
+**1. Plug the controller into the Pi with a USB cable** and check that the Pi
+sees it:
+
+```bash
+lsusb | grep 054c
+```
+
+You should see a line like:
+
+```text
+Bus 001 Device 008: ID 054c:0268 Sony Corp. Batoh Device / PlayStation 3 Controller
+```
+
+**2. Store the Pi's Bluetooth address in the controller.** This is what
+`sixpair` does. The script also prints the controller's own address, which the
+next step needs.
+
+```bash
+ADAPTER=$(bluetoothctl list | awk '/\[default\]/ {print $2}')
+echo $ADAPTER
+cat > /tmp/ps3_set_host.py <<'EOF'
+import fcntl, glob, os, sys
+
+def feature(op, size):
+    return (3 << 30) | (size << 16) | (ord('H') << 8) | op  # HIDIOC[GS]FEATURE
+
+def addr(raw):
+    return ':'.join('%02X' % b for b in raw)
+
+for uevent in glob.glob('/sys/class/hidraw/hidraw*/device/uevent'):
+    if 'HID_ID=0003:0000054C:00000268' in open(uevent).read():
+        dev = '/dev/' + uevent.split('/')[4]
+        break
+else:
+    sys.exit('No PS3 controller found on USB')
+
+def get_report(fd, report_id, size):
+    buf = bytearray([report_id]) + bytearray(size - 1)
+    fcntl.ioctl(fd, feature(0x07, size), buf)
+    return buf
+
+fd = os.open(dev, os.O_RDWR)
+print('controller:', addr(get_report(fd, 0xf2, 18)[4:10]))
+print('host was:  ', addr(get_report(fd, 0xf5, 8)[2:8]))
+new = bytearray([0xf5, 0x01]) + bytes.fromhex(sys.argv[1].replace(':', ''))
+fcntl.ioctl(fd, feature(0x06, len(new)), new)
+print('host now:  ', addr(get_report(fd, 0xf5, 8)[2:8]))
+EOF
+sudo python3 /tmp/ps3_set_host.py $ADAPTER
+```
+
+You should see output like:
+
+```text
+DC:A6:32:08:0B:CA
+controller: A0:5A:5F:88:75:1B
+host was:   A0:5A:5B:3F:3F:F2
+host now:   DC:A6:32:08:0B:CA
+```
+
+`host now` must equal the `$ADAPTER` address. Set `PAD` to the `controller`
+address printed above (yours will differ):
+
+```bash
+PAD=A0:5A:5F:88:75:1B
+```
+
+**3. Register the controller with BlueZ** as a trusted PS3 controller, along
+with the description of its buttons and sticks (its HID record). BlueZ ships
+that record inside `bluetoothd`; the `grep` pulls it out.
+
+```bash
+sudo mkdir -p /var/lib/bluetooth/$ADAPTER/$PAD /var/lib/bluetooth/$ADAPTER/cache
+sudo tee /var/lib/bluetooth/$ADAPTER/$PAD/info >/dev/null <<'EOF'
+[General]
+Name=PLAYSTATION(R)3 Controller
+Class=0x000508
+SupportedTechnologies=BR/EDR;
+Trusted=true
+Blocked=false
+Services=00001124-0000-1000-8000-00805f9b34fb;
+
+[DeviceID]
+Source=2
+Vendor=1356
+Product=616
+Version=0
+EOF
+REC=$(grep -aoE '3601920900000A000100000900013503191124[0-9A-F]+' /usr/libexec/bluetooth/bluetoothd)
+echo ${#REC}
+printf '[ServiceRecords]\n0x00010000=%s\n' "$REC" | sudo tee /var/lib/bluetooth/$ADAPTER/cache/$PAD >/dev/null
+```
+
+`echo ${#REC}` must print `810`. If it prints `0`, your BlueZ doesn't
+contain the record, and these steps won't work.
+
+**4. Make the Pi accept incoming connections at every boot.** BlueZ only
+listens for controllers it has bonded with, and a clone is trusted but not
+bonded. This systemd drop-in turns on `connectable` each time Bluetooth
+starts. `btmgmt` hangs when it has no terminal, so `script` gives it one.
+
+```bash
+sudo mkdir -p /etc/systemd/system/bluetooth.service.d
+sudo tee /etc/systemd/system/bluetooth.service.d/ps3-connectable.conf >/dev/null <<'EOF'
+[Service]
+ExecStartPost=/bin/sleep 2
+ExecStartPost=/usr/bin/script -qec "/usr/bin/btmgmt connectable on" /dev/null
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart bluetooth
+sleep 5
+sudo btmgmt info | grep 'current settings'
+```
+
+You should see:
+
+```text
+	current settings: powered connectable bondable ssp br/edr le secure-conn
+```
+
+The settings must include `connectable`. With it on, any nearby device can
+open a Bluetooth link to the Pi, but it can't use any service unless the Pi
+trusts it.
+
+**5. Unplug the USB cable and press the PS button.** The LEDs blink briefly,
+then one stays lit. Check:
+
+```bash
+bluetoothctl info $PAD | grep -E 'Trusted|Connected'
+ls /dev/input/js0
+```
+
+You should see:
+
+```text
+	Trusted: yes
+	Connected: yes
+/dev/input/js0
+```
+
+From now on, pressing the PS button reconnects the controller, including after
+a reboot. If you charge it from a PS3 console or a PC that rewrites its host
+address, repeat step 2.
+
+If it still won't connect, watch Bluetooth traffic with `sudo btmon` while you
+press the PS button:
+
+| What you see | What to do |
+|---|---|
+| `Reject Connection Request` … `Unacceptable BD_ADDR` in `btmon` | Step 3 is missing or `PAD` is wrong; check `bluetoothctl info $PAD`. |
+| Nothing from the controller in `btmon` | Check `connectable` (step 4), then plug in and rerun step 2; `host was` shows what the controller holds. |
+| `Could not parse HID SDP record` in `journalctl -u bluetooth` | The cache file from step 3 is missing or empty. |
 
 ### Charging PS3 Sixaxis Joystick
 
